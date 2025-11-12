@@ -15,16 +15,16 @@ const translations = {
         stillWaiting: "Still waiting",
         footer: "Happy New Year from around the world! 🎉",
         timezoneInfo: "Your timezone: {timezone}",
-        eventsTitle: "Important Events of 2025",
-        birthdayPromptText: "Want to see your birthday as the most important event?",
-        selectMonth: "Month",
-        selectDay: "Day",
-        saveBirthday: "Save",
-        skipBirthday: "Skip",
-        pauseAutoplay: "Pause Auto-play",
-        playAutoplay: "Play Auto-play",
-        birthdayEventTitle: "The Most Important Event: Your Birthday!",
-        birthdayEventDescription: "Today is YOUR special day! A unique celebration that makes this year extraordinary. May all your wishes come true! 🎉🎂"
+        wishesTitle: "Global Wishes Wall",
+        wishesSubtitle: "Leave your wish for 2026 and it will come true! ✨",
+        emptyTileText: "Leave your wish for 2026 and it will come true",
+        modalTitle: "Make Your Wish",
+        modalSubtitle: "Your wish will shine on the wall forever!",
+        wishLabel: "Your Wish for 2026",
+        authorLabel: "Your Name",
+        priceLabel: "Secure your wish for:",
+        paymentNote: "💳 Secure payment via PayPal. Your wish will appear instantly!",
+        payButton: "Pay $1 & Make Wish"
     },
     es: {
         mainTitle: "Tiempo Restante para tu Año Nuevo",
@@ -38,16 +38,16 @@ const translations = {
         stillWaiting: "Aún esperando",
         footer: "¡Feliz Año Nuevo desde todo el mundo! 🎉",
         timezoneInfo: "Tu zona horaria: {timezone}",
-        eventsTitle: "Sucesos Importantes de 2025",
-        birthdayPromptText: "¿Quieres ver tu cumpleaños como el evento más importante?",
-        selectMonth: "Mes",
-        selectDay: "Día",
-        saveBirthday: "Guardar",
-        skipBirthday: "Omitir",
-        pauseAutoplay: "Pausar reproducción",
-        playAutoplay: "Reproducir",
-        birthdayEventTitle: "¡El Suceso Más Importante: Tu Cumpleaños!",
-        birthdayEventDescription: "¡Hoy es TU día especial! Una celebración única que hace este año extraordinario. ¡Que todos tus deseos se hagan realidad! 🎉🎂"
+        wishesTitle: "Muro de Deseos Global",
+        wishesSubtitle: "¡Deja tu deseo para el 2026 y se va a cumplir! ✨",
+        emptyTileText: "Deja tu deseo para el 2026 y se va a cumplir",
+        modalTitle: "Haz Tu Deseo",
+        modalSubtitle: "¡Tu deseo brillará en el muro para siempre!",
+        wishLabel: "Tu Deseo para 2026",
+        authorLabel: "Tu Nombre",
+        priceLabel: "Asegura tu deseo por:",
+        paymentNote: "💳 Pago seguro vía PayPal. ¡Tu deseo aparecerá al instante!",
+        payButton: "Pagar $1 y Hacer Deseo"
     },
     pt: {
         mainTitle: "Tempo Restante para o seu Ano Novo",
@@ -61,16 +61,16 @@ const translations = {
         stillWaiting: "Ainda esperando",
         footer: "Feliz Ano Novo de todo o mundo! 🎉",
         timezoneInfo: "Seu fuso horário: {timezone}",
-        eventsTitle: "Eventos Importantes de 2025",
-        birthdayPromptText: "Quer ver seu aniversário como o evento mais importante?",
-        selectMonth: "Mês",
-        selectDay: "Dia",
-        saveBirthday: "Salvar",
-        skipBirthday: "Pular",
-        pauseAutoplay: "Pausar reprodução",
-        playAutoplay: "Reproduzir",
-        birthdayEventTitle: "O Evento Mais Importante: Seu Aniversário!",
-        birthdayEventDescription: "Hoje é o SEU dia especial! Uma celebração única que torna este ano extraordinário. Que todos os seus desejos se realizem! 🎉🎂"
+        wishesTitle: "Muro de Desejos Global",
+        wishesSubtitle: "Deixe seu desejo para 2026 e ele se tornará realidade! ✨",
+        emptyTileText: "Deixe seu desejo para 2026 e ele se tornará realidade",
+        modalTitle: "Faça Seu Desejo",
+        modalSubtitle: "Seu desejo brilhará no muro para sempre!",
+        wishLabel: "Seu Desejo para 2026",
+        authorLabel: "Seu Nome",
+        priceLabel: "Garanta seu desejo por:",
+        paymentNote: "💳 Pagamento seguro via PayPal. Seu desejo aparecerá instantaneamente!",
+        payButton: "Pagar $1 e Fazer Desejo"
     },
     fr: {
         mainTitle: "Temps Restant jusqu'à votre Nouvel An",
@@ -84,16 +84,16 @@ const translations = {
         stillWaiting: "Encore en attente",
         footer: "Bonne année du monde entier! 🎉",
         timezoneInfo: "Votre fuseau horaire: {timezone}",
-        eventsTitle: "Événements Importants de 2025",
-        birthdayPromptText: "Voulez-vous voir votre anniversaire comme l'événement le plus important?",
-        selectMonth: "Mois",
-        selectDay: "Jour",
-        saveBirthday: "Enregistrer",
-        skipBirthday: "Passer",
-        pauseAutoplay: "Mettre en pause",
-        playAutoplay: "Lecture automatique",
-        birthdayEventTitle: "L'Événement le Plus Important: Votre Anniversaire!",
-        birthdayEventDescription: "Aujourd'hui c'est VOTRE jour spécial! Une célébration unique qui rend cette année extraordinaire. Que tous vos vœux se réalisent! 🎉🎂"
+        wishesTitle: "Mur des Souhaits Global",
+        wishesSubtitle: "Laissez votre souhait pour 2026 et il se réalisera! ✨",
+        emptyTileText: "Laissez votre souhait pour 2026 et il se réalisera",
+        modalTitle: "Faites Votre Souhait",
+        modalSubtitle: "Votre souhait brillera sur le mur pour toujours!",
+        wishLabel: "Votre Souhait pour 2026",
+        authorLabel: "Votre Nom",
+        priceLabel: "Sécurisez votre souhait pour:",
+        paymentNote: "💳 Paiement sécurisé via PayPal. Votre souhait apparaîtra instantanément!",
+        payButton: "Payer 1$ et Faire un Souhait"
     }
 };
 
@@ -450,331 +450,306 @@ function updateMap() {
 }
 
 // ====================================
-// EVENTS SLIDER SYSTEM
+// FIREBASE CONFIGURATION
 // ====================================
 
 /**
- * Important events of 2025
- * These events will be shown in the slider after the birthday event
+ * INSTRUCTIONS: Replace these with your own Firebase credentials
+ * 
+ * 1. Go to https://console.firebase.google.com/
+ * 2. Create a new project (or use existing)
+ * 3. Go to Project Settings > General
+ * 4. Scroll down to "Your apps" and click "Web" (</>) to add a web app
+ * 5. Copy the firebaseConfig object and paste it below
+ * 6. Enable "Realtime Database" in Firebase Console
+ * 7. Set database rules to:
+ *    {
+ *      "rules": {
+ *        "wishes": {
+ *          ".read": true,
+ *          ".write": true
+ *        }
+ *      }
+ *    }
  */
-const importantEvents2025 = [
-    {
-        icon: "🤖",
-        title: "AI Revolution Continues",
-        description: "Artificial Intelligence reaches new milestones with advanced models transforming work, creativity, and daily life across the globe.",
-        date: "Throughout 2025"
-    },
-    {
-        icon: "🚀",
-        title: "Space Exploration Advances",
-        description: "Multiple missions to the Moon and Mars mark a new era of space exploration, with private companies and agencies pushing boundaries.",
-        date: "2025"
-    },
-    {
-        icon: "🌱",
-        title: "Climate Action Accelerates",
-        description: "Renewable energy adoption reaches record highs as nations intensify efforts to combat climate change with innovative green technologies.",
-        date: "2025"
-    },
-    {
-        icon: "⚽",
-        title: "Major Sports Events",
-        description: "Global sporting events bring nations together, featuring championships, world cups, and Olympic qualifiers that unite fans worldwide.",
-        date: "2025"
-    },
-    {
-        icon: "🎮",
-        title: "Gaming Innovation",
-        description: "Next-generation gaming experiences emerge with breakthrough VR/AR technologies and highly anticipated game releases captivating millions.",
-        date: "2025"
-    },
-    {
-        icon: "🎬",
-        title: "Entertainment Renaissance",
-        description: "Blockbuster films, streaming series, and music releases define a golden year for entertainment across all platforms.",
-        date: "2025"
-    },
-    {
-        icon: "🏥",
-        title: "Medical Breakthroughs",
-        description: "Revolutionary treatments and vaccines bring hope for diseases, while digital health platforms transform patient care globally.",
-        date: "2025"
-    }
-];
 
-/**
- * Slider state
- */
-let sliderState = {
-    currentSlide: 0,
-    totalSlides: 0,
-    autoplay: true,
-    autoplayInterval: null,
-    autoplayDelay: 5000
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
 };
 
+// Initialize Firebase
+let database;
+try {
+    firebase.initializeApp(firebaseConfig);
+    database = firebase.database();
+    console.log('Firebase initialized successfully');
+} catch (error) {
+    console.error('Firebase initialization error:', error);
+}
+
+// ====================================
+// WISHES WALL SYSTEM
+// ====================================
+
+const TOTAL_SLOTS = 20; // 5x4 grid
+let currentSlot = null;
+let wishes = {};
+
 /**
- * Get birthday from localStorage
+ * Initialize wishes wall
  */
-function getBirthday() {
-    const birthday = localStorage.getItem('userBirthday');
-    return birthday ? JSON.parse(birthday) : null;
+function initWishesWall() {
+    createWishesGrid();
+    setupModal();
+    loadWishesFromFirebase();
+    setupCharCounter();
 }
 
 /**
- * Save birthday to localStorage
+ * Create the 20 wish tiles
  */
-function saveBirthday(month, day) {
-    localStorage.setItem('userBirthday', JSON.stringify({ month, day }));
-}
-
-/**
- * Format birthday date
- */
-function formatBirthdayDate(month, day) {
-    const monthNames = [
-        'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-    return `${monthNames[month - 1]} ${day}`;
-}
-
-/**
- * Create slider slides
- */
-function createSlides() {
+function createWishesGrid() {
+    const grid = document.getElementById('wishesGrid');
     const lang = detectLanguage();
-    const birthday = getBirthday();
-    const slides = [];
-
-    // Add birthday slide if available
-    if (birthday) {
-        slides.push({
-            isBirthday: true,
-            icon: "🎂",
-            title: translations[lang].birthdayEventTitle,
-            description: translations[lang].birthdayEventDescription,
-            date: formatBirthdayDate(birthday.month, birthday.day)
-        });
-    }
-
-    // Add important events
-    slides.push(...importantEvents2025);
-
-    return slides;
-}
-
-/**
- * Render slides
- */
-function renderSlides() {
-    const sliderTrack = document.getElementById('sliderTrack');
-    const slides = createSlides();
-
-    sliderState.totalSlides = slides.length;
-
-    sliderTrack.innerHTML = slides.map((slide, index) => `
-        <div class="slider-slide ${slide.isBirthday ? 'birthday-slide' : ''}">
-            <div class="slide-icon">${slide.icon}</div>
-            <h3 class="slide-title">${slide.title}</h3>
-            <p class="slide-description">${slide.description}</p>
-            <p class="slide-date">${slide.date}</p>
-        </div>
-    `).join('');
-
-    renderIndicators();
-    updateSliderPosition();
-}
-
-/**
- * Render indicators
- */
-function renderIndicators() {
-    const indicatorsContainer = document.getElementById('sliderIndicators');
-    indicatorsContainer.innerHTML = '';
-
-    for (let i = 0; i < sliderState.totalSlides; i++) {
-        const indicator = document.createElement('div');
-        indicator.className = `indicator ${i === 0 ? 'active' : ''}`;
-        indicator.addEventListener('click', () => goToSlide(i));
-        indicatorsContainer.appendChild(indicator);
+    
+    for (let i = 1; i <= TOTAL_SLOTS; i++) {
+        const tile = document.createElement('div');
+        tile.className = 'wish-tile empty';
+        tile.dataset.slot = i;
+        tile.innerHTML = `
+            <div class="wish-tile-empty-content">
+                <p class="wish-tile-phrase">${translations[lang].emptyTileText}</p>
+                <p class="wish-tile-price">$1 USD</p>
+            </div>
+        `;
+        tile.addEventListener('click', () => handleTileClick(i));
+        grid.appendChild(tile);
     }
 }
 
 /**
- * Update slider position
+ * Handle tile click
  */
-function updateSliderPosition() {
-    const sliderTrack = document.getElementById('sliderTrack');
-    const offset = -sliderState.currentSlide * 100;
-    sliderTrack.style.transform = `translateX(${offset}%)`;
-
-    // Update indicators
-    const indicators = document.querySelectorAll('.indicator');
-    indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === sliderState.currentSlide);
-    });
-}
-
-/**
- * Go to specific slide
- */
-function goToSlide(index) {
-    if (index >= 0 && index < sliderState.totalSlides) {
-        sliderState.currentSlide = index;
-        updateSliderPosition();
-        resetAutoplay();
+function handleTileClick(slot) {
+    if (wishes[slot]) {
+        // Tile already occupied, don't open modal
+        return;
     }
+    
+    currentSlot = slot;
+    openModal();
 }
 
 /**
- * Next slide
+ * Setup modal
  */
-function nextSlide() {
-    const nextIndex = (sliderState.currentSlide + 1) % sliderState.totalSlides;
-    goToSlide(nextIndex);
-}
-
-/**
- * Previous slide
- */
-function prevSlide() {
-    const prevIndex = (sliderState.currentSlide - 1 + sliderState.totalSlides) % sliderState.totalSlides;
-    goToSlide(prevIndex);
-}
-
-/**
- * Start autoplay
- */
-function startAutoplay() {
-    if (sliderState.autoplayInterval) {
-        clearInterval(sliderState.autoplayInterval);
-    }
-    sliderState.autoplayInterval = setInterval(nextSlide, sliderState.autoplayDelay);
-}
-
-/**
- * Stop autoplay
- */
-function stopAutoplay() {
-    if (sliderState.autoplayInterval) {
-        clearInterval(sliderState.autoplayInterval);
-        sliderState.autoplayInterval = null;
-    }
-}
-
-/**
- * Reset autoplay
- */
-function resetAutoplay() {
-    if (sliderState.autoplay) {
-        stopAutoplay();
-        startAutoplay();
-    }
-}
-
-/**
- * Toggle autoplay
- */
-function toggleAutoplay() {
-    const lang = detectLanguage();
-    const autoplayToggle = document.getElementById('autoplayToggle');
-    const autoplayIcon = document.getElementById('autoplayIcon');
-    const autoplayText = document.getElementById('autoplayText');
-
-    sliderState.autoplay = !sliderState.autoplay;
-
-    if (sliderState.autoplay) {
-        startAutoplay();
-        autoplayIcon.textContent = '⏸';
-        autoplayText.textContent = translations[lang].pauseAutoplay;
-    } else {
-        stopAutoplay();
-        autoplayIcon.textContent = '▶';
-        autoplayText.textContent = translations[lang].playAutoplay;
-    }
-}
-
-/**
- * Initialize birthday prompt
- */
-function initBirthdayPrompt() {
-    const birthday = getBirthday();
-    const birthdayPrompt = document.getElementById('birthdayPrompt');
-
-    if (birthday) {
-        birthdayPrompt.style.display = 'none';
-    } else {
-        birthdayPrompt.style.display = 'block';
-
-        // Populate day dropdown
-        const daySelect = document.getElementById('birthDay');
-        for (let i = 1; i <= 31; i++) {
-            const option = document.createElement('option');
-            option.value = i;
-            option.textContent = i;
-            daySelect.appendChild(option);
-        }
-
-        // Save button
-        document.getElementById('saveBirthday').addEventListener('click', () => {
-            const month = document.getElementById('birthMonth').value;
-            const day = document.getElementById('birthDay').value;
-
-            if (month && day) {
-                saveBirthday(parseInt(month), parseInt(day));
-                birthdayPrompt.style.display = 'none';
-                renderSlides();
-            } else {
-                alert('Please select both month and day');
-            }
-        });
-
-        // Skip button
-        document.getElementById('skipBirthday').addEventListener('click', () => {
-            birthdayPrompt.style.display = 'none';
-        });
-    }
-}
-
-/**
- * Initialize slider
- */
-function initSlider() {
-    renderSlides();
-    initBirthdayPrompt();
-
-    // Navigation buttons
-    document.getElementById('prevBtn').addEventListener('click', prevSlide);
-    document.getElementById('nextBtn').addEventListener('click', nextSlide);
-
-    // Autoplay toggle
-    document.getElementById('autoplayToggle').addEventListener('click', toggleAutoplay);
-
-    // Start autoplay
-    if (sliderState.autoplay) {
-        startAutoplay();
-    }
-
-    // Pause autoplay on hover
-    const sliderContainer = document.querySelector('.slider-container');
-    sliderContainer.addEventListener('mouseenter', () => {
-        if (sliderState.autoplay) {
-            stopAutoplay();
+function setupModal() {
+    const modal = document.getElementById('wishModal');
+    const closeBtn = document.getElementById('modalClose');
+    
+    closeBtn.addEventListener('click', closeModal);
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
         }
     });
-    sliderContainer.addEventListener('mouseleave', () => {
-        if (sliderState.autoplay) {
-            startAutoplay();
-        }
-    });
-
-    // Keyboard navigation
+    
+    // Close on Escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            prevSlide();
-        } else if (e.key === 'ArrowRight') {
-            nextSlide();
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+/**
+ * Open modal
+ */
+function openModal() {
+    const modal = document.getElementById('wishModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Clear form
+    document.getElementById('wishText').value = '';
+    document.getElementById('wishAuthor').value = '';
+    document.getElementById('charCount').textContent = '0';
+    
+    // Initialize PayPal button
+    initPayPalButton();
+}
+
+/**
+ * Close modal
+ */
+function closeModal() {
+    const modal = document.getElementById('wishModal');
+    modal.classList.add('active');
+    document.body.style.overflow = '';
+    currentSlot = null;
+}
+
+/**
+ * Setup character counter
+ */
+function setupCharCounter() {
+    const textarea = document.getElementById('wishText');
+    const counter = document.getElementById('charCount');
+    
+    textarea.addEventListener('input', () => {
+        counter.textContent = textarea.value.length;
+    });
+}
+
+/**
+ * Initialize PayPal Button
+ * 
+ * INSTRUCTIONS FOR PAYPAL INTEGRATION:
+ * 
+ * 1. Go to https://developer.paypal.com/
+ * 2. Create a PayPal Business account (or use existing)
+ * 3. Go to Dashboard > My Apps & Credentials
+ * 4. Create a new app to get your Client ID
+ * 5. Replace "YOUR_PAYPAL_CLIENT_ID" in index.html with your actual Client ID
+ * 6. For PRODUCTION: Replace sandbox URL with live URL and use production client ID
+ * 
+ * The PayPal button will handle the payment and call onApprove when successful
+ */
+function initPayPalButton() {
+    const container = document.getElementById('paypal-button-container');
+    container.innerHTML = ''; // Clear existing button
+    
+    // Check if PayPal SDK is loaded
+    if (typeof paypal === 'undefined') {
+        console.error('PayPal SDK not loaded. Make sure you added the PayPal script tag.');
+        // Show fallback button
+        document.getElementById('paymentButton').style.display = 'block';
+        return;
+    }
+    
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            // Validate form before creating order
+            const wishText = document.getElementById('wishText').value.trim();
+            const author = document.getElementById('wishAuthor').value.trim();
+            
+            if (!wishText || !author) {
+                alert('Please fill in both your wish and your name');
+                return;
+            }
+            
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '1.00',
+                        currency_code: 'USD'
+                    },
+                    description: 'New Year 2026 Wish'
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                // Payment successful!
+                handleSuccessfulPayment();
+            });
+        },
+        onError: function(err) {
+            console.error('PayPal Error:', err);
+            alert('Payment failed. Please try again.');
+        }
+    }).render('#paypal-button-container');
+}
+
+/**
+ * Handle successful payment
+ */
+function handleSuccessfulPayment() {
+    const wishText = document.getElementById('wishText').value.trim();
+    const author = document.getElementById('wishAuthor').value.trim();
+    
+    if (!wishText || !author || !currentSlot) {
+        alert('Error: Missing wish data');
+        return;
+    }
+    
+    const wish = {
+        text: wishText,
+        author: author,
+        slot: currentSlot,
+        timestamp: Date.now()
+    };
+    
+    // Save to Firebase
+    saveWishToFirebase(wish);
+    
+    // Close modal
+    closeModal();
+    
+    // Show success message
+    alert('🎉 Your wish has been saved! It will shine on the wall forever!');
+}
+
+/**
+ * Save wish to Firebase
+ */
+function saveWishToFirebase(wish) {
+    if (!database) {
+        console.error('Firebase not initialized');
+        return;
+    }
+    
+    database.ref(`wishes/${wish.slot}`).set({
+        text: wish.text,
+        author: wish.author,
+        timestamp: wish.timestamp
+    }).then(() => {
+        console.log('Wish saved successfully');
+    }).catch((error) => {
+        console.error('Error saving wish:', error);
+    });
+}
+
+/**
+ * Load wishes from Firebase
+ */
+function loadWishesFromFirebase() {
+    if (!database) {
+        console.error('Firebase not initialized');
+        return;
+    }
+    
+    // Listen for changes in real-time
+    database.ref('wishes').on('value', (snapshot) => {
+        wishes = snapshot.val() || {};
+        updateWishesDisplay();
+    });
+}
+
+/**
+ * Update wishes display
+ */
+function updateWishesDisplay() {
+    Object.keys(wishes).forEach(slot => {
+        const wish = wishes[slot];
+        const tile = document.querySelector(`[data-slot="${slot}"]`);
+        
+        if (tile && wish) {
+            tile.className = 'wish-tile occupied';
+            tile.innerHTML = `
+                <div class="wish-tile-content">
+                    <p class="wish-text">"${wish.text}"</p>
+                    <p class="wish-author">- ${wish.author}</p>
+                </div>
+            `;
+            tile.removeEventListener('click', () => handleTileClick(slot));
         }
     });
 }
@@ -797,11 +772,10 @@ function init() {
 
     // 4. Initialize map
     updateMap();
-    // Update map every minute to reflect timezone changes
     setInterval(updateMap, 60000);
 
-    // 5. Initialize slider
-    initSlider();
+    // 5. Initialize wishes wall
+    initWishesWall();
 }
 
 // Start everything when DOM is loaded

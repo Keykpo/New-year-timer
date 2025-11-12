@@ -417,7 +417,7 @@ footer {
 
 #world-map svg {
     max-width: 100%;
-    max-height: 500px;
+    max-height: 400px;
     height: auto;
     width: auto;
 }
@@ -461,7 +461,7 @@ footer {
 /* Responsive adjustments for map */
 @media (max-width: 768px) {
     #world-map svg {
-        max-height: 350px;
+        max-height: 300px;
     }
 
     .country-path {
@@ -475,310 +475,418 @@ footer {
 
 @media (max-width: 480px) {
     #world-map svg {
-        max-height: 250px;
+        max-height: 200px;
     }
 }
 
+
 /* ====================================
-   EVENTS SLIDER SECTION
+   WISHES WALL SECTION
    ==================================== */
 
-.events-section {
+.wishes-section {
     margin-top: 4rem;
     margin-bottom: 3rem;
     animation: fadeInUp 1s ease-out 0.9s both;
 }
 
-.events-title {
-    font-size: 2rem;
+.wishes-title {
+    font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #fbbf24 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-/* Birthday Prompt */
-.birthday-prompt {
-    background: rgba(30, 41, 59, 0.6);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+.wishes-subtitle {
     text-align: center;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(251, 146, 60, 0.3);
-}
-
-.birthday-prompt p {
     color: #fbbf24;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
 }
 
-.birthday-input-group {
+/* Wishes Grid */
+.wishes-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Wish Tile */
+.wish-tile {
+    aspect-ratio: 1;
+    background: rgba(30, 41, 59, 0.4);
+    border-radius: 1rem;
+    border: 2px solid rgba(251, 146, 60, 0.3);
+    backdrop-filter: blur(10px);
     display: flex;
-    gap: 0.75rem;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-}
-
-.birthday-select {
-    background: rgba(15, 23, 42, 0.8);
-    color: #f1f5f9;
-    border: 2px solid rgba(251, 146, 60, 0.3);
-    border-radius: 0.5rem;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
+    padding: 1.5rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.birthday-select:hover,
-.birthday-select:focus {
-    border-color: rgba(251, 146, 60, 0.6);
-    outline: none;
-}
-
-.birthday-btn {
-    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.birthday-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
-}
-
-.birthday-btn.secondary {
-    background: rgba(100, 116, 139, 0.6);
-}
-
-.birthday-btn.secondary:hover {
-    background: rgba(100, 116, 139, 0.8);
-    box-shadow: 0 8px 20px rgba(100, 116, 139, 0.3);
-}
-
-/* Slider Container */
-.slider-container {
+    transition: all 0.4s ease;
     position: relative;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.slider-wrapper {
-    flex: 1;
     overflow: hidden;
-    border-radius: 1rem;
 }
 
-.slider-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+/* Empty tile */
+.wish-tile.empty {
+    border-color: rgba(251, 191, 36, 0.5);
+    animation: shimmer 3s ease-in-out infinite;
 }
 
-.slider-slide {
-    min-width: 100%;
-    padding: 2rem;
-    background: rgba(30, 41, 59, 0.6);
-    border-radius: 1rem;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(251, 146, 60, 0.2);
-    box-sizing: border-box;
+@keyframes shimmer {
+    0%, 100% {
+        border-color: rgba(251, 191, 36, 0.5);
+        box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+    }
+    50% {
+        border-color: rgba(239, 68, 68, 0.7);
+        box-shadow: 0 0 25px rgba(239, 68, 68, 0.5);
+    }
 }
 
-.slider-slide.birthday-slide {
-    border: 2px solid rgba(239, 68, 68, 0.5);
+.wish-tile.empty:hover {
+    transform: scale(1.05);
+    border-color: rgba(251, 146, 60, 0.8);
+    box-shadow: 0 8px 30px rgba(251, 146, 60, 0.4);
+}
+
+.wish-tile.empty::before {
+    content: '⭐';
+    position: absolute;
+    top: 1rem;
+    font-size: 2rem;
+    opacity: 0.6;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Occupied tile */
+.wish-tile.occupied {
     background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+    cursor: default;
 }
 
-.slide-icon {
-    font-size: 3rem;
+.wish-tile.occupied::before {
+    content: '✨';
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.wish-tile.occupied:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
+}
+
+/* Empty tile content */
+.wish-tile-empty-content {
     text-align: center;
-    margin-bottom: 1rem;
 }
 
-.slide-title {
-    font-size: 1.5rem;
-    font-weight: 600;
+.wish-tile-phrase {
     color: #fbbf24;
-    margin-bottom: 1rem;
-    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    font-weight: 500;
 }
 
-.birthday-slide .slide-title {
+.wish-tile-price {
     background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
-.slide-description {
-    color: #cbd5e1;
-    line-height: 1.6;
+/* Occupied tile content */
+.wish-tile-content {
     text-align: center;
+    width: 100%;
+}
+
+.wish-text {
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+    word-break: break-word;
+}
+
+.wish-author {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    background: rgba(30, 41, 59, 0.95);
+    border-radius: 1.5rem;
+    border: 2px solid rgba(251, 146, 60, 0.5);
+    padding: 2.5rem;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+    color: #fbbf24;
     font-size: 1rem;
 }
 
-.slide-date {
-    color: #94a3b8;
-    font-size: 0.9rem;
-    text-align: center;
-    margin-top: 1rem;
-    font-style: italic;
-}
-
-/* Slider Buttons */
-.slider-btn {
-    background: rgba(30, 41, 59, 0.8);
-    border: 2px solid rgba(251, 146, 60, 0.4);
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(100, 116, 139, 0.3);
+    border: none;
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    color: #cbd5e1;
+    font-size: 1.5rem;
     transition: all 0.3s ease;
-    color: #fbbf24;
-    flex-shrink: 0;
 }
 
-.slider-btn:hover {
-    background: rgba(251, 146, 60, 0.2);
-    border-color: rgba(251, 146, 60, 0.8);
-    transform: scale(1.1);
+.modal-close:hover {
+    background: rgba(100, 116, 139, 0.6);
+    transform: rotate(90deg);
 }
 
-.slider-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
+.modal-form {
+    margin-bottom: 2rem;
 }
 
-.slider-btn:disabled:hover {
-    transform: none;
-}
-
-/* Slider Indicators */
-.slider-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
+.form-group {
     margin-bottom: 1.5rem;
 }
 
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(251, 146, 60, 0.3);
-    cursor: pointer;
+.form-label {
+    display: block;
+    color: #fbbf24;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    border: 2px solid rgba(251, 146, 60, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    color: #f1f5f9;
+    font-size: 1rem;
+    font-family: inherit;
     transition: all 0.3s ease;
 }
 
-.indicator.active {
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: rgba(251, 146, 60, 0.8);
+    box-shadow: 0 0 15px rgba(251, 146, 60, 0.3);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.char-counter {
+    text-align: right;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.modal-price {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.price-label {
+    color: #cbd5e1;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.price-amount {
+    font-size: 2.5rem;
     background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-    width: 32px;
-    border-radius: 6px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
 }
 
-.indicator:hover {
-    background: rgba(251, 146, 60, 0.6);
-}
-
-/* Auto-play Controls */
-.slider-controls {
+.payment-section {
     text-align: center;
 }
 
-.autoplay-btn {
-    background: rgba(30, 41, 59, 0.6);
-    border: 2px solid rgba(251, 146, 60, 0.3);
-    border-radius: 2rem;
-    padding: 0.75rem 1.5rem;
-    color: #fbbf24;
-    font-size: 0.95rem;
+.payment-note {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: #93c5fd;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.payment-button {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+    width: 100%;
 }
 
-.autoplay-btn:hover {
-    background: rgba(30, 41, 59, 0.8);
-    border-color: rgba(251, 146, 60, 0.6);
+.payment-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.5);
 }
 
-#autoplayIcon {
-    font-size: 1.2rem;
+.payment-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
-/* Responsive Design for Slider */
+/* Responsive Design for Wishes */
 @media (max-width: 768px) {
-    .events-title {
-        font-size: 1.5rem;
-    }
-
-    .slider-container {
-        gap: 0.5rem;
-    }
-
-    .slider-slide {
-        padding: 1.5rem;
-    }
-
-    .slide-icon {
+    .wishes-title {
         font-size: 2rem;
     }
 
-    .slide-title {
-        font-size: 1.2rem;
+    .wishes-subtitle {
+        font-size: 1rem;
     }
 
-    .slide-description {
-        font-size: 0.95rem;
+    .wishes-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        padding: 1rem;
     }
 
-    .slider-btn {
-        width: 40px;
-        height: 40px;
+    .wish-tile {
+        padding: 1rem;
     }
 
-    .birthday-input-group {
-        flex-direction: column;
-        gap: 0.5rem;
+    .wish-tile-phrase {
+        font-size: 0.8rem;
     }
 
-    .birthday-select,
-    .birthday-btn {
-        width: 100%;
-        max-width: 300px;
+    .wish-tile-price {
+        font-size: 1rem;
+    }
+
+    .wish-text {
+        font-size: 0.75rem;
+    }
+
+    .modal-content {
+        padding: 2rem;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
-    .slider-slide {
-        padding: 1rem;
+    .wishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
     }
 
-    .slide-title {
-        font-size: 1.1rem;
+    .wish-tile {
+        padding: 0.75rem;
     }
 
-    .slider-btn {
-        width: 36px;
-        height: 36px;
+    .wish-tile-phrase {
+        font-size: 0.7rem;
+    }
+
+    .wish-tile.empty::before {
+        font-size: 1.5rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .price-amount {
+        font-size: 2rem;
     }
 }
