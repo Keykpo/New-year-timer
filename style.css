@@ -23,8 +23,9 @@ body::before {
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(239, 68, 68, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(251, 146, 60, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 20%, rgba(234, 179, 8, 0.06) 0%, transparent 50%);
     animation: pulse 15s ease-in-out infinite;
     pointer-events: none;
     z-index: 0;
@@ -33,6 +34,46 @@ body::before {
 @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
+}
+
+/* Fireworks effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle, rgba(251, 191, 36, 0.8) 2px, transparent 2px),
+        radial-gradient(circle, rgba(239, 68, 68, 0.8) 2px, transparent 2px),
+        radial-gradient(circle, rgba(16, 185, 129, 0.8) 2px, transparent 2px),
+        radial-gradient(circle, rgba(59, 130, 246, 0.8) 2px, transparent 2px);
+    background-size: 200% 200%, 250% 250%, 180% 180%, 220% 220%;
+    background-position: 0% 0%, 100% 100%, 50% 50%, 80% 20%;
+    animation: fireworks 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+}
+
+@keyframes fireworks {
+    0%, 100% {
+        opacity: 0;
+        background-size: 200% 200%, 250% 250%, 180% 180%, 220% 220%;
+    }
+    10% {
+        opacity: 0.4;
+        background-size: 300% 300%, 350% 350%, 280% 280%, 320% 320%;
+    }
+    20% {
+        opacity: 0;
+        background-size: 400% 400%, 450% 450%, 380% 380%, 420% 420%;
+    }
+    50% {
+        opacity: 0;
+        background-position: 20% 80%, 80% 20%, 60% 40%, 40% 60%;
+    }
 }
 
 /* Container */
@@ -107,7 +148,7 @@ header {
 
 .time-unit {
     background: rgba(30, 41, 59, 0.8);
-    border: 2px solid rgba(59, 130, 246, 0.3);
+    border: 2px solid rgba(251, 146, 60, 0.4);
     border-radius: 1rem;
     padding: 1.5rem 2rem;
     min-width: 120px;
@@ -117,26 +158,78 @@ header {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* Different warm colors for each time unit */
+.time-unit:nth-child(1) {
+    border-color: rgba(239, 68, 68, 0.5);
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.2);
+}
+
+.time-unit:nth-child(3) {
+    border-color: rgba(251, 146, 60, 0.5);
+    box-shadow: 0 4px 20px rgba(251, 146, 60, 0.2);
+}
+
+.time-unit:nth-child(5) {
+    border-color: rgba(251, 191, 36, 0.5);
+    box-shadow: 0 4px 20px rgba(251, 191, 36, 0.2);
+}
+
+.time-unit:nth-child(7) {
+    border-color: rgba(234, 179, 8, 0.5);
+    box-shadow: 0 4px 20px rgba(234, 179, 8, 0.2);
+}
+
 .time-unit:hover {
     transform: translateY(-5px);
-    border-color: rgba(59, 130, 246, 0.6);
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
+}
+
+.time-unit:nth-child(1):hover {
+    border-color: rgba(239, 68, 68, 0.8);
+    box-shadow: 0 8px 30px rgba(239, 68, 68, 0.4);
+}
+
+.time-unit:nth-child(3):hover {
+    border-color: rgba(251, 146, 60, 0.8);
+    box-shadow: 0 8px 30px rgba(251, 146, 60, 0.4);
+}
+
+.time-unit:nth-child(5):hover {
+    border-color: rgba(251, 191, 36, 0.8);
+    box-shadow: 0 8px 30px rgba(251, 191, 36, 0.4);
+}
+
+.time-unit:nth-child(7):hover {
+    border-color: rgba(234, 179, 8, 0.8);
+    box-shadow: 0 8px 30px rgba(234, 179, 8, 0.4);
 }
 
 .time-value {
     display: block;
     font-size: 3rem;
     font-weight: 700;
-    color: #60a5fa;
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     line-height: 1;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+    text-shadow: 0 0 20px rgba(251, 146, 60, 0.5);
+    animation: warmGlow 3s ease-in-out infinite;
+}
+
+@keyframes warmGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(251, 146, 60, 0.6));
+    }
+    50% {
+        filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.8));
+    }
 }
 
 .time-label {
     display: block;
     font-size: 0.9rem;
-    color: #94a3b8;
+    color: #fbbf24;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 500;
@@ -144,7 +237,10 @@ header {
 
 .time-separator {
     font-size: 3rem;
-    color: #60a5fa;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 700;
     opacity: 0.6;
     animation: blink 2s ease-in-out infinite;
@@ -380,5 +476,309 @@ footer {
 @media (max-width: 480px) {
     #world-map svg {
         max-height: 250px;
+    }
+}
+
+/* ====================================
+   EVENTS SLIDER SECTION
+   ==================================== */
+
+.events-section {
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease-out 0.9s both;
+}
+
+.events-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
+
+/* Birthday Prompt */
+.birthday-prompt {
+    background: rgba(30, 41, 59, 0.6);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.birthday-prompt p {
+    color: #fbbf24;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.birthday-input-group {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.birthday-select {
+    background: rgba(15, 23, 42, 0.8);
+    color: #f1f5f9;
+    border: 2px solid rgba(251, 146, 60, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.birthday-select:hover,
+.birthday-select:focus {
+    border-color: rgba(251, 146, 60, 0.6);
+    outline: none;
+}
+
+.birthday-btn {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.birthday-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}
+
+.birthday-btn.secondary {
+    background: rgba(100, 116, 139, 0.6);
+}
+
+.birthday-btn.secondary:hover {
+    background: rgba(100, 116, 139, 0.8);
+    box-shadow: 0 8px 20px rgba(100, 116, 139, 0.3);
+}
+
+/* Slider Container */
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.slider-wrapper {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-slide {
+    min-width: 100%;
+    padding: 2rem;
+    background: rgba(30, 41, 59, 0.6);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(251, 146, 60, 0.2);
+    box-sizing: border-box;
+}
+
+.slider-slide.birthday-slide {
+    border: 2px solid rgba(239, 68, 68, 0.5);
+    background: rgba(30, 41, 59, 0.8);
+}
+
+.slide-icon {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.slide-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fbbf24;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.birthday-slide .slide-title {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.slide-description {
+    color: #cbd5e1;
+    line-height: 1.6;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.slide-date {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* Slider Buttons */
+.slider-btn {
+    background: rgba(30, 41, 59, 0.8);
+    border: 2px solid rgba(251, 146, 60, 0.4);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fbbf24;
+    flex-shrink: 0;
+}
+
+.slider-btn:hover {
+    background: rgba(251, 146, 60, 0.2);
+    border-color: rgba(251, 146, 60, 0.8);
+    transform: scale(1.1);
+}
+
+.slider-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.slider-btn:disabled:hover {
+    transform: none;
+}
+
+/* Slider Indicators */
+.slider-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(251, 146, 60, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    width: 32px;
+    border-radius: 6px;
+}
+
+.indicator:hover {
+    background: rgba(251, 146, 60, 0.6);
+}
+
+/* Auto-play Controls */
+.slider-controls {
+    text-align: center;
+}
+
+.autoplay-btn {
+    background: rgba(30, 41, 59, 0.6);
+    border: 2px solid rgba(251, 146, 60, 0.3);
+    border-radius: 2rem;
+    padding: 0.75rem 1.5rem;
+    color: #fbbf24;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.autoplay-btn:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(251, 146, 60, 0.6);
+}
+
+#autoplayIcon {
+    font-size: 1.2rem;
+}
+
+/* Responsive Design for Slider */
+@media (max-width: 768px) {
+    .events-title {
+        font-size: 1.5rem;
+    }
+
+    .slider-container {
+        gap: 0.5rem;
+    }
+
+    .slider-slide {
+        padding: 1.5rem;
+    }
+
+    .slide-icon {
+        font-size: 2rem;
+    }
+
+    .slide-title {
+        font-size: 1.2rem;
+    }
+
+    .slide-description {
+        font-size: 0.95rem;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .birthday-input-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .birthday-select,
+    .birthday-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-slide {
+        padding: 1rem;
+    }
+
+    .slide-title {
+        font-size: 1.1rem;
+    }
+
+    .slider-btn {
+        width: 36px;
+        height: 36px;
     }
 }

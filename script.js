@@ -14,7 +14,17 @@ const translations = {
         alreadyCelebrating: "Already celebrating 2026",
         stillWaiting: "Still waiting",
         footer: "Happy New Year from around the world! 🎉",
-        timezoneInfo: "Your timezone: {timezone}"
+        timezoneInfo: "Your timezone: {timezone}",
+        eventsTitle: "Important Events of 2025",
+        birthdayPromptText: "Want to see your birthday as the most important event?",
+        selectMonth: "Month",
+        selectDay: "Day",
+        saveBirthday: "Save",
+        skipBirthday: "Skip",
+        pauseAutoplay: "Pause Auto-play",
+        playAutoplay: "Play Auto-play",
+        birthdayEventTitle: "The Most Important Event: Your Birthday!",
+        birthdayEventDescription: "Today is YOUR special day! A unique celebration that makes this year extraordinary. May all your wishes come true! 🎉🎂"
     },
     es: {
         mainTitle: "Tiempo Restante para tu Año Nuevo",
@@ -27,7 +37,17 @@ const translations = {
         alreadyCelebrating: "Ya celebrando 2026",
         stillWaiting: "Aún esperando",
         footer: "¡Feliz Año Nuevo desde todo el mundo! 🎉",
-        timezoneInfo: "Tu zona horaria: {timezone}"
+        timezoneInfo: "Tu zona horaria: {timezone}",
+        eventsTitle: "Sucesos Importantes de 2025",
+        birthdayPromptText: "¿Quieres ver tu cumpleaños como el evento más importante?",
+        selectMonth: "Mes",
+        selectDay: "Día",
+        saveBirthday: "Guardar",
+        skipBirthday: "Omitir",
+        pauseAutoplay: "Pausar reproducción",
+        playAutoplay: "Reproducir",
+        birthdayEventTitle: "¡El Suceso Más Importante: Tu Cumpleaños!",
+        birthdayEventDescription: "¡Hoy es TU día especial! Una celebración única que hace este año extraordinario. ¡Que todos tus deseos se hagan realidad! 🎉🎂"
     },
     pt: {
         mainTitle: "Tempo Restante para o seu Ano Novo",
@@ -40,7 +60,17 @@ const translations = {
         alreadyCelebrating: "Já comemorando 2026",
         stillWaiting: "Ainda esperando",
         footer: "Feliz Ano Novo de todo o mundo! 🎉",
-        timezoneInfo: "Seu fuso horário: {timezone}"
+        timezoneInfo: "Seu fuso horário: {timezone}",
+        eventsTitle: "Eventos Importantes de 2025",
+        birthdayPromptText: "Quer ver seu aniversário como o evento mais importante?",
+        selectMonth: "Mês",
+        selectDay: "Dia",
+        saveBirthday: "Salvar",
+        skipBirthday: "Pular",
+        pauseAutoplay: "Pausar reprodução",
+        playAutoplay: "Reproduzir",
+        birthdayEventTitle: "O Evento Mais Importante: Seu Aniversário!",
+        birthdayEventDescription: "Hoje é o SEU dia especial! Uma celebração única que torna este ano extraordinário. Que todos os seus desejos se realizem! 🎉🎂"
     },
     fr: {
         mainTitle: "Temps Restant jusqu'à votre Nouvel An",
@@ -53,7 +83,17 @@ const translations = {
         alreadyCelebrating: "Déjà en train de fêter 2026",
         stillWaiting: "Encore en attente",
         footer: "Bonne année du monde entier! 🎉",
-        timezoneInfo: "Votre fuseau horaire: {timezone}"
+        timezoneInfo: "Votre fuseau horaire: {timezone}",
+        eventsTitle: "Événements Importants de 2025",
+        birthdayPromptText: "Voulez-vous voir votre anniversaire comme l'événement le plus important?",
+        selectMonth: "Mois",
+        selectDay: "Jour",
+        saveBirthday: "Enregistrer",
+        skipBirthday: "Passer",
+        pauseAutoplay: "Mettre en pause",
+        playAutoplay: "Lecture automatique",
+        birthdayEventTitle: "L'Événement le Plus Important: Votre Anniversaire!",
+        birthdayEventDescription: "Aujourd'hui c'est VOTRE jour spécial! Une célébration unique qui rend cette année extraordinaire. Que tous vos vœux se réalisent! 🎉🎂"
     }
 };
 
@@ -410,6 +450,336 @@ function updateMap() {
 }
 
 // ====================================
+// EVENTS SLIDER SYSTEM
+// ====================================
+
+/**
+ * Important events of 2025
+ * These events will be shown in the slider after the birthday event
+ */
+const importantEvents2025 = [
+    {
+        icon: "🤖",
+        title: "AI Revolution Continues",
+        description: "Artificial Intelligence reaches new milestones with advanced models transforming work, creativity, and daily life across the globe.",
+        date: "Throughout 2025"
+    },
+    {
+        icon: "🚀",
+        title: "Space Exploration Advances",
+        description: "Multiple missions to the Moon and Mars mark a new era of space exploration, with private companies and agencies pushing boundaries.",
+        date: "2025"
+    },
+    {
+        icon: "🌱",
+        title: "Climate Action Accelerates",
+        description: "Renewable energy adoption reaches record highs as nations intensify efforts to combat climate change with innovative green technologies.",
+        date: "2025"
+    },
+    {
+        icon: "⚽",
+        title: "Major Sports Events",
+        description: "Global sporting events bring nations together, featuring championships, world cups, and Olympic qualifiers that unite fans worldwide.",
+        date: "2025"
+    },
+    {
+        icon: "🎮",
+        title: "Gaming Innovation",
+        description: "Next-generation gaming experiences emerge with breakthrough VR/AR technologies and highly anticipated game releases captivating millions.",
+        date: "2025"
+    },
+    {
+        icon: "🎬",
+        title: "Entertainment Renaissance",
+        description: "Blockbuster films, streaming series, and music releases define a golden year for entertainment across all platforms.",
+        date: "2025"
+    },
+    {
+        icon: "🏥",
+        title: "Medical Breakthroughs",
+        description: "Revolutionary treatments and vaccines bring hope for diseases, while digital health platforms transform patient care globally.",
+        date: "2025"
+    }
+];
+
+/**
+ * Slider state
+ */
+let sliderState = {
+    currentSlide: 0,
+    totalSlides: 0,
+    autoplay: true,
+    autoplayInterval: null,
+    autoplayDelay: 5000
+};
+
+/**
+ * Get birthday from localStorage
+ */
+function getBirthday() {
+    const birthday = localStorage.getItem('userBirthday');
+    return birthday ? JSON.parse(birthday) : null;
+}
+
+/**
+ * Save birthday to localStorage
+ */
+function saveBirthday(month, day) {
+    localStorage.setItem('userBirthday', JSON.stringify({ month, day }));
+}
+
+/**
+ * Format birthday date
+ */
+function formatBirthdayDate(month, day) {
+    const monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    return `${monthNames[month - 1]} ${day}`;
+}
+
+/**
+ * Create slider slides
+ */
+function createSlides() {
+    const lang = detectLanguage();
+    const birthday = getBirthday();
+    const slides = [];
+
+    // Add birthday slide if available
+    if (birthday) {
+        slides.push({
+            isBirthday: true,
+            icon: "🎂",
+            title: translations[lang].birthdayEventTitle,
+            description: translations[lang].birthdayEventDescription,
+            date: formatBirthdayDate(birthday.month, birthday.day)
+        });
+    }
+
+    // Add important events
+    slides.push(...importantEvents2025);
+
+    return slides;
+}
+
+/**
+ * Render slides
+ */
+function renderSlides() {
+    const sliderTrack = document.getElementById('sliderTrack');
+    const slides = createSlides();
+
+    sliderState.totalSlides = slides.length;
+
+    sliderTrack.innerHTML = slides.map((slide, index) => `
+        <div class="slider-slide ${slide.isBirthday ? 'birthday-slide' : ''}">
+            <div class="slide-icon">${slide.icon}</div>
+            <h3 class="slide-title">${slide.title}</h3>
+            <p class="slide-description">${slide.description}</p>
+            <p class="slide-date">${slide.date}</p>
+        </div>
+    `).join('');
+
+    renderIndicators();
+    updateSliderPosition();
+}
+
+/**
+ * Render indicators
+ */
+function renderIndicators() {
+    const indicatorsContainer = document.getElementById('sliderIndicators');
+    indicatorsContainer.innerHTML = '';
+
+    for (let i = 0; i < sliderState.totalSlides; i++) {
+        const indicator = document.createElement('div');
+        indicator.className = `indicator ${i === 0 ? 'active' : ''}`;
+        indicator.addEventListener('click', () => goToSlide(i));
+        indicatorsContainer.appendChild(indicator);
+    }
+}
+
+/**
+ * Update slider position
+ */
+function updateSliderPosition() {
+    const sliderTrack = document.getElementById('sliderTrack');
+    const offset = -sliderState.currentSlide * 100;
+    sliderTrack.style.transform = `translateX(${offset}%)`;
+
+    // Update indicators
+    const indicators = document.querySelectorAll('.indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === sliderState.currentSlide);
+    });
+}
+
+/**
+ * Go to specific slide
+ */
+function goToSlide(index) {
+    if (index >= 0 && index < sliderState.totalSlides) {
+        sliderState.currentSlide = index;
+        updateSliderPosition();
+        resetAutoplay();
+    }
+}
+
+/**
+ * Next slide
+ */
+function nextSlide() {
+    const nextIndex = (sliderState.currentSlide + 1) % sliderState.totalSlides;
+    goToSlide(nextIndex);
+}
+
+/**
+ * Previous slide
+ */
+function prevSlide() {
+    const prevIndex = (sliderState.currentSlide - 1 + sliderState.totalSlides) % sliderState.totalSlides;
+    goToSlide(prevIndex);
+}
+
+/**
+ * Start autoplay
+ */
+function startAutoplay() {
+    if (sliderState.autoplayInterval) {
+        clearInterval(sliderState.autoplayInterval);
+    }
+    sliderState.autoplayInterval = setInterval(nextSlide, sliderState.autoplayDelay);
+}
+
+/**
+ * Stop autoplay
+ */
+function stopAutoplay() {
+    if (sliderState.autoplayInterval) {
+        clearInterval(sliderState.autoplayInterval);
+        sliderState.autoplayInterval = null;
+    }
+}
+
+/**
+ * Reset autoplay
+ */
+function resetAutoplay() {
+    if (sliderState.autoplay) {
+        stopAutoplay();
+        startAutoplay();
+    }
+}
+
+/**
+ * Toggle autoplay
+ */
+function toggleAutoplay() {
+    const lang = detectLanguage();
+    const autoplayToggle = document.getElementById('autoplayToggle');
+    const autoplayIcon = document.getElementById('autoplayIcon');
+    const autoplayText = document.getElementById('autoplayText');
+
+    sliderState.autoplay = !sliderState.autoplay;
+
+    if (sliderState.autoplay) {
+        startAutoplay();
+        autoplayIcon.textContent = '⏸';
+        autoplayText.textContent = translations[lang].pauseAutoplay;
+    } else {
+        stopAutoplay();
+        autoplayIcon.textContent = '▶';
+        autoplayText.textContent = translations[lang].playAutoplay;
+    }
+}
+
+/**
+ * Initialize birthday prompt
+ */
+function initBirthdayPrompt() {
+    const birthday = getBirthday();
+    const birthdayPrompt = document.getElementById('birthdayPrompt');
+
+    if (birthday) {
+        birthdayPrompt.style.display = 'none';
+    } else {
+        birthdayPrompt.style.display = 'block';
+
+        // Populate day dropdown
+        const daySelect = document.getElementById('birthDay');
+        for (let i = 1; i <= 31; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            daySelect.appendChild(option);
+        }
+
+        // Save button
+        document.getElementById('saveBirthday').addEventListener('click', () => {
+            const month = document.getElementById('birthMonth').value;
+            const day = document.getElementById('birthDay').value;
+
+            if (month && day) {
+                saveBirthday(parseInt(month), parseInt(day));
+                birthdayPrompt.style.display = 'none';
+                renderSlides();
+            } else {
+                alert('Please select both month and day');
+            }
+        });
+
+        // Skip button
+        document.getElementById('skipBirthday').addEventListener('click', () => {
+            birthdayPrompt.style.display = 'none';
+        });
+    }
+}
+
+/**
+ * Initialize slider
+ */
+function initSlider() {
+    renderSlides();
+    initBirthdayPrompt();
+
+    // Navigation buttons
+    document.getElementById('prevBtn').addEventListener('click', prevSlide);
+    document.getElementById('nextBtn').addEventListener('click', nextSlide);
+
+    // Autoplay toggle
+    document.getElementById('autoplayToggle').addEventListener('click', toggleAutoplay);
+
+    // Start autoplay
+    if (sliderState.autoplay) {
+        startAutoplay();
+    }
+
+    // Pause autoplay on hover
+    const sliderContainer = document.querySelector('.slider-container');
+    sliderContainer.addEventListener('mouseenter', () => {
+        if (sliderState.autoplay) {
+            stopAutoplay();
+        }
+    });
+    sliderContainer.addEventListener('mouseleave', () => {
+        if (sliderState.autoplay) {
+            startAutoplay();
+        }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        }
+    });
+}
+
+// ====================================
 // INITIALIZATION
 // ====================================
 
@@ -429,6 +799,9 @@ function init() {
     updateMap();
     // Update map every minute to reflect timezone changes
     setInterval(updateMap, 60000);
+
+    // 5. Initialize slider
+    initSlider();
 }
 
 // Start everything when DOM is loaded
