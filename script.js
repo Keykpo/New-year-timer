@@ -18,8 +18,8 @@ const translations = {
         wishesTitle: "Global Wishes Wall",
         wishesSubtitle: "Leave your wish for 2026 and it will come true! ✨",
         emptyTileText: "Leave your wish for 2026 and it will come true",
-        emptyTileTextPremium: "Premium wish - Top spot with golden glow!",
-        emptyTileTextVIP: "VIP wish - Featured with silver shine!",
+        emptyTileTextPremium: "⭐ PREMIUM SPOT - Maximum visibility with golden glow!",
+        emptyTileTextVIP: "💎 VIP SPOT - Featured with silver shine!",
         modalTitle: "Make Your Wish",
         modalSubtitle: "Your wish will shine on the wall forever!",
         wishLabel: "Your Wish for 2026",
@@ -43,8 +43,8 @@ const translations = {
         wishesTitle: "Muro de Deseos Global",
         wishesSubtitle: "¡Deja tu deseo para el 2026 y se va a cumplir! ✨",
         emptyTileText: "Deja tu deseo para el 2026 y se va a cumplir",
-        emptyTileTextPremium: "Deseo Premium - ¡Lugar destacado con brillo dorado!",
-        emptyTileTextVIP: "Deseo VIP - ¡Destacado con brillo plateado!",
+        emptyTileTextPremium: "⭐ ESPACIO PREMIUM - ¡Máxima visibilidad con brillo dorado!",
+        emptyTileTextVIP: "💎 ESPACIO VIP - ¡Destacado con brillo plateado!",
         modalTitle: "Haz Tu Deseo",
         modalSubtitle: "¡Tu deseo brillará en el muro para siempre!",
         wishLabel: "Tu Deseo para 2026",
@@ -68,8 +68,8 @@ const translations = {
         wishesTitle: "Muro de Desejos Global",
         wishesSubtitle: "Deixe seu desejo para 2026 e ele se tornará realidade! ✨",
         emptyTileText: "Deixe seu desejo para 2026 e ele se tornará realidade",
-        emptyTileTextPremium: "Desejo Premium - Lugar de destaque com brilho dourado!",
-        emptyTileTextVIP: "Desejo VIP - Destaque com brilho prateado!",
+        emptyTileTextPremium: "⭐ ESPAÇO PREMIUM - Máxima visibilidade com brilho dourado!",
+        emptyTileTextVIP: "💎 ESPAÇO VIP - Destaque com brilho prateado!",
         modalTitle: "Faça Seu Desejo",
         modalSubtitle: "Seu desejo brilhará no muro para sempre!",
         wishLabel: "Seu Desejo para 2026",
@@ -93,8 +93,8 @@ const translations = {
         wishesTitle: "Mur des Souhaits Global",
         wishesSubtitle: "Laissez votre souhait pour 2026 et il se réalisera! ✨",
         emptyTileText: "Laissez votre souhait pour 2026 et il se réalisera",
-        emptyTileTextPremium: "Souhait Premium - Place privilégiée avec éclat doré!",
-        emptyTileTextVIP: "Souhait VIP - En vedette avec éclat argenté!",
+        emptyTileTextPremium: "⭐ ESPACE PREMIUM - Visibilité maximale avec éclat doré!",
+        emptyTileTextVIP: "💎 ESPACE VIP - En vedette avec éclat argenté!",
         modalTitle: "Faites Votre Souhait",
         modalSubtitle: "Votre souhait brillera sur le mur pour toujours!",
         wishLabel: "Votre Souhait pour 2026",
@@ -505,21 +505,21 @@ try {
 // WISHES WALL SYSTEM
 // ====================================
 
-const PREMIUM_SLOTS = 5;  // First 5 slots - $50 each
-const VIP_SLOTS = 5;      // Next 5 slots - $20 each
-const INITIAL_REGULAR_SLOTS = 10; // Initial regular slots - $1 each
+const PREMIUM_SLOTS = 15;  // First 3 rows (3x5) - $49.99 each
+const VIP_SLOTS = 10;      // Next 2 rows (2x5) - $19.99 each
+const INITIAL_REGULAR_SLOTS = 15; // Initial regular slots (3x5) - $1.99 each
 let totalSlots = PREMIUM_SLOTS + VIP_SLOTS + INITIAL_REGULAR_SLOTS; // Dynamic total
 let currentSlot = null;
-let currentPrice = 1;
+let currentPrice = 1.99;
 let wishes = {};
 
 /**
  * Get the price for a slot
  */
 function getSlotPrice(slot) {
-    if (slot <= PREMIUM_SLOTS) return 50;
-    if (slot <= PREMIUM_SLOTS + VIP_SLOTS) return 20;
-    return 1;
+    if (slot <= PREMIUM_SLOTS) return 49.99;
+    if (slot <= PREMIUM_SLOTS + VIP_SLOTS) return 19.99;
+    return 1.99;
 }
 
 /**
@@ -539,6 +539,7 @@ function initWishesWall() {
     setupModal();
     loadWishesFromFirebase();
     setupCharCounter();
+    setupSlider();
 }
 
 /**
@@ -574,6 +575,90 @@ function createWishesGrid() {
         tile.addEventListener('click', () => handleTileClick(i));
         grid.appendChild(tile);
     }
+}
+
+/**
+ * Setup Slider
+ */
+let currentSlideIndex = 0;
+const SLOTS_PER_ROW = 5;
+const ROWS_PER_SLIDE = 3; // Show 3 rows per slide
+const SLOTS_PER_SLIDE = SLOTS_PER_ROW * ROWS_PER_SLIDE; // 15 slots per slide
+
+function setupSlider() {
+    const prevBtn = document.getElementById('sliderPrev');
+    const nextBtn = document.getElementById('sliderNext');
+    const wrapper = document.querySelector('.wishes-slider-wrapper');
+
+    if (!prevBtn || !nextBtn || !wrapper) return;
+
+    prevBtn.addEventListener('click', () => {
+        if (currentSlideIndex > 0) {
+            currentSlideIndex--;
+            updateSliderPosition();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        const maxSlides = Math.ceil(totalSlots / SLOTS_PER_SLIDE);
+        if (currentSlideIndex < maxSlides - 1) {
+            currentSlideIndex++;
+            updateSliderPosition();
+        }
+    });
+
+    // Create indicators
+    createSliderIndicators();
+
+    // Initial update
+    updateSliderPosition();
+}
+
+function createSliderIndicators() {
+    const indicatorsContainer = document.getElementById('sliderIndicators');
+    if (!indicatorsContainer) return;
+
+    const maxSlides = Math.ceil(totalSlots / SLOTS_PER_SLIDE);
+    indicatorsContainer.innerHTML = '';
+
+    for (let i = 0; i < maxSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = `indicator-dot ${i === 0 ? 'active' : ''}`;
+        dot.addEventListener('click', () => {
+            currentSlideIndex = i;
+            updateSliderPosition();
+        });
+        indicatorsContainer.appendChild(dot);
+    }
+}
+
+function updateSliderPosition() {
+    const wrapper = document.querySelector('.wishes-slider-wrapper');
+    const grid = document.getElementById('wishesGrid');
+    if (!wrapper || !grid) return;
+
+    // Calculate scroll position (based on rows)
+    const rowHeight = 250; // Approximate height of one row including gap
+    const scrollAmount = currentSlideIndex * ROWS_PER_SLIDE * rowHeight;
+
+    wrapper.scrollTo({
+        top: scrollAmount,
+        behavior: 'smooth'
+    });
+
+    // Update indicators
+    const dots = document.querySelectorAll('.indicator-dot');
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlideIndex);
+    });
+
+    // Update button states
+    const prevBtn = document.getElementById('sliderPrev');
+    const nextBtn = document.getElementById('sliderNext');
+    const maxSlides = Math.ceil(totalSlots / SLOTS_PER_SLIDE);
+
+    if (prevBtn) prevBtn.style.opacity = currentSlideIndex === 0 ? '0.5' : '1';
+    if (nextBtn) nextBtn.style.opacity = currentSlideIndex >= maxSlides - 1 ? '0.5' : '1';
 }
 
 /**
@@ -742,13 +827,14 @@ function handleSuccessfulPayment() {
     // Save to Firebase
     saveWishToFirebase(wish);
 
-    // If it's a $1 slot (regular), generate a new slot
-    if (currentPrice === 1) {
+    // If it's a $1.99 slot (regular), generate a new slot
+    if (currentPrice === 1.99) {
         totalSlots++;
         // Regenerate the grid to add the new slot
         setTimeout(() => {
             createWishesGrid();
             updateWishesDisplay();
+            createSliderIndicators(); // Update slider indicators
         }, 500);
     }
 
@@ -799,6 +885,7 @@ function loadWishesFromFirebase() {
         if (firebaseTotalSlots && firebaseTotalSlots !== totalSlots) {
             totalSlots = firebaseTotalSlots;
             createWishesGrid();
+            createSliderIndicators(); // Update slider indicators when slots change
         }
     });
 

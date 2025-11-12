@@ -99,7 +99,12 @@ const firebaseConfig = {
 
 ## 💳 Part 2: PayPal Integration
 
-PayPal handles the payments for wishes ($50, $20, or $1 USD depending on the slot tier).
+PayPal handles the payments for wishes ($49.99, $19.99, or $1.99 USD depending on the slot tier).
+
+**Pricing Tiers:**
+- **Premium Slots (1-15)**: $49.99 USD - 3 rows with ultra golden glow effects
+- **VIP Slots (16-25)**: $19.99 USD - 2 rows with silver shine effects
+- **Regular Slots (26+)**: $1.99 USD - Unlimited, auto-generated as purchased
 
 ### Step 1: Create PayPal Business Account
 
@@ -202,9 +207,9 @@ Currently, the database rules allow anyone to write. For production:
         ".validate": "newData.hasChildren(['text', 'author', 'price', 'timestamp']) &&
                       newData.child('text').val().length <= 100 &&
                       newData.child('author').val().length <= 15 &&
-                      (newData.child('price').val() == 1 ||
-                       newData.child('price').val() == 20 ||
-                       newData.child('price').val() == 50)"
+                      (newData.child('price').val() == 1.99 ||
+                       newData.child('price').val() == 19.99 ||
+                       newData.child('price').val() == 49.99)"
       }
     },
     "config": {
@@ -222,7 +227,7 @@ This prevents:
 - Overwriting existing wishes
 - Text longer than limits (100 chars for wish, 15 for author)
 - Missing required fields
-- Invalid prices (only $1, $20, or $50 allowed)
+- Invalid prices (only $1.99, $19.99, or $49.99 allowed)
 - Invalid totalSlots count (minimum 10)
 
 ### PayPal Security:
