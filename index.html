@@ -43,8 +43,30 @@
         <!-- Global Map Section -->
         <section class="map-section">
             <h2 class="map-title" data-i18n="mapTitle">These places are already in 2026!</h2>
-            <div class="map-container" id="mapContainer">
-                <!-- SVG Map will be inserted here by JavaScript -->
+            <div class="map-container">
+                <!--
+                    ========================================
+                    PASTE YOUR WORLD MAP SVG HERE
+                    ========================================
+
+                    Instructions:
+                    1. Get an SVG world map (see README instructions)
+                    2. Make sure each country <path> has an id attribute with ISO country codes
+                       Examples: id="US", id="FR", id="AU", id="BR", id="JP", etc.
+                    3. Paste the entire <svg>...</svg> code below this comment
+                    4. The script will automatically color countries based on their timezone
+
+                    Example structure:
+                    <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+                        <path id="US" d="M123,456 L789,123..."/>
+                        <path id="FR" d="M456,789 L123,456..."/>
+                        ...
+                    </svg>
+                -->
+
+                <div id="world-map">
+                    <!-- Your SVG map goes here -->
+                </div>
             </div>
             <div class="legend">
                 <div class="legend-item">

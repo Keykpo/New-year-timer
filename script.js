@@ -136,67 +136,218 @@ function displayTimezoneInfo() {
 // GLOBAL MAP WITH TIMEZONES
 // ====================================
 
-// Simplified world map with timezone regions (UTC offsets)
-const timezoneRegions = [
-    { name: "Pacific/Kiritimati", offset: 14, path: "M950,450 L970,450 L970,470 L950,470 Z" }, // Line Islands
-    { name: "Pacific/Auckland", offset: 13, path: "M920,520 L945,520 L945,550 L920,550 Z" }, // New Zealand
-    { name: "Pacific/Fiji", offset: 12, path: "M900,480 L920,480 L920,500 L900,500 Z" }, // Fiji
-    { name: "Asia/Kamchatka", offset: 12, path: "M880,280 L920,280 L920,320 L880,320 Z" }, // Kamchatka
-    { name: "Pacific/Norfolk", offset: 11, path: "M890,500 L905,500 L905,515 L890,515 Z" }, // Norfolk Island
-    { name: "Australia/Sydney", offset: 11, path: "M850,500 L890,500 L890,540 L850,540 Z" }, // Eastern Australia
-    { name: "Asia/Vladivostok", offset: 10, path: "M840,320 L880,320 L880,360 L840,360 Z" }, // Vladivostok
-    { name: "Australia/Brisbane", offset: 10, path: "M850,470 L885,470 L885,510 L850,510 Z" }, // Queensland
-    { name: "Asia/Tokyo", offset: 9, path: "M820,360 L850,360 L850,390 L820,390 Z" }, // Japan
-    { name: "Asia/Seoul", offset: 9, path: "M810,355 L825,355 L825,370 L810,370 Z" }, // Korea
-    { name: "Asia/Shanghai", offset: 8, path: "M760,360 L810,360 L810,410 L760,410 Z" }, // China
-    { name: "Asia/Singapore", offset: 8, path: "M770,460 L790,460 L790,475 L770,475 Z" }, // Singapore
-    { name: "Asia/Bangkok", offset: 7, path: "M730,440 L755,440 L755,470 L730,470 Z" }, // Thailand
-    { name: "Asia/Dhaka", offset: 6, path: "M700,400 L725,400 L725,425 L700,425 Z" }, // Bangladesh
-    { name: "Asia/Kolkata", offset: 5.5, path: "M680,405 L710,405 L710,445 L680,445 Z" }, // India
-    { name: "Asia/Karachi", offset: 5, path: "M650,380 L685,380 L685,420 L650,420 Z" }, // Pakistan
-    { name: "Asia/Dubai", offset: 4, path: "M600,390 L630,390 L630,420 L600,420 Z" }, // UAE
-    { name: "Europe/Moscow", offset: 3, path: "M570,300 L630,300 L630,360 L570,360 Z" }, // Moscow
-    { name: "Africa/Nairobi", offset: 3, path: "M560,450 L590,450 L590,490 L560,490 Z" }, // East Africa
-    { name: "Europe/Athens", offset: 2, path: "M540,360 L560,360 L560,380 L540,380 Z" }, // Greece
-    { name: "Africa/Cairo", offset: 2, path: "M530,400 L555,400 L555,425 L530,425 Z" }, // Egypt
-    { name: "Europe/Paris", offset: 1, path: "M480,330 L510,330 L510,360 L480,360 Z" }, // Central Europe
-    { name: "Europe/Berlin", offset: 1, path: "M510,320 L535,320 L535,345 L510,345 Z" }, // Germany
-    { name: "Africa/Lagos", offset: 1, path: "M480,450 L520,450 L520,490 L480,490 Z" }, // West Africa
-    { name: "Europe/London", offset: 0, path: "M460,320 L485,320 L485,345 L460,345 Z" }, // UK
-    { name: "Africa/Casablanca", offset: 0, path: "M450,380 L480,380 L480,410 L450,410 Z" }, // Morocco
-    { name: "Atlantic/Azores", offset: -1, path: "M420,370 L440,370 L440,385 L420,385 Z" }, // Azores
-    { name: "America/Sao_Paulo", offset: -3, path: "M340,470 L380,470 L380,530 L340,530 Z" }, // Brazil (East)
-    { name: "America/Argentina", offset: -3, path: "M320,510 L350,510 L350,570 L320,570 Z" }, // Argentina
-    { name: "America/Santiago", offset: -3, path: "M280,520 L310,520 L310,570 L280,570 Z" }, // Chile
-    { name: "America/Caracas", offset: -4, path: "M300,440 L330,440 L330,465 L300,465 Z" }, // Venezuela
-    { name: "America/New_York", offset: -5, path: "M220,340 L270,340 L270,390 L220,390 Z" }, // US East Coast
-    { name: "America/Chicago", offset: -6, path: "M170,330 L220,330 L220,390 L170,390 Z" }, // US Central
-    { name: "America/Denver", offset: -7, path: "M120,320 L170,320 L170,380 L120,380 Z" }, // US Mountain
-    { name: "America/Los_Angeles", offset: -8, path: "M70,330 L120,330 L120,390 L70,390 Z" }, // US West Coast
-    { name: "America/Anchorage", offset: -9, path: "M50,250 L120,250 L120,310 L50,310 Z" }, // Alaska
-    { name: "Pacific/Honolulu", offset: -10, path: "M30,400 L65,400 L65,420 L30,420 Z" }, // Hawaii
-    { name: "Pacific/Midway", offset: -11, path: "M10,420 L35,420 L35,440 L10,440 Z" } // Midway
-];
+/**
+ * Country to Timezone Mapping
+ *
+ * This object maps ISO country codes to their primary timezone offset (from UTC).
+ * Your SVG map should use these country codes as IDs for each <path> element.
+ *
+ * Format: "COUNTRY_CODE": { name: "Country Name", offset: UTC_OFFSET }
+ *
+ * Examples:
+ * - <path id="US" d="..."/> for United States
+ * - <path id="FR" d="..."/> for France
+ * - <path id="AU" d="..."/> for Australia
+ *
+ * Note: Some countries span multiple timezones. This uses the primary/capital timezone.
+ * You can add more specific regions like "US-PST", "US-EST", "RU-MSK", "RU-VLAT" if your
+ * SVG map has separate paths for different regions of the same country.
+ */
+const countryTimezones = {
+    // Pacific Islands (UTC+12 to +14)
+    "KI": { name: "Kiribati", offset: 14 },          // Line Islands
+    "NZ": { name: "New Zealand", offset: 13 },       // New Zealand
+    "FJ": { name: "Fiji", offset: 12 },              // Fiji
+    "NR": { name: "Nauru", offset: 12 },             // Nauru
+    "TV": { name: "Tuvalu", offset: 12 },            // Tuvalu
+    "MH": { name: "Marshall Islands", offset: 12 },  // Marshall Islands
+    "WF": { name: "Wallis and Futuna", offset: 12 }, // Wallis and Futuna
 
-function createWorldMap() {
-    const svgNS = "http://www.w3.org/2000/svg";
-    const svg = document.createElementNS(svgNS, "svg");
-    svg.setAttribute("viewBox", "0 0 1000 600");
-    svg.setAttribute("xmlns", svgNS);
+    // Asia-Pacific (UTC+9 to +11)
+    "AU": { name: "Australia", offset: 11 },         // Eastern Australia (Sydney)
+    "SB": { name: "Solomon Islands", offset: 11 },   // Solomon Islands
+    "NC": { name: "New Caledonia", offset: 11 },     // New Caledonia
+    "PG": { name: "Papua New Guinea", offset: 10 },  // Papua New Guinea
+    "GU": { name: "Guam", offset: 10 },              // Guam
+    "JP": { name: "Japan", offset: 9 },              // Japan
+    "KR": { name: "South Korea", offset: 9 },        // South Korea
+    "KP": { name: "North Korea", offset: 9 },        // North Korea
+    "PW": { name: "Palau", offset: 9 },              // Palau
 
-    // Create a simplified world map background
-    const background = document.createElementNS(svgNS, "rect");
-    background.setAttribute("width", "1000");
-    background.setAttribute("height", "600");
-    background.setAttribute("fill", "#0f172a");
-    svg.appendChild(background);
+    // Asia (UTC+5 to +8)
+    "CN": { name: "China", offset: 8 },              // China
+    "TW": { name: "Taiwan", offset: 8 },             // Taiwan
+    "PH": { name: "Philippines", offset: 8 },        // Philippines
+    "MY": { name: "Malaysia", offset: 8 },           // Malaysia
+    "SG": { name: "Singapore", offset: 8 },          // Singapore
+    "HK": { name: "Hong Kong", offset: 8 },          // Hong Kong
+    "MO": { name: "Macau", offset: 8 },              // Macau
+    "BN": { name: "Brunei", offset: 8 },             // Brunei
+    "MN": { name: "Mongolia", offset: 8 },           // Mongolia
+    "TH": { name: "Thailand", offset: 7 },           // Thailand
+    "VN": { name: "Vietnam", offset: 7 },            // Vietnam
+    "LA": { name: "Laos", offset: 7 },               // Laos
+    "KH": { name: "Cambodia", offset: 7 },           // Cambodia
+    "ID": { name: "Indonesia", offset: 7 },          // Indonesia (Western)
+    "MM": { name: "Myanmar", offset: 6.5 },          // Myanmar
+    "BD": { name: "Bangladesh", offset: 6 },         // Bangladesh
+    "BT": { name: "Bhutan", offset: 6 },             // Bhutan
+    "IN": { name: "India", offset: 5.5 },            // India
+    "LK": { name: "Sri Lanka", offset: 5.5 },        // Sri Lanka
+    "NP": { name: "Nepal", offset: 5.75 },           // Nepal
+    "PK": { name: "Pakistan", offset: 5 },           // Pakistan
+    "UZ": { name: "Uzbekistan", offset: 5 },         // Uzbekistan
+    "TJ": { name: "Tajikistan", offset: 5 },         // Tajikistan
+    "TM": { name: "Turkmenistan", offset: 5 },       // Turkmenistan
+    "AF": { name: "Afghanistan", offset: 4.5 },      // Afghanistan
 
-    // Add ocean
-    const ocean = document.createElementNS(svgNS, "rect");
-    ocean.setAttribute("width", "1000");
-    ocean.setAttribute("height", "600");
-    ocean.setAttribute("fill", "#1e293b");
-    svg.appendChild(ocean);
+    // Middle East (UTC+2 to +4)
+    "AE": { name: "UAE", offset: 4 },                // UAE
+    "OM": { name: "Oman", offset: 4 },               // Oman
+    "GE": { name: "Georgia", offset: 4 },            // Georgia
+    "AM": { name: "Armenia", offset: 4 },            // Armenia
+    "AZ": { name: "Azerbaijan", offset: 4 },         // Azerbaijan
+    "IR": { name: "Iran", offset: 3.5 },             // Iran
+    "RU": { name: "Russia", offset: 3 },             // Russia (Moscow)
+    "SA": { name: "Saudi Arabia", offset: 3 },       // Saudi Arabia
+    "IQ": { name: "Iraq", offset: 3 },               // Iraq
+    "KW": { name: "Kuwait", offset: 3 },             // Kuwait
+    "BH": { name: "Bahrain", offset: 3 },            // Bahrain
+    "QA": { name: "Qatar", offset: 3 },              // Qatar
+    "YE": { name: "Yemen", offset: 3 },              // Yemen
+    "KE": { name: "Kenya", offset: 3 },              // Kenya
+    "ET": { name: "Ethiopia", offset: 3 },           // Ethiopia
+    "SO": { name: "Somalia", offset: 3 },            // Somalia
+    "IL": { name: "Israel", offset: 2 },             // Israel
+    "PS": { name: "Palestine", offset: 2 },          // Palestine
+    "JO": { name: "Jordan", offset: 2 },             // Jordan
+    "LB": { name: "Lebanon", offset: 2 },            // Lebanon
+    "SY": { name: "Syria", offset: 2 },              // Syria
+    "EG": { name: "Egypt", offset: 2 },              // Egypt
+    "ZA": { name: "South Africa", offset: 2 },       // South Africa
+    "BW": { name: "Botswana", offset: 2 },           // Botswana
+    "ZW": { name: "Zimbabwe", offset: 2 },           // Zimbabwe
+    "MZ": { name: "Mozambique", offset: 2 },         // Mozambique
+    "GR": { name: "Greece", offset: 2 },             // Greece
+    "RO": { name: "Romania", offset: 2 },            // Romania
+    "BG": { name: "Bulgaria", offset: 2 },           // Bulgaria
+    "TR": { name: "Turkey", offset: 3 },             // Turkey
+    "UA": { name: "Ukraine", offset: 2 },            // Ukraine
+    "FI": { name: "Finland", offset: 2 },            // Finland
+
+    // Europe (UTC+0 to +2)
+    "FR": { name: "France", offset: 1 },             // France
+    "DE": { name: "Germany", offset: 1 },            // Germany
+    "IT": { name: "Italy", offset: 1 },              // Italy
+    "ES": { name: "Spain", offset: 1 },              // Spain
+    "PT": { name: "Portugal", offset: 0 },           // Portugal
+    "PL": { name: "Poland", offset: 1 },             // Poland
+    "NL": { name: "Netherlands", offset: 1 },        // Netherlands
+    "BE": { name: "Belgium", offset: 1 },            // Belgium
+    "CH": { name: "Switzerland", offset: 1 },        // Switzerland
+    "AT": { name: "Austria", offset: 1 },            // Austria
+    "CZ": { name: "Czech Republic", offset: 1 },     // Czech Republic
+    "SK": { name: "Slovakia", offset: 1 },           // Slovakia
+    "HU": { name: "Hungary", offset: 1 },            // Hungary
+    "SI": { name: "Slovenia", offset: 1 },           // Slovenia
+    "HR": { name: "Croatia", offset: 1 },            // Croatia
+    "BA": { name: "Bosnia", offset: 1 },             // Bosnia
+    "RS": { name: "Serbia", offset: 1 },             // Serbia
+    "ME": { name: "Montenegro", offset: 1 },         // Montenegro
+    "MK": { name: "North Macedonia", offset: 1 },    // North Macedonia
+    "AL": { name: "Albania", offset: 1 },            // Albania
+    "SE": { name: "Sweden", offset: 1 },             // Sweden
+    "NO": { name: "Norway", offset: 1 },             // Norway
+    "DK": { name: "Denmark", offset: 1 },            // Denmark
+    "GB": { name: "United Kingdom", offset: 0 },     // UK
+    "IE": { name: "Ireland", offset: 0 },            // Ireland
+    "IS": { name: "Iceland", offset: 0 },            // Iceland
+
+    // Africa (UTC-1 to +3)
+    "MA": { name: "Morocco", offset: 0 },            // Morocco
+    "DZ": { name: "Algeria", offset: 1 },            // Algeria
+    "TN": { name: "Tunisia", offset: 1 },            // Tunisia
+    "LY": { name: "Libya", offset: 2 },              // Libya
+    "SD": { name: "Sudan", offset: 2 },              // Sudan
+    "NG": { name: "Nigeria", offset: 1 },            // Nigeria
+    "GH": { name: "Ghana", offset: 0 },              // Ghana
+    "CI": { name: "Ivory Coast", offset: 0 },        // Ivory Coast
+    "SN": { name: "Senegal", offset: 0 },            // Senegal
+    "ML": { name: "Mali", offset: 0 },               // Mali
+    "NE": { name: "Niger", offset: 1 },              // Niger
+    "TD": { name: "Chad", offset: 1 },               // Chad
+    "CM": { name: "Cameroon", offset: 1 },           // Cameroon
+    "AO": { name: "Angola", offset: 1 },             // Angola
+    "ZM": { name: "Zambia", offset: 2 },             // Zambia
+    "TZ": { name: "Tanzania", offset: 3 },           // Tanzania
+    "UG": { name: "Uganda", offset: 3 },             // Uganda
+    "RW": { name: "Rwanda", offset: 2 },             // Rwanda
+    "MG": { name: "Madagascar", offset: 3 },         // Madagascar
+
+    // Americas (UTC-10 to -3)
+    "US": { name: "United States", offset: -5 },     // USA (Eastern)
+    "CA": { name: "Canada", offset: -5 },            // Canada (Eastern)
+    "MX": { name: "Mexico", offset: -6 },            // Mexico (Central)
+    "BR": { name: "Brazil", offset: -3 },            // Brazil (Brasilia)
+    "AR": { name: "Argentina", offset: -3 },         // Argentina
+    "CL": { name: "Chile", offset: -3 },             // Chile
+    "PE": { name: "Peru", offset: -5 },              // Peru
+    "CO": { name: "Colombia", offset: -5 },          // Colombia
+    "VE": { name: "Venezuela", offset: -4 },         // Venezuela
+    "EC": { name: "Ecuador", offset: -5 },           // Ecuador
+    "BO": { name: "Bolivia", offset: -4 },           // Bolivia
+    "PY": { name: "Paraguay", offset: -4 },          // Paraguay
+    "UY": { name: "Uruguay", offset: -3 },           // Uruguay
+    "GY": { name: "Guyana", offset: -4 },            // Guyana
+    "SR": { name: "Suriname", offset: -3 },          // Suriname
+    "GF": { name: "French Guiana", offset: -3 },     // French Guiana
+    "PA": { name: "Panama", offset: -5 },            // Panama
+    "CR": { name: "Costa Rica", offset: -6 },        // Costa Rica
+    "NI": { name: "Nicaragua", offset: -6 },         // Nicaragua
+    "HN": { name: "Honduras", offset: -6 },          // Honduras
+    "GT": { name: "Guatemala", offset: -6 },         // Guatemala
+    "BZ": { name: "Belize", offset: -6 },            // Belize
+    "SV": { name: "El Salvador", offset: -6 },       // El Salvador
+    "CU": { name: "Cuba", offset: -5 },              // Cuba
+    "JM": { name: "Jamaica", offset: -5 },           // Jamaica
+    "HT": { name: "Haiti", offset: -5 },             // Haiti
+    "DO": { name: "Dominican Republic", offset: -4 },// Dominican Republic
+    "PR": { name: "Puerto Rico", offset: -4 },       // Puerto Rico
+
+    // Special regions (if you want to handle US/Canada/Russia timezones separately)
+    "US-EST": { name: "US Eastern", offset: -5 },
+    "US-CST": { name: "US Central", offset: -6 },
+    "US-MST": { name: "US Mountain", offset: -7 },
+    "US-PST": { name: "US Pacific", offset: -8 },
+    "US-AKST": { name: "Alaska", offset: -9 },
+    "US-HST": { name: "Hawaii", offset: -10 },
+    "RU-MSK": { name: "Moscow", offset: 3 },
+    "RU-VLAT": { name: "Vladivostok", offset: 10 },
+    "RU-KRAT": { name: "Krasnoyarsk", offset: 7 },
+    "CA-EST": { name: "Canada Eastern", offset: -5 },
+    "CA-CST": { name: "Canada Central", offset: -6 },
+    "CA-MST": { name: "Canada Mountain", offset: -7 },
+    "CA-PST": { name: "Canada Pacific", offset: -8 }
+};
+
+/**
+ * Colors countries in the SVG map based on whether they've entered the new year
+ */
+function updateMap() {
+    // Get the SVG element inside #world-map
+    const worldMapContainer = document.getElementById('world-map');
+
+    if (!worldMapContainer) {
+        console.warn('World map container not found. Make sure you have a div with id="world-map"');
+        return;
+    }
+
+    const svg = worldMapContainer.querySelector('svg');
+
+    if (!svg) {
+        console.warn('No SVG found inside #world-map. Please paste your SVG map inside the #world-map div.');
+        return;
+    }
 
     // Get current UTC time
     const now = new Date();
@@ -204,63 +355,58 @@ function createWorldMap() {
     const nextYear = currentYear + 1;
     const newYearUTC = new Date(Date.UTC(nextYear, 0, 1, 0, 0, 0));
 
-    // Create regions for each timezone
-    timezoneRegions.forEach(region => {
-        const path = document.createElementNS(svgNS, "path");
-        path.setAttribute("d", region.path);
-        path.setAttribute("class", "timezone-region");
+    // Find all path elements with IDs (countries)
+    const paths = svg.querySelectorAll('path[id], g[id]');
 
-        // Calculate if this timezone has already entered the new year
-        const timezoneNewYear = new Date(newYearUTC.getTime() - (region.offset * 60 * 60 * 1000));
-        const hasCelebrated = now >= timezoneNewYear;
+    if (paths.length === 0) {
+        console.warn('No paths with IDs found in the SVG. Make sure your country paths have id attributes like id="US", id="FR", etc.');
+        return;
+    }
 
-        if (hasCelebrated) {
-            path.classList.add("celebrating");
+    // Process each country path
+    paths.forEach(path => {
+        const countryCode = path.id.toUpperCase();
+
+        // Check if we have timezone data for this country
+        if (countryTimezones[countryCode]) {
+            const country = countryTimezones[countryCode];
+
+            // Calculate if this timezone has already entered the new year
+            // New Year happens at different times in UTC depending on timezone offset
+            const timezoneNewYear = new Date(newYearUTC.getTime() - (country.offset * 60 * 60 * 1000));
+            const hasCelebrated = now >= timezoneNewYear;
+
+            // Apply color classes
+            path.classList.remove('celebrating', 'waiting');
+            path.classList.add('country-path');
+
+            if (hasCelebrated) {
+                path.classList.add('celebrating');
+            } else {
+                path.classList.add('waiting');
+            }
+
+            // Add or update tooltip
+            let title = path.querySelector('title');
+            if (!title) {
+                title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+                path.appendChild(title);
+            }
+
+            const offsetString = country.offset >= 0 ? `+${country.offset}` : `${country.offset}`;
+            const status = hasCelebrated ? '🎉 Already in 2026!' : '⏳ Still waiting...';
+            title.textContent = `${country.name} (UTC${offsetString})\n${status}`;
+
+            // Add cursor pointer style
+            path.style.cursor = 'pointer';
         } else {
-            path.classList.add("waiting");
+            // Country not in our timezone database - apply default styling
+            path.classList.add('country-path', 'waiting');
+            path.style.cursor = 'default';
         }
-
-        // Add tooltip
-        const title = document.createElementNS(svgNS, "title");
-        title.textContent = `${region.name} (UTC${region.offset >= 0 ? '+' : ''}${region.offset})`;
-        path.appendChild(title);
-
-        svg.appendChild(path);
     });
 
-    // Add grid lines for visual reference
-    for (let i = 0; i <= 1000; i += 100) {
-        const line = document.createElementNS(svgNS, "line");
-        line.setAttribute("x1", i);
-        line.setAttribute("y1", 0);
-        line.setAttribute("x2", i);
-        line.setAttribute("y2", 600);
-        line.setAttribute("stroke", "#334155");
-        line.setAttribute("stroke-width", "0.5");
-        line.setAttribute("opacity", "0.3");
-        svg.appendChild(line);
-    }
-
-    for (let i = 0; i <= 600; i += 100) {
-        const line = document.createElementNS(svgNS, "line");
-        line.setAttribute("x1", 0);
-        line.setAttribute("y1", i);
-        line.setAttribute("x2", 1000);
-        line.setAttribute("y2", i);
-        line.setAttribute("stroke", "#334155");
-        line.setAttribute("stroke-width", "0.5");
-        line.setAttribute("opacity", "0.3");
-        svg.appendChild(line);
-    }
-
-    return svg;
-}
-
-function updateMap() {
-    const mapContainer = document.getElementById('mapContainer');
-    mapContainer.innerHTML = '';
-    const svg = createWorldMap();
-    mapContainer.appendChild(svg);
+    console.log(`Updated ${paths.length} countries on the map`);
 }
 
 // ====================================

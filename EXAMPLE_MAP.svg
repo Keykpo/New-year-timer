@@ -1,0 +1,92 @@
+<!--
+    Este es un mapa de ejemplo simplificado para que pruebes el sistema.
+    Incluye solo algunos países principales.
+
+    Para usar este mapa:
+    1. Copia TODO este contenido (desde <svg> hasta </svg>)
+    2. Pégalo dentro del <div id="world-map"> en index.html
+
+    Después puedes reemplazarlo con un mapa más completo de Wikimedia Commons.
+-->
+
+<svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="1000" height="500" fill="#1e293b"/>
+
+    <!-- Simplified country shapes -->
+
+    <!-- USA (Eastern Time) -->
+    <path id="US" d="M 120,180 L 180,180 L 200,200 L 210,210 L 200,240 L 180,250 L 150,245 L 130,230 L 110,210 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Canada -->
+    <path id="CA" d="M 110,140 L 220,140 L 230,150 L 230,170 L 180,175 L 120,175 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Mexico -->
+    <path id="MX" d="M 130,250 L 180,250 L 190,270 L 185,290 L 170,295 L 150,290 L 135,270 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Brazil -->
+    <path id="BR" d="M 290,310 L 340,305 L 360,320 L 370,350 L 360,380 L 330,390 L 300,385 L 285,360 L 280,330 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Argentina -->
+    <path id="AR" d="M 280,390 L 310,390 L 320,410 L 320,450 L 310,465 L 295,465 L 285,445 L 280,420 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- UK -->
+    <path id="GB" d="M 470,165 L 485,160 L 495,165 L 495,180 L 485,190 L 475,185 L 470,175 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- France -->
+    <path id="FR" d="M 485,195 L 505,190 L 515,200 L 515,215 L 505,220 L 490,215 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Germany -->
+    <path id="DE" d="M 510,170 L 535,170 L 540,185 L 535,195 L 515,195 L 510,185 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Spain -->
+    <path id="ES" d="M 465,210 L 495,210 L 505,225 L 495,235 L 475,235 L 465,220 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Italy -->
+    <path id="IT" d="M 520,210 L 535,205 L 540,220 L 540,240 L 530,255 L 525,245 L 520,225 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Russia -->
+    <path id="RU" d="M 540,120 L 720,120 L 730,135 L 730,180 L 710,195 L 680,195 L 650,185 L 620,175 L 590,170 L 560,165 L 540,155 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- China -->
+    <path id="CN" d="M 700,200 L 770,195 L 795,210 L 795,250 L 780,265 L 750,265 L 720,255 L 700,235 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- India -->
+    <path id="IN" d="M 680,250 L 710,245 L 725,260 L 730,285 L 720,305 L 700,310 L 685,295 L 680,270 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Japan -->
+    <path id="JP" d="M 830,215 L 845,210 L 855,220 L 855,245 L 845,255 L 835,250 L 830,235 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- South Korea -->
+    <path id="KR" d="M 815,225 L 825,220 L 830,235 L 825,245 L 815,240 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Australia -->
+    <path id="AU" d="M 820,380 L 880,375 L 900,390 L 905,420 L 895,445 L 865,455 L 830,450 L 810,430 L 810,400 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- New Zealand -->
+    <path id="NZ" d="M 920,430 L 935,425 L 945,440 L 945,465 L 935,475 L 925,470 L 920,455 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- South Africa -->
+    <path id="ZA" d="M 540,390 L 570,385 L 585,400 L 585,425 L 570,440 L 545,440 L 535,420 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Egypt -->
+    <path id="EG" d="M 530,250 L 555,245 L 565,260 L 565,280 L 550,290 L 535,285 L 530,265 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Nigeria -->
+    <path id="NG" d="M 495,305 L 520,300 L 530,315 L 530,330 L 515,340 L 500,335 L 495,320 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Saudi Arabia -->
+    <path id="SA" d="M 570,260 L 605,255 L 620,270 L 620,290 L 605,300 L 580,300 L 570,280 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Turkey -->
+    <path id="TR" d="M 540,210 L 575,205 L 590,220 L 585,235 L 565,240 L 545,235 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Thailand -->
+    <path id="TH" d="M 735,280 L 750,275 L 760,290 L 760,310 L 750,320 L 740,315 L 735,295 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Indonesia -->
+    <path id="ID" d="M 750,330 L 820,325 L 835,340 L 835,355 L 810,365 L 760,365 L 745,350 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Philippines -->
+    <path id="PH" d="M 805,285 L 820,280 L 830,295 L 830,315 L 820,325 L 810,320 L 805,305 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="1"/>
+</svg>
