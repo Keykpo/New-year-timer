@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year's Timer 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1 class="main-title" data-i18n="mainTitle">Time Until Your New Year</h1>
+            <p class="subtitle" data-i18n="subtitle">Your personal countdown to 2026</p>
+        </header>
+
+        <!-- Local Countdown Timer -->
+        <section class="countdown-section">
+            <div class="countdown-container">
+                <div class="time-unit">
+                    <span class="time-value" id="days">00</span>
+                    <span class="time-label" data-i18n="days">Days</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-unit">
+                    <span class="time-value" id="hours">00</span>
+                    <span class="time-label" data-i18n="hours">Hours</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-unit">
+                    <span class="time-value" id="minutes">00</span>
+                    <span class="time-label" data-i18n="minutes">Minutes</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-unit">
+                    <span class="time-value" id="seconds">00</span>
+                    <span class="time-label" data-i18n="seconds">Seconds</span>
+                </div>
+            </div>
+            <p class="timezone-info" id="timezoneInfo"></p>
+        </section>
+
+        <!-- Global Map Section -->
+        <section class="map-section">
+            <h2 class="map-title" data-i18n="mapTitle">These places are already in 2026!</h2>
+            <div class="map-container" id="mapContainer">
+                <!-- SVG Map will be inserted here by JavaScript -->
+            </div>
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #10b981;"></span>
+                    <span class="legend-text" data-i18n="alreadyCelebrating">Already celebrating 2026</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #3b82f6;"></span>
+                    <span class="legend-text" data-i18n="stillWaiting">Still waiting</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p data-i18n="footer">Happy New Year from around the world! 🎉</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
