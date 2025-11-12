@@ -36,8 +36,12 @@ Firebase is used to store and sync wishes in real-time across all visitors.
       ".read": true,
       ".write": true,
       "$slotId": {
-        ".validate": "newData.hasChildren(['text', 'author', 'timestamp'])"
+        ".validate": "newData.hasChildren(['text', 'author', 'price', 'timestamp'])"
       }
+    },
+    "config": {
+      ".read": true,
+      ".write": true
     }
   }
 }
@@ -95,7 +99,7 @@ const firebaseConfig = {
 
 ## 💳 Part 2: PayPal Integration
 
-PayPal handles the $1 USD payment for each wish.
+PayPal handles the payments for wishes ($50, $20, or $1 USD depending on the slot tier).
 
 ### Step 1: Create PayPal Business Account
 
@@ -195,9 +199,19 @@ Currently, the database rules allow anyone to write. For production:
       ".read": true,
       "$slotId": {
         ".write": "!data.exists()",  // Only allow writing if slot is empty
-        ".validate": "newData.hasChildren(['text', 'author', 'timestamp']) &&
+        ".validate": "newData.hasChildren(['text', 'author', 'price', 'timestamp']) &&
                       newData.child('text').val().length <= 100 &&
-                      newData.child('author').val().length <= 15"
+                      newData.child('author').val().length <= 15 &&
+                      (newData.child('price').val() == 1 ||
+                       newData.child('price').val() == 20 ||
+                       newData.child('price').val() == 50)"
+      }
+    },
+    "config": {
+      ".read": true,
+      "totalSlots": {
+        ".write": true,
+        ".validate": "newData.isNumber() && newData.val() >= 10"
       }
     }
   }
@@ -206,8 +220,10 @@ Currently, the database rules allow anyone to write. For production:
 
 This prevents:
 - Overwriting existing wishes
-- Text longer than limits
+- Text longer than limits (100 chars for wish, 15 for author)
 - Missing required fields
+- Invalid prices (only $1, $20, or $50 allowed)
+- Invalid totalSlots count (minimum 10)
 
 ### PayPal Security:
 

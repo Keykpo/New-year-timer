@@ -18,13 +18,15 @@ const translations = {
         wishesTitle: "Global Wishes Wall",
         wishesSubtitle: "Leave your wish for 2026 and it will come true! ✨",
         emptyTileText: "Leave your wish for 2026 and it will come true",
+        emptyTileTextPremium: "Premium wish - Top spot with golden glow!",
+        emptyTileTextVIP: "VIP wish - Featured with silver shine!",
         modalTitle: "Make Your Wish",
         modalSubtitle: "Your wish will shine on the wall forever!",
         wishLabel: "Your Wish for 2026",
         authorLabel: "Your Name",
         priceLabel: "Secure your wish for:",
         paymentNote: "💳 Secure payment via PayPal. Your wish will appear instantly!",
-        payButton: "Pay $1 & Make Wish"
+        payButton: "Pay & Make Wish"
     },
     es: {
         mainTitle: "Tiempo Restante para tu Año Nuevo",
@@ -41,13 +43,15 @@ const translations = {
         wishesTitle: "Muro de Deseos Global",
         wishesSubtitle: "¡Deja tu deseo para el 2026 y se va a cumplir! ✨",
         emptyTileText: "Deja tu deseo para el 2026 y se va a cumplir",
+        emptyTileTextPremium: "Deseo Premium - ¡Lugar destacado con brillo dorado!",
+        emptyTileTextVIP: "Deseo VIP - ¡Destacado con brillo plateado!",
         modalTitle: "Haz Tu Deseo",
         modalSubtitle: "¡Tu deseo brillará en el muro para siempre!",
         wishLabel: "Tu Deseo para 2026",
         authorLabel: "Tu Nombre",
         priceLabel: "Asegura tu deseo por:",
         paymentNote: "💳 Pago seguro vía PayPal. ¡Tu deseo aparecerá al instante!",
-        payButton: "Pagar $1 y Hacer Deseo"
+        payButton: "Pagar y Hacer Deseo"
     },
     pt: {
         mainTitle: "Tempo Restante para o seu Ano Novo",
@@ -64,13 +68,15 @@ const translations = {
         wishesTitle: "Muro de Desejos Global",
         wishesSubtitle: "Deixe seu desejo para 2026 e ele se tornará realidade! ✨",
         emptyTileText: "Deixe seu desejo para 2026 e ele se tornará realidade",
+        emptyTileTextPremium: "Desejo Premium - Lugar de destaque com brilho dourado!",
+        emptyTileTextVIP: "Desejo VIP - Destaque com brilho prateado!",
         modalTitle: "Faça Seu Desejo",
         modalSubtitle: "Seu desejo brilhará no muro para sempre!",
         wishLabel: "Seu Desejo para 2026",
         authorLabel: "Seu Nome",
         priceLabel: "Garanta seu desejo por:",
         paymentNote: "💳 Pagamento seguro via PayPal. Seu desejo aparecerá instantaneamente!",
-        payButton: "Pagar $1 e Fazer Desejo"
+        payButton: "Pagar e Fazer Desejo"
     },
     fr: {
         mainTitle: "Temps Restant jusqu'à votre Nouvel An",
@@ -87,13 +93,15 @@ const translations = {
         wishesTitle: "Mur des Souhaits Global",
         wishesSubtitle: "Laissez votre souhait pour 2026 et il se réalisera! ✨",
         emptyTileText: "Laissez votre souhait pour 2026 et il se réalisera",
+        emptyTileTextPremium: "Souhait Premium - Place privilégiée avec éclat doré!",
+        emptyTileTextVIP: "Souhait VIP - En vedette avec éclat argenté!",
         modalTitle: "Faites Votre Souhait",
         modalSubtitle: "Votre souhait brillera sur le mur pour toujours!",
         wishLabel: "Votre Souhait pour 2026",
         authorLabel: "Votre Nom",
         priceLabel: "Sécurisez votre souhait pour:",
         paymentNote: "💳 Paiement sécurisé via PayPal. Votre souhait apparaîtra instantanément!",
-        payButton: "Payer 1$ et Faire un Souhait"
+        payButton: "Payer et Faire un Souhait"
     }
 };
 
@@ -497,9 +505,31 @@ try {
 // WISHES WALL SYSTEM
 // ====================================
 
-const TOTAL_SLOTS = 20; // 5x4 grid
+const PREMIUM_SLOTS = 5;  // First 5 slots - $50 each
+const VIP_SLOTS = 5;      // Next 5 slots - $20 each
+const INITIAL_REGULAR_SLOTS = 10; // Initial regular slots - $1 each
+let totalSlots = PREMIUM_SLOTS + VIP_SLOTS + INITIAL_REGULAR_SLOTS; // Dynamic total
 let currentSlot = null;
+let currentPrice = 1;
 let wishes = {};
+
+/**
+ * Get the price for a slot
+ */
+function getSlotPrice(slot) {
+    if (slot <= PREMIUM_SLOTS) return 50;
+    if (slot <= PREMIUM_SLOTS + VIP_SLOTS) return 20;
+    return 1;
+}
+
+/**
+ * Get the tier for a slot
+ */
+function getSlotTier(slot) {
+    if (slot <= PREMIUM_SLOTS) return 'premium';
+    if (slot <= PREMIUM_SLOTS + VIP_SLOTS) return 'vip';
+    return 'regular';
+}
 
 /**
  * Initialize wishes wall
@@ -512,20 +542,33 @@ function initWishesWall() {
 }
 
 /**
- * Create the 20 wish tiles
+ * Create the wish tiles with dynamic pricing
  */
 function createWishesGrid() {
     const grid = document.getElementById('wishesGrid');
+    grid.innerHTML = ''; // Clear existing tiles
     const lang = detectLanguage();
-    
-    for (let i = 1; i <= TOTAL_SLOTS; i++) {
+
+    for (let i = 1; i <= totalSlots; i++) {
         const tile = document.createElement('div');
-        tile.className = 'wish-tile empty';
+        const tier = getSlotTier(i);
+        const price = getSlotPrice(i);
+
+        tile.className = `wish-tile empty ${tier}`;
         tile.dataset.slot = i;
+
+        // Get appropriate text based on tier
+        let tileText = translations[lang].emptyTileText;
+        if (tier === 'premium') {
+            tileText = translations[lang].emptyTileTextPremium;
+        } else if (tier === 'vip') {
+            tileText = translations[lang].emptyTileTextVIP;
+        }
+
         tile.innerHTML = `
             <div class="wish-tile-empty-content">
-                <p class="wish-tile-phrase">${translations[lang].emptyTileText}</p>
-                <p class="wish-tile-price">$1 USD</p>
+                <p class="wish-tile-phrase">${tileText}</p>
+                <p class="wish-tile-price">$${price} USD</p>
             </div>
         `;
         tile.addEventListener('click', () => handleTileClick(i));
@@ -541,8 +584,9 @@ function handleTileClick(slot) {
         // Tile already occupied, don't open modal
         return;
     }
-    
+
     currentSlot = slot;
+    currentPrice = getSlotPrice(slot);
     openModal();
 }
 
@@ -576,13 +620,19 @@ function openModal() {
     const modal = document.getElementById('wishModal');
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-    
+
     // Clear form
     document.getElementById('wishText').value = '';
     document.getElementById('wishAuthor').value = '';
     document.getElementById('charCount').textContent = '0';
-    
-    // Initialize PayPal button
+
+    // Update price display
+    const priceElement = document.querySelector('.price-amount');
+    if (priceElement) {
+        priceElement.textContent = `$${currentPrice} USD`;
+    }
+
+    // Initialize PayPal button with current price
     initPayPalButton();
 }
 
@@ -591,9 +641,10 @@ function openModal() {
  */
 function closeModal() {
     const modal = document.getElementById('wishModal');
-    modal.classList.add('active');
+    modal.classList.remove('active');
     document.body.style.overflow = '';
     currentSlot = null;
+    currentPrice = 1;
 }
 
 /**
@@ -639,19 +690,19 @@ function initPayPalButton() {
             // Validate form before creating order
             const wishText = document.getElementById('wishText').value.trim();
             const author = document.getElementById('wishAuthor').value.trim();
-            
+
             if (!wishText || !author) {
                 alert('Please fill in both your wish and your name');
                 return;
             }
-            
+
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: '1.00',
+                        value: currentPrice.toFixed(2),
                         currency_code: 'USD'
                     },
-                    description: 'New Year 2026 Wish'
+                    description: `New Year 2026 Wish - $${currentPrice} Slot`
                 }]
             });
         },
@@ -674,25 +725,36 @@ function initPayPalButton() {
 function handleSuccessfulPayment() {
     const wishText = document.getElementById('wishText').value.trim();
     const author = document.getElementById('wishAuthor').value.trim();
-    
+
     if (!wishText || !author || !currentSlot) {
         alert('Error: Missing wish data');
         return;
     }
-    
+
     const wish = {
         text: wishText,
         author: author,
         slot: currentSlot,
+        price: currentPrice,
         timestamp: Date.now()
     };
-    
+
     // Save to Firebase
     saveWishToFirebase(wish);
-    
+
+    // If it's a $1 slot (regular), generate a new slot
+    if (currentPrice === 1) {
+        totalSlots++;
+        // Regenerate the grid to add the new slot
+        setTimeout(() => {
+            createWishesGrid();
+            updateWishesDisplay();
+        }, 500);
+    }
+
     // Close modal
     closeModal();
-    
+
     // Show success message
     alert('🎉 Your wish has been saved! It will shine on the wall forever!');
 }
@@ -705,16 +767,21 @@ function saveWishToFirebase(wish) {
         console.error('Firebase not initialized');
         return;
     }
-    
+
+    // Save wish
     database.ref(`wishes/${wish.slot}`).set({
         text: wish.text,
         author: wish.author,
+        price: wish.price,
         timestamp: wish.timestamp
     }).then(() => {
         console.log('Wish saved successfully');
     }).catch((error) => {
         console.error('Error saving wish:', error);
     });
+
+    // Update total slots count in Firebase for synchronization
+    database.ref('config/totalSlots').set(totalSlots);
 }
 
 /**
@@ -725,8 +792,17 @@ function loadWishesFromFirebase() {
         console.error('Firebase not initialized');
         return;
     }
-    
-    // Listen for changes in real-time
+
+    // Listen for total slots changes
+    database.ref('config/totalSlots').on('value', (snapshot) => {
+        const firebaseTotalSlots = snapshot.val();
+        if (firebaseTotalSlots && firebaseTotalSlots !== totalSlots) {
+            totalSlots = firebaseTotalSlots;
+            createWishesGrid();
+        }
+    });
+
+    // Listen for wishes changes in real-time
     database.ref('wishes').on('value', (snapshot) => {
         wishes = snapshot.val() || {};
         updateWishesDisplay();
@@ -740,16 +816,19 @@ function updateWishesDisplay() {
     Object.keys(wishes).forEach(slot => {
         const wish = wishes[slot];
         const tile = document.querySelector(`[data-slot="${slot}"]`);
-        
+
         if (tile && wish) {
-            tile.className = 'wish-tile occupied';
+            const tier = getSlotTier(parseInt(slot));
+            tile.className = `wish-tile occupied ${tier}`;
             tile.innerHTML = `
                 <div class="wish-tile-content">
                     <p class="wish-text">"${wish.text}"</p>
                     <p class="wish-author">- ${wish.author}</p>
                 </div>
             `;
-            tile.removeEventListener('click', () => handleTileClick(slot));
+            // Remove click handler for occupied tiles
+            tile.style.cursor = 'default';
+            tile.onclick = null;
         }
     });
 }

@@ -537,7 +537,7 @@ footer {
     overflow: hidden;
 }
 
-/* Empty tile */
+/* Empty tile - Regular ($1 USD) */
 .wish-tile.empty {
     border-color: rgba(251, 191, 36, 0.5);
     animation: shimmer 3s ease-in-out infinite;
@@ -554,6 +554,78 @@ footer {
     }
 }
 
+/* Premium tier ($50 USD) - Slots 1-5 */
+.wish-tile.empty.premium {
+    border-color: rgba(255, 215, 0, 0.8);
+    background: rgba(255, 215, 0, 0.05);
+    animation: premiumGlow 2s ease-in-out infinite;
+    position: relative;
+}
+
+.wish-tile.empty.premium::after {
+    content: '👑';
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes premiumGlow {
+    0%, 100% {
+        border-color: rgba(255, 215, 0, 0.9);
+        box-shadow:
+            0 0 20px rgba(255, 215, 0, 0.6),
+            0 0 40px rgba(255, 215, 0, 0.4),
+            inset 0 0 30px rgba(255, 215, 0, 0.1);
+        transform: scale(1);
+    }
+    50% {
+        border-color: rgba(255, 165, 0, 1);
+        box-shadow:
+            0 0 35px rgba(255, 215, 0, 0.8),
+            0 0 60px rgba(255, 165, 0, 0.6),
+            inset 0 0 40px rgba(255, 215, 0, 0.2);
+        transform: scale(1.02);
+    }
+}
+
+/* VIP tier ($20 USD) - Slots 6-10 */
+.wish-tile.empty.vip {
+    border-color: rgba(192, 192, 192, 0.7);
+    background: rgba(192, 192, 192, 0.03);
+    animation: vipGlow 2.5s ease-in-out infinite;
+    position: relative;
+}
+
+.wish-tile.empty.vip::after {
+    content: '💎';
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.3rem;
+    opacity: 0.7;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes vipGlow {
+    0%, 100% {
+        border-color: rgba(192, 192, 192, 0.8);
+        box-shadow:
+            0 0 15px rgba(192, 192, 192, 0.5),
+            0 0 30px rgba(192, 192, 192, 0.3),
+            inset 0 0 20px rgba(192, 192, 192, 0.08);
+    }
+    50% {
+        border-color: rgba(169, 169, 169, 0.9);
+        box-shadow:
+            0 0 25px rgba(192, 192, 192, 0.7),
+            0 0 45px rgba(169, 169, 169, 0.5),
+            inset 0 0 30px rgba(192, 192, 192, 0.15);
+    }
+}
+
 .wish-tile.empty:hover {
     transform: scale(1.05);
     border-color: rgba(251, 146, 60, 0.8);
@@ -563,13 +635,22 @@ footer {
 .wish-tile.empty::before {
     content: '⭐';
     position: absolute;
-    top: 1rem;
-    font-size: 2rem;
+    top: 0.25rem;
+    font-size: 1.5rem;
     opacity: 0.6;
     animation: pulse 2s ease-in-out infinite;
+    pointer-events: none;
 }
 
-/* Occupied tile */
+/* Desktop: make star smaller and positioned better */
+@media (min-width: 769px) {
+    .wish-tile.empty::before {
+        top: 0.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* Occupied tile - Regular */
 .wish-tile.occupied {
     background: rgba(30, 41, 59, 0.8);
     border-color: rgba(16, 185, 129, 0.6);
@@ -588,6 +669,52 @@ footer {
 .wish-tile.occupied:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
+}
+
+/* Occupied Premium tile */
+.wish-tile.occupied.premium {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.8);
+    box-shadow:
+        0 4px 25px rgba(255, 215, 0, 0.4),
+        0 0 40px rgba(255, 215, 0, 0.3),
+        inset 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+.wish-tile.occupied.premium::before {
+    content: '👑';
+    font-size: 1.5rem;
+}
+
+.wish-tile.occupied.premium:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        0 8px 35px rgba(255, 215, 0, 0.6),
+        0 0 60px rgba(255, 215, 0, 0.5),
+        inset 0 0 30px rgba(255, 215, 0, 0.15);
+}
+
+/* Occupied VIP tile */
+.wish-tile.occupied.vip {
+    background: rgba(192, 192, 192, 0.12);
+    border-color: rgba(192, 192, 192, 0.8);
+    box-shadow:
+        0 4px 20px rgba(192, 192, 192, 0.4),
+        0 0 30px rgba(192, 192, 192, 0.25),
+        inset 0 0 15px rgba(192, 192, 192, 0.08);
+}
+
+.wish-tile.occupied.vip::before {
+    content: '💎';
+    font-size: 1.3rem;
+}
+
+.wish-tile.occupied.vip:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow:
+        0 8px 30px rgba(192, 192, 192, 0.6),
+        0 0 45px rgba(192, 192, 192, 0.4),
+        inset 0 0 25px rgba(192, 192, 192, 0.12);
 }
 
 /* Empty tile content */
