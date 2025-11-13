@@ -16,8 +16,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files (frontend)
-app.use(express.static(path.join(__dirname)));
+// Serve static files (frontend) with video support
+app.use(express.static(path.join(__dirname), {
+    setHeaders: (res, filePath) => {
+        // Set correct MIME type for video files
+        if (filePath.endsWith('.mp4')) {
+            res.setHeader('Content-Type', 'video/mp4');
+        }
+    }
+}));
 
 // Mercado Pago Configuration
 // Get your Access Token from: https://www.mercadopago.com.ar/developers/panel/app
