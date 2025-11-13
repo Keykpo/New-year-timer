@@ -1,0 +1,23 @@
+link https://player.cloudinary.com/embed/?cloud_name=dvg1tnouh&public_id=26070-357512237_d9yzjv&profile=cld-default
+
+embed 
+
+<iframe
+  src="https://player.cloudinary.com/embed/?cloud_name=dvg1tnouh&public_id=26070-357512237_d9yzjv&profile=cld-default"
+  width="640"
+  height="360" 
+  style="height: auto; width: 100%; aspect-ratio: 640 / 360;"
+  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+  allowfullscreen
+  frameborder="0"
+></iframe>
+
+
+js 
+
+
+const player = cloudinary.player('player', {
+  cloudName: 'dvg1tnouh',
+  publicId: '26070-357512237_d9yzjv',
+  profile: 'cld-default'
+});

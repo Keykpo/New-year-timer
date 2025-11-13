@@ -15,7 +15,10 @@
       "Bash(git push)",
       "Bash(dir:*)",
       "Bash(copy \"ESTETICAS\\FONDO.jpg\" \"FONDO.jpg\")",
-      "Bash(copy \"ESTETICAS\\deseo fundador.PNG\" \"deseo-fundador.png\")"
+      "Bash(copy \"ESTETICAS\\deseo fundador.PNG\" \"deseo-fundador.png\")",
+      "Bash(nul)",
+      "Bash(start index.html)",
+      "Bash(del nul)"
     ],
     "deny": [],
     "ask": []
