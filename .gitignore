@@ -1,5 +1,5 @@
 # Configuration files with sensitive data
-config.js
+# config.js  ← Temporarily commented to upload to Vercel
 
 # Firebase Service Account (NEVER commit this!)
 firebase-service-account.json
