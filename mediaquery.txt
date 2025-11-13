@@ -1,0 +1,21 @@
+CSS Base (Escritorio > 900px):
+
+Configurar la clase del contenedor (.price-grid) para mostrar 4 columnas por defecto, usando display: grid y grid-template-columns: repeat(4, 1fr);.
+
+Usar un gap (espacio entre tarjetas) de 15px o 20px.
+
+Media Query para Tablet/Móvil Horizontal (max-width: 900px):
+
+Dentro de esta media query, modificar .price-grid para mostrar 3 columnas (grid-template-columns: repeat(3, 1fr);).
+
+Media Query para Móvil Vertical (max-width: 600px):
+
+Dentro de esta media query, modificar .price-grid para mostrar 2 columnas (grid-template-columns: repeat(2, 1fr);). Esta es la prioridad más alta para la legibilidad.
+
+Estilo de la Tarjeta (.price-card):
+
+Añadir un estilo minimalista a las tarjetas: background-color: #FFFFFF;, border-radius: 8px;, padding: 15px;.
+
+Agregar una sombra muy suave y limpia para que flote sobre el fondo blanco, por ejemplo: box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);.
+
+Por favor, genera el bloque completo de CSS, incluyendo las Media Queries y los estilos de las clases .price-grid y .price-card (o los nombres que consideres más adecuados).

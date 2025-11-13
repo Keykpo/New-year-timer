@@ -673,7 +673,49 @@ footer {
     animation: fadeInUp 1s ease-out 0.9s both;
 }
 
-/* Responsive Design */
+/* ====================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ==================================== */
+
+/* Tablet/Móvil Horizontal (≤900px) - 3 columnas */
+@media (max-width: 900px) {
+    /* Star Wishes Grid - 3 columnas */
+    .star-wishes-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+
+    .star-wish-circle {
+        height: 140px;
+    }
+
+    /* Ajustes generales */
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .countdown-container {
+        padding: 2.5rem 3rem;
+        gap: 2rem;
+    }
+
+    .constellation-title {
+        font-size: 2.2rem;
+    }
+
+    .founder-wish {
+        max-width: 180px;
+        height: 200px;
+    }
+
+    .nav-arrow-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Tablet/Móvil (≤768px) */
 @media (max-width: 768px) {
     .main-title {
         font-size: 2rem;
@@ -684,25 +726,26 @@ footer {
     }
 
     .countdown-container {
-        gap: 0.5rem;
+        gap: 1.5rem;
+        padding: 2rem 2.5rem;
     }
 
-    .time-unit {
-        min-width: 80px;
-        padding: 1rem 1rem;
+    .time-unit::before {
+        width: 110px;
+        height: 130px;
     }
 
     .time-value {
-        font-size: 2rem;
+        font-size: 2.8rem;
     }
 
     .time-label {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
     }
 
     .time-separator {
-        font-size: 2rem;
-        display: none;
+        font-size: 2.5rem;
+        margin: 0 -0.5rem;
     }
 
     /* Constellation section responsive */
@@ -714,32 +757,43 @@ footer {
         font-size: 1rem;
     }
 
-    /* Founders responsive - 2x2 grid on mobile */
-    .founder-wishes-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        max-width: 500px;
-    }
-
+    /* Founder wishes responsive */
     .founder-wish {
-        width: 180px;
-        height: 180px;
+        max-width: 170px;
+        height: 190px;
     }
 
-    /* Stars responsive - smaller grid */
+    .founder-wish-icon {
+        font-size: 3rem;
+    }
+
+    .founder-wish-price {
+        font-size: 1.3rem;
+    }
+
+    /* Star wishes - mantener 3 columnas */
     .star-wishes-grid {
-        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
         gap: 1rem;
+        padding: 1.5rem 1rem;
     }
 
     .star-wish-circle {
-        width: 60px;
-        height: 60px;
+        height: 130px;
     }
 
-    .star-wish-circle::before {
-        width: 25px;
-        height: 25px;
+    .star-wish-price {
+        font-size: 1rem;
+    }
+
+    .star-wish-text {
+        font-size: 0.7rem;
+    }
+
+    /* Navigation buttons */
+    .nav-arrow-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
     }
 
     .map-title {
@@ -760,26 +814,137 @@ footer {
     }
 }
 
+/* Móvil Vertical (≤600px) - 2 columnas */
+@media (max-width: 600px) {
+    /* Star Wishes Grid - 2 columnas (PRIORIDAD ALTA) */
+    .star-wishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1.5rem 0.5rem;
+    }
+
+    .star-wish-circle {
+        height: 150px;
+    }
+
+    .star-wish-price {
+        font-size: 1.1rem;
+    }
+
+    .star-wish-text {
+        font-size: 0.75rem;
+    }
+
+    /* Ajustes generales */
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .countdown-container {
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+    }
+
+    .time-unit::before {
+        width: 100px;
+        height: 115px;
+    }
+
+    .time-value {
+        font-size: 2.2rem;
+    }
+
+    .time-label {
+        font-size: 0.6rem;
+    }
+
+    .time-separator {
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    .constellation-title {
+        font-size: 1.8rem;
+    }
+
+    .constellation-subtitle {
+        font-size: 0.95rem;
+    }
+
+    /* Founder wishes */
+    .founder-wishes-container {
+        gap: 1.5rem;
+    }
+
+    .founder-wish {
+        max-width: 160px;
+        height: 180px;
+    }
+
+    .founder-wish-icon {
+        font-size: 2.8rem;
+    }
+
+    .founder-wish-price {
+        font-size: 1.2rem;
+    }
+
+    .founder-wish-text {
+        font-size: 0.85rem;
+    }
+
+    /* Navigation */
+    .nav-arrow-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.95rem;
+    }
+
+    .founder-nav-horizontal,
+    .wishes-nav-horizontal {
+        gap: 1rem;
+    }
+}
+
+/* Móvil Pequeño (≤480px) */
 @media (max-width: 480px) {
     .container {
-        padding: 1rem 0.5rem;
+        padding: 2rem 1rem;
     }
 
     .main-title {
         font-size: 1.5rem;
     }
 
-    .time-unit {
-        min-width: 70px;
-        padding: 0.75rem 0.5rem;
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .countdown-container {
+        padding: 1.5rem;
+        gap: 0.8rem;
+    }
+
+    .time-unit::before {
+        width: 85px;
+        height: 100px;
     }
 
     .time-value {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
     .time-label {
-        font-size: 0.7rem;
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+
+    .time-separator {
+        display: none;
     }
 
     /* Constellation responsive for very small screens */
@@ -787,32 +952,71 @@ footer {
         font-size: 1.6rem;
     }
 
-    /* Founders - 2x2 grid, smaller */
+    .constellation-subtitle {
+        font-size: 0.9rem;
+    }
+
+    /* Founder wishes - más compacto */
     .founder-wishes-container {
         gap: 1rem;
-        max-width: 400px;
     }
 
     .founder-wish {
-        width: 150px;
-        height: 150px;
+        max-width: 140px;
+        height: 160px;
     }
 
-    /* Stars - 4-5 columns on small mobile */
+    .founder-wish-icon {
+        font-size: 2.5rem;
+    }
+
+    .founder-wish-price {
+        font-size: 1.1rem;
+    }
+
+    .founder-wish-text {
+        font-size: 0.8rem;
+    }
+
+    /* Star wishes - 2 columnas más compactas */
     .star-wishes-grid {
-        grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 0.8rem;
         padding: 1.5rem 0.5rem;
+        max-height: 500px;
     }
 
     .star-wish-circle {
-        width: 55px;
-        height: 55px;
+        height: 130px;
     }
 
-    .star-wish-circle::before {
-        width: 22px;
-        height: 22px;
+    .star-wish-price {
+        font-size: 1rem;
+    }
+
+    .star-wish-text {
+        font-size: 0.7rem;
+    }
+
+    /* Navigation buttons más pequeños */
+    .nav-arrow-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+
+    .founder-nav-horizontal,
+    .wishes-nav-horizontal {
+        gap: 0.8rem;
+    }
+
+    /* Dark mode toggle */
+    .dark-mode-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
     }
 }
 
