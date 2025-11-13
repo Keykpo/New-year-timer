@@ -899,8 +899,8 @@ function initializeFounderWishes() {
             const safeAuthor = sanitizeAuthorName(founderWish.author);
 
             founderContainer.innerHTML = `
+                <div class="founder-crown-floating">👑</div>
                 <div class="founder-wish-content occupied-content premium">
-                    <div class="founder-crown-badge">👑</div>
                     <p class="founder-wish-message">"${safeText}"</p>
                     <div class="founder-wish-author-display">
                         ${flagImg}

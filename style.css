@@ -289,13 +289,14 @@ header {
     flex: 1;
     overflow: hidden;
     position: relative;
+    padding-top: 1.5rem; /* Space for floating crown */
 }
 
 /* Founder Wishes Container (scroll horizontal) */
 .founder-wishes-container {
     display: flex;
     gap: 2rem;
-    padding: 2rem 1rem;
+    padding: 3rem 1rem 2rem 1rem; /* Extra padding-top for floating crown */
     overflow-x: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
@@ -423,7 +424,29 @@ header {
     box-shadow: 0 12px 40px rgba(251, 191, 36, 0.3), 0 0 35px rgba(251, 191, 36, 0.7);
 }
 
-/* Premium badge crown at top */
+/* Floating crown above the card - doesn't take space from content */
+.founder-crown-floating {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    z-index: 10;
+    filter: drop-shadow(0 4px 8px rgba(251, 191, 36, 0.6));
+    animation: crownFloat 2s ease-in-out infinite;
+    pointer-events: none; /* Don't block clicks */
+}
+
+@keyframes crownFloat {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Premium badge crown at top (deprecated - keeping for fallback) */
 .founder-crown-badge {
     font-size: 2rem;
     margin-bottom: 0.25rem;
