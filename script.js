@@ -837,6 +837,14 @@ function initializeStarWishesGrid() {
     const starWishes = wishes.star;
     const totalCircles = 50; // Total number of circles in the grid
 
+    // Phrases for different languages
+    const phrases = {
+        en: 'Write your wish',
+        es: 'Escribe tu deseo',
+        pt: 'Escreva seu desejo',
+        fr: 'Écris ton vœu'
+    };
+
     for (let i = 1; i <= totalCircles; i++) {
         const starCircle = document.createElement('div');
         starCircle.className = 'star-wish-circle';
@@ -850,9 +858,12 @@ function initializeStarWishesGrid() {
             `;
             starCircle.onclick = () => openViewWishModal(starWish, i, 'star');
         } else {
-            // Empty - show star with blue glow effect (CSS handles star icon via ::before)
+            // Empty - show star with blue glow effect and text
             starCircle.innerHTML = `
-                <div class="star-wish-content">$1.99</div>
+                <div class="star-wish-content">
+                    <div class="star-wish-price">$1.99</div>
+                    <div class="star-wish-text">${phrases[lang] || phrases.en}</div>
+                </div>
             `;
             starCircle.onclick = () => handleTileClick(i, 'star');
         }
@@ -862,25 +873,30 @@ function initializeStarWishesGrid() {
 }
 
 /**
- * Setup stars slider navigation
+ * Setup stars navigation buttons (scroll up/down)
  */
 function setupStarsSlider() {
-    const prevBtn = document.getElementById('sliderPrevStar');
-    const nextBtn = document.getElementById('sliderNextStar');
-    const wrapper = document.querySelector('.stars-slider-wrapper');
+    const scrollUpBtn = document.getElementById('scrollUpBtn');
+    const scrollDownBtn = document.getElementById('scrollDownBtn');
+    const gridContainer = document.getElementById('starWishesGrid');
 
-    if (!prevBtn || !nextBtn || !wrapper) return;
+    if (!scrollUpBtn || !scrollDownBtn || !gridContainer) {
+        console.warn('Star wishes navigation buttons not found');
+        return;
+    }
 
-    prevBtn.addEventListener('click', () => {
-        wrapper.scrollBy({
-            left: -400,
+    // Scroll up by 3 rows (~450px)
+    scrollUpBtn.addEventListener('click', () => {
+        gridContainer.scrollBy({
+            top: -450,
             behavior: 'smooth'
         });
     });
 
-    nextBtn.addEventListener('click', () => {
-        wrapper.scrollBy({
-            left: 400,
+    // Scroll down by 3 rows (~450px)
+    scrollDownBtn.addEventListener('click', () => {
+        gridContainer.scrollBy({
+            top: 450,
             behavior: 'smooth'
         });
     });

@@ -34,6 +34,24 @@ body.dark-mode .time-separator {
     color: #444444;
 }
 
+body.dark-mode .subtitle {
+    color: #d1d5db;
+}
+
+body.dark-mode .constellation-subtitle {
+    color: #fbbf24;
+}
+
+body.dark-mode .founder-wish-price {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .founder-wish-text {
+    color: #f5f5f5;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
 /* Dark Mode Toggle Button */
 .dark-mode-toggle {
     position: fixed;
@@ -222,20 +240,21 @@ header {
     font-weight: 300;
 }
 
-/* Founder Wishes Container (4 large diamonds) */
+/* Founder Wishes Container (4 large diamonds) - 1 row x 4 columns */
 .founder-wishes-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
     margin: 3rem auto 4rem;
-    flex-wrap: wrap;
-    max-width: 1200px;
+    padding: 2rem 1rem;
+    max-width: 1000px;
 }
 
 .founder-wish {
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    margin: 0 auto;
     background: url('ESTETICAS/deseo-fundador-alt.jpg') center center / contain no-repeat;
     cursor: pointer;
     transition: all 0.4s ease;
@@ -342,12 +361,58 @@ header {
     }
 }
 
-/* Star Wishes Grid (small circles with star icons) */
-.star-wishes-grid {
+/* Star Wishes Navigation */
+.star-wishes-section {
+    position: relative;
+}
+
+.star-wishes-nav {
     display: flex;
-    overflow-x: auto;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.nav-button {
+    background: rgba(96, 165, 250, 0.2);
+    border: 2px solid rgba(96, 165, 250, 0.5);
+    color: #60a5fa;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.nav-button:hover {
+    background: rgba(96, 165, 250, 0.3);
+    border-color: rgba(96, 165, 250, 0.8);
+    transform: scale(1.05);
+}
+
+.nav-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+body.dark-mode .nav-button {
+    background: rgba(96, 165, 250, 0.15);
+    border-color: rgba(96, 165, 250, 0.4);
+}
+
+body.dark-mode .nav-button:hover {
+    background: rgba(96, 165, 250, 0.25);
+}
+
+/* Star Wishes Grid (3 columns x 9 rows visible) */
+.star-wishes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     padding: 2rem 1rem;
+    max-height: 1350px; /* ~150px per row x 9 rows */
+    overflow-y: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
@@ -355,7 +420,7 @@ header {
 }
 
 .star-wishes-grid::-webkit-scrollbar {
-    height: 8px;
+    width: 8px;
 }
 
 .star-wishes-grid::-webkit-scrollbar-track {
@@ -372,9 +437,10 @@ body.dark-mode .star-wishes-grid::-webkit-scrollbar-thumb {
 }
 
 .star-wish-circle {
-    min-width: 120px;
-    width: 120px;
+    width: 100%;
+    max-width: 150px;
     height: 120px;
+    margin: 0 auto;
     border-radius: 0;
     background: rgba(15, 23, 42, 0.6);
     border: 2px solid rgba(96, 165, 250, 0.7);
@@ -461,11 +527,40 @@ body.dark-mode .star-wishes-grid::-webkit-scrollbar-thumb {
 
 .star-wish-content {
     text-align: center;
-    font-size: 0.6rem;
-    color: #60a5fa;
-    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
     margin-top: 0.25rem;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.star-wish-price {
+    font-size: 0.9rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.star-wish-text {
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: #2a2a2a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .star-wish-price {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .star-wish-text {
+    color: #f5f5f5;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 
 /* Map Section */
