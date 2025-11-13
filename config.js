@@ -26,7 +26,7 @@
  */
 const PAYPAL_CONFIG = {
     // Replace with your actual PayPal Client ID
-    clientId: 'Aa2p7iXBVPd6rl0QIfp5qvdv_TwLRB4p7d7cuDyWcVWP2-27hwelERtKnTE-9JqexnuUANTG4W9grFn4',
+    clientId: 'AXi2xkj761AvR5Iadpo0AgjZU77pkxsYrxSs9y7Dzk-Tq7X3Wp5Vst7Q48wEmCmnwa2WpbI3eYBhm4Ez',
 
     // 'sandbox' for testing, 'production' for live
     mode: 'production',
