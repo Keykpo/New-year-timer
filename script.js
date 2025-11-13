@@ -517,6 +517,10 @@ function updateMap() {
         return;
     }
 
+    // Track celebration progress
+    let totalTimezones = 0;
+    let celebratingTimezones = 0;
+
     // Process each country path
     paths.forEach(path => {
         const countryCode = path.id.toUpperCase();
@@ -524,11 +528,16 @@ function updateMap() {
         // Check if we have timezone data for this country
         if (countryTimezones[countryCode]) {
             const country = countryTimezones[countryCode];
+            totalTimezones++;
 
             // Calculate if this timezone has already entered the new year
             // New Year happens at different times in UTC depending on timezone offset
             const timezoneNewYear = new Date(newYearUTC.getTime() - (country.offset * 60 * 60 * 1000));
             const hasCelebrated = now >= timezoneNewYear;
+
+            if (hasCelebrated) {
+                celebratingTimezones++;
+            }
 
             // Apply color classes
             path.classList.remove('celebrating', 'waiting');
@@ -536,6 +545,8 @@ function updateMap() {
 
             if (hasCelebrated) {
                 path.classList.add('celebrating');
+                // Add celebration animation class for countries that just entered
+                path.classList.add('celebrating-animation');
             } else {
                 path.classList.add('waiting');
             }
@@ -559,6 +570,41 @@ function updateMap() {
             path.style.cursor = 'default';
         }
     });
+
+    // Update progress counter
+    updateProgressCounter(celebratingTimezones, totalTimezones);
+}
+
+/**
+ * Update the progress counter showing how many timezones have entered 2026
+ */
+function updateProgressCounter(celebrating, total) {
+    let progressElement = document.getElementById('timezone-progress');
+
+    if (!progressElement) {
+        // Create progress element if it doesn't exist
+        const mapTitle = document.querySelector('.map-title');
+        if (mapTitle) {
+            progressElement = document.createElement('p');
+            progressElement.id = 'timezone-progress';
+            progressElement.className = 'timezone-progress';
+            mapTitle.insertAdjacentElement('afterend', progressElement);
+        }
+    }
+
+    if (progressElement && total > 0) {
+        const percentage = Math.round((celebrating / total) * 100);
+        const lang = detectLanguage();
+
+        const messages = {
+            en: `🌍 ${celebrating} of ${total} timezones have entered 2026 (${percentage}%)`,
+            es: `🌍 ${celebrating} de ${total} zonas horarias ya están en 2026 (${percentage}%)`,
+            pt: `🌍 ${celebrating} de ${total} fusos horários já estão em 2026 (${percentage}%)`,
+            fr: `🌍 ${celebrating} de ${total} fuseaux horaires sont déjà en 2026 (${percentage}%)`
+        };
+
+        progressElement.textContent = messages[lang] || messages.en;
+    }
 }
 
 // ====================================
@@ -1782,7 +1828,7 @@ function loadTestWishes() {
             // Cargar cada deseo con un slot único después de un pequeño delay
             setTimeout(() => {
                 testWishes.forEach((wish, index) => {
-                    const slot = index + 1; // Slots 1, 2, 3, 4... 22
+                    const slot = index + 2; // Slots 2, 3, 4... 23 (skip slot 1)
                     const randomTitle = getRandomWishTitle('star'); // Generate random title
                     database.ref(`wishes/star/${slot}`).set({
                         text: wish.text,
@@ -1842,7 +1888,7 @@ function loadTestFounderWishes() {
             // Cargar cada deseo con un slot único después de un pequeño delay
             setTimeout(() => {
                 founderWishes.forEach((wish, index) => {
-                    const slot = index + 1; // Slots 1, 2
+                    const slot = index + 2; // Slots 2, 3 (skip slot 1)
                     const randomTitle = getRandomWishTitle('founder'); // Generate random title
                     database.ref(`wishes/founder/${slot}`).set({
                         text: wish.text,

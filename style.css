@@ -782,14 +782,36 @@ body.dark-mode .star-wish-text {
     font-weight: 600;
 }
 
+/* Timezone Progress Counter */
+.timezone-progress {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    animation: fadeIn 0.5s ease-in;
+}
+
 .map-container {
-    background: rgba(15, 23, 42, 0.5);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
     border-radius: 1rem;
     padding: 2rem;
     margin-bottom: 1.5rem;
     display: block;
     width: 100%;
     overflow: visible;
+    position: relative;
+    /* Add starry background effect */
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(2px 2px at 60% 70%, white, transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, white, transparent),
+        radial-gradient(2px 2px at 90% 60%, white, transparent),
+        radial-gradient(1px 1px at 33% 80%, white, transparent),
+        radial-gradient(1px 1px at 15% 90%, white, transparent);
+    background-size: 200% 200%;
+    animation: starsMove 120s linear infinite;
 }
 
 .map-container svg {
@@ -2380,6 +2402,53 @@ footer {
         transform: scale(4);
         opacity: 0;
     }
+}
+
+/* Stars Movement Animation */
+@keyframes starsMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Celebration Animation for Countries */
+@keyframes celebrateCountry {
+    0%, 100% {
+        filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.8));
+    }
+    50% {
+        filter: drop-shadow(0 0 20px rgba(16, 185, 129, 1))
+                drop-shadow(0 0 30px rgba(16, 185, 129, 0.8));
+    }
+}
+
+/* Map Country Styles */
+.country-path {
+    transition: all 0.3s ease;
+}
+
+.country-path.celebrating {
+    fill: #10b981;
+    stroke: #34d399;
+    stroke-width: 0.5;
+}
+
+.country-path.celebrating-animation {
+    animation: celebrateCountry 2s ease-in-out;
+}
+
+.country-path.waiting {
+    fill: #3b82f6;
+    stroke: #60a5fa;
+    stroke-width: 0.3;
+}
+
+.country-path:hover {
+    opacity: 0.8;
+    filter: brightness(1.2);
 }
 
 /* Connection Lines for Constellation */
