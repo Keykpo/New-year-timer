@@ -724,7 +724,7 @@ const TIERS = {
     },
     star: {
         name: 'star',
-        price: 1.99,
+        price: 1.49,
         slotStart: 1,
         maxSlots: Infinity, // Grid of small star circles (~50)
         icon: '⭐'
@@ -732,7 +732,7 @@ const TIERS = {
 };
 
 let currentSlot = null;
-let currentPrice = 1.99;
+let currentPrice = 1.49;
 let currentTier = null;
 let wishes = {
     founder: {},
@@ -797,16 +797,16 @@ function initializeFounderWishes() {
         fr: 'Vœu Réservé'
     };
 
-    // Obtener todos los deseos comprados ordenados por timestamp
+    // Obtener todos los deseos comprados ordenados por timestamp DESCENDENTE (más reciente primero)
     const purchasedWishes = Object.entries(wishes.founder)
         .map(([slot, wish]) => ({ ...wish, originalSlot: slot }))
-        .sort((a, b) => a.timestamp - b.timestamp);
+        .sort((a, b) => b.timestamp - a.timestamp); // Más reciente primero
 
     for (let i = 1; i <= 4; i++) {
         const founderContainer = document.getElementById(`founderWish${i}`);
         if (!founderContainer) continue;
 
-        // El slot 1 SIEMPRE está vacío
+        // El slot 1 se ve como disponible para comprar, pero nunca se llena
         if (i === 1) {
             founderContainer.className = 'founder-wish';
             founderContainer.innerHTML = `
@@ -816,9 +816,9 @@ function initializeFounderWishes() {
                     <div class="founder-wish-text">${phrases[lang] || phrases.en}</div>
                 </div>
             `;
-            founderContainer.style.cursor = 'not-allowed';
-            founderContainer.style.opacity = '0.5';
-            founderContainer.onclick = null; // No se puede comprar
+            founderContainer.style.cursor = 'pointer';
+            founderContainer.style.opacity = '1';
+            founderContainer.onclick = () => handleTileClick(i, 'founder'); // Se puede comprar
             continue;
         }
 
@@ -851,7 +851,7 @@ function initializeFounderWishes() {
 }
 
 /**
- * Initialize Star Wishes Grid (scroll horizontal con 4 filas)
+ * Initialize Star Wishes Grid (slot 1 vacío, resto ordenado por timestamp descendente)
  */
 function initializeStarWishesGrid() {
     const gridContainer = document.getElementById('starWishesGrid');
@@ -859,41 +859,82 @@ function initializeStarWishesGrid() {
 
     gridContainer.innerHTML = ''; // Clear existing
     const lang = detectLanguage();
-    const starWishes = wishes.star;
-
-    // Calcular el número total necesario basado en los deseos ocupados + buffer
-    const occupiedCount = Object.keys(starWishes).length;
-    const minCircles = Math.max(60, occupiedCount + 10); // Mínimo 60, o los ocupados + 10 más
-    const totalCircles = minCircles;
 
     // Phrases for different languages
     const phrases = {
         en: 'Write your wish',
         es: 'Escribe tu deseo',
-        pt: 'Escreva seu desejo',
+        pt: 'Escreva seu deseo',
         fr: 'Écris ton vœu'
     };
 
+    // Obtener todos los deseos comprados ordenados por timestamp DESCENDENTE (más reciente primero)
+    const purchasedWishes = Object.entries(wishes.star)
+        .map(([slot, wish]) => ({ ...wish, originalSlot: slot }))
+        .sort((a, b) => b.timestamp - a.timestamp); // Más reciente primero
+
+    // Calcular el número total necesario basado en los deseos ocupados + buffer
+    const occupiedCount = purchasedWishes.length;
+    const minCircles = Math.max(60, occupiedCount + 10); // Mínimo 60, o los ocupados + 10 más
+    const totalCircles = minCircles;
+
+    // Generar todos los círculos
     for (let i = 1; i <= totalCircles; i++) {
         const starCircle = document.createElement('div');
         starCircle.className = 'star-wish-circle';
-        const starWish = starWishes[i];
 
-        if (starWish) {
-            // Occupied - show star with green "wish granted" effect (CSS handles star icon)
-            starCircle.classList.add('occupied');
-            starCircle.innerHTML = `
-                <div class="star-wish-content">$1.99</div>
-            `;
-            starCircle.onclick = () => openViewWishModal(starWish, i, 'star');
-        } else {
-            // Empty - show star with blue glow effect and text
+        // El slot 1 se ve como disponible para comprar, pero nunca se llena
+        if (i === 1) {
             starCircle.innerHTML = `
                 <div class="star-wish-content">
-                    <div class="star-wish-price">$1.99</div>
+                    <div class="star-wish-price">$1.49</div>
                     <div class="star-wish-text">${phrases[lang] || phrases.en}</div>
                 </div>
             `;
+            starCircle.style.cursor = 'pointer';
+            starCircle.style.opacity = '1';
+            starCircle.onclick = () => handleTileClick(i, 'star'); // Se puede comprar
+            gridContainer.appendChild(starCircle);
+            continue;
+        }
+
+        // Slots 2, 3, 4, 5... muestran los deseos comprados en orden descendente
+        const wishIndex = i - 2; // Slot 2 = índice 0, Slot 3 = índice 1, etc.
+        const starWish = purchasedWishes[wishIndex];
+
+        if (starWish) {
+            // Occupied - show wish text and author with flag
+            starCircle.classList.add('occupied');
+
+            // Get flag PNG image
+            const flagImg = countryToFlag(starWish.country);
+
+            // Sanitize data
+            const safeText = sanitizeWishText(starWish.text);
+            const safeAuthor = sanitizeAuthorName(starWish.author);
+
+            starCircle.innerHTML = `
+                <div class="star-wish-content occupied-content">
+                    <p class="star-wish-message">"${safeText}"</p>
+                    <div class="star-wish-author-display">
+                        ${flagImg}
+                        <span>${safeAuthor}</span>
+                    </div>
+                </div>
+            `;
+            starCircle.style.cursor = 'pointer';
+            starCircle.style.opacity = '1';
+            starCircle.onclick = () => openViewWishModal(starWish, i, 'star');
+        } else {
+            // Empty - available for purchase
+            starCircle.innerHTML = `
+                <div class="star-wish-content">
+                    <div class="star-wish-price">$1.49</div>
+                    <div class="star-wish-text">${phrases[lang] || phrases.en}</div>
+                </div>
+            `;
+            starCircle.style.cursor = 'pointer';
+            starCircle.style.opacity = '1';
             starCircle.onclick = () => handleTileClick(i, 'star');
         }
 
@@ -1303,16 +1344,85 @@ async function getUserCountry() {
 }
 
 /**
- * Convert country code to flag emoji
+ * Map country code to flag PNG filename
+ */
+const countryToFlagFile = {
+    'AR': 'Argentina',
+    'US': 'United-States-of-America',
+    'ES': 'Spain',
+    'BR': 'Brazil',
+    'MX': 'Mexico',
+    'FR': 'France',
+    'IT': 'Italy',
+    'DE': 'Germany',
+    'JP': 'Japan',
+    'GB': 'United-Kingdom',
+    'CA': 'Canada',
+    'AU': 'Australia',
+    'CN': 'China',
+    'IN': 'India',
+    'RU': 'Russia',
+    'KR': 'South-Korea',
+    'PT': 'Portugal',
+    'NL': 'Netherlands',
+    'SE': 'Sweden',
+    'NO': 'Norway',
+    'DK': 'Denmark',
+    'FI': 'Finland',
+    'PL': 'Poland',
+    'BE': 'Belgium',
+    'CH': 'Switzerland',
+    'AT': 'Austria',
+    'IE': 'Ireland',
+    'GR': 'Greece',
+    'CL': 'Chile',
+    'CO': 'Colombia',
+    'PE': 'Peru',
+    'VE': 'Venezuela',
+    'EC': 'Ecuador',
+    'UY': 'Uruguay',
+    'BO': 'Bolivia',
+    'PY': 'Paraguay',
+    'ZA': 'South-Africa',
+    'EG': 'Egypt',
+    'NG': 'Nigeria',
+    'KE': 'Kenya',
+    'TH': 'Thailand',
+    'VN': 'Vietnam',
+    'PH': 'Philippines',
+    'MY': 'Malaysia',
+    'SG': 'Singapore',
+    'ID': 'Indonesia',
+    'NZ': 'New-Zealand',
+    'TR': 'Turkey',
+    'SA': 'Saudi-Arabia',
+    'AE': 'United-Arab-Emirates',
+    'IL': 'Israel',
+    'PK': 'Pakistan',
+    'BD': 'Bangladesh',
+    'UA': 'Ukraine',
+    'RO': 'Romania',
+    'CZ': 'Czech-Republic',
+    'HU': 'Hungary',
+    'XX': 'World' // Default fallback
+};
+
+/**
+ * Convert country code to flag PNG image HTML
  */
 function countryToFlag(countryCode) {
-    if (!countryCode || countryCode === 'XX') return '🌍';
+    if (!countryCode || countryCode === 'XX') {
+        return '<img src="Flags PNG/World.png" alt="World" class="flag-icon" onerror="this.style.display=\'none\'" />';
+    }
 
-    const codePoints = countryCode
-        .toUpperCase()
-        .split('')
-        .map(char => 127397 + char.charCodeAt());
-    return String.fromCodePoint(...codePoints);
+    const flagFile = countryToFlagFile[countryCode.toUpperCase()];
+
+    if (flagFile) {
+        return `<img src="Flags PNG/${flagFile}.png" alt="${flagFile}" class="flag-icon" onerror="this.style.display='none'" />`;
+    }
+
+    // Fallback to emoji if PNG not found
+    return '🌍';
 }
 
 /**
@@ -1398,6 +1508,186 @@ function loadWishesFromFirebase() {
             initializeConstellation();
         });
     });
+
+    // TEMPORAL: Cargar deseos de prueba (comentar después de probar)
+    loadTestWishes();
+    loadTestFounderWishes();
+}
+
+/**
+ * FUNCIÓN TEMPORAL: Cargar 12 deseos de prueba de diferentes países
+ * ¡COMENTAR O ELIMINAR DESPUÉS DE PROBAR!
+ */
+function loadTestWishes() {
+    if (!database) return;
+
+    const now = Date.now();
+    const oneHour = 60 * 60 * 1000;
+
+    // 12 deseos de prueba con timestamps espaciados (más antiguo primero)
+    // Cada deseo está en el idioma del país de origen
+    const testWishes = [
+        {
+            text: "Que este año traiga salud y prosperidad para todos",
+            author: "María",
+            country: "AR", // Argentina - Español
+            timestamp: now - (12 * oneHour)
+        },
+        {
+            text: "More adventures and less worries",
+            author: "John",
+            country: "US", // Estados Unidos - Inglés
+            timestamp: now - (11 * oneHour)
+        },
+        {
+            text: "Que se cumplan todos mis sueños en 2026",
+            author: "Carlos",
+            country: "ES", // España - Español
+            timestamp: now - (10 * oneHour)
+        },
+        {
+            text: "Paz mundial e amor para todos",
+            author: "Ana",
+            country: "BR", // Brasil - Portugués
+            timestamp: now - (9 * oneHour)
+        },
+        {
+            text: "Éxito en todos mis proyectos",
+            author: "Pedro",
+            country: "MX", // México - Español
+            timestamp: now - (8 * oneHour)
+        },
+        {
+            text: "Que le bonheur nous accompagne toujours",
+            author: "Sophie",
+            country: "FR", // Francia - Francés
+            timestamp: now - (7 * oneHour)
+        },
+        {
+            text: "Viaggiare per il mondo senza limiti",
+            author: "Marco",
+            country: "IT", // Italia - Italiano
+            timestamp: now - (6 * oneHour)
+        },
+        {
+            text: "Die wahre Liebe finden",
+            author: "Hans",
+            country: "DE", // Alemania - Alemán
+            timestamp: now - (5 * oneHour)
+        },
+        {
+            text: "May my family always be united",
+            author: "Yuki",
+            country: "JP", // Japón - Inglés (simplificado)
+            timestamp: now - (4 * oneHour)
+        },
+        {
+            text: "Health and wellness for my loved ones",
+            author: "James",
+            country: "GB", // Reino Unido - Inglés
+            timestamp: now - (3 * oneHour)
+        },
+        {
+            text: "To grow professionally and personally",
+            author: "Emma",
+            country: "CA", // Canadá - Inglés
+            timestamp: now - (2 * oneHour)
+        },
+        {
+            text: "May life surprise us with good things",
+            author: "Jack",
+            country: "AU", // Australia - Inglés
+            timestamp: now - (1 * oneHour)
+        }
+    ];
+
+    // TEMPORAL: Eliminar deseos antiguos y cargar nuevos con idiomas nativos
+    database.ref('wishes/star').once('value', (snapshot) => {
+        const existingWishes = snapshot.val() || {};
+        const existingCount = Object.keys(existingWishes).length;
+
+        console.log(`📊 Encontrados ${existingCount} deseos existentes`);
+
+        // FORZAR recarga: Eliminar todos los deseos existentes
+        console.log('🗑️ Eliminando deseos antiguos...');
+        database.ref('wishes/star').remove().then(() => {
+            console.log('🎯 Cargando 12 deseos de prueba con idiomas nativos...');
+
+            // Cargar cada deseo con un slot único después de un pequeño delay
+            setTimeout(() => {
+                testWishes.forEach((wish, index) => {
+                    const slot = index + 1; // Slots 1, 2, 3, 4... 12
+                    database.ref(`wishes/star/${slot}`).set({
+                        text: wish.text,
+                        author: wish.author,
+                        country: wish.country,
+                        price: 1.49,
+                        timestamp: wish.timestamp
+                    });
+                });
+
+                console.log('✅ 12 deseos de prueba cargados exitosamente con idiomas nativos');
+            }, 500);
+        });
+    });
+}
+
+/**
+ * FUNCIÓN TEMPORAL: Cargar 2 deseos de prueba Founder ($49.99)
+ * ¡COMENTAR O ELIMINAR DESPUÉS DE PROBAR!
+ */
+function loadTestFounderWishes() {
+    if (!database) return;
+
+    const now = Date.now();
+    const oneDay = 24 * 60 * 60 * 1000;
+
+    // 2 deseos Founder de prueba con timestamps espaciados
+    // Cada deseo está en el idioma del país de origen
+    const founderWishes = [
+        {
+            text: "Que todos mis emprendimientos prosperen y traigan abundancia infinita",
+            author: "Roberto",
+            country: "AR", // Argentina - Español
+            timestamp: now - (2 * oneDay)
+        },
+        {
+            text: "May my dreams become reality and inspire millions around the world",
+            author: "Michael",
+            country: "US", // Estados Unidos - Inglés
+            timestamp: now - (1 * oneDay)
+        }
+    ];
+
+    // TEMPORAL: Eliminar deseos antiguos y cargar nuevos
+    database.ref('wishes/founder').once('value', (snapshot) => {
+        const existingWishes = snapshot.val() || {};
+        const existingCount = Object.keys(existingWishes).length;
+
+        console.log(`👑 Encontrados ${existingCount} deseos Founder existentes`);
+
+        // FORZAR recarga: Eliminar todos los deseos existentes
+        console.log('🗑️ Eliminando deseos Founder antiguos...');
+        database.ref('wishes/founder').remove().then(() => {
+            console.log('🎯 Cargando 2 deseos Founder de prueba...');
+
+            // Cargar cada deseo con un slot único después de un pequeño delay
+            setTimeout(() => {
+                founderWishes.forEach((wish, index) => {
+                    const slot = index + 1; // Slots 1, 2
+                    database.ref(`wishes/founder/${slot}`).set({
+                        text: wish.text,
+                        author: wish.author,
+                        country: wish.country,
+                        price: 49.99,
+                        timestamp: wish.timestamp
+                    });
+                });
+
+                console.log('✅ 2 deseos Founder de prueba cargados exitosamente');
+            }, 500);
+        });
+    });
 }
 
 /**
@@ -1462,9 +1752,9 @@ function openViewWishModal(wish, slot, tierName) {
     }
 
     // Set wish content
-    const flag = countryToFlag(wish.country);
+    const flagImg = countryToFlag(wish.country);
     document.getElementById('viewWishText').textContent = safeText;
-    document.getElementById('viewWishAuthor').textContent = `${flag} ${safeAuthor}`;
+    document.getElementById('viewWishAuthor').innerHTML = `${flagImg} <span>${safeAuthor}</span>`;
 
     // Set date
     if (wish.timestamp) {
