@@ -782,6 +782,21 @@ function initializeConstellation() {
 function initializeFounderWishes() {
     const lang = detectLanguage();
 
+    // Phrases for different languages
+    const phrases = {
+        en: 'Make your wish',
+        es: 'Pide tu deseo',
+        pt: 'Faça seu desejo',
+        fr: 'Fais ton vœu'
+    };
+
+    const occupiedText = {
+        en: 'Wish Reserved',
+        es: 'Deseo Reservado',
+        pt: 'Desejo Reservado',
+        fr: 'Vœu Réservé'
+    };
+
     for (let i = 1; i <= 4; i++) {
         const founderContainer = document.getElementById(`founderWish${i}`);
         if (!founderContainer) continue;
@@ -789,18 +804,26 @@ function initializeFounderWishes() {
         const founderWish = wishes.founder[i];
 
         if (founderWish) {
-            // Occupied - show badge with occupied state
+            // Occupied - show reserved state
             founderContainer.className = 'founder-wish occupied';
             founderContainer.innerHTML = `
-                <img src="deseo-fundador.png" alt="Deseo Fundador" class="founder-wish-badge" />
+                <div class="founder-wish-content">
+                    <div class="founder-wish-icon">✨</div>
+                    <div class="founder-wish-price">$49.99</div>
+                    <div class="founder-wish-text">${occupiedText[lang] || occupiedText.en}</div>
+                </div>
             `;
             founderContainer.style.cursor = 'pointer';
             founderContainer.onclick = () => openViewWishModal(founderWish, i, 'founder');
         } else {
-            // Empty - show badge in available state
+            // Empty - show available state with price and phrase
             founderContainer.className = 'founder-wish';
             founderContainer.innerHTML = `
-                <img src="deseo-fundador.png" alt="Deseo Fundador" class="founder-wish-badge" />
+                <div class="founder-wish-content">
+                    <div class="founder-wish-icon">👑</div>
+                    <div class="founder-wish-price">$49.99</div>
+                    <div class="founder-wish-text">${phrases[lang] || phrases.en}</div>
+                </div>
             `;
             founderContainer.style.cursor = 'pointer';
             founderContainer.onclick = () => handleTileClick(i, 'founder');
