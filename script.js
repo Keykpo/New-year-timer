@@ -883,8 +883,8 @@ function initializeStarsSlider() {
     emptyStar.className = 'star-wish';
     emptyStar.innerHTML = `
         <div class="star-wish-content">
-            <div style="font-size: 1.5rem;">⭐</div>
-            <p style="font-size: 0.6rem; color: #fbbf24; margin-top: 0.25rem;">$1.99</p>
+            <div style="font-size: 2.5rem; color: #fbbf24;">★</div>
+            <p style="font-size: 0.65rem; color: #fbbf24; margin-top: 0.25rem; font-weight: 600;">$1.99</p>
         </div>
     `;
     emptyStar.onclick = () => handleTileClick(nextAvailableSlot, 'star');
@@ -894,15 +894,15 @@ function initializeStarsSlider() {
     starKeys.forEach(slot => {
         const wish = starWishes[slot];
         const star = document.createElement('div');
-        star.className = 'star-wish';
+        star.className = 'star-wish occupied';
 
         const safeAuthor = sanitizeAuthorName(wish.author);
         const flag = countryToFlag(wish.country);
 
         star.innerHTML = `
             <div class="star-wish-content">
-                <div style="font-size: 1.2rem;">⭐</div>
-                <p style="font-size: 0.55rem; color: #cbd5e1; margin-top: 0.15rem;">${flag} ${safeAuthor.substring(0, 8)}</p>
+                <div style="font-size: 2.5rem; color: #fbbf24;">★</div>
+                <p style="font-size: 0.6rem; color: #cbd5e1; margin-top: 0.15rem;">${flag} ${safeAuthor.substring(0, 8)}</p>
             </div>
         `;
         star.onclick = () => openViewWishModal(wish, slot, 'star');
@@ -914,10 +914,10 @@ function initializeStarsSlider() {
     for (let i = sliderTrack.children.length; i < totalStars; i++) {
         const placeholder = document.createElement('div');
         placeholder.className = 'star-wish';
-        placeholder.style.opacity = '0.3';
+        placeholder.style.opacity = '0.25';
         placeholder.innerHTML = `
             <div class="star-wish-content">
-                <div style="font-size: 1.2rem;">⭐</div>
+                <div style="font-size: 2.5rem; color: #94a3b8;">☆</div>
             </div>
         `;
         sliderTrack.appendChild(placeholder);
@@ -1543,9 +1543,40 @@ function init() {
     setupViewWishModal();
 }
 
+// Generate starry background
+function generateStars() {
+    const starsContainer = document.getElementById('starsBackground');
+    if (!starsContainer) return;
+
+    const numberOfStars = 150; // Number of stars to generate
+
+    for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+
+        // Random position
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+
+        // Random size variation
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+
+        // Random animation delay
+        star.style.animationDelay = `${Math.random() * 3}s`;
+
+        starsContainer.appendChild(star);
+    }
+}
+
 // Start everything when DOM is loaded
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', () => {
+        generateStars(); // Generate stars first
+        init();
+    });
 } else {
+    generateStars(); // Generate stars first
     init();
 }
