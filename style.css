@@ -2062,7 +2062,6 @@ footer {
     font-weight: 400;
     font-style: italic;
     padding: 0 2rem;
-    animation: slideUp 0.6s ease-out;
     word-break: break-word;
     overflow-wrap: break-word;
     max-height: 15rem;
@@ -2073,7 +2072,6 @@ footer {
     text-align: center;
     padding-top: 2rem;
     border-top: 1px solid rgba(58, 134, 255, 0.2);
-    animation: fadeIn 0.8s ease-out;
 }
 
 .view-wish-author {

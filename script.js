@@ -743,38 +743,43 @@ const TIERS = {
 // Random wish titles for each tier
 const WISH_TITLES = {
     founder: [
-        'Golden Wish',
-        'Royal Wish',
-        'Imperial Wish',
-        'Supreme Wish',
-        'Platinum Wish',
-        'Diamond Wish',
-        'Crown Wish',
-        'Monarch Wish',
-        'Elite Wish',
-        'Celestial Wish',
-        'Eternal Wish',
-        'Legend Wish',
-        'Majestic Wish',
-        'Noble Wish',
-        'Sovereign Wish'
+        'Golden Dream',
+        'Royal Destiny',
+        'Imperial Fortune',
+        'Supreme Blessing',
+        'Platinum Legacy',
+        'Diamond Promise',
+        'Crown Jewel',
+        'Monarch\'s Grace',
+        'Elite Vision',
+        'Celestial Harmony',
+        'Eternal Glory',
+        'Legend\'s Path',
+        'Majestic Hope',
+        'Noble Quest',
+        'Sovereign Light'
     ],
     star: [
-        'Star Wish',
-        'Bright Wish',
-        'Hope Wish',
-        'Dream Wish',
-        'Cosmic Wish',
-        'Shining Wish',
-        'Lucky Wish',
-        'Magic Wish',
-        'Pure Wish',
-        'True Wish',
-        'Sweet Wish',
-        'Gentle Wish',
-        'Warm Wish',
-        'Kind Wish',
-        'Happy Wish'
+        'Starlight Dream',
+        'Moonbeam Wish',
+        'Sunrise Hope',
+        'Crystal Vision',
+        'Aurora Dream',
+        'Twilight Wish',
+        'Ocean Breeze',
+        'Mountain Echo',
+        'Forest Whisper',
+        'Desert Star',
+        'Northern Light',
+        'Southern Cross',
+        'Silver Lining',
+        'Golden Hour',
+        'Midnight Dream',
+        'Dawn Promise',
+        'Dusk Serenity',
+        'Cloud Nine',
+        'Rainbow Bridge',
+        'Shooting Star'
     ]
 };
 
@@ -1680,6 +1685,66 @@ function loadTestWishes() {
             author: "Jack",
             country: "AU", // Australia - Inglés
             timestamp: now - (1 * oneHour)
+        },
+        {
+            text: "Att mina drömmar blir verklighet",
+            author: "Lars",
+            country: "SE", // Suecia - Sueco
+            timestamp: now - (55 * 60 * 1000) // 55 minutos
+        },
+        {
+            text: "Здоровье и счастье моей семье",
+            author: "Ivan",
+            country: "RU", // Rusia - Ruso
+            timestamp: now - (50 * 60 * 1000) // 50 minutos
+        },
+        {
+            text: "새로운 시작과 희망",
+            author: "Min-jun",
+            country: "KR", // Corea del Sur - Coreano
+            timestamp: now - (45 * 60 * 1000) // 45 minutos
+        },
+        {
+            text: "Een jaar vol vreugde en voorspoed",
+            author: "Anna",
+            country: "NL", // Países Bajos - Holandés
+            timestamp: now - (40 * 60 * 1000) // 40 minutos
+        },
+        {
+            text: "Que a felicidade me acompanhe sempre",
+            author: "Lucas",
+            country: "PT", // Portugal - Portugués
+            timestamp: now - (35 * 60 * 1000) // 35 minutos
+        },
+        {
+            text: "Więcej miłości i spokoju",
+            author: "Kasia",
+            country: "PL", // Polonia - Polaco
+            timestamp: now - (30 * 60 * 1000) // 30 minutos
+        },
+        {
+            text: "Να πραγματοποιηθούν τα όνειρά μου",
+            author: "Nikos",
+            country: "GR", // Grecia - Griego
+            timestamp: now - (25 * 60 * 1000) // 25 minutos
+        },
+        {
+            text: "Success in every endeavor",
+            author: "Aisha",
+            country: "ZA", // Sudáfrica - Inglés
+            timestamp: now - (20 * 60 * 1000) // 20 minutos
+        },
+        {
+            text: "ความสุขและความสำเร็จในปีใหม่",
+            author: "Somchai",
+            country: "TH", // Tailandia - Tailandés
+            timestamp: now - (15 * 60 * 1000) // 15 minutos
+        },
+        {
+            text: "Thành công và hạnh phúc",
+            author: "Linh",
+            country: "VN", // Vietnam - Vietnamita
+            timestamp: now - (10 * 60 * 1000) // 10 minutos
         }
     ];
 
@@ -1693,12 +1758,12 @@ function loadTestWishes() {
         // FORZAR recarga: Eliminar todos los deseos existentes
         console.log('🗑️ Eliminando deseos antiguos...');
         database.ref('wishes/star').remove().then(() => {
-            console.log('🎯 Cargando 12 deseos de prueba con idiomas nativos...');
+            console.log('🎯 Cargando 22 deseos de prueba con idiomas nativos...');
 
             // Cargar cada deseo con un slot único después de un pequeño delay
             setTimeout(() => {
                 testWishes.forEach((wish, index) => {
-                    const slot = index + 1; // Slots 1, 2, 3, 4... 12
+                    const slot = index + 1; // Slots 1, 2, 3, 4... 22
                     const randomTitle = getRandomWishTitle('star'); // Generate random title
                     database.ref(`wishes/star/${slot}`).set({
                         text: wish.text,
@@ -1710,7 +1775,7 @@ function loadTestWishes() {
                     });
                 });
 
-                console.log('✅ 12 deseos de prueba cargados exitosamente con idiomas nativos y títulos aleatorios');
+                console.log('✅ 22 deseos de prueba cargados exitosamente con idiomas nativos y títulos aleatorios');
             }, 500);
         });
     });
