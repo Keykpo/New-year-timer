@@ -1770,12 +1770,12 @@ function openViewWishModal(wish, slot, tierName) {
 
     badge.className = `wish-tier-badge ${tierName}`;
 
-    if (tierName === 'premium') {
+    if (tierName === 'founder') {
         icon.textContent = '👑';
         tierText.textContent = "Founder's Wish";
-    } else if (tierName === 'vip') {
-        icon.textContent = '💎';
-        tierText.textContent = 'Constellation Wish';
+    } else if (tierName === 'star') {
+        icon.textContent = '⭐';
+        tierText.textContent = 'Star Wish';
     } else {
         icon.textContent = '⭐';
         tierText.textContent = 'Star Wish';
