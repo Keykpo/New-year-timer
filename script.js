@@ -1421,8 +1421,9 @@ function initMercadoPagoButton() {
 
         try {
             // Call backend to create payment preference
-            // Use relative URL to work in both development and production
-            const response = await fetch('/api/create-preference', {
+            // Use Render backend URL for production
+            const BACKEND_URL = 'https://new-year-timer.onrender.com';
+            const response = await fetch(`${BACKEND_URL}/api/create-preference`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

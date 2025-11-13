@@ -11,8 +11,21 @@ const { MercadoPagoConfig, Preference } = require('mercadopago');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// CORS Configuration - Allow requests from production and development
+const corsOptions = {
+    origin: [
+        'https://newyeartimers.com',
+        'https://www.newyeartimers.com',
+        'http://localhost:3000',
+        'http://127.0.0.1:3000'
+    ],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
