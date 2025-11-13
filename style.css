@@ -564,11 +564,11 @@ footer {
     padding: 2rem;
 }
 
-/* Founder Grid - 1 row, 4 columns visible, horizontal scroll */
+/* Founder Grid - 1 row, 2 columns visible, horizontal scroll */
 #wishesGridFounder {
     display: grid;
-    grid-template-columns: repeat(4, 280px);
-    grid-template-rows: 250px;
+    grid-template-columns: repeat(2, 220px);
+    grid-template-rows: 200px;
     grid-auto-flow: column;
     gap: 1.5rem;
     padding: 2rem;
@@ -586,10 +586,10 @@ footer {
 }
 
 /* Tile sizes by tier */
-/* Founder - Large (2 rows) */
+/* Founder - Medium size (2 columns visible) */
 .wish-tile[data-tier="premium"] {
-    width: 280px;
-    height: 250px;
+    width: 220px;
+    height: 200px;
 }
 
 /* Star - Smaller (4×5 grid) */
