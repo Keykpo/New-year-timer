@@ -1,0 +1,67 @@
+"Genera el diseño de una página web en modo claro (fondo blanco), siguiendo los principios de minimalismo y estética moderna.
+
+El diseño debe incluir los siguientes elementos, con las siguientes características estilísticas:
+
+Fondo: Un blanco puro (#FFFFFF) con una sutil textura de ruido (grain) apenas perceptible para evitar un blanco plano, y un gradiente radial muy ligero en el centro inferior que se desvanece de blanco a un gris muy pálido, para añadir profundidad.
+
+Título Principal: 'Tiempo Restante para tu Año Nuevo' en una tipografía sans-serif limpia (ej. Poppins o similar), bold, en color gris oscuro (#333).
+
+Subtítulo: 'Tu cuenta regresiva personal hacia 2026' en la misma tipografía, regular o light, en color gris medio (#666).
+
+Panel de Cuenta Regresiva:
+
+Un panel flotante rectangular con esquinas redondeadas y un fondo blanco puro, centrado en la página.
+
+Este panel debe tener una sombra muy suave y difuminada (box-shadow) que lo eleve ligeramente sobre el fondo.
+
+Dentro del panel, los elementos de la cuenta regresiva (DÍAS, HORAS, MINUTOS, SEGUNDOS) se muestran en hexágonos individuales con un borde gris claro muy fino.
+
+Los números dentro de los hexágonos deben ser grandes, bold y en color gris oscuro (#333).
+
+Las etiquetas (DÍAS, HORAS, etc.) debajo de cada número deben ser en gris medio (#666) y más pequeñas.
+
+COLORES ACTUALIZADOS: El 'glow' o 'sombra interna' dentro de cada hexágono debe ser en tonos sutiles de azul y morado (#3A86FF, #6A0DAD y sus variantes más claras), distribuidos armoniosamente a lo largo de los cuatro hexágonos. (Reemplaza los colores naranja y verde anteriores).
+
+Sección 'Constelación de Deseos':
+
+El título 'Constelación de Deseos' en una tipografía sans-serif elegante (ej. Montserrat light o similar), en un color azul eléctrico sutil (#3A86FF o similar).
+
+El subtítulo '¡Deja tu deseo para el 2026 y se va a cumplir!' en tipografía regular, gris medio (#666).
+
+Un pequeño icono de estrella o brillo al final del subtítulo, en el mismo azul eléctrico.
+
+Tarjetas de Deseos Principales (Coronas):
+
+Una fila de cuatro tarjetas cuadradas/rectangulares de fondo blanco, cada una con esquinas ligeramente redondeadas y una sombra suave similar al panel de cuenta regresiva.
+
+Cada tarjeta debe contener una corona dorada centrada en la parte superior.
+
+Debajo, el precio ($49.99) en bold, gris oscuro (#333).
+
+Y el texto 'Escribe tu deseo' en gris medio (#666).
+
+Considerar líneas muy delgadas y sutiles, de color gris muy claro, que conecten visualmente los centros de las coronas, simulando una constelación.
+
+Botones Centrales: Dos botones, '1 Arriba' y '1 Abajo', con un estilo ghost refinado y colores actualizados:
+
+Borde delgado de color azul eléctrico sutil (#3A86FF).
+
+Texto en azul eléctrico sutil (#3A86FF).
+
+Fondo transparente.
+
+Esquinas ligeramente redondeadas.
+
+Efecto hover: el fondo se rellena con el azul eléctrico y el texto se vuelve blanco.
+
+Tarjetas de Deseos Inferiores (Grilla):
+
+Una grilla organizada con múltiples filas y exactamente 4 columnas de tarjetas pequeñas de fondo blanco, con esquinas ligeramente redondeadas y una sombra suave (similar a las tarjetas superiores).
+
+Cada tarjeta debe mostrar el precio ($1.99) en bold, gris oscuro (#333) y 'Escribe tu deseo' en gris medio (#666).
+
+Asegurar un espaciado uniforme entre todas las tarjetas en la grilla.
+
+Espaciado y Composición: El diseño debe tener un amplio 'espacio en blanco' para una sensación de limpieza y claridad. Los elementos deben estar bien centrados y espaciados para una composición armoniosa.
+
+El objetivo es una interfaz de usuario elegante, legible y futurista que invite a la interacción, utilizando la paleta de blancos, grises y acentos en tonos de azul y morado para una coherencia visual."

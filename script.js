@@ -777,7 +777,7 @@ function initializeConstellation() {
 }
 
 /**
- * Initialize Founder Wishes (4 large circles)
+ * Initialize Founder Wishes (primer slot siempre vacío, deseos desde slot 2)
  */
 function initializeFounderWishes() {
     const lang = detectLanguage();
@@ -797,20 +797,44 @@ function initializeFounderWishes() {
         fr: 'Vœu Réservé'
     };
 
+    // Obtener todos los deseos comprados ordenados por timestamp
+    const purchasedWishes = Object.entries(wishes.founder)
+        .map(([slot, wish]) => ({ ...wish, originalSlot: slot }))
+        .sort((a, b) => a.timestamp - b.timestamp);
+
     for (let i = 1; i <= 4; i++) {
         const founderContainer = document.getElementById(`founderWish${i}`);
         if (!founderContainer) continue;
 
-        const founderWish = wishes.founder[i];
+        // El slot 1 SIEMPRE está vacío
+        if (i === 1) {
+            founderContainer.className = 'founder-wish';
+            founderContainer.innerHTML = `
+                <div class="founder-wish-content">
+                    <div class="founder-wish-icon">👑</div>
+                    <div class="founder-wish-price">$49.99</div>
+                    <div class="founder-wish-text">${phrases[lang] || phrases.en}</div>
+                </div>
+            `;
+            founderContainer.style.cursor = 'not-allowed';
+            founderContainer.style.opacity = '0.5';
+            founderContainer.onclick = null; // No se puede comprar
+            continue;
+        }
+
+        // Slots 2, 3, 4 muestran los deseos comprados
+        const wishIndex = i - 2; // Slot 2 = índice 0, Slot 3 = índice 1, etc.
+        const founderWish = purchasedWishes[wishIndex];
 
         if (founderWish) {
-            // Occupied - show reserved state with overlay (CSS handles the display)
+            // Occupied - show reserved state
             founderContainer.className = 'founder-wish occupied';
-            founderContainer.innerHTML = ''; // Empty - CSS ::after shows "RESERVADO" overlay
+            founderContainer.innerHTML = ''; // CSS ::after shows "RESERVADO" overlay
             founderContainer.style.cursor = 'pointer';
+            founderContainer.style.opacity = '1';
             founderContainer.onclick = () => openViewWishModal(founderWish, i, 'founder');
         } else {
-            // Empty - show price and phrase on the diamond
+            // Empty - available for purchase
             founderContainer.className = 'founder-wish';
             founderContainer.innerHTML = `
                 <div class="founder-wish-content">
@@ -820,13 +844,14 @@ function initializeFounderWishes() {
                 </div>
             `;
             founderContainer.style.cursor = 'pointer';
+            founderContainer.style.opacity = '1';
             founderContainer.onclick = () => handleTileClick(i, 'founder');
         }
     }
 }
 
 /**
- * Initialize Star Wishes Grid (~50 small circles)
+ * Initialize Star Wishes Grid (scroll horizontal con 4 filas)
  */
 function initializeStarWishesGrid() {
     const gridContainer = document.getElementById('starWishesGrid');
@@ -835,7 +860,11 @@ function initializeStarWishesGrid() {
     gridContainer.innerHTML = ''; // Clear existing
     const lang = detectLanguage();
     const starWishes = wishes.star;
-    const totalCircles = 50; // Total number of circles in the grid
+
+    // Calcular el número total necesario basado en los deseos ocupados + buffer
+    const occupiedCount = Object.keys(starWishes).length;
+    const minCircles = Math.max(60, occupiedCount + 10); // Mínimo 60, o los ocupados + 10 más
+    const totalCircles = minCircles;
 
     // Phrases for different languages
     const phrases = {
@@ -873,33 +902,50 @@ function initializeStarWishesGrid() {
 }
 
 /**
- * Setup stars navigation buttons (scroll up/down)
+ * Setup stars navigation buttons (scroll left/right)
  */
 function setupStarsSlider() {
-    const scrollUpBtn = document.getElementById('scrollUpBtn');
-    const scrollDownBtn = document.getElementById('scrollDownBtn');
+    // Navegación para star wishes
+    const navLeft = document.getElementById('navLeft');
+    const navRight = document.getElementById('navRight');
     const gridContainer = document.getElementById('starWishesGrid');
 
-    if (!scrollUpBtn || !scrollDownBtn || !gridContainer) {
-        console.warn('Star wishes navigation buttons not found');
-        return;
+    if (navLeft && navRight && gridContainer) {
+        navLeft.addEventListener('click', () => {
+            gridContainer.scrollBy({
+                left: -400,
+                behavior: 'smooth'
+            });
+        });
+
+        navRight.addEventListener('click', () => {
+            gridContainer.scrollBy({
+                left: 400,
+                behavior: 'smooth'
+            });
+        });
     }
 
-    // Scroll up by 3 rows (~450px)
-    scrollUpBtn.addEventListener('click', () => {
-        gridContainer.scrollBy({
-            top: -450,
-            behavior: 'smooth'
-        });
-    });
+    // Navegación para founder wishes
+    const founderNavLeft = document.getElementById('founderNavLeft');
+    const founderNavRight = document.getElementById('founderNavRight');
+    const founderContainer = document.querySelector('.founder-wishes-container');
 
-    // Scroll down by 3 rows (~450px)
-    scrollDownBtn.addEventListener('click', () => {
-        gridContainer.scrollBy({
-            top: 450,
-            behavior: 'smooth'
+    if (founderNavLeft && founderNavRight && founderContainer) {
+        founderNavLeft.addEventListener('click', () => {
+            founderContainer.scrollBy({
+                left: -250,
+                behavior: 'smooth'
+            });
         });
-    });
+
+        founderNavRight.addEventListener('click', () => {
+            founderContainer.scrollBy({
+                left: 250,
+                behavior: 'smooth'
+            });
+        });
+    }
 }
 
 /**
@@ -1291,7 +1337,7 @@ async function handleSuccessfulPayment() {
     const wish = {
         text: wishText,
         author: author,
-        country: country, // ← Add country
+        country: country,
         slot: currentSlot,
         tier: currentTier,
         price: currentPrice,
@@ -1308,6 +1354,7 @@ async function handleSuccessfulPayment() {
     alert('🎉 Your wish has been saved! It will shine on the wall forever!');
 
     // Regenerate the constellation to show the next available slot
+    // Si es un star wish, se crearán automáticamente más espacios en initializeStarWishesGrid
     setTimeout(() => {
         initializeConstellation();
     }, 500);

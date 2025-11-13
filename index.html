@@ -94,23 +94,31 @@
             <h2 class="constellation-title" data-i18n="wishesTitle">Wishes Constellation</h2>
             <p class="constellation-subtitle" data-i18n="wishesSubtitle">Leave your wish for 2026 and it will come true! ✨</p>
 
-            <!-- Founder Wishes (4 large circles) -->
-            <div class="founder-wishes-container">
-                <div class="founder-wish" id="founderWish1" data-slot="1"></div>
-                <div class="founder-wish" id="founderWish2" data-slot="2"></div>
-                <div class="founder-wish" id="founderWish3" data-slot="3"></div>
-                <div class="founder-wish" id="founderWish4" data-slot="4"></div>
+            <!-- Founder Wishes Navigation -->
+            <div class="founder-nav-horizontal">
+                <button class="nav-arrow-btn" id="founderNavLeft">←</button>
+                <div class="founder-wishes-scroll-container">
+                    <!-- Founder Wishes (4 large circles) -->
+                    <div class="founder-wishes-container">
+                        <div class="founder-wish" id="founderWish1" data-slot="1"></div>
+                        <div class="founder-wish" id="founderWish2" data-slot="2"></div>
+                        <div class="founder-wish" id="founderWish3" data-slot="3"></div>
+                        <div class="founder-wish" id="founderWish4" data-slot="4"></div>
+                    </div>
+                </div>
+                <button class="nav-arrow-btn" id="founderNavRight">→</button>
             </div>
 
-            <!-- Star Wishes Navigation Buttons -->
-            <div class="star-wishes-nav">
-                <button class="nav-button" id="scrollUpBtn">↑ Arriba</button>
-                <button class="nav-button" id="scrollDownBtn">↓ Abajo</button>
-            </div>
-
-            <!-- Star Wishes Grid (3 columns x 9 rows) -->
-            <div class="star-wishes-grid" id="starWishesGrid">
-                <!-- Will be populated by JavaScript with grid layout -->
+            <!-- Navigation Buttons (Left/Right) -->
+            <div class="wishes-nav-horizontal">
+                <button class="nav-arrow-btn" id="navLeft">←</button>
+                <div class="star-wishes-scroll-container">
+                    <!-- Star Wishes Grid (4 columns) -->
+                    <div class="star-wishes-grid" id="starWishesGrid">
+                        <!-- Will be populated by JavaScript with grid layout -->
+                    </div>
+                </div>
+                <button class="nav-arrow-btn" id="navRight">→</button>
             </div>
         </section>
 
