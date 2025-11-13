@@ -20,6 +20,10 @@
     {
       "src": "config.js",
       "use": "@vercel/static"
+    },
+    {
+      "src": "BlankMap-World.svg",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
