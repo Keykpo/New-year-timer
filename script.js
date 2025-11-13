@@ -1994,6 +1994,34 @@ function setupDarkMode() {
 }
 
 // ====================================
+// SCROLL TO STAR WISHES
+// ====================================
+
+/**
+ * Setup scroll button to navigate to Star wishes section
+ */
+function setupScrollToStarWishes() {
+    const scrollButton = document.getElementById('scrollToStarWishes');
+
+    if (!scrollButton) {
+        console.warn('Scroll to Star wishes button not found');
+        return;
+    }
+
+    scrollButton.addEventListener('click', () => {
+        const starGrid = document.getElementById('starWishesGrid');
+        if (starGrid) {
+            starGrid.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+    });
+
+    console.log('✅ Scroll to Star wishes button initialized');
+}
+
+// ====================================
 // INITIALIZATION
 // ====================================
 
@@ -2020,6 +2048,9 @@ function init() {
 
     // 7. Setup dark mode toggle
     setupDarkMode();
+
+    // 8. Setup scroll button to Star wishes
+    setupScrollToStarWishes();
 }
 
 // Generate starry background
