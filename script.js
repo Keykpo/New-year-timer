@@ -1606,42 +1606,56 @@ async function handleSuccessfulPayment() {
         timestamp: Date.now()
     };
 
-    // Save to Firebase
-    saveWishToFirebase(wish);
+    // Save to Firebase and wait for completion
+    try {
+        await saveWishToFirebase(wish);
 
-    // Close modal
-    closeModal();
+        // Close modal
+        closeModal();
 
-    // Show success message
-    alert('🎉 Your wish has been saved! It will shine on the wall forever!');
+        // Show success message
+        alert('🎉 Your wish has been saved! It will shine on the wall forever!');
 
-    // Regenerate the constellation to show the next available slot
-    // Si es un star wish, se crearán automáticamente más espacios en initializeStarWishesGrid
-    setTimeout(() => {
-        initializeConstellation();
-    }, 500);
+        // Regenerate the constellation to show the next available slot
+        // Si es un star wish, se crearán automáticamente más espacios en initializeStarWishesGrid
+        setTimeout(() => {
+            initializeConstellation();
+        }, 500);
+    } catch (error) {
+        console.error('Error saving wish:', error);
+        alert('❌ Error saving your wish. Please try again or contact support.');
+    }
 }
 
 /**
  * Save wish to Firebase
+ * Returns a promise that resolves when the wish is saved
  */
-function saveWishToFirebase(wish) {
+async function saveWishToFirebase(wish) {
     if (!database) {
-        console.error('Firebase not initialized');
-        return;
+        console.error('❌ Firebase not initialized');
+        throw new Error('Firebase not initialized');
     }
 
-    // Save wish in the tier-specific path
-    database.ref(`wishes/${wish.tier}/${wish.slot}`).set({
-        text: wish.text,
-        author: wish.author,
-        country: wish.country, // ← Save country
-        wishTitle: wish.wishTitle, // ← Save random title
-        price: wish.price,
-        timestamp: wish.timestamp
-    }).catch((error) => {
-        console.error('Error saving wish:', error);
-    });
+    console.log(`💾 Saving wish to Firebase: Tier=${wish.tier}, Slot=${wish.slot}`);
+
+    try {
+        // Save wish in the tier-specific path and wait for completion
+        await database.ref(`wishes/${wish.tier}/${wish.slot}`).set({
+            text: wish.text,
+            author: wish.author,
+            country: wish.country, // ← Save country
+            wishTitle: wish.wishTitle, // ← Save random title
+            price: wish.price,
+            timestamp: wish.timestamp
+        });
+
+        console.log(`✅ Wish saved successfully to Firebase: Slot ${wish.slot}`);
+        return true;
+    } catch (error) {
+        console.error('❌ Error saving wish to Firebase:', error);
+        throw error;
+    }
 }
 
 /**
