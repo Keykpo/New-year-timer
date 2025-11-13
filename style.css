@@ -6,12 +6,13 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
     color: #f1f5f9;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    letter-spacing: 0.3px;
 }
 
 /* Animated background effect */
@@ -82,7 +83,7 @@ body::after {
     z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 3rem 1.5rem; /* Más espaciado vertical */
 }
 
 /* Header */
@@ -122,7 +123,7 @@ header {
 
 /* Countdown Section */
 .countdown-section {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem; /* Más espacio entre secciones */
     animation: fadeInUp 1s ease-out 0.3s both;
 }
 
@@ -147,13 +148,13 @@ header {
 }
 
 .time-unit {
-    background: rgba(30, 41, 59, 0.8);
+    background: rgba(30, 41, 59, 0.5);
     border: 2px solid rgba(251, 146, 60, 0.4);
     border-radius: 1rem;
     padding: 1.5rem 2rem;
     min-width: 120px;
     text-align: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
@@ -206,7 +207,8 @@ header {
 .time-value {
     display: block;
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 900;
+    font-family: 'Orbitron', monospace; /* Fuente digital para números */
     background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #fbbf24 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -260,10 +262,10 @@ header {
 
 /* Map Section */
 .map-section {
-    background: rgba(30, 41, 59, 0.6);
+    background: rgba(30, 41, 59, 0.4);
     border-radius: 1.5rem;
     padding: 2rem;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(59, 130, 246, 0.2);
     animation: fadeInUp 1s ease-out 0.6s both;
 }
@@ -495,8 +497,8 @@ footer {
    ==================================== */
 
 .wishes-section {
-    margin-top: 4rem;
-    margin-bottom: 3rem;
+    margin-top: 6rem; /* Más espacio entre secciones */
+    margin-bottom: 6rem;
     animation: fadeInUp 1s ease-out 0.9s both;
 }
 
@@ -659,10 +661,10 @@ footer {
 
 /* Wish Tile */
 .wish-tile {
-    background: rgba(30, 41, 59, 0.4);
+    background: rgba(30, 41, 59, 0.3);
     border-radius: 1rem;
     border: 2px solid rgba(251, 146, 60, 0.3);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -735,20 +737,22 @@ footer {
     0%, 100% {
         border-color: rgba(255, 215, 0, 1);
         box-shadow:
-            0 0 30px rgba(255, 215, 0, 0.9),
-            0 0 60px rgba(255, 215, 0, 0.6),
-            0 0 90px rgba(255, 165, 0, 0.4),
+            0 0 35px rgba(255, 215, 0, 1),
+            0 0 70px rgba(255, 215, 0, 0.7),
+            0 0 100px rgba(255, 165, 0, 0.5),
             inset 0 0 50px rgba(255, 215, 0, 0.2);
         transform: scale(1);
+        filter: brightness(1);
     }
     50% {
         border-color: rgba(255, 165, 0, 1);
         box-shadow:
-            0 0 40px rgba(255, 215, 0, 1),
-            0 0 80px rgba(255, 165, 0, 0.8),
-            0 0 120px rgba(255, 140, 0, 0.5),
-            inset 0 0 60px rgba(255, 215, 0, 0.25);
-        transform: scale(1.03);
+            0 0 50px rgba(255, 215, 0, 1),
+            0 0 100px rgba(255, 165, 0, 0.9),
+            0 0 150px rgba(255, 140, 0, 0.6),
+            inset 0 0 70px rgba(255, 215, 0, 0.3);
+        transform: scale(1.05);
+        filter: brightness(1.15);
     }
 }
 
@@ -834,6 +838,26 @@ footer {
         0 0 60px rgba(255, 215, 0, 0.5),
         0 0 90px rgba(255, 165, 0, 0.3),
         inset 0 0 30px rgba(255, 215, 0, 0.15);
+    animation: occupiedPremiumPulse 2s ease-in-out infinite;
+}
+
+@keyframes occupiedPremiumPulse {
+    0%, 100% {
+        box-shadow:
+            0 4px 30px rgba(255, 215, 0, 0.6),
+            0 0 60px rgba(255, 215, 0, 0.5),
+            0 0 90px rgba(255, 165, 0, 0.3),
+            inset 0 0 30px rgba(255, 215, 0, 0.15);
+        filter: brightness(1);
+    }
+    50% {
+        box-shadow:
+            0 6px 40px rgba(255, 215, 0, 0.8),
+            0 0 80px rgba(255, 215, 0, 0.7),
+            0 0 120px rgba(255, 165, 0, 0.5),
+            inset 0 0 50px rgba(255, 215, 0, 0.25);
+        filter: brightness(1.1);
+    }
 }
 
 .wish-tile.occupied.premium::before {
@@ -1010,7 +1034,7 @@ footer {
 }
 
 .modal-content {
-    background: rgba(30, 41, 59, 0.95);
+    background: rgba(30, 41, 59, 0.85);
     border-radius: 1.5rem;
     border: 2px solid rgba(251, 146, 60, 0.5);
     padding: 2.5rem;
@@ -1018,7 +1042,7 @@ footer {
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     transform: scale(0.9);
     transition: transform 0.3s ease;

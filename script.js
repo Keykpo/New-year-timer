@@ -559,8 +559,6 @@ function updateMap() {
             path.style.cursor = 'default';
         }
     });
-
-    console.log(`Updated ${paths.length} countries on the map`);
 }
 
 // ====================================
@@ -581,8 +579,6 @@ async function loadWorldMap() {
         console.warn('World map container (#world-map) not found');
         return;
     }
-
-    console.log('🗺️ Lazy loading world map SVG from external file...');
 
     try {
         // Fetch the SVG from external file
@@ -611,8 +607,6 @@ async function loadWorldMap() {
             // Set up interval to update map colors every minute
             if (mapUpdateInterval) clearInterval(mapUpdateInterval);
             mapUpdateInterval = setInterval(updateMap, 60000);
-
-            console.log('✅ World map loaded and initialized successfully');
         }, 100);
     } catch (error) {
         console.error('❌ Error loading world map:', error);
@@ -686,8 +680,6 @@ function setupMapLazyLoading() {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     observer.observe(mapSection);
-
-    console.log('👀 Intersection Observer set up for map lazy loading');
 }
 
 // ====================================
@@ -709,7 +701,6 @@ try {
         } else {
             firebase.initializeApp(FIREBASE_CONFIG);
             database = firebase.database();
-            console.log('✅ Firebase initialized successfully');
         }
     } else {
         console.error('❌ Firebase configuration not found. Make sure config.js is loaded');
@@ -936,7 +927,6 @@ async function openModal() {
 
     // Detect user's country
     const userCountry = await getUserCountry();
-    console.log('User country detected:', userCountry);
 
     // Initialize PayPal button (always shown)
     initPayPalButton();
@@ -1056,9 +1046,7 @@ function renderPayPalButton(container) {
             console.error('PayPal Error:', err);
             alert('Payment failed. Please try again.');
         }
-    }).render(container).then(() => {
-        console.log('✅ PayPal button rendered successfully');
-    }).catch((err) => {
+    }).render(container).catch((err) => {
         console.error('❌ Error rendering PayPal button:', err);
         container.innerHTML = '';
         document.getElementById('paymentButton').style.display = 'block';
@@ -1278,8 +1266,6 @@ function saveWishToFirebase(wish) {
         country: wish.country, // ← Save country
         price: wish.price,
         timestamp: wish.timestamp
-    }).then(() => {
-        console.log(`Wish saved successfully in ${wish.tier} tier from ${wish.country}`);
     }).catch((error) => {
         console.error('Error saving wish:', error);
     });
