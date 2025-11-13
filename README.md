@@ -4,6 +4,52 @@ Una página web moderna con cuenta regresiva para Año Nuevo que incluye:
 - 🌍 Internacionalización automática (EN, ES, PT, FR)
 - ⏰ Temporizador local personalizado para cada visitante
 - 🗺️ Mapa mundial interactivo mostrando qué países ya están en 2026
+- 💳 Sistema de deseos pagados con PayPal
+- 🔒 Inputs sanitizados para prevenir XSS
+
+---
+
+## 🚀 Inicio Rápido
+
+### Ejecutar Localmente
+
+**IMPORTANTE:** No puedes simplemente abrir `index.html` haciendo doble clic. Necesitas ejecutar un servidor local para que el mapa mundial funcione correctamente.
+
+**En Windows:**
+```bash
+# Opción 1: Doble clic en el archivo
+start-server.bat
+
+# Opción 2: Desde la terminal
+python -m http.server 8000
+```
+
+**En Mac/Linux:**
+```bash
+# Opción 1: Ejecutar el script
+./start-server.sh
+
+# Opción 2: Desde la terminal
+python3 -m http.server 8000
+```
+
+Luego abre tu navegador y ve a: **http://localhost:8000**
+
+### ¿Por qué necesito un servidor?
+
+El mapa mundial se carga desde un archivo externo (`BlankMap-World.svg`). Los navegadores bloquean la carga de archivos locales por seguridad (CORS). Un servidor local resuelve esto.
+
+---
+
+## ⚙️ Configuración
+
+Antes de usar la aplicación en producción, necesitas configurar:
+
+1. **PayPal** - Edita `config.js` y agrega tu Client ID
+2. **Firebase** - Edita `config.js` y agrega tus credenciales
+3. **Dominio** - Actualiza las URLs en `index.html` (meta tags)
+
+Ver `config.js` para instrucciones detalladas.
 
 ---
 

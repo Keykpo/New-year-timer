@@ -1,0 +1,78 @@
+╔════════════════════════════════════════════════════════════════════╗
+║                                                                    ║
+║        🎉 NEW YEAR'S TIMER 2026 - INSTRUCCIONES RÁPIDAS 🎉       ║
+║                                                                    ║
+╚════════════════════════════════════════════════════════════════════╝
+
+⚠️ IMPORTANTE: No abras index.html directamente
+   Los archivos necesitan cargarse desde un servidor local.
+
+═══════════════════════════════════════════════════════════════════
+
+📝 PASO 1: Iniciar el servidor
+
+   En WINDOWS:
+   -----------
+   ➜ Haz doble clic en: start-server.bat
+
+   En MAC/LINUX:
+   -------------
+   ➜ Abre la terminal en esta carpeta
+   ➜ Ejecuta: ./start-server.sh
+
+═══════════════════════════════════════════════════════════════════
+
+🌐 PASO 2: Abrir en el navegador
+
+   Cuando veas "Serving HTTP on 0.0.0.0 port 8000..."
+
+   ➜ Abre tu navegador
+   ➜ Ve a: http://localhost:8000
+
+═══════════════════════════════════════════════════════════════════
+
+⚙️ PASO 3: Configurar (OPCIONAL - para producción)
+
+   Si quieres usar PayPal y Firebase:
+
+   1. Abre config.js
+   2. Reemplaza:
+      • YOUR_PAYPAL_CLIENT_ID → Tu Client ID de PayPal
+      • YOUR_API_KEY → Tu API Key de Firebase
+      • (Ver instrucciones detalladas en config.js)
+
+═══════════════════════════════════════════════════════════════════
+
+❓ PROBLEMAS COMUNES
+
+   1. "Python no reconocido"
+      → Instala Python desde: https://www.python.org/
+
+   2. "Error loading world map"
+      → Asegúrate de estar usando el servidor local (localhost:8000)
+      → NO abras el archivo HTML directamente
+
+   3. "PayPal no funciona"
+      → Edita config.js con tu Client ID real
+      → El placeholder YOUR_PAYPAL_CLIENT_ID no funciona
+
+═══════════════════════════════════════════════════════════════════
+
+📚 MÁS INFORMACIÓN
+
+   • README.md → Documentación completa
+   • SECURITY.md → Medidas de seguridad
+   • config.js → Configuración de PayPal y Firebase
+
+═══════════════════════════════════════════════════════════════════
+
+💡 CONSEJOS
+
+   ✓ El mapa muestra qué países ya están en 2026 en tiempo real
+   ✓ Soporta 4 idiomas: inglés, español, portugués, francés
+   ✓ Los deseos cuestan $1-49.99 según el tier (premium/vip/regular)
+   ✓ Todo funciona sin configurar nada (excepto el mapa que necesita servidor)
+
+═══════════════════════════════════════════════════════════════════
+
+¡Feliz Año Nuevo! 🎊
