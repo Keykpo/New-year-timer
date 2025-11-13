@@ -804,27 +804,15 @@ function initializeFounderWishes() {
         const founderWish = wishes.founder[i];
 
         if (founderWish) {
-            // Occupied - show reserved state
+            // Occupied - show reserved state with overlay (CSS handles the display)
             founderContainer.className = 'founder-wish occupied';
-            founderContainer.innerHTML = `
-                <div class="founder-wish-content">
-                    <div class="founder-wish-icon">✨</div>
-                    <div class="founder-wish-price">$49.99</div>
-                    <div class="founder-wish-text">${occupiedText[lang] || occupiedText.en}</div>
-                </div>
-            `;
+            founderContainer.innerHTML = ''; // Empty - CSS ::after shows "RESERVADO" overlay
             founderContainer.style.cursor = 'pointer';
             founderContainer.onclick = () => openViewWishModal(founderWish, i, 'founder');
         } else {
-            // Empty - show available state with price and phrase
+            // Empty - show the "deseo fundador.PNG" image via CSS background
             founderContainer.className = 'founder-wish';
-            founderContainer.innerHTML = `
-                <div class="founder-wish-content">
-                    <div class="founder-wish-icon">👑</div>
-                    <div class="founder-wish-price">$49.99</div>
-                    <div class="founder-wish-text">${phrases[lang] || phrases.en}</div>
-                </div>
-            `;
+            founderContainer.innerHTML = ''; // Empty - CSS background shows the full "deseo fundador.PNG" design
             founderContainer.style.cursor = 'pointer';
             founderContainer.onclick = () => handleTileClick(i, 'founder');
         }
@@ -849,24 +837,16 @@ function initializeStarWishesGrid() {
         const starWish = starWishes[i];
 
         if (starWish) {
-            // Occupied - show small indicator
-            const safeAuthor = sanitizeAuthorName(starWish.author);
-            const flag = countryToFlag(starWish.country);
-
+            // Occupied - show star with green "wish granted" effect (CSS handles star icon)
+            starCircle.classList.add('occupied');
             starCircle.innerHTML = `
-                <div class="star-wish-content">
-                    <div style="font-size: 1.2rem;">😊</div>
-                </div>
+                <div class="star-wish-content">$1.99</div>
             `;
-            starCircle.style.borderColor = 'rgba(96, 165, 250, 1)';
             starCircle.onclick = () => openViewWishModal(starWish, i, 'star');
         } else {
-            // Empty - show price
+            // Empty - show star with blue glow effect (CSS handles star icon via ::before)
             starCircle.innerHTML = `
-                <div class="star-wish-content">
-                    <div style="font-size: 1.2rem; color: #93c5fd;">😊</div>
-                    <p style="font-size: 0.55rem; color: #60a5fa; margin-top: 0.15rem; font-weight: 600;">$1.99</p>
-                </div>
+                <div class="star-wish-content">$1.99</div>
             `;
             starCircle.onclick = () => handleTileClick(i, 'star');
         }

@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #000 url('FONDO.jpg') center center / cover no-repeat fixed;
+    background: #000 url('ESTETICAS/fuegos-artificiales.jpg') center center / cover no-repeat fixed;
     color: #f1f5f9;
     min-height: 100vh;
     overflow-x: hidden;
@@ -15,7 +15,7 @@ body {
     letter-spacing: 0.3px;
 }
 
-/* Animated background effect */
+/* Dark overlay for readability over fireworks background */
 body::before {
     content: '';
     position: fixed;
@@ -23,58 +23,9 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background:
-        radial-gradient(circle at 20% 50%, rgba(239, 68, 68, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(251, 146, 60, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 20%, rgba(234, 179, 8, 0.06) 0%, transparent 50%);
-    animation: pulse 15s ease-in-out infinite;
-    pointer-events: none;
+    background: rgba(0, 0, 0, 0.4);
     z-index: 0;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
-
-/* Fireworks effect */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        radial-gradient(circle, rgba(251, 191, 36, 0.8) 2px, transparent 2px),
-        radial-gradient(circle, rgba(239, 68, 68, 0.8) 2px, transparent 2px),
-        radial-gradient(circle, rgba(16, 185, 129, 0.8) 2px, transparent 2px),
-        radial-gradient(circle, rgba(59, 130, 246, 0.8) 2px, transparent 2px);
-    background-size: 200% 200%, 250% 250%, 180% 180%, 220% 220%;
-    background-position: 0% 0%, 100% 100%, 50% 50%, 80% 20%;
-    animation: fireworks 8s ease-in-out infinite;
     pointer-events: none;
-    z-index: 0;
-    opacity: 0;
-}
-
-@keyframes fireworks {
-    0%, 100% {
-        opacity: 0;
-        background-size: 200% 200%, 250% 250%, 180% 180%, 220% 220%;
-    }
-    10% {
-        opacity: 0.4;
-        background-size: 300% 300%, 350% 350%, 280% 280%, 320% 320%;
-    }
-    20% {
-        opacity: 0;
-        background-size: 400% 400%, 450% 450%, 380% 380%, 420% 420%;
-    }
-    50% {
-        opacity: 0;
-        background-position: 20% 80%, 80% 20%, 60% 40%, 40% 60%;
-    }
 }
 
 /* Container */
@@ -294,160 +245,195 @@ header {
     font-weight: 300;
 }
 
-/* Founder Wishes Container (4 large circles) */
+/* Founder Wishes Container (4 large diamonds) */
 .founder-wishes-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 2.5rem;
     margin: 3rem auto 4rem;
     flex-wrap: wrap;
-    max-width: 1000px;
+    max-width: 1200px;
 }
 
 .founder-wish {
-    width: 240px;
-    height: 240px;
-    background: url('founder-hexagon.jpg') center center / cover no-repeat;
+    width: 250px;
+    height: 250px;
+    background: url('ESTETICAS/deseo fundador.PNG') center center / contain no-repeat;
     cursor: pointer;
     transition: all 0.4s ease;
-    animation: founderGlow 2s ease-in-out infinite;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: visible;
-    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6));
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7));
+    animation: founderGlow 3s ease-in-out infinite;
 }
 
-.founder-wish-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    text-align: center;
-    padding: 1rem;
-    z-index: 2;
+/* When founder wish is available - show full brightness */
+.founder-wish:not(.occupied) {
+    animation: founderPulse 2s ease-in-out infinite;
 }
 
-.founder-wish-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.25rem;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-}
-
-.founder-wish-price {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #ffd700;
-    text-shadow:
-        0 0 10px rgba(255, 215, 0, 0.8),
-        0 2px 4px rgba(0,0,0,0.5);
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 1px;
-}
-
-.founder-wish-text {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #fff;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-    max-width: 140px;
-    line-height: 1.3;
+@keyframes founderPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7)) brightness(1);
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 50px rgba(255, 215, 0, 1)) brightness(1.1);
+        transform: scale(1.02);
+    }
 }
 
 .founder-wish:hover {
     transform: scale(1.08);
-    filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.9));
+    filter: drop-shadow(0 0 60px rgba(255, 215, 0, 1)) brightness(1.15);
 }
 
+/* When founder wish is occupied - add green overlay */
 .founder-wish.occupied {
-    opacity: 0.7;
-    filter: drop-shadow(0 0 30px rgba(34, 197, 94, 0.6));
+    position: relative;
+}
+
+.founder-wish.occupied::after {
+    content: '✓ RESERVADO';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(34, 197, 94, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2px);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
 .founder-wish.occupied:hover {
-    opacity: 0.85;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 40px rgba(34, 197, 94, 0.8));
 }
 
 @keyframes founderGlow {
     0%, 100% {
-        box-shadow:
-            0 0 30px rgba(255, 215, 0, 0.8),
-            0 0 60px rgba(255, 165, 0, 0.6),
-            0 0 90px rgba(255, 215, 0, 0.4);
-        transform: scale(1);
+        filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7));
     }
     50% {
-        box-shadow:
-            0 0 40px rgba(255, 215, 0, 1),
-            0 0 80px rgba(255, 165, 0, 0.8),
-            0 0 120px rgba(255, 215, 0, 0.6);
-        transform: scale(1.05);
+        filter: drop-shadow(0 0 45px rgba(255, 215, 0, 0.9));
     }
 }
 
-.founder-wish:hover {
-    transform: scale(1.1);
-    box-shadow:
-        0 0 50px rgba(255, 215, 0, 1),
-        0 0 100px rgba(255, 165, 0, 0.9),
-        0 0 150px rgba(255, 215, 0, 0.7);
-}
-
-/* Star Wishes Grid (small circles) */
+/* Star Wishes Grid (small circles with star icons) */
 .star-wishes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-    gap: 1rem;
-    max-width: 900px;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 1.2rem;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 2rem 1rem;
 }
 
 .star-wish-circle {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    background: rgba(30, 41, 59, 0.4);
-    border: 2px solid rgba(96, 165, 250, 0.6);
-    backdrop-filter: blur(10px) saturate(150%);
-    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    background: rgba(15, 23, 42, 0.6);
+    border: 2px solid rgba(96, 165, 250, 0.7);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow:
-        0 0 15px rgba(96, 165, 250, 0.4),
-        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        0 0 20px rgba(96, 165, 250, 0.5),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    animation: starPulse 3s ease-in-out infinite;
+    animation: starTwinkle 3s ease-in-out infinite;
     margin: 0 auto;
+    position: relative;
 }
 
-@keyframes starPulse {
+/* Star icon inside circle - using estrella.png */
+.star-wish-circle::before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: url('ESTETICAS/estrella.png') center center / contain no-repeat;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    transition: all 0.3s ease;
+}
+
+/* Available star - golden glow */
+.star-wish-circle:not(.occupied)::before {
+    filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.9)) brightness(1.2);
+}
+
+/* Occupied star - blue/green glow to indicate "wish granted" */
+.star-wish-circle.occupied {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(34, 197, 94, 0.7);
+    box-shadow:
+        0 0 20px rgba(34, 197, 94, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    animation: starGranted 3s ease-in-out infinite;
+}
+
+.star-wish-circle.occupied::before {
+    filter: drop-shadow(0 0 10px rgba(34, 197, 94, 1)) brightness(1.3);
+}
+
+@keyframes starTwinkle {
     0%, 100% {
-        box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
-        border-color: rgba(96, 165, 250, 0.6);
+        box-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+        border-color: rgba(96, 165, 250, 0.7);
+        transform: scale(1);
     }
     50% {
-        box-shadow: 0 0 25px rgba(96, 165, 250, 0.7);
-        border-color: rgba(96, 165, 250, 0.9);
+        box-shadow: 0 0 30px rgba(96, 165, 250, 0.8);
+        border-color: rgba(96, 165, 250, 1);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes starGranted {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+        border-color: rgba(34, 197, 94, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(34, 197, 94, 0.9);
+        border-color: rgba(34, 197, 94, 1);
     }
 }
 
 .star-wish-circle:hover {
-    transform: scale(1.2);
+    transform: scale(1.15);
     border-color: rgba(96, 165, 250, 1);
-    box-shadow: 0 0 30px rgba(96, 165, 250, 0.9);
+    box-shadow: 0 0 35px rgba(96, 165, 250, 1);
+}
+
+.star-wish-circle.occupied:hover {
+    transform: scale(1.15);
+    border-color: rgba(34, 197, 94, 1);
+    box-shadow: 0 0 35px rgba(34, 197, 94, 1);
 }
 
 .star-wish-content {
     text-align: center;
-    font-size: 0.65rem;
-    color: #cbd5e1;
+    font-size: 0.6rem;
+    color: #60a5fa;
+    font-weight: 600;
+    margin-top: 0.25rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 /* Map Section */
@@ -557,6 +543,43 @@ footer {
         display: none;
     }
 
+    /* Constellation section responsive */
+    .constellation-title {
+        font-size: 2rem;
+    }
+
+    .constellation-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Founders responsive - 2x2 grid on mobile */
+    .founder-wishes-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 500px;
+    }
+
+    .founder-wish {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* Stars responsive - smaller grid */
+    .star-wishes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+        gap: 1rem;
+    }
+
+    .star-wish-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .star-wish-circle::before {
+        width: 25px;
+        height: 25px;
+    }
+
     .map-title {
         font-size: 1.5rem;
     }
@@ -595,6 +618,39 @@ footer {
 
     .time-label {
         font-size: 0.7rem;
+    }
+
+    /* Constellation responsive for very small screens */
+    .constellation-title {
+        font-size: 1.6rem;
+    }
+
+    /* Founders - 2x2 grid, smaller */
+    .founder-wishes-container {
+        gap: 1rem;
+        max-width: 400px;
+    }
+
+    .founder-wish {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Stars - 4-5 columns on small mobile */
+    .star-wishes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+        gap: 0.8rem;
+        padding: 1.5rem 0.5rem;
+    }
+
+    .star-wish-circle {
+        width: 55px;
+        height: 55px;
+    }
+
+    .star-wish-circle::before {
+        width: 22px;
+        height: 22px;
     }
 }
 
