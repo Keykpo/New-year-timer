@@ -1443,8 +1443,8 @@ function initMercadoPagoButton() {
             const data = await response.json();
 
             // Redirect to Mercado Pago checkout
-            // Use sandbox_init_point for testing, init_point for production
-            window.location.href = data.sandbox_init_point || data.init_point;
+            // Use init_point for production, sandbox_init_point for testing
+            window.location.href = data.init_point || data.sandbox_init_point;
 
         } catch (error) {
             console.error('Error creating payment:', error);

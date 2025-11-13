@@ -98,12 +98,11 @@ app.post('/api/create-preference', async (req, res) => {
                 }
             ],
             back_urls: {
-                success: `http://localhost:8000/index.html`,
-                failure: `http://localhost:8000/index.html`,
-                pending: `http://localhost:8000/index.html`
+                success: `https://newyeartimers.com`,
+                failure: `https://newyeartimers.com`,
+                pending: `https://newyeartimers.com`
             },
-            // Don't use auto_return in development with localhost
-            // auto_return: 'approved',
+            auto_return: 'approved',
             // notification_url: `http://YOUR_NGROK_URL/api/webhooks`, // Update this with your ngrok URL
             metadata: {
                 wishText: wishText,
