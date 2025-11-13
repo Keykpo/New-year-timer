@@ -719,14 +719,14 @@ const TIERS = {
         name: 'founder',
         price: 49.99,
         slotStart: 1,
-        maxSlots: 1, // Only 1 Founder wish in the center
+        maxSlots: 4, // 4 large founder circles
         icon: '👑'
     },
     star: {
         name: 'star',
         price: 1.99,
         slotStart: 1,
-        maxSlots: Infinity, // 8 hexagons around center + unlimited in slider
+        maxSlots: Infinity, // Grid of small star circles (~50)
         icon: '⭐'
     }
 };
@@ -772,153 +772,81 @@ function initWishesWall() {
  * Initialize the constellation display (Founder + 8 Constellation hexagons + Stars slider)
  */
 function initializeConstellation() {
-    initializeFounderWish();
-    initializeConstellationHexagons();
-    initializeStarsSlider();
+    initializeFounderWishes();
+    initializeStarWishesGrid();
 }
 
 /**
- * Initialize Founder Wish (Center Diamond)
+ * Initialize Founder Wishes (4 large circles)
  */
-function initializeFounderWish() {
-    const founderContainer = document.getElementById('founderWish');
-    if (!founderContainer) return;
-
-    const lang = detectLanguage();
-    const founderWish = wishes.founder[1]; // Only slot 1 exists for Founder
-
-    if (founderWish) {
-        // Occupied - show wish
-        const safeText = sanitizeWishText(founderWish.text);
-        const safeAuthor = sanitizeAuthorName(founderWish.author);
-        const flag = countryToFlag(founderWish.country);
-
-        founderContainer.innerHTML = `
-            <div class="founder-center-content">
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">👑</div>
-                <p style="font-size: 0.85rem; color: #fbbf24; margin-bottom: 0.5rem;">"${safeText}"</p>
-                <p style="font-size: 0.7rem; color: #cbd5e1;">${flag} ${safeAuthor}</p>
-            </div>
-        `;
-        founderContainer.style.cursor = 'pointer';
-        founderContainer.onclick = () => openViewWishModal(founderWish, 1, 'founder');
-    } else {
-        // Empty - show price
-        founderContainer.innerHTML = `
-            <div class="founder-center-content">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">👑</div>
-                <p style="font-size: 0.9rem; color: #fbbf24; font-weight: 600; margin-bottom: 0.25rem;">${translations[lang].emptyTileTextFounder}</p>
-                <p style="font-size: 1.2rem; color: #ffd700; font-weight: 700;">$49.99 USD</p>
-            </div>
-        `;
-        founderContainer.style.cursor = 'pointer';
-        founderContainer.onclick = () => handleTileClick(1, 'founder');
-    }
-}
-
-/**
- * Initialize Constellation Hexagons (8 around center)
- */
-function initializeConstellationHexagons() {
+function initializeFounderWishes() {
     const lang = detectLanguage();
 
-    // Hexagons are now Star tier wishes (slots 1-8 of star tier)
-    for (let i = 1; i <= 8; i++) {
-        const hexContainer = document.getElementById(`constellationWish${i}`);
-        if (!hexContainer) continue;
+    for (let i = 1; i <= 4; i++) {
+        const founderContainer = document.getElementById(`founderWish${i}`);
+        if (!founderContainer) continue;
 
-        const starWish = wishes.star[i];
+        const founderWish = wishes.founder[i];
 
-        if (starWish) {
-            // Occupied - show wish
-            const safeText = sanitizeWishText(starWish.text);
-            const safeAuthor = sanitizeAuthorName(starWish.author);
-            const flag = countryToFlag(starWish.country);
-
-            hexContainer.innerHTML = `
-                <div class="constellation-hex-content">
-                    <p style="font-size: 0.65rem; color: #cbd5e1; margin-bottom: 0.25rem;">"${safeText.substring(0, 30)}..."</p>
-                    <p style="font-size: 0.55rem; color: #94a3b8;">${flag} ${safeAuthor}</p>
+        if (founderWish) {
+            // Occupied - show wish indicator
+            founderContainer.innerHTML = `
+                <div style="text-align: center; color: #fff; font-size: 0.75rem; text-shadow: 0 0 10px rgba(0,0,0,0.8); padding: 0.5rem;">
+                    <div>✓</div>
                 </div>
             `;
-            hexContainer.style.cursor = 'pointer';
-            hexContainer.onclick = () => openViewWishModal(starWish, i, 'star');
+            founderContainer.style.cursor = 'pointer';
+            founderContainer.onclick = () => openViewWishModal(founderWish, i, 'founder');
         } else {
-            // Empty - show price ($1.99 for Star tier)
-            hexContainer.innerHTML = `
-                <div class="constellation-hex-content">
-                    <div style="font-size: 2rem; margin-bottom: 0.25rem;">⭐</div>
-                    <p style="font-size: 0.7rem; color: #fbbf24; margin-bottom: 0.25rem;">${translations[lang].emptyTileTextStar}</p>
-                    <p style="font-size: 0.8rem; color: #fbbf24; font-weight: 600;">$1.99</p>
-                </div>
-            `;
-            hexContainer.style.cursor = 'pointer';
-            hexContainer.onclick = () => handleTileClick(i, 'star');
+            // Empty - clickable to buy
+            founderContainer.innerHTML = '';
+            founderContainer.style.cursor = 'pointer';
+            founderContainer.onclick = () => handleTileClick(i, 'founder');
         }
     }
 }
 
 /**
- * Initialize Stars Slider
+ * Initialize Star Wishes Grid (~50 small circles)
  */
-function initializeStarsSlider() {
-    const sliderTrack = document.getElementById('starsSliderTrack');
-    if (!sliderTrack) return;
+function initializeStarWishesGrid() {
+    const gridContainer = document.getElementById('starWishesGrid');
+    if (!gridContainer) return;
 
-    sliderTrack.innerHTML = ''; // Clear existing
+    gridContainer.innerHTML = ''; // Clear existing
     const lang = detectLanguage();
     const starWishes = wishes.star;
+    const totalCircles = 50; // Total number of circles in the grid
 
-    // Filter only slider wishes (slots 9+, since 1-8 are hexagons)
-    const sliderStarKeys = Object.keys(starWishes)
-        .filter(slot => parseInt(slot) >= 9)
-        .sort((a, b) => parseInt(a) - parseInt(b));
+    for (let i = 1; i <= totalCircles; i++) {
+        const starCircle = document.createElement('div');
+        starCircle.className = 'star-wish-circle';
+        const starWish = starWishes[i];
 
-    const nextAvailableSlot = getNextAvailableSlot('star');
+        if (starWish) {
+            // Occupied - show small indicator
+            const safeAuthor = sanitizeAuthorName(starWish.author);
+            const flag = countryToFlag(starWish.country);
 
-    // Add next available empty star first
-    const emptyStar = document.createElement('div');
-    emptyStar.className = 'star-wish';
-    emptyStar.innerHTML = `
-        <div class="star-wish-content">
-            <div style="font-size: 2.5rem; color: #fbbf24;">★</div>
-            <p style="font-size: 0.65rem; color: #fbbf24; margin-top: 0.25rem; font-weight: 600;">$1.99</p>
-        </div>
-    `;
-    emptyStar.onclick = () => handleTileClick(nextAvailableSlot, 'star');
-    sliderTrack.appendChild(emptyStar);
+            starCircle.innerHTML = `
+                <div class="star-wish-content">
+                    <div style="font-size: 1.2rem;">😊</div>
+                </div>
+            `;
+            starCircle.style.borderColor = 'rgba(96, 165, 250, 1)';
+            starCircle.onclick = () => openViewWishModal(starWish, i, 'star');
+        } else {
+            // Empty - show price
+            starCircle.innerHTML = `
+                <div class="star-wish-content">
+                    <div style="font-size: 1.2rem; color: #93c5fd;">😊</div>
+                    <p style="font-size: 0.55rem; color: #60a5fa; margin-top: 0.15rem; font-weight: 600;">$1.99</p>
+                </div>
+            `;
+            starCircle.onclick = () => handleTileClick(i, 'star');
+        }
 
-    // Add all occupied stars (from slider only, slots 9+)
-    sliderStarKeys.forEach(slot => {
-        const wish = starWishes[slot];
-        const star = document.createElement('div');
-        star.className = 'star-wish occupied';
-
-        const safeAuthor = sanitizeAuthorName(wish.author);
-        const flag = countryToFlag(wish.country);
-
-        star.innerHTML = `
-            <div class="star-wish-content">
-                <div style="font-size: 2.5rem; color: #fbbf24;">★</div>
-                <p style="font-size: 0.6rem; color: #cbd5e1; margin-top: 0.15rem;">${flag} ${safeAuthor.substring(0, 8)}</p>
-            </div>
-        `;
-        star.onclick = () => openViewWishModal(wish, slot, 'star');
-        sliderTrack.appendChild(star);
-    });
-
-    // Add some empty placeholder stars for visual effect (up to 20 total)
-    const totalStars = Math.min(20, Math.max(5, sliderStarKeys.length + 5));
-    for (let i = sliderTrack.children.length; i < totalStars; i++) {
-        const placeholder = document.createElement('div');
-        placeholder.className = 'star-wish';
-        placeholder.style.opacity = '0.25';
-        placeholder.innerHTML = `
-            <div class="star-wish-content">
-                <div style="font-size: 2.5rem; color: #94a3b8;">☆</div>
-            </div>
-        `;
-        sliderTrack.appendChild(placeholder);
+        gridContainer.appendChild(starCircle);
     }
 }
 
