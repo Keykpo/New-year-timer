@@ -1,0 +1,104 @@
+#,Título,#,Título,#,Título,#,Título
+1,The Starlight Contributor,26,The Tiny Spark,51,The Kind Helper,76,The Minor Force
+2,The Humble Wish,27,The Little Gem,52,The Simple Believer,77,The Small Light
+3,The Shining Drop,28,The Initial Hope,53,The Modest Donor,78,The Quick Helper
+4,The Bright Glimmer,29,The Quiet Pledge,54,The Bright Flicker,79,The Small Pledge
+5,The Kindred Spirit,30,The Pocket Patron,55,The Gentle Boost,80,The Little Helper
+6,The First Step,31,The Little Whisper,56,The Small Seed,81,The Tiny Contributor
+7,The Morning Dew,32,The Gentle Touch,57,The Warm Glow,82,The Early Adopter
+8,The Little Dream,33,The Soft Start,58,The New Beginning,83,The Friendly Hand
+9,The Initial Spark,34,The Star Dust,59,The Kind Soul,84,The Light Contributor
+10,The Quiet Cheer,35,The Silver Drop,60,The Little Nudge,85,The Gentle Supporter
+11,The Bright Moment,36,The Good Deed,61,The First Bloom,86,The Heartfelt Drop
+12,The Warm Spot,37,The Light Touch,62,The Small Start,87,The Quiet Friend
+13,The Small Star,38,The Gentle Light,63,The Sunny Ray,88,The True Start
+14,The Kind Giver,39,The Soft Shine,64,The Star Whisper,89,The Kind Contributor
+15,The Little Boost,40,The Friendly Wish,65,The Small Act,90,The Tiny Believer
+16,The Gentle Star,41,The Small Cheer,66,The Quiet Supporter,91,The New Hope
+17,The First Step,42,The Happy Glow,67,The Warm Feeling,92,The Soft Supporter
+18,The Bright Drop,43,The Light Hand,68,The Helping Hand,93,The Humble Friend
+19,The Hopeful Start,44,The Quiet Patron,69,The Good Start,94,The Little Supporter
+20,The Simple Wish,45,The Early Light,70,The Tiny Seed,95,The Bright Companion
+21,The Little Coin,46,The Small Blessing,71,The Soft Whisper,96,The Initial Backer
+22,The Small Light,47,The Modest Spark,72,The Tiny Boost,97,The Loyal Friend
+23,The Star's Kiss,48,The Quick Start,73,The Gentle Nudge,98,The Little Light
+24,The Friendly Boost,49,The Tiny Light,74,The Kind Gesture,99,The Hopeful Sign
+25,The Little Ray,50,The Good Wish,75,The Early Supporter,100,The Little Star
+101,The Star Seed,126,The Pocket Light,151,The Little Ray,176,The Modest Dream
+102,The Comet Trail,127,The Kindling Flame,152,The Gentle Touch,177,The Soft Landing
+103,The Aurora Whisper,128,The Wishful Spark,153,The Bright Blink,178,The Quiet Hope
+104,The Lunar Smile,129,The Simple Cheer,154,The Friendly Hand,179,The Good Fortune
+105,The Tiny Comet,130,The Good Vibe,155,The Warm Whisper,180,The Small Cheer
+106,The Star Bloom,131,The First Step,156,The Little Drop,181,The Pocket Star
+107,The Little Blessing,132,The Heart's Start,157,The Soft Shimmer,182,The True Friend
+108,The Humble Hero,133,The Gentle Glow,158,The Kindred Light,183,The Tiny Wish
+109,The Quiet Star,134,The Lucky Charm,159,The Humble Pledge,184,The Sweet Start
+110,The Soft Launch,135,The New Ray,160,The Bright Whisper,185,The Friendly Start
+111,The First Echo,136,The Light Heart,161,The Small Favor,186,The Gentle Spirit
+112,The Dawn Droplet,137,The Sweet Spot,162,The Warm Smile,187,The Hopeful Spark
+113,The Silver Shard,138,The Kind Spark,163,The Little Promise,188,The Star Seedling
+114,The Hopeful Sign,139,The Tiny Tide,164,The Simple Joy,189,The Happy Contributor
+115,The Bright Penny,140,The Happy Start,165,The Quick Spark,190,The Friendly Glow
+116,The Tiny Gem,141,The Small Miracle,166,The Gentle Boost,191,The Simple Light
+117,The Kind Nudge,142,The Pocket Gem,167,The Early Bird,192,The Humble Boost
+118,The Quiet Shine,143,The Bright Flicker,168,The Soft Light,193,The Little Step
+119,The Soft Light,144,The Gentle Start,169,The Morning Light,194,The Kind Gesture
+120,The Small Spark,145,The Little Star,170,The Happy Star,195,The Wishing Star
+121,The Lucky Break,146,The Star Beam,171,The Quiet Partner,196,The Gentle Donor
+122,The Friendly Star,147,The Hope Coin,172,The Soft Spark,197,The Light Supporter
+123,The Simple Joy,148,The Kind Heart,173,The Tiny Gift,198,The Quick Cheer
+124,The Bright Step,149,The Small Token,174,The Bright Pebble,199,The Best Wish
+125,The Little Comet,150,The Happy Companion,175,The Kind Patron,200,The Golden Drop
+201,The Lucky Penny,226,The Clover Bloom,251,The Sweetest Gift,276,The Kind Observer
+202,The Good Omen,227,The Little Fortune,252,The Gentle Breeze,277,The Star Gem
+203,The Charm Giver,228,The Bright Future,253,The Golden Speck,278,The Little Wonder
+204,The Happy Pebble,229,The First Glimpse,254,The Kind Impulse,279,The Wishing Coin
+205,The Tiny Jewel,230,The Soft Landing,255,The Lucky Charm,280,The Friendly Glance
+206,The Silver Token,231,The Kindred Wish,256,The Bright Token,281,The Hopeful Drop
+207,The Sweet Chance,232,The Gentle Ripple,257,The Small Treasure,282,The Tiny Sparkle
+208,The Rainbow Arc,233,The Lucky Break,258,The Best Little Wish,283,The Quiet Gem
+209,The Golden Dust,234,The Hopeful Act,259,The Happy Star,284,The Good Spirit
+210,The Kind Whisper,235,The Quiet Cheer,260,The Soft Start,285,The Tiny Miracle
+211,The Lucky Streak,236,The Small Wonder,261,The Gentle Favor,286,The Brightest Drop
+212,The Little Treasure,237,The Sweet Relief,262,The Silver Shimmer,287,The Wishing Bell
+213,The Sunny Spot,238,The Good Sign,263,The Tiny Blessing,288,The Little Gem
+214,The Joyful Start,239,The Lucky Star,264,The Friendly Gesture,289,The Kind Act
+215,The Tiny Delight,240,The Happy Signal,265,The Smallest Light,290,The Bright Glance
+216,The Crystal Drop,241,The Golden Coin,266,The Warm Impulse,291,The Gentle Gift
+217,The Best Little Gift,242,The Softest Touch,267,The Tiny Boost,292,The Sweet Spark
+218,The Lucky Find,243,The Bright Signal,268,The Hopeful Drop,293,The Kind Start
+219,The Little Blessing,244,The Gentle Smile,269,The Bright Little Star,294,The Good Feeling
+220,The Wishing Stone,245,The Sweet Whisper,270,The Golden Spark,295,The Small Treasure
+221,The Happy Token,246,The Small Favor,271,The Silver Shard,296,The Friendly Hand
+222,The Kind Thought,247,The Tiny Fortune,272,The Kindred Supporter,297,The Light Heart
+223,The Best Wish,248,The Little Cheer,273,The Bright Whisper,298,The Sweet Pledge
+224,The Golden Drop,249,The Warm Companion,274,The Tiny Start,299,The Little Act
+225,The Silver Beam,250,The Gentle Spark,275,The Kind Token,300,The Happy Chance
+1,The Lucky Penny,101,The Silver Whisper,201,The Gentle Augury,301,The Hopeful Start,401,The Kindred Sparkle
+2,The Humble Spark,102,The Little Comet,202,The Lucky Trail,302,The Tiny Prophecy,402,The Smallest Bless
+3,The Hopeful Glimmer,103,The Kind Star,203,The Sweetest Dream,303,The Softest Luck,403,The Golden Thread
+4,The Sweet Beginning,104,The Small Miracle,204,The Star Dust,304,The Bright Glimmer,404,The Auspice Seed
+5,The Gentle Whisper,105,The Brightest Drop,205,The Tiny Blessing,305,The Little Blessing,405,The Kindred Spark
+6,The Little Charm,106,The Quiet Promise,206,The Soft Radiance,306,The True Believer,406,The Golden Fragment
+7,The Good Vibe,107,The Happy Pebble,207,The Friendly Giver,307,The Sweet Whisper,407,The Lucky Pebble
+8,The Kindred Spirit,108,The Little Treasure,208,The Dawn Light,308,The Star Beam,408,The Small Act
+9,The Silver Token,109,The Simple Augury,209,The Kind Nudge,309,The Modest Light,409,The Tiny Prophecy
+10,The Morning Dew,110,The Hopeful Step,210,The Small Favor,310,The Clear Drop,410,The Purest Glimmer
+11,The Clover Leaf,111,The Tiny Success,211,The Joyful Start,311,The Friendly Drop,411,The Favorable Start
+12,The Bright Flicker,112,The Sweet Spot,212,The Gold Spark,312,The Tiny Comet,412,The Little Augur
+13,The Gentle Start,113,The Small Sun,213,The Hopeful Light,313,The Good Start,413,The Sweetest Hope
+14,The Lucky Drop,114,The Kind Impulse,214,The Quiet Force,314,The Gentle Seed,414,The Kindred Light
+15,The Soft Glow,115,The Friendly Hand,215,The Light Touch,315,The Lucky Grain,415,The Small Success
+16,The Tiny Star,116,The Little Seed,216,The True Wish,316,The Warm Whisper,416,The Simple Charm
+17,The Simple Joy,117,The Hopeful Coin,217,The Sunny Drop,317,The First Sparkle,417,The Lucky Speck
+18,The Quick Cheer,118,The Softest Kiss,218,The Good Destiny,318,The Smallest Vow,418,The Tiny Promise
+19,The Good Luck Charm,119,The First Whisper,219,The Tiny Gift,319,The Bright Token,419,The Good Step
+20,The Little Ray,120,The Modest Hope,220,The Simple Pledge,320,The Gentle Act,420,The Humble Portent
+21,The Kind Gesture,121,The Blessed Drop,221,The Gentle Sun,321,The Soft Glimmer,421,The Clear Signal
+22,The Smallest Wish,122,The Happy Spark,222,The Quick Fortune,322,The Little Bloom,422,The Kindred Sparkle
+23,The Bright Spark,123,The Little Wonder,223,The True Augur,323,The Purest Hope,423,The Gentle Blessing
+24,The Sweet Token,124,The Quiet Glow,224,The Soft Promise,324,The Star Shard,424,The Warm Spark
+25,The Silver Spark,125,The Tiny Dream,225,The Humble Augury,325,The Destiny Seed,425,The Little Augury
+98,The Good Start,198,The Tiny Light,298,The Happy Glow,398,The Simple Pledge,498,The True Kindness
+99,The True Light,199,The Kindred Ray,299,The Soft Whisper,399,The Little Destiny,499,The Goodest Drop
+100,The Simple Charm,200,The Blessed Start,300,The Lucky Stone,400,The Pure Augur,500,The Blessed Token

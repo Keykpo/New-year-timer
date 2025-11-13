@@ -740,6 +740,53 @@ const TIERS = {
     }
 };
 
+// Random wish titles for each tier
+const WISH_TITLES = {
+    founder: [
+        'Golden Wish',
+        'Royal Wish',
+        'Imperial Wish',
+        'Supreme Wish',
+        'Platinum Wish',
+        'Diamond Wish',
+        'Crown Wish',
+        'Monarch Wish',
+        'Elite Wish',
+        'Celestial Wish',
+        'Eternal Wish',
+        'Legend Wish',
+        'Majestic Wish',
+        'Noble Wish',
+        'Sovereign Wish'
+    ],
+    star: [
+        'Star Wish',
+        'Bright Wish',
+        'Hope Wish',
+        'Dream Wish',
+        'Cosmic Wish',
+        'Shining Wish',
+        'Lucky Wish',
+        'Magic Wish',
+        'Pure Wish',
+        'True Wish',
+        'Sweet Wish',
+        'Gentle Wish',
+        'Warm Wish',
+        'Kind Wish',
+        'Happy Wish'
+    ]
+};
+
+/**
+ * Get random wish title for a tier
+ */
+function getRandomWishTitle(tierName) {
+    const titles = WISH_TITLES[tierName] || WISH_TITLES.star;
+    const randomIndex = Math.floor(Math.random() * titles.length);
+    return titles[randomIndex];
+}
+
 let currentSlot = null;
 let currentPrice = 1.49;
 let currentTier = null;
@@ -1474,10 +1521,14 @@ async function handleSuccessfulPayment() {
     // Get user's country
     const country = await getUserCountry();
 
+    // Generate random wish title based on tier
+    const wishTitle = getRandomWishTitle(currentTier);
+
     const wish = {
         text: wishText,
         author: author,
         country: country,
+        wishTitle: wishTitle, // ← Random title for this wish
         slot: currentSlot,
         tier: currentTier,
         price: currentPrice,
@@ -1514,6 +1565,7 @@ function saveWishToFirebase(wish) {
         text: wish.text,
         author: wish.author,
         country: wish.country, // ← Save country
+        wishTitle: wish.wishTitle, // ← Save random title
         price: wish.price,
         timestamp: wish.timestamp
     }).catch((error) => {
@@ -1647,16 +1699,18 @@ function loadTestWishes() {
             setTimeout(() => {
                 testWishes.forEach((wish, index) => {
                     const slot = index + 1; // Slots 1, 2, 3, 4... 12
+                    const randomTitle = getRandomWishTitle('star'); // Generate random title
                     database.ref(`wishes/star/${slot}`).set({
                         text: wish.text,
                         author: wish.author,
                         country: wish.country,
+                        wishTitle: randomTitle, // ← Random title for each wish
                         price: 1.49,
                         timestamp: wish.timestamp
                     });
                 });
 
-                console.log('✅ 12 deseos de prueba cargados exitosamente con idiomas nativos');
+                console.log('✅ 12 deseos de prueba cargados exitosamente con idiomas nativos y títulos aleatorios');
             }, 500);
         });
     });
@@ -1705,16 +1759,18 @@ function loadTestFounderWishes() {
             setTimeout(() => {
                 founderWishes.forEach((wish, index) => {
                     const slot = index + 1; // Slots 1, 2
+                    const randomTitle = getRandomWishTitle('founder'); // Generate random title
                     database.ref(`wishes/founder/${slot}`).set({
                         text: wish.text,
                         author: wish.author,
                         country: wish.country,
+                        wishTitle: randomTitle, // ← Random title for each wish
                         price: 49.99,
                         timestamp: wish.timestamp
                     });
                 });
 
-                console.log('✅ 2 deseos Founder de prueba cargados exitosamente');
+                console.log('✅ 2 deseos Founder de prueba cargados exitosamente con títulos aleatorios');
             }, 500);
         });
     });
@@ -1770,15 +1826,18 @@ function openViewWishModal(wish, slot, tierName) {
 
     badge.className = `wish-tier-badge ${tierName}`;
 
+    // Use saved wish title or fallback to tier-based title
+    const wishTitle = wish.wishTitle || (tierName === 'founder' ? 'Golden Wish' : 'Star Wish');
+
     if (tierName === 'founder') {
         icon.textContent = '👑';
-        tierText.textContent = "Founder's Wish";
+        tierText.textContent = wishTitle;
     } else if (tierName === 'star') {
         icon.textContent = '⭐';
-        tierText.textContent = 'Star Wish';
+        tierText.textContent = wishTitle;
     } else {
         icon.textContent = '⭐';
-        tierText.textContent = 'Star Wish';
+        tierText.textContent = wishTitle;
     }
 
     // Set wish content

@@ -1,0 +1,81 @@
+
+1,The Dream Weaver,26,The Legacy Architect,51,The Sacred Oath,76,The Star Seeker
+2,The Vision Catalyst,27,The Cornerstone Donor,52,The Guiding Star,77,The Hope Bearer
+3,The Inner Sanctum,28,The Alpha Contributor,53,The Soul Supporter,78,The Perpetual Flame
+4,The Legacy Builder,29,The Golden Anchor,54,The Horizon Pledger,79,The Destiny Guide
+5,The Pathfinders' Pact,30,The Pinnacle Donor,55,The Grand Patron,80,The Time Keeper
+6,The Future Architect,31,The Epoch Maker,56,The Momentum Master,81,The Core Circle
+7,The Golden Key,32,The First Light,57,The Unwavering Hand,82,The Eternal Pledge
+8,The Cosmic Supporter,33,The Grand Dreamer,58,The Founder’s Ally,83,The Dream Carrier
+9,The Consecrated Crew,34,The Eternal Supporter,59,The Celestial Patron,84,The Visionary Heart
+10,The Soul Patron,35,The Star Gazer,60,The Ascendant,85,The Dream Architect
+11,The Guiding Light,36,The Founding Pillar,61,The Genesis Giver,86,The High Guardian
+12,The Heartfelt Leader,37,The Sacred Trust,62,The Prime Mover,87,The Bright Future
+13,The Noble Contributor,38,The Promise Keeper,63,The Inner Circle,88,The Timeless Backer
+14,The Seed Planter,39,The Golden Promise,64,The Cosmic Alchemist,89,The North Star
+15,The Celestial Pioneer,40,The Dream Maker,65,The Master Builder,90,The True Believer
+16,The Vision Holder,41,The Harvest Guide,66,The Origin Keeper,91,The Royal Contributor
+17,The Illuminator,42,The Epoch Founder,67,The Noble Dreamer,92,The Core Supporter
+18,The True North,43,The Dream Conduit,68,The Star Navigator,93,The Grand Architect
+19,The Rising Sun,44,The Core Architect,69,The Eternal Watcher,94,The Key Partner
+20,The Golden Patron,45,The First Follower,70,The High Patron,95,The Sacred Donor
+21,The Eternal Builder,46,The Hope Diamond,71,The Elite Supporter,96,The Dream Forger
+22,The Grand Visionary,47,The Soul Architect,72,The Noble Founder,97,The Celestial Patron
+23,The Silver Lining,48,The Dream Builder,73,The Stellar Sentinel,98,The Covenant Maker
+24,The Destiny Weaver,49,The Perpetual Patron,74,The Zenith Patron,99,The Original Backer
+25,The Zenith Dreamer,50,The True Founder,75,The Hope Catalyst,100,The Visionary
+1,The Auspice Patron,26,The Prophetic Builder,51,The Golden Omen,76,The Blessed Harbinger
+2,The Grand Augur,27,The Auspicious Architect,52,The Destiny Director,77,The Auspice Founder
+3,The Fortune's Favor,28,The Serene Omen,53,The Guiding Prophecy,78,The Favorable Beacon
+4,The Blessed Signet,29,The Zenith Predictor,54,The Noble Augur,79,The Fortunate Architect
+5,The High Auspice,30,The Golden Presage,55,The Sure Sign,80,The Prime Omen
+6,The Good Portent,31,The Prophecy Keeper,56,The Blessed Blueprint,81,The Grand Signet
+7,The Foretold Success,32,The Destiny Cartographer,57,The Triumph Weaver,82,The High Destiny
+8,The Auspicious Star,33,The Sacred Augury,58,The Propitious Patron,83,The Auspicious Founder
+9,The Fortunate Harbinger,34,The Grand Foresight,59,The Omen Architect,84,The Divine Presage
+10,The Golden Vindicator,35,The Clear Augury,60,The Star of Augury,85,The Noble Foresight
+11,The Success Prophet,36,The Auspice Director,61,The Prophetic Patron,86,The True Portent
+12,The Prime Augury,37,The Silver Prophecy,62,The Favorable Patron,87,The Golden Promise
+13,The Sacred Destiny,38,The Destiny's Chosen,63,The High Omen,88,The Lucky Signet
+14,The Blessed Foreteller,39,The Triumph Builder,64,The Golden Start,89,The Success Augur
+15,The Propitious Guide,40,The Auspice Creator,65,The Clear Path,90,The Zenith Prophecy
+16,The Grand Omen,41,The Lucky Augur,66,The Destiny Patron,91,The Blessed Architect
+17,The Favorable Sign,42,The Gold Augury,67,The Noble Augury,92,The Auspicious Sign
+18,The True Harbinger,43,The Grand Prophecy,68,The Omen Weaver,93,The Favorable Start
+19,The Prophetic Patron,44,The Fortunate Foresight,69,The Silver Augur,94,The Propitious Anchor
+20,The Destiny Architect,45,The Auspice Weaver,70,The Clear Augur,95,The Grand Destiny
+21,The Golden Presager,46,The Blessed Path,71,The Prophetic Hand,96,The Oracle Donor
+22,The Grand Favorable,47,The Prime Foreteller,72,The Sacred Omen,97,The Eternal Augury
+23,The Sacred Prophecy,48,The Noble Omen,73,The Destiny Foreteller,98,The Bright Augury
+24,The Auspicious Beacon,49,The Destiny Starter,74,The Favorable Dreamer,99,The Golden Foresight
+25,The Triumph Patron,50,The Clear Harbinger,75,The Propitious Founder,100,The Prophetic Builder
+1,The Golden Augur,101,The Star of Destiny,201,The Radiant Presage,301,The Auspice Guardian,401,The Eternal Radiance
+2,The Divine Architect,102,The Clear Horizon,202,The Grand Blessing,302,The Fortune Weave,402,The Sacred Alchemist
+3,The Destiny Patron,103,The Blessed Creator,203,The Noble Foreteller,303,The Golden Zenith,403,The Blessed Pathfinder
+4,The Serene Visionary,104,The Sure Foundation,204,The True Prophecy,304,The Prime Architect,404,The Noble Harbinger
+5,The Triumph Weaver,105,The Prime Harbinger,205,The Eternal Omen,305,The Auspice Pioneer,405,The Glorious Presage
+6,The Propitious Guide,106,The Golden Catalyst,206,The Fortunate Giver,306,The Silver Lining Elite,406,The Sublime Architect
+7,The Auspice Director,107,The Sacred Trust,207,The Noble Endeavor,307,The Destiny Creator,407,The Radiant Prophecy
+8,The Radiant Founder,108,The Silver Augury,208,The Golden Charter,308,The Sacred Builder,408,The Blessed Sovereign
+9,The High Success,109,The Diamond Dreamer,209,The Serene Builder,309,The Grand Constellation,409,The Noble Triumph
+10,The Blessed Architect,110,The Vision Sentinel,210,The Celestial Anchor,310,The Fortune Guardian,410,The Golden Vindicator
+11,The Golden Era,111,The Clear Destiny,211,The True Auspice,311,The Diamond Patron,411,The Sacred Foresight
+12,The Grand Foresight,112,The Blissful Guide,212,The Joyful Architect,312,The Prime Augury,412,The Blessed Architect
+13,The Noble Zenith,113,The Divine Prophecy,213,The Pure Fortune,313,The Legacy Illuminator,413,The Celestial Founder
+14,The Destiny Foreteller,114,The Golden Compass,214,The Grand Vow,314,The Noble Destiny,414,The High Augury
+15,The Eternal Augury,115,The Serene Anchor,215,The Blessed Foreteller,315,The Zenith Patron,415,The Destiny Holder
+16,The Good Omen Chief,116,The Platinum Vision,216,The Noble Presage,316,The Radiant Destiny,416,The Golden Architect
+17,The True Harbinger,117,The Sacred Prophecy,217,The Triumph Creator,317,The Blessed Patron,417,The Vision Patron
+18,The Lucky Beacon,118,The Blessed Path,218,The Eternal Bliss,318,The True Architect,418,The Grand Success
+19,The Auspicious Founder,119,The Noble Triumph,219,The Serene Protector,319,The Serenity Builder,419,The Noble Augury
+20,The Silver Fortune,120,The Golden Harbinger,220,The Celestial Prophecy,320,The Star of Triumph,420,The Prophetic Vision
+21,The Prophetic Hand,121,The Clear Vision,221,The True Harbinger,321,The Golden Augury,421,The Blessed Pioneer
+22,The Grand Radiance,122,The Fortune Catalyst,222,The High Augury,322,The Divine Presage,422,The Clear Vindicator
+23,The Noble Forecaster,123,The Sacred Covenant,223,The Auspice Keeper,323,The Sacred Foresight,423,The Grand Fulfillment
+24,The Golden Destiny,124,The Blessed Vow,224,The Destiny Sentinel,324,The Noble Predictor,424,The Fortune Elite
+25,The Triumph Patron,125,The Pure Augury,225,The Golden Compass,325,The Triumph Keeper,425,The Zenith Augur
+1,The Golden Augur,101,The Star of Destiny,201,The Radiant Presage,301,The Auspice Guardian,401,The Eternal Radiance
+2,The Divine Architect,102,The Clear Horizon,202,The Grand Blessing,302,The Fortune Weave,402,The Sacred Alchemist
+98,The Grand Serenity,198,The Grand Fortune,298,The Golden Vow,398,The Blissful Founder,498,The True Oracle
+99,The Fortunate Builder,199,The True Fortune,299,The Serene Vision,399,The Destiny Harbinger,499,The Blessed Augur
+100,The Propitious Builder,200,The Blessed Destiny,300,The Auspice Seeker,400,The Golden Prophecy,500,The Grand Auspice
