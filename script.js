@@ -701,6 +701,15 @@ try {
         } else {
             firebase.initializeApp(FIREBASE_CONFIG);
             database = firebase.database();
+
+            // Sign in anonymously to allow test wishes to be written to database
+            firebase.auth().signInAnonymously()
+                .then(() => {
+                    console.log('✅ Firebase authenticated anonymously for test wishes');
+                })
+                .catch((error) => {
+                    console.error('❌ Firebase auth error:', error);
+                });
         }
     } else {
         console.error('❌ Firebase configuration not found. Make sure config.js is loaded');
@@ -827,9 +836,26 @@ function initializeFounderWishes() {
         const founderWish = purchasedWishes[wishIndex];
 
         if (founderWish) {
-            // Occupied - show reserved state
+            // Occupied - show wish text and author with flag (PREMIUM style)
             founderContainer.className = 'founder-wish occupied';
-            founderContainer.innerHTML = ''; // CSS ::after shows "RESERVADO" overlay
+
+            // Get flag PNG image
+            const flagImg = countryToFlag(founderWish.country);
+
+            // Sanitize data
+            const safeText = sanitizeWishText(founderWish.text);
+            const safeAuthor = sanitizeAuthorName(founderWish.author);
+
+            founderContainer.innerHTML = `
+                <div class="founder-wish-content occupied-content premium">
+                    <div class="founder-crown-badge">👑</div>
+                    <p class="founder-wish-message">"${safeText}"</p>
+                    <div class="founder-wish-author-display">
+                        ${flagImg}
+                        <span>${safeAuthor}</span>
+                    </div>
+                </div>
+            `;
             founderContainer.style.cursor = 'pointer';
             founderContainer.style.opacity = '1';
             founderContainer.onclick = () => openViewWishModal(founderWish, i, 'founder');

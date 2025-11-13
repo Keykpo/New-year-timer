@@ -410,33 +410,61 @@ header {
     filter: drop-shadow(0 0 60px rgba(255, 215, 0, 1)) brightness(1.15);
 }
 
-/* When founder wish is occupied - add green overlay */
+/* When founder wish is occupied - show premium content */
 .founder-wish.occupied {
     position: relative;
-}
-
-.founder-wish.occupied::after {
-    content: '✓ RESERVADO';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(34, 197, 94, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: #fff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(2px);
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%);
+    border: 2px solid #fbbf24;
 }
 
 .founder-wish.occupied:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 40px rgba(34, 197, 94, 0.8));
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 12px 40px rgba(251, 191, 36, 0.3);
+}
+
+/* Premium badge crown at top */
+.founder-crown-badge {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+    filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.4));
+}
+
+/* Founder wish message - premium style */
+.founder-wish-message {
+    font-size: 0.85rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.4;
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
+    background: linear-gradient(to right, #fbbf24, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Founder author display - premium style */
+.founder-wish-author-display {
+    font-size: 0.75rem;
+    color: #92400e;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(251, 191, 36, 0.15);
+    border-radius: 20px;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.founder-wish-author-display .flag-icon {
+    width: 18px;
+    height: 14px;
+    border: 1px solid rgba(251, 191, 36, 0.5);
 }
 
 @keyframes founderGlow {
