@@ -1,0 +1,63 @@
+
+
+🚀 PROMPT FINAL: Implementación del Diseño de la Rejilla de Constelación (Referencia de Imagen Exacta)
+ATENCIÓN: La siguiente imagen es la REFERENCIA VISUAL EXACTA del diseño que debe tener la sección de los Deseos. Debes replicar esta estructura y estética con la máxima fidelidad posible en HTML y CSS.
+
+RECURSOS DISPONIBLES: He añadido una carpeta llamada ESTETICAS /assets con background.jpg, corona.svg, y star.svg.
+
+NIVELES DE PRECIO FINALES: Solo existen dos niveles:
+
+Deseo Fundador ($49.99 USD): Los slots superiores.
+
+Deseo Estrella ($1.99 USD): Todas las filas inferiores.
+
+Tu tarea es aplicar los siguientes cambios finales al index.html, style.css y script.js:
+
+A. Diseño y Estructura de la Constelación (REPLICACIÓN EXACTA DE LA IMAGEN):
+
+Deseos Fundador (Fila Superior - $49.99):
+
+Crea cuatro slots en la fila superior, como se ve en la imagen de referencia.
+
+Cada slot debe ser un HEXÁGONO con bordes redondeados (no círculos), con un glow dorado/amarillo intenso y pulsante a su alrededor.
+
+Dentro de cada hexágono, el icono corona.svg debe estar centrado en la parte superior.
+
+El texto debe ser: "Deseo Fundador" y debajo "$49.99 USD" (dentro de un botón o un elemento con estilo de botón).
+
+Deseos Estrella (Filas Inferiores - $1.99):
+
+Crea las filas inferiores de slots como se ve en la imagen de referencia, formando una rejilla clara y ordenada.
+
+Cada slot debe ser un CÍRCULO con bordes redondeados, con un glow blanco/azul pálido a su alrededor.
+
+Dentro de cada círculo, el icono star.svg debe estar centrado.
+
+El texto debe ser: "Deseo Estrella" y debajo "$1.99 USD" (dentro de un botón o un elemento con estilo de botón).
+
+Animación de Fondo: Mantén el código de los fuegos artificiales de CSS, pero hazlos mucho más vibrantes y dinámicos, como se describió anteriormente, simulando un movimiento y luminosidad pulsante para un efecto "cinemático".
+
+B. Optimización de Estilo y Rendimiento (Usando /assets):
+
+Fondo de la Página: El background del body debe usar la imagen /assets/background.jpg (background-attachment: fixed; y background-size: cover;).
+
+Responsividad (ARREGLO CRÍTICO): Modifica agresivamente el style.css (usando Media Queries) para que esta rejilla de Deseos Fundador y Estrella se adapte perfectamente al móvil. Los slots deben apilarse verticalmente de forma elegante y legible en pantallas pequeñas, sin superponerse ni perder su jerarquía.
+
+C. Restauración de Contenido Faltante (Corregir Visibilidad):
+
+Restaurar Visibilidad: El Slider de Sucesos Importantes y la sección del Mapa del Mundo deben ser visibles y cargados en el DOM (no ocultos por defecto).
+
+Orden Final del Contenido: Temporizador -> Constelación de Deseos (con esta nueva rejilla) -> Slider de Sucesos Importantes -> Mapa del Mundo.
+
+D. Lógica Final:
+
+El modal de pago debe funcionar perfectamente con solo dos precios: $49.99 (solo Deseos Fundador) y $1.99 (todos los Deseos Estrella).
+
+Proporciona el código completo y final de index.html, style.css y script.js con todos estos arreglos de diseño y estructura.
+Tu tarea es la siguiente: El último pulido estético.
+
+Fondo de Fuegos Artificiales (Efecto de Video): Los fuegos artificiales de CSS actuales deben ser mucho más vibrantes y dinámicos. Deben simular el color y el movimiento de la imagen que te he enviado (rojos, naranjas y blancos intensos), creando una sensación de movimiento y luminosidad pulsante.
+
+Transiciones suaves: Aplica transiciones suaves y lentas a los slots de la constelación y los botones para que la página se sienta más cinemática y elegante.
+
+Revisión Final: Asegura que el código final tenga una estructura impecable y que el diseño de Constelación se mantenga como el foco principal.
