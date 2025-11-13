@@ -148,14 +148,18 @@ header {
 }
 
 .time-unit {
-    background: rgba(30, 41, 59, 0.5);
-    border: 2px solid rgba(251, 146, 60, 0.4);
+    background: rgba(30, 41, 59, 0.3);
+    border: 2px solid rgba(251, 146, 60, 0.5);
     padding: 1.5rem 2rem;
     min-width: 120px;
     text-align: center;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(251, 146, 60, 0.15),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1);
     /* Hexagon shape */
     clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
     position: relative;
@@ -307,9 +311,10 @@ header {
     position: absolute;
     width: 200px;
     height: 200px;
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 165, 0, 0.15) 100%);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(255, 165, 0, 0.2) 100%);
     border: 3px solid rgba(255, 215, 0, 1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
     transform: rotate(45deg);
     display: flex;
     justify-content: center;
@@ -320,7 +325,8 @@ header {
         0 0 40px rgba(255, 215, 0, 1),
         0 0 80px rgba(255, 215, 0, 0.8),
         0 0 120px rgba(255, 165, 0, 0.6),
-        inset 0 0 60px rgba(255, 215, 0, 0.3);
+        inset 0 0 60px rgba(255, 215, 0, 0.3),
+        inset 0 2px 2px rgba(255, 255, 255, 0.15);
     animation: founderPulse 2s ease-in-out infinite;
 }
 
@@ -370,41 +376,30 @@ header {
     position: absolute;
     width: 140px;
     height: 140px;
-    background: rgba(30, 41, 59, 0.6);
-    border: 2px solid rgba(96, 165, 250, 0.6);
-    backdrop-filter: blur(8px);
+    background: rgba(30, 41, 59, 0.35);
+    border: 2px solid rgba(251, 191, 36, 0.6);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
     clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+    box-shadow:
+        0 0 20px rgba(251, 191, 36, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .constellation-hex:hover {
     transform: scale(1.1);
-    border-color: rgba(96, 165, 250, 0.9);
-    box-shadow: 0 0 30px rgba(96, 165, 250, 0.7);
-}
-
-/* Golden Constellation Hexagons (alternating colors for variety) */
-.constellation-hex-2,
-.constellation-hex-4,
-.constellation-hex-6,
-.constellation-hex-8 {
-    border-color: rgba(251, 191, 36, 0.6);
-    box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
-    background: rgba(30, 41, 59, 0.6);
-}
-
-.constellation-hex-2:hover,
-.constellation-hex-4:hover,
-.constellation-hex-6:hover,
-.constellation-hex-8:hover {
     border-color: rgba(251, 191, 36, 0.9);
-    box-shadow: 0 0 30px rgba(251, 191, 36, 0.7);
+    box-shadow:
+        0 0 30px rgba(251, 191, 36, 0.7),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
+
+/* All hexagons are now Star tier ($1.99) with golden glow */
 
 .constellation-hex-content {
     text-align: center;
@@ -498,16 +493,19 @@ header {
     flex-shrink: 0;
     width: 80px;
     height: 80px;
-    background: rgba(30, 41, 59, 0.5);
-    border: 2px solid rgba(251, 191, 36, 0.5);
+    background: rgba(30, 41, 59, 0.35);
+    border: 2px solid rgba(251, 191, 36, 0.6);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    box-shadow:
+        0 0 15px rgba(251, 191, 36, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1);
     animation: starTwinkle 3s ease-in-out infinite;
 }
 
@@ -1307,16 +1305,20 @@ footer {
 }
 
 .modal-content {
-    background: rgba(30, 41, 59, 0.85);
+    background: rgba(30, 41, 59, 0.75);
     border-radius: 1.5rem;
-    border: 2px solid rgba(251, 146, 60, 0.5);
+    border: 2px solid rgba(251, 146, 60, 0.6);
     padding: 2.5rem;
     max-width: 500px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(251, 146, 60, 0.15),
+        inset 0 2px 2px rgba(255, 255, 255, 0.1);
     transform: scale(0.9);
     transition: transform 0.3s ease;
 }

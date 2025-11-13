@@ -722,18 +722,11 @@ const TIERS = {
         maxSlots: 1, // Only 1 Founder wish in the center
         icon: '👑'
     },
-    constellation: {
-        name: 'constellation',
-        price: 19.99,
-        slotStart: 1,
-        maxSlots: 8, // 8 hexagons around the center
-        icon: '💎'
-    },
     star: {
         name: 'star',
         price: 1.99,
         slotStart: 1,
-        maxSlots: Infinity, // Unlimited stars in slider
+        maxSlots: Infinity, // 8 hexagons around center + unlimited in slider
         icon: '⭐'
     }
 };
@@ -743,7 +736,6 @@ let currentPrice = 1.99;
 let currentTier = null;
 let wishes = {
     founder: {},
-    constellation: {},
     star: {}
 };
 
@@ -830,17 +822,18 @@ function initializeFounderWish() {
 function initializeConstellationHexagons() {
     const lang = detectLanguage();
 
+    // Hexagons are now Star tier wishes (slots 1-8 of star tier)
     for (let i = 1; i <= 8; i++) {
         const hexContainer = document.getElementById(`constellationWish${i}`);
         if (!hexContainer) continue;
 
-        const constellationWish = wishes.constellation[i];
+        const starWish = wishes.star[i];
 
-        if (constellationWish) {
+        if (starWish) {
             // Occupied - show wish
-            const safeText = sanitizeWishText(constellationWish.text);
-            const safeAuthor = sanitizeAuthorName(constellationWish.author);
-            const flag = countryToFlag(constellationWish.country);
+            const safeText = sanitizeWishText(starWish.text);
+            const safeAuthor = sanitizeAuthorName(starWish.author);
+            const flag = countryToFlag(starWish.country);
 
             hexContainer.innerHTML = `
                 <div class="constellation-hex-content">
@@ -849,18 +842,18 @@ function initializeConstellationHexagons() {
                 </div>
             `;
             hexContainer.style.cursor = 'pointer';
-            hexContainer.onclick = () => openViewWishModal(constellationWish, i, 'constellation');
+            hexContainer.onclick = () => openViewWishModal(starWish, i, 'star');
         } else {
-            // Empty - show price
+            // Empty - show price ($1.99 for Star tier)
             hexContainer.innerHTML = `
                 <div class="constellation-hex-content">
-                    <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">💎</div>
-                    <p style="font-size: 0.65rem; color: #60a5fa; margin-bottom: 0.25rem;">${translations[lang].emptyTileTextConstellation}</p>
-                    <p style="font-size: 0.75rem; color: #93c5fd; font-weight: 600;">$19.99</p>
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;">⭐</div>
+                    <p style="font-size: 0.7rem; color: #fbbf24; margin-bottom: 0.25rem;">${translations[lang].emptyTileTextStar}</p>
+                    <p style="font-size: 0.8rem; color: #fbbf24; font-weight: 600;">$1.99</p>
                 </div>
             `;
             hexContainer.style.cursor = 'pointer';
-            hexContainer.onclick = () => handleTileClick(i, 'constellation');
+            hexContainer.onclick = () => handleTileClick(i, 'star');
         }
     }
 }
@@ -875,7 +868,12 @@ function initializeStarsSlider() {
     sliderTrack.innerHTML = ''; // Clear existing
     const lang = detectLanguage();
     const starWishes = wishes.star;
-    const starKeys = Object.keys(starWishes).sort((a, b) => parseInt(a) - parseInt(b));
+
+    // Filter only slider wishes (slots 9+, since 1-8 are hexagons)
+    const sliderStarKeys = Object.keys(starWishes)
+        .filter(slot => parseInt(slot) >= 9)
+        .sort((a, b) => parseInt(a) - parseInt(b));
+
     const nextAvailableSlot = getNextAvailableSlot('star');
 
     // Add next available empty star first
@@ -890,8 +888,8 @@ function initializeStarsSlider() {
     emptyStar.onclick = () => handleTileClick(nextAvailableSlot, 'star');
     sliderTrack.appendChild(emptyStar);
 
-    // Add all occupied stars
-    starKeys.forEach(slot => {
+    // Add all occupied stars (from slider only, slots 9+)
+    sliderStarKeys.forEach(slot => {
         const wish = starWishes[slot];
         const star = document.createElement('div');
         star.className = 'star-wish occupied';
@@ -910,7 +908,7 @@ function initializeStarsSlider() {
     });
 
     // Add some empty placeholder stars for visual effect (up to 20 total)
-    const totalStars = Math.min(20, Math.max(5, starKeys.length + 5));
+    const totalStars = Math.min(20, Math.max(5, sliderStarKeys.length + 5));
     for (let i = sliderTrack.children.length; i < totalStars; i++) {
         const placeholder = document.createElement('div');
         placeholder.className = 'star-wish';
@@ -1390,8 +1388,8 @@ function loadWishesFromFirebase() {
         return;
     }
 
-    // Listen for wishes changes in real-time for each tier
-    ['founder', 'constellation', 'star'].forEach(tierName => {
+    // Listen for wishes changes in real-time for each tier (only 2 tiers now)
+    ['founder', 'star'].forEach(tierName => {
         database.ref(`wishes/${tierName}`).on('value', (snapshot) => {
             wishes[tierName] = snapshot.val() || {};
             // Regenerate constellation when wishes change
