@@ -1,0 +1,89 @@
+¡Perfecto! La visión es clara. Vamos a reestructurar la página para una estética de "Constelación de Deseos" con solo dos niveles de precio, priorizando el rendimiento y la experiencia de usuario.
+
+Tu tarea principal es implementar los siguientes cambios estéticos y estructurales:
+
+A. Reestructuración del Layout de la Página:
+
+Prioridad de la Constelación de Deseos:
+
+La sección del "Muro de Deseos Global" (con la Constelación de Deseos) debe ser la segunda sección principal de la página, ubicada inmediatamente después del temporizador de cuenta regresiva.
+
+El mapa del mundo (#world-map) debe moverse a una sección inferior, implementando un "lazy load" visual simple (haciéndolo visible solo cuando entra en el viewport) para optimizar la carga inicial.
+
+Encabezado y Footer Mejorados:
+
+Asegura un header y un footer minimalistas y elegantes, que complementen la estética general.
+
+B. Implementación de la "Constelación de Deseos" con 2 Niveles:
+
+Diseño de la Constelación (Foco Principal):
+
+Reemplaza la estructura de cuadrícula o pirámide anterior por un diseño que simule una constelación en el espacio.
+
+Deseo Fundador ($49.99 USD):
+
+Será el elemento central y más prominente. Diseñado con una forma distintiva (ej. un diamante, un círculo radiante, o un hexágono grande), con un brillo dorado/platino intenso y pulsante.
+
+Debe estar en el centro visual de la sección.
+
+El texto en los slots vacíos será: "Tu deseo Fundador brilla aquí. ¡Deja tu deseo para el 2026 y se va a cumplir!"
+
+Habrá un número limitado de estos deseos (ej. 1 solo o 3 máximo, tú decide un número que se vea bien en el diseño central).
+
+Deseos Estrella ($1.99 USD - Base de la Constelación):
+
+Estos deseos se dispondrán alrededor del Deseo Fundador, conectados visualmente por líneas de luz sutiles o formando un patrón orbital.
+
+Tendrán un brillo blanco/azulado suave.
+
+El texto en los slots vacíos será: "Tu deseo Estrella. ¡Deja tu deseo para el 2026 y se va a cumplir!"
+
+Habrá un número limitado de estos deseos que rodean al Fundador (ej. 4 a 6 slots).
+
+Slider de Deseos de la Comunidad (Fondo de Estrellas):
+
+Debajo de la Constelación principal (Deseo Fundador y Estrella), crea un slider horizontal infinito para los Deseos de la Comunidad ($1.99 USD).
+
+Las baldosas deben ser más pequeñas, quizás con forma de estrella o círculos, con un brillo sutil, simulando estrellas lejanas que se deslizan.
+
+El texto en los slots vacíos será: "Deseo de la Comunidad. ¡Deja tu deseo para el 2026 y se va a cumplir!"
+
+Este slider debe tener flechas de navegación claras y ser responsive.
+
+C. Mejora Estética General y Coherencia:
+
+Fondo de Estrellas y Fuegos Artificiales: Eleva la calidad visual de los fuegos artificiales y el fondo de estrellas. Deben ser más vibrantes, dinámicos, pero sin saturar la pantalla ni distraer del contenido.
+
+Temporizador: Mantén los colores cálidos y vibrantes para los cuadrados del temporizador. Asegura que el diseño del temporizador se integre con la nueva estética (bordes refinados, sombreados sutiles).
+
+Glassmorphism Coherente: Todos los contenedores (temporizador, constelación, slider, modales) deben usar backdrop-filter: blur() de forma consistente y elegante, con una transparencia que permita ver el fondo estelar.
+
+Tipografía: Utiliza una fuente moderna, legible y con un toque festivo/tecnológico (ej. 'Poppins' o 'Montserrat' de Google Fonts para el texto general, y una fuente de estilo digital como 'Orbitron' para los números del temporizador).
+
+Responsividad Avanzada: Asegura que toda la estructura (especialmente la Constelación de Deseos) se adapte impecablemente a dispositivos móviles y tablets, manteniendo la jerarquía visual y la legibilidad.
+
+D. Funcionalidad de Compra y Envío de Deseo (Modal Unificado):
+
+Mantener el mismo modal que se abre al hacer clic en cualquier deseo vacío.
+
+El modal debe mostrar dinámicamente el precio del deseo seleccionado ($49.99 o $1.99).
+
+La lógica de PayPal/Stripe y Firebase debe permanecer intacta.
+
+E. Mantenimiento de Funcionalidades Existentes:
+
+Temporizador local, internacionalización (Inglés, Español, Portugués, Francés), slider de eventos.
+
+La configuración de Firebase debe mantenerse.
+
+F. Optimización de Rendimiento:
+
+Limpia el script.js de console.log o advertencias innecesarias.
+
+Requisitos técnicos:
+
+Mantén una estructura de archivos limpia (index.html, style.css, script.js).
+
+Usa HTML, CSS y JavaScript puros, incluyendo Firebase SDK.
+
+Proporciona el código completo y actualizado para index.html, style.css y script.js.

@@ -789,17 +789,19 @@ function initializeFounderWishes() {
         const founderWish = wishes.founder[i];
 
         if (founderWish) {
-            // Occupied - show wish indicator
+            // Occupied - show badge with occupied state
+            founderContainer.className = 'founder-wish occupied';
             founderContainer.innerHTML = `
-                <div style="text-align: center; color: #fff; font-size: 0.75rem; text-shadow: 0 0 10px rgba(0,0,0,0.8); padding: 0.5rem;">
-                    <div>✓</div>
-                </div>
+                <img src="deseo-fundador.png" alt="Deseo Fundador" class="founder-wish-badge" />
             `;
             founderContainer.style.cursor = 'pointer';
             founderContainer.onclick = () => openViewWishModal(founderWish, i, 'founder');
         } else {
-            // Empty - clickable to buy
-            founderContainer.innerHTML = '';
+            // Empty - show badge in available state
+            founderContainer.className = 'founder-wish';
+            founderContainer.innerHTML = `
+                <img src="deseo-fundador.png" alt="Deseo Fundador" class="founder-wish-badge" />
+            `;
             founderContainer.style.cursor = 'pointer';
             founderContainer.onclick = () => handleTileClick(i, 'founder');
         }
