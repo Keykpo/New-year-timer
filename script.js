@@ -82,11 +82,11 @@ const translations = {
         stillWaiting: "Still waiting",
         footer: "Happy New Year from around the world! 🎉",
         timezoneInfo: "Your timezone: {timezone}",
-        wishesTitle: "Global Wishes Wall",
+        wishesTitle: "Wishes Constellation",
         wishesSubtitle: "Leave your wish for 2026 and it will come true! ✨",
-        emptyTileText: "Your wish comes true here ✨",
-        emptyTileTextPremium: "Your wish shines brightest here 👑",
-        emptyTileTextVIP: "Your dream takes flight here 💎",
+        emptyTileTextFounder: "Founder Wish shines here 👑",
+        emptyTileTextConstellation: "Constellation Wish ✨",
+        emptyTileTextStar: "Star Wish ⭐",
         modalTitle: "Make Your Wish",
         modalSubtitle: "Your wish will shine on the wall forever!",
         wishLabel: "Your Wish for 2026",
@@ -107,11 +107,11 @@ const translations = {
         stillWaiting: "Aún esperando",
         footer: "¡Feliz Año Nuevo desde todo el mundo! 🎉",
         timezoneInfo: "Tu zona horaria: {timezone}",
-        wishesTitle: "Muro de Deseos Global",
+        wishesTitle: "Constelación de Deseos",
         wishesSubtitle: "¡Deja tu deseo para el 2026 y se va a cumplir! ✨",
-        emptyTileText: "Tu deseo se cumple aquí ✨",
-        emptyTileTextPremium: "Tu deseo brilla más aquí 👑",
-        emptyTileTextVIP: "Tu sueño vuela aquí 💎",
+        emptyTileTextFounder: "Deseo Fundador brilla aquí 👑",
+        emptyTileTextConstellation: "Deseo Constelación ✨",
+        emptyTileTextStar: "Deseo Estrella ⭐",
         modalTitle: "Haz Tu Deseo",
         modalSubtitle: "¡Tu deseo brillará en el muro para siempre!",
         wishLabel: "Tu Deseo para 2026",
@@ -132,11 +132,11 @@ const translations = {
         stillWaiting: "Ainda esperando",
         footer: "Feliz Ano Novo de todo o mundo! 🎉",
         timezoneInfo: "Seu fuso horário: {timezone}",
-        wishesTitle: "Muro de Desejos Global",
+        wishesTitle: "Constelação de Desejos",
         wishesSubtitle: "Deixe seu desejo para 2026 e ele se tornará realidade! ✨",
-        emptyTileText: "Seu desejo se realiza aqui ✨",
-        emptyTileTextPremium: "Seu desejo brilha mais aqui 👑",
-        emptyTileTextVIP: "Seu sonho voa aqui 💎",
+        emptyTileTextFounder: "Desejo Fundador brilha aqui 👑",
+        emptyTileTextConstellation: "Desejo Constelação ✨",
+        emptyTileTextStar: "Desejo Estrela ⭐",
         modalTitle: "Faça Seu Desejo",
         modalSubtitle: "Seu desejo brilhará no muro para sempre!",
         wishLabel: "Seu Desejo para 2026",
@@ -157,11 +157,11 @@ const translations = {
         stillWaiting: "Encore en attente",
         footer: "Bonne année du monde entier! 🎉",
         timezoneInfo: "Votre fuseau horaire: {timezone}",
-        wishesTitle: "Mur des Souhaits Global",
+        wishesTitle: "Constellation de Souhaits",
         wishesSubtitle: "Laissez votre souhait pour 2026 et il se réalisera! ✨",
-        emptyTileText: "Votre souhait se réalise ici ✨",
-        emptyTileTextPremium: "Votre souhait brille plus ici 👑",
-        emptyTileTextVIP: "Votre rêve s'envole ici 💎",
+        emptyTileTextFounder: "Souhait Fondateur brille ici 👑",
+        emptyTileTextConstellation: "Souhait Constellation ✨",
+        emptyTileTextStar: "Souhait Étoile ⭐",
         modalTitle: "Faites Votre Souhait",
         modalSubtitle: "Votre souhait brillera sur le mur pour toujours!",
         wishLabel: "Votre Souhait pour 2026",
@@ -713,20 +713,27 @@ try {
 // WISHES WALL SYSTEM
 // ====================================
 
-// Pricing tiers - Only 2 tiers now
+// Pricing tiers - 3 tiers for constellation design
 const TIERS = {
-    premium: {
-        name: 'premium',
+    founder: {
+        name: 'founder',
         price: 49.99,
         slotStart: 1,
-        maxSlots: Infinity,
+        maxSlots: 1, // Only 1 Founder wish in the center
         icon: '👑'
     },
-    regular: {
-        name: 'regular',
+    constellation: {
+        name: 'constellation',
+        price: 19.99,
+        slotStart: 1,
+        maxSlots: 8, // 8 hexagons around the center
+        icon: '💎'
+    },
+    star: {
+        name: 'star',
         price: 1.99,
         slotStart: 1,
-        maxSlots: Infinity,
+        maxSlots: Infinity, // Unlimited stars in slider
         icon: '⭐'
     }
 };
@@ -735,8 +742,9 @@ let currentSlot = null;
 let currentPrice = 1.99;
 let currentTier = null;
 let wishes = {
-    premium: {},
-    regular: {}
+    founder: {},
+    constellation: {},
+    star: {}
 };
 
 /**
@@ -761,81 +769,184 @@ function getNextAvailableSlot(tierName) {
  * Initialize wishes wall
  */
 function initWishesWall() {
-    createTierGrids();
+    initializeConstellation();
     setupModal();
     loadWishesFromFirebase();
     setupCharCounter();
-    setupIndependentSliders();
+    setupStarsSlider();
 }
 
 /**
- * Create grids for each tier independently
+ * Initialize the constellation display (Founder + 8 Constellation hexagons + Stars slider)
  */
-function createTierGrids() {
-    createTierGrid('premium', 'wishesGridFounder');
-    createTierGrid('regular', 'wishesGridStar');
+function initializeConstellation() {
+    initializeFounderWish();
+    initializeConstellationHexagons();
+    initializeStarsSlider();
 }
 
 /**
- * Create grid for a specific tier
+ * Initialize Founder Wish (Center Diamond)
  */
-function createTierGrid(tierName, gridId) {
-    const grid = document.getElementById(gridId);
-    if (!grid) {
-        console.warn(`Grid not found: ${gridId}`);
-        return;
-    }
+function initializeFounderWish() {
+    const founderContainer = document.getElementById('founderWish');
+    if (!founderContainer) return;
 
-    grid.innerHTML = ''; // Clear existing tiles
     const lang = detectLanguage();
-    const tier = TIERS[tierName];
-    const tierWishes = wishes[tierName];
-    const nextAvailableSlot = getNextAvailableSlot(tierName);
+    const founderWish = wishes.founder[1]; // Only slot 1 exists for Founder
 
-    // First: Add the next available slot (always first)
-    const availableTile = document.createElement('div');
-    availableTile.className = `wish-tile empty ${tierName}`;
-    availableTile.dataset.slot = nextAvailableSlot;
-    availableTile.dataset.tier = tierName;
+    if (founderWish) {
+        // Occupied - show wish
+        const safeText = sanitizeWishText(founderWish.text);
+        const safeAuthor = sanitizeAuthorName(founderWish.author);
+        const flag = countryToFlag(founderWish.country);
 
-    // Get appropriate text based on tier
-    let tileText = translations[lang].emptyTileText;
-    if (tierName === 'premium') {
-        tileText = translations[lang].emptyTileTextPremium;
-    }
-
-    availableTile.innerHTML = `
-        <div class="wish-tile-empty-content">
-            <p class="wish-tile-phrase">${tileText}</p>
-            <p class="wish-tile-price">$${tier.price} USD</p>
-        </div>
-    `;
-    availableTile.addEventListener('click', () => handleTileClick(nextAvailableSlot, tierName));
-    grid.appendChild(availableTile);
-
-    // Second: Add all occupied slots in order (to the right)
-    for (let i = 1; i < nextAvailableSlot; i++) {
-        const tile = document.createElement('div');
-        tile.className = `wish-tile empty ${tierName}`;
-        tile.dataset.slot = i;
-        tile.dataset.tier = tierName;
-
-        // These will be filled by updateWishesDisplay
-        tile.innerHTML = `
-            <div class="wish-tile-empty-content">
-                <p class="wish-tile-phrase">...</p>
+        founderContainer.innerHTML = `
+            <div class="founder-center-content">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">👑</div>
+                <p style="font-size: 0.85rem; color: #fbbf24; margin-bottom: 0.5rem;">"${safeText}"</p>
+                <p style="font-size: 0.7rem; color: #cbd5e1;">${flag} ${safeAuthor}</p>
             </div>
         `;
-        grid.appendChild(tile);
+        founderContainer.style.cursor = 'pointer';
+        founderContainer.onclick = () => openViewWishModal(founderWish, 1, 'founder');
+    } else {
+        // Empty - show price
+        founderContainer.innerHTML = `
+            <div class="founder-center-content">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">👑</div>
+                <p style="font-size: 0.9rem; color: #fbbf24; font-weight: 600; margin-bottom: 0.25rem;">${translations[lang].emptyTileTextFounder}</p>
+                <p style="font-size: 1.2rem; color: #ffd700; font-weight: 700;">$49.99 USD</p>
+            </div>
+        `;
+        founderContainer.style.cursor = 'pointer';
+        founderContainer.onclick = () => handleTileClick(1, 'founder');
     }
 }
 
 /**
- * Setup independent sliders for each tier
+ * Initialize Constellation Hexagons (8 around center)
  */
-function setupIndependentSliders() {
-    setupTierSlider('sliderPrevFounder', 'sliderNextFounder', 0);
-    setupTierSlider('sliderPrevStar', 'sliderNextStar', 1);
+function initializeConstellationHexagons() {
+    const lang = detectLanguage();
+
+    for (let i = 1; i <= 8; i++) {
+        const hexContainer = document.getElementById(`constellationWish${i}`);
+        if (!hexContainer) continue;
+
+        const constellationWish = wishes.constellation[i];
+
+        if (constellationWish) {
+            // Occupied - show wish
+            const safeText = sanitizeWishText(constellationWish.text);
+            const safeAuthor = sanitizeAuthorName(constellationWish.author);
+            const flag = countryToFlag(constellationWish.country);
+
+            hexContainer.innerHTML = `
+                <div class="constellation-hex-content">
+                    <p style="font-size: 0.65rem; color: #cbd5e1; margin-bottom: 0.25rem;">"${safeText.substring(0, 30)}..."</p>
+                    <p style="font-size: 0.55rem; color: #94a3b8;">${flag} ${safeAuthor}</p>
+                </div>
+            `;
+            hexContainer.style.cursor = 'pointer';
+            hexContainer.onclick = () => openViewWishModal(constellationWish, i, 'constellation');
+        } else {
+            // Empty - show price
+            hexContainer.innerHTML = `
+                <div class="constellation-hex-content">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">💎</div>
+                    <p style="font-size: 0.65rem; color: #60a5fa; margin-bottom: 0.25rem;">${translations[lang].emptyTileTextConstellation}</p>
+                    <p style="font-size: 0.75rem; color: #93c5fd; font-weight: 600;">$19.99</p>
+                </div>
+            `;
+            hexContainer.style.cursor = 'pointer';
+            hexContainer.onclick = () => handleTileClick(i, 'constellation');
+        }
+    }
+}
+
+/**
+ * Initialize Stars Slider
+ */
+function initializeStarsSlider() {
+    const sliderTrack = document.getElementById('starsSliderTrack');
+    if (!sliderTrack) return;
+
+    sliderTrack.innerHTML = ''; // Clear existing
+    const lang = detectLanguage();
+    const starWishes = wishes.star;
+    const starKeys = Object.keys(starWishes).sort((a, b) => parseInt(a) - parseInt(b));
+    const nextAvailableSlot = getNextAvailableSlot('star');
+
+    // Add next available empty star first
+    const emptyStar = document.createElement('div');
+    emptyStar.className = 'star-wish';
+    emptyStar.innerHTML = `
+        <div class="star-wish-content">
+            <div style="font-size: 1.5rem;">⭐</div>
+            <p style="font-size: 0.6rem; color: #fbbf24; margin-top: 0.25rem;">$1.99</p>
+        </div>
+    `;
+    emptyStar.onclick = () => handleTileClick(nextAvailableSlot, 'star');
+    sliderTrack.appendChild(emptyStar);
+
+    // Add all occupied stars
+    starKeys.forEach(slot => {
+        const wish = starWishes[slot];
+        const star = document.createElement('div');
+        star.className = 'star-wish';
+
+        const safeAuthor = sanitizeAuthorName(wish.author);
+        const flag = countryToFlag(wish.country);
+
+        star.innerHTML = `
+            <div class="star-wish-content">
+                <div style="font-size: 1.2rem;">⭐</div>
+                <p style="font-size: 0.55rem; color: #cbd5e1; margin-top: 0.15rem;">${flag} ${safeAuthor.substring(0, 8)}</p>
+            </div>
+        `;
+        star.onclick = () => openViewWishModal(wish, slot, 'star');
+        sliderTrack.appendChild(star);
+    });
+
+    // Add some empty placeholder stars for visual effect (up to 20 total)
+    const totalStars = Math.min(20, Math.max(5, starKeys.length + 5));
+    for (let i = sliderTrack.children.length; i < totalStars; i++) {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'star-wish';
+        placeholder.style.opacity = '0.3';
+        placeholder.innerHTML = `
+            <div class="star-wish-content">
+                <div style="font-size: 1.2rem;">⭐</div>
+            </div>
+        `;
+        sliderTrack.appendChild(placeholder);
+    }
+}
+
+/**
+ * Setup stars slider navigation
+ */
+function setupStarsSlider() {
+    const prevBtn = document.getElementById('sliderPrevStar');
+    const nextBtn = document.getElementById('sliderNextStar');
+    const wrapper = document.querySelector('.stars-slider-wrapper');
+
+    if (!prevBtn || !nextBtn || !wrapper) return;
+
+    prevBtn.addEventListener('click', () => {
+        wrapper.scrollBy({
+            left: -400,
+            behavior: 'smooth'
+        });
+    });
+
+    nextBtn.addEventListener('click', () => {
+        wrapper.scrollBy({
+            left: 400,
+            behavior: 'smooth'
+        });
+    });
 }
 
 /**
@@ -1243,10 +1354,9 @@ async function handleSuccessfulPayment() {
     // Show success message
     alert('🎉 Your wish has been saved! It will shine on the wall forever!');
 
-    // Regenerate the grid to show the next available slot
+    // Regenerate the constellation to show the next available slot
     setTimeout(() => {
-        createTierGrids();
-        updateWishesDisplay();
+        initializeConstellation();
     }, 500);
 }
 
@@ -1281,22 +1391,13 @@ function loadWishesFromFirebase() {
     }
 
     // Listen for wishes changes in real-time for each tier
-    ['premium', 'regular'].forEach(tierName => {
+    ['founder', 'constellation', 'star'].forEach(tierName => {
         database.ref(`wishes/${tierName}`).on('value', (snapshot) => {
             wishes[tierName] = snapshot.val() || {};
-            // Regenerate tier grids when wishes change
-            createTierGrids();
-            updateWishesDisplay();
+            // Regenerate constellation when wishes change
+            initializeConstellation();
         });
     });
-}
-
-/**
- * Update wishes display for all tiers
- */
-function updateWishesDisplay() {
-    updateTierWishesDisplay('premium');
-    updateTierWishesDisplay('regular');
 }
 
 /**

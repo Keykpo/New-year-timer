@@ -50,10 +50,13 @@ module.exports = async (req, res) => {
 
         if (country === 'AR') {
             currency = 'ARS';
-            // $1.99 USD → AR$2000
-            // $49.99 USD → AR$50000
+            // $1.99 USD → AR$2,000 (Star)
+            // $19.99 USD → AR$20,000 (Constellation)
+            // $49.99 USD → AR$50,000 (Founder)
             if (parseFloat(amount) === 1.99) {
                 finalAmount = 2000;
+            } else if (parseFloat(amount) === 19.99) {
+                finalAmount = 20000;
             } else if (parseFloat(amount) === 49.99) {
                 finalAmount = 50000;
             } else {
@@ -72,7 +75,7 @@ module.exports = async (req, res) => {
         const preference = {
             items: [
                 {
-                    title: `New Year 2026 Wish - ${tier === 'premium' ? 'Founder' : 'Star'} Tier`,
+                    title: `New Year 2026 Wish - ${tier === 'founder' ? 'Founder' : tier === 'constellation' ? 'Constellation' : 'Star'} Tier`,
                     description: wishText,
                     quantity: 1,
                     unit_price: finalAmount,
