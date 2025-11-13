@@ -1508,6 +1508,18 @@ function countryToFlag(countryCode) {
 }
 
 /**
+ * Find the next available slot for a tier, starting from slot 2
+ * (Slot 1 is always kept empty for display)
+ */
+function findNextAvailableSlot(tierName) {
+    let slot = 2;
+    while (wishes[tierName][slot]) {
+        slot++;
+    }
+    return slot;
+}
+
+/**
  * Handle successful payment
  */
 async function handleSuccessfulPayment() {
@@ -1529,12 +1541,19 @@ async function handleSuccessfulPayment() {
     // Generate random wish title based on tier
     const wishTitle = getRandomWishTitle(currentTier);
 
+    // If user clicked slot 1, assign them the next available slot starting from 2
+    let assignedSlot = currentSlot;
+    if (currentSlot === 1) {
+        assignedSlot = findNextAvailableSlot(currentTier);
+        console.log(`User clicked slot 1, assigning slot ${assignedSlot} instead`);
+    }
+
     const wish = {
         text: wishText,
         author: author,
         country: country,
         wishTitle: wishTitle, // ← Random title for this wish
-        slot: currentSlot,
+        slot: assignedSlot, // ← Use assigned slot (may be different from currentSlot)
         tier: currentTier,
         price: currentPrice,
         timestamp: Date.now()

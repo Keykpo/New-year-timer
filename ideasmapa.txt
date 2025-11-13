@@ -1,0 +1,24 @@
+🗺️ Ideas de Mejora para el Mapa / Indicador de Lugares
+1. Mejora Visual y Temática (Constelación)
+Actualmente, el mapa es una figura ovalada de color azul. Para vincularlo con el tema de la "Constelación de Deseos", se puede mejorar la estética:
+
+Renderizado Estelar: En lugar de un óvalo sólido, haz que el mapa se vea como un pedazo de cielo nocturno o una galaxia.
+
+Usa un fondo degradado oscuro (azul medianoche a negro).
+
+Añade pequeños puntos blancos (estrellas) que titilen suavemente.
+
+Contorno de Mapa: Mantén el contorno general de un mapa o globo terráqueo, pero dale un efecto de neón o brillo dorado/plateado para resaltar que es una "Constelación".
+
+2. Mejora de la Interactividad y Datos
+El objetivo es hacer que el usuario sienta que la acción de "celebrar" está sucediendo en ese instante en algún lugar del mundo.
+
+Puntos Activos:
+
+Cuando sea medianoche en una zona horaria, en lugar de solo cambiar el color del mapa, haz que el país o la región correspondiente "explote" con una animación brillante (como fuegos artificiales sutiles o una estrella fugaz).
+
+Mostrar Etiquetas (Tooltips): Al pasar el cursor sobre la región activa (o al tocar en móvil), muestra el nombre del país o ciudad que acaba de entrar en 2026.
+
+Contador de Progreso:
+
+Añade un texto pequeño debajo del título que diga: "X de 24 zonas horarias ya han recibido el 2026." que tenga % tambien de cuantos ya estan en el 2026. Esto crea un sentido de progreso y anticipación.
