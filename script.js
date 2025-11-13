@@ -784,10 +784,10 @@ function initializeFounderWishes() {
 
     // Phrases for different languages
     const phrases = {
-        en: 'Make your wish',
-        es: 'Pide tu deseo',
-        pt: 'Faça seu desejo',
-        fr: 'Fais ton vœu'
+        en: 'Write your wish',
+        es: 'Escribe tu deseo',
+        pt: 'Escreva seu desejo',
+        fr: 'Écris ton vœu'
     };
 
     const occupiedText = {
@@ -1455,6 +1455,38 @@ function setupViewWishModal() {
 }
 
 // ====================================
+// DARK MODE TOGGLE
+// ====================================
+
+/**
+ * Setup dark mode toggle
+ */
+function setupDarkMode() {
+    const toggle = document.getElementById('darkModeToggle');
+    const icon = document.querySelector('.toggle-icon');
+
+    if (!toggle || !icon) {
+        console.warn('Dark mode toggle elements not found');
+        return;
+    }
+
+    // Check saved preference
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode === 'true') {
+        document.body.classList.add('dark-mode');
+        icon.textContent = '☀️';
+    }
+
+    // Toggle on click
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark);
+        icon.textContent = isDark ? '☀️' : '🌙';
+    });
+}
+
+// ====================================
 // INITIALIZATION
 // ====================================
 
@@ -1478,6 +1510,9 @@ function init() {
 
     // 6. Setup view wish modal
     setupViewWishModal();
+
+    // 7. Setup dark mode toggle
+    setupDarkMode();
 }
 
 // Generate starry background
