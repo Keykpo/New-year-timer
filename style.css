@@ -341,7 +341,7 @@ header {
     margin: 0 auto;
     background: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08), 0 0 20px rgba(251, 191, 36, 0.4);
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -355,7 +355,7 @@ header {
 
 .founder-wish:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(58, 134, 255, 0.15);
+    box-shadow: 0 8px 30px rgba(58, 134, 255, 0.15), 0 0 30px rgba(251, 191, 36, 0.6);
 }
 
 /* Founder wish content (price and phrase) */
@@ -415,11 +415,12 @@ header {
     position: relative;
     background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%);
     border: 2px solid #fbbf24;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08), 0 0 25px rgba(251, 191, 36, 0.5);
 }
 
 .founder-wish.occupied:hover {
     transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 12px 40px rgba(251, 191, 36, 0.3);
+    box-shadow: 0 12px 40px rgba(251, 191, 36, 0.3), 0 0 35px rgba(251, 191, 36, 0.7);
 }
 
 /* Premium badge crown at top */
@@ -570,7 +571,7 @@ body.dark-mode .star-wishes-grid::-webkit-scrollbar-thumb {
     height: 160px;
     border-radius: 12px;
     background: #ffffff;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08), 0 0 15px rgba(192, 192, 192, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -584,7 +585,7 @@ body.dark-mode .star-wishes-grid::-webkit-scrollbar-thumb {
 
 .star-wish-circle:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(58, 134, 255, 0.12);
+    box-shadow: 0 8px 25px rgba(58, 134, 255, 0.12), 0 0 25px rgba(192, 192, 192, 0.5);
 }
 
 /* Tarjeta ocupada - sombra más suave */

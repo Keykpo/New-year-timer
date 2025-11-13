@@ -1435,16 +1435,20 @@ const countryToFlagFile = {
 
 /**
  * Convert country code to flag PNG image HTML
+ * Using GitHub Raw URL for production compatibility
  */
 function countryToFlag(countryCode) {
+    // GitHub Raw URL base (change branch if needed: main or your branch name)
+    const GITHUB_FLAGS_BASE = 'https://raw.githubusercontent.com/Keykpo/New-year-timer/claude/new-years-timer-app-011CV4M9g8SvSXPkHc83gdrj/Flags%20PNG/';
+
     if (!countryCode || countryCode === 'XX') {
-        return '<img src="Flags PNG/World.png" alt="World" class="flag-icon" onerror="this.style.display=\'none\'" />';
+        return `<img src="${GITHUB_FLAGS_BASE}World.png" alt="World" class="flag-icon" onerror="this.style.display='none'" />`;
     }
 
     const flagFile = countryToFlagFile[countryCode.toUpperCase()];
 
     if (flagFile) {
-        return `<img src="Flags PNG/${flagFile}.png" alt="${flagFile}" class="flag-icon" onerror="this.style.display='none'" />`;
+        return `<img src="${GITHUB_FLAGS_BASE}${flagFile}.png" alt="${flagFile}" class="flag-icon" onerror="this.style.display='none'" />`;
     }
 
     // Fallback to emoji if PNG not found
