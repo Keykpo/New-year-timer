@@ -810,9 +810,15 @@ function initializeFounderWishes() {
             founderContainer.style.cursor = 'pointer';
             founderContainer.onclick = () => openViewWishModal(founderWish, i, 'founder');
         } else {
-            // Empty - show the "deseo fundador.PNG" image via CSS background
+            // Empty - show price and phrase on the diamond
             founderContainer.className = 'founder-wish';
-            founderContainer.innerHTML = ''; // Empty - CSS background shows the full "deseo fundador.PNG" design
+            founderContainer.innerHTML = `
+                <div class="founder-wish-content">
+                    <div class="founder-wish-icon">👑</div>
+                    <div class="founder-wish-price">$49.99</div>
+                    <div class="founder-wish-text">${phrases[lang] || phrases.en}</div>
+                </div>
+            `;
             founderContainer.style.cursor = 'pointer';
             founderContainer.onclick = () => handleTileClick(i, 'founder');
         }
