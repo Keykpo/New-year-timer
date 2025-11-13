@@ -1507,13 +1507,55 @@ function generateStars() {
     }
 }
 
+/**
+ * Initialize and play background video
+ */
+function initVideoBackground() {
+    const video = document.querySelector('.video-background');
+    if (!video) {
+        console.error('❌ Video element not found');
+        return;
+    }
+
+    console.log('🎥 Initializing video background...');
+
+    // Try to play the video
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+        playPromise
+            .then(() => {
+                console.log('✅ Video playing successfully');
+            })
+            .catch(error => {
+                console.error('❌ Video playback failed:', error);
+                console.log('Video src:', video.src);
+                console.log('Video readyState:', video.readyState);
+            });
+    }
+
+    // Log when video is loaded
+    video.addEventListener('loadeddata', () => {
+        console.log('✅ Video data loaded');
+    });
+
+    // Log errors
+    video.addEventListener('error', (e) => {
+        console.error('❌ Video error:', e);
+        console.error('Error code:', video.error?.code);
+        console.error('Error message:', video.error?.message);
+    });
+}
+
 // Start everything when DOM is loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
+        initVideoBackground(); // Initialize video background
         generateStars(); // Generate stars first
         init();
     });
 } else {
+    initVideoBackground(); // Initialize video background
     generateStars(); // Generate stars first
     init();
 }
