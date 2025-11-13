@@ -519,6 +519,8 @@ footer {
     font-weight: 300;
 }
 
+/* Unified Wishes Grid - All tiers in one grid */
+
 /* Slider Container */
 .wishes-slider-container {
     position: relative;
@@ -539,13 +541,59 @@ footer {
     display: none; /* Chrome/Safari */
 }
 
-/* Wishes Grid - Now inside slider */
-.wishes-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+/* Tier Row Container */
+.tier-row {
+    margin-bottom: 3rem;
+}
+
+.tier-row-title {
+    text-align: center;
+    color: #f1f5f9;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
+}
+
+/* Individual Grid Rows */
+.wishes-grid-row {
+    display: flex;
     gap: 1.5rem;
     padding: 2rem;
-    min-width: min-content;
+}
+
+/* Founder Grid - 1 row, 4 columns visible, horizontal scroll */
+#wishesGridFounder {
+    display: grid;
+    grid-template-columns: repeat(4, 280px);
+    grid-template-rows: 250px;
+    grid-auto-flow: column;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+/* Star Grid - 5 rows × 10 columns visible, fills left to right */
+.star-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-flow: row;
+    gap: 1rem;
+    padding: 1.5rem;
+    max-height: 700px;
+}
+
+/* Tile sizes by tier */
+/* Founder - Large (2 rows) */
+.wish-tile[data-tier="premium"] {
+    width: 280px;
+    height: 250px;
+}
+
+/* Star - Smaller (4×5 grid) */
+.wish-tile[data-tier="regular"] {
+    width: 120px;
+    height: 110px;
 }
 
 /* Slider Navigation Buttons */
@@ -611,7 +659,6 @@ footer {
 
 /* Wish Tile */
 .wish-tile {
-    aspect-ratio: 1;
     background: rgba(30, 41, 59, 0.4);
     border-radius: 1rem;
     border: 2px solid rgba(251, 146, 60, 0.3);
@@ -625,6 +672,23 @@ footer {
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
+}
+
+/* Founder - Large padding */
+.wish-tile[data-tier="premium"] {
+    padding: 2rem;
+    border-radius: 1.2rem;
+}
+
+/* Constellation - Medium padding */
+.wish-tile[data-tier="vip"] {
+    padding: 1.5rem;
+}
+
+/* Star - Small padding */
+.wish-tile[data-tier="regular"] {
+    padding: 1rem;
+    border-radius: 0.8rem;
 }
 
 /* Empty tile - Regular ($1 USD) */
@@ -644,7 +708,7 @@ footer {
     }
 }
 
-/* Premium tier ($49.99 USD) - Slots 1-15 (3 rows) - ULTRA DESTACADO */
+/* Premium tier ($49.99 USD) - Slots 1-10 (2 rows) - ULTRA DESTACADO */
 .wish-tile.empty.premium {
     border: 3px solid rgba(255, 215, 0, 1);
     background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 165, 0, 0.1) 100%);
@@ -688,7 +752,7 @@ footer {
     }
 }
 
-/* VIP tier ($19.99 USD) - Slots 16-25 (2 rows) - MUY DESTACADO */
+/* VIP tier ($19.99 USD) - Slots 11-20 (2 rows) - MUY DESTACADO */
 .wish-tile.empty.vip {
     border: 2.5px solid rgba(192, 192, 192, 1);
     background: linear-gradient(135deg, rgba(192, 192, 192, 0.12) 0%, rgba(169, 169, 169, 0.08) 100%);
@@ -738,23 +802,7 @@ footer {
     box-shadow: 0 8px 30px rgba(251, 146, 60, 0.4);
 }
 
-.wish-tile.empty::before {
-    content: '⭐';
-    position: absolute;
-    top: 0.25rem;
-    font-size: 1.5rem;
-    opacity: 0.6;
-    animation: pulse 2s ease-in-out infinite;
-    pointer-events: none;
-}
-
-/* Desktop: make star smaller and positioned better */
-@media (min-width: 769px) {
-    .wish-tile.empty::before {
-        top: 0.5rem;
-        font-size: 1.2rem;
-    }
-}
+/* Removed ::before star to prevent text overlap */
 
 /* Occupied tile - Regular */
 .wish-tile.occupied {
@@ -832,14 +880,50 @@ footer {
 /* Empty tile content */
 .wish-tile-empty-content {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 0.5rem;
 }
 
 .wish-tile-phrase {
     color: #fbbf24;
-    font-size: 0.9rem;
-    margin-bottom: 0.75rem;
-    line-height: 1.4;
+    font-size: 0.85rem;
+    line-height: 1.3;
     font-weight: 500;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+/* Founder - Larger text */
+.wish-tile[data-tier="premium"] .wish-tile-phrase {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.wish-tile[data-tier="premium"] .wish-tile-price {
+    font-size: 1.3rem;
+}
+
+/* Constellation - Medium text */
+.wish-tile[data-tier="vip"] .wish-tile-phrase {
+    font-size: 0.85rem;
+}
+
+.wish-tile[data-tier="vip"] .wish-tile-price {
+    font-size: 1.1rem;
+}
+
+/* Star - Smaller text */
+.wish-tile[data-tier="regular"] .wish-tile-phrase {
+    font-size: 0.7rem;
+    line-height: 1.2;
+}
+
+.wish-tile[data-tier="regular"] .wish-tile-price {
+    font-size: 0.9rem;
 }
 
 .wish-tile-price {
@@ -849,6 +933,7 @@ footer {
     background-clip: text;
     font-size: 1.1rem;
     font-weight: 700;
+    margin-top: auto;
 }
 
 /* Occupied tile content */
@@ -864,6 +949,35 @@ footer {
     margin-bottom: 0.75rem;
     font-style: italic;
     word-break: break-word;
+}
+
+/* Founder - Larger occupied text */
+.wish-tile[data-tier="premium"] .wish-text {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.wish-tile[data-tier="premium"] .wish-author {
+    font-size: 0.85rem;
+}
+
+/* Constellation - Medium occupied text */
+.wish-tile[data-tier="vip"] .wish-text {
+    font-size: 0.85rem;
+}
+
+.wish-tile[data-tier="vip"] .wish-author {
+    font-size: 0.75rem;
+}
+
+/* Star - Smaller occupied text */
+.wish-tile[data-tier="regular"] .wish-text {
+    font-size: 0.65rem;
+    line-height: 1.3;
+}
+
+.wish-tile[data-tier="regular"] .wish-author {
+    font-size: 0.6rem;
 }
 
 .wish-author {
@@ -1142,15 +1256,159 @@ footer {
         font-size: 0.7rem;
     }
 
-    .wish-tile.empty::before {
-        font-size: 1.5rem;
-    }
-
     .modal-content {
         padding: 1.5rem;
     }
 
     .price-amount {
         font-size: 2rem;
+    }
+}
+
+/* ====================================
+   VIEW WISH MODAL
+   ==================================== */
+
+.view-wish-modal {
+    max-width: 600px;
+    padding: 3rem 2.5rem;
+}
+
+.view-wish-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.wish-tier-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.wish-tier-badge.premium {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 165, 0, 0.15) 100%);
+    border: 2px solid rgba(255, 215, 0, 0.8);
+    color: #fbbf24;
+}
+
+.wish-tier-badge.vip {
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.15) 0%, rgba(169, 169, 169, 0.12) 100%);
+    border: 2px solid rgba(192, 192, 192, 0.8);
+    color: #cbd5e1;
+}
+
+.wish-tier-badge.regular {
+    background: linear-gradient(135deg, rgba(251, 146, 60, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+    border: 2px solid rgba(251, 146, 60, 0.6);
+    color: #fbbf24;
+}
+
+.badge-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.view-wish-body {
+    position: relative;
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+}
+
+.wish-quote-mark {
+    font-size: 6rem;
+    line-height: 0.5;
+    color: rgba(251, 146, 60, 0.3);
+    font-family: Georgia, serif;
+    position: absolute;
+    top: 0;
+    left: -0.5rem;
+}
+
+.wish-quote-mark.closing {
+    bottom: -2rem;
+    top: auto;
+    left: auto;
+    right: -0.5rem;
+    transform: rotate(180deg);
+}
+
+.view-wish-text {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: #f1f5f9;
+    text-align: center;
+    font-weight: 300;
+    font-style: italic;
+    padding: 0 2rem;
+    animation: slideUp 0.6s ease-out;
+}
+
+.view-wish-footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(251, 146, 60, 0.2);
+    animation: fadeIn 0.8s ease-out;
+}
+
+.view-wish-author {
+    font-size: 1.2rem;
+    color: #fbbf24;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.view-wish-date {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effect for occupied tiles */
+.wish-tile.occupied {
+    cursor: pointer !important;
+    transition: all 0.3s ease;
+}
+
+.wish-tile.occupied:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .view-wish-modal {
+        padding: 2rem 1.5rem;
+    }
+
+    .view-wish-text {
+        font-size: 1.4rem;
+        padding: 0 1rem;
+    }
+
+    .wish-quote-mark {
+        font-size: 4rem;
     }
 }
