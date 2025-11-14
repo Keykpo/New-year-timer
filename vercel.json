@@ -1,31 +1,4 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "style.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "script.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "config.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "BlankMap-World.svg",
-      "use": "@vercel/static"
-    }
-  ],
   "redirects": [
     {
       "source": "/:path*",
@@ -39,15 +12,9 @@
       "permanent": true
     }
   ],
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/index.html"
-    }
-  ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "headers": [
         {
           "key": "X-Content-Type-Options",
@@ -64,7 +31,7 @@
       ]
     },
     {
-      "source": "/(.*\\.(css|js|svg|png|jpg|jpeg|gif|ico|woff2))",
+      "source": "/(.+)\\.(css|js|svg|png|jpg|jpeg|gif|ico|woff2)",
       "headers": [
         {
           "key": "Cache-Control",
