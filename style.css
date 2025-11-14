@@ -605,10 +605,11 @@ header {
     position: relative;
 }
 
-/* Star Wishes Grid (horizontal scroll) */
+/* Star Wishes Grid (5 filas, scroll horizontal) */
 .star-wishes-grid {
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-flow: column;
     gap: 1.5rem;
     padding: 2rem 1rem;
     scroll-behavior: smooth;
@@ -616,6 +617,7 @@ header {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: #e5e5e5 transparent;
+    max-height: 900px;
 }
 
 .star-wishes-grid::-webkit-scrollbar {
@@ -853,11 +855,13 @@ footer {
    RESPONSIVE DESIGN - MEDIA QUERIES
    ==================================== */
 
-/* Tablet/Móvil Horizontal (≤900px) - 3 columnas */
+/* Tablet/Móvil Horizontal (≤900px) */
 @media (max-width: 900px) {
-    /* Star Wishes Grid - horizontal scroll */
+    /* Star Wishes Grid - 4 filas en tablets */
     .star-wishes-grid {
+        grid-template-rows: repeat(4, 1fr);
         gap: 1.2rem;
+        max-height: 700px;
     }
 
     .star-wish-circle {
@@ -946,10 +950,12 @@ footer {
         font-size: 1.3rem;
     }
 
-    /* Star wishes - horizontal scroll */
+    /* Star wishes - 3 filas en móviles */
     .star-wishes-grid {
+        grid-template-rows: repeat(3, 1fr);
         gap: 1rem;
         padding: 1.5rem 1rem;
+        max-height: 500px;
     }
 
     .star-wish-circle {
@@ -1147,10 +1153,12 @@ footer {
         font-size: 0.8rem;
     }
 
-    /* Star wishes - horizontal scroll compacto */
+    /* Star wishes - 2 filas en móviles pequeños */
     .star-wishes-grid {
+        grid-template-rows: repeat(2, 1fr);
         gap: 0.8rem;
         padding: 1.5rem 0.5rem;
+        max-height: 350px;
     }
 
     .star-wish-circle {
