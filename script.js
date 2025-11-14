@@ -1612,20 +1612,20 @@ function setupStarsSlider() {
         const getStarScrollAmount = () => {
             const width = window.innerWidth;
             if (width <= 480) {
-                // Mobile muy pequeño: 3 columnas de 95px
-                // (95px × 3) + (13px × 2) + (32px padding) = 349px
-                return 349;
+                // Mobile muy pequeño: 3 columnas de 85px + gap 0.5rem (8px)
+                // (85px × 3) + (8px × 2) + 16px = 287px
+                return 287;
             } else if (width <= 600) {
-                // Mobile pequeño: 3 columnas de 105px
-                // (105px × 3) + (16px × 2) + (32px padding) = 379px
-                return 379;
+                // Mobile pequeño: 3 columnas de 95px + gap 0.6rem (10px)
+                // (95px × 3) + (10px × 2) + 16px = 321px
+                return 321;
             } else if (width <= 768) {
-                // Mobile: 3 columnas de 115px
-                // (115px × 3) + (16px × 2) + (32px padding) = 409px
-                return 409;
+                // Mobile: 3 columnas de 105px + gap 0.75rem (12px)
+                // (105px × 3) + (12px × 2) + 16px = 355px
+                return 355;
             } else {
-                // Desktop: 4 columnas de 180px
-                // (180px × 4) + (24px × 3) + (32px padding) = 824px
+                // Desktop: 4 columnas de 180px + gap 1.5rem (24px)
+                // (180px × 4) + (24px × 3) + 32px = 824px
                 return 824;
             }
         };
