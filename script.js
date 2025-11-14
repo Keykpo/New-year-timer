@@ -186,45 +186,89 @@ let geoLocationData = null;
 /**
  * Get user's geolocation data from IP (works with VPN)
  * This function fetches timezone, country, and language based on IP address
+ * Uses multiple APIs as fallback to avoid CORS and rate limiting issues
  */
 async function getGeoLocationData() {
     if (geoLocationData) {
         return geoLocationData; // Return cached data
     }
 
-    try {
-        console.log('🔍 Fetching geolocation from ipapi.co...');
-        const response = await fetch('https://ipapi.co/json/');
-
-        console.log('📡 Response status:', response.status, response.statusText);
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+    // Try multiple APIs in order until one works
+    const apis = [
+        {
+            name: 'ip-api.com',
+            url: 'http://ip-api.com/json/',
+            parse: (data) => ({
+                country: data.countryCode || 'XX',
+                timezone: data.timezone,
+                languages: null, // This API doesn't provide languages
+                utcOffset: data.offset ? `${data.offset / 3600}` : null
+            })
+        },
+        {
+            name: 'ipapi.co',
+            url: 'https://ipapi.co/json/',
+            parse: (data) => ({
+                country: data.country_code || 'XX',
+                timezone: data.timezone,
+                languages: data.languages ? data.languages.split(',')[0] : null,
+                utcOffset: data.utc_offset
+            })
+        },
+        {
+            name: 'ipwhois.app',
+            url: 'https://ipwhois.app/json/',
+            parse: (data) => ({
+                country: data.country_code || 'XX',
+                timezone: data.timezone,
+                languages: null,
+                utcOffset: data.timezone_gmt
+            })
         }
+    ];
 
-        const data = await response.json();
-        console.log('📦 Raw API response:', data);
+    for (const api of apis) {
+        try {
+            console.log(`🔍 Trying ${api.name}...`);
+            const response = await fetch(api.url);
 
-        geoLocationData = {
-            country: data.country_code || 'XX',
-            timezone: data.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
-            languages: data.languages ? data.languages.split(',')[0] : navigator.language,
-            utcOffset: data.utc_offset || null
-        };
-        console.log('🌍 Geolocation detected:', geoLocationData);
-        return geoLocationData;
-    } catch (error) {
-        console.error('❌ Could not detect geolocation from IP:', error);
-        console.warn('⚠️ Using browser defaults instead');
-        // Fallback to browser defaults
-        geoLocationData = {
-            country: 'XX',
-            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-            languages: navigator.language,
-            utcOffset: null
-        };
-        return geoLocationData;
+            console.log(`📡 ${api.name} status:`, response.status, response.statusText);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log(`📦 ${api.name} response:`, data);
+
+            const parsed = api.parse(data);
+
+            geoLocationData = {
+                country: parsed.country,
+                timezone: parsed.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+                languages: parsed.languages || navigator.language,
+                utcOffset: parsed.utcOffset
+            };
+
+            console.log(`✅ Geolocation detected from ${api.name}:`, geoLocationData);
+            return geoLocationData;
+
+        } catch (error) {
+            console.warn(`⚠️ ${api.name} failed:`, error.message);
+            // Continue to next API
+        }
     }
+
+    // All APIs failed, use browser defaults
+    console.error('❌ All geolocation APIs failed');
+    console.warn('⚠️ Using browser defaults instead');
+    geoLocationData = {
+        country: 'XX',
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        languages: navigator.language,
+        utcOffset: null
+    };
+    return geoLocationData;
 }
 
 // Detect language based on timezone and browser settings
