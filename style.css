@@ -771,6 +771,14 @@ body.dark-mode .star-wish-text {
     height: auto !important;
     display: block;
     filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+    background: #ffffff;
+}
+
+/* Todos los paths del SVG por defecto son blancos (océano) */
+.map-container svg path {
+    fill: #ffffff;
+    stroke: #e2e8f0;
+    stroke-width: 0.2;
 }
 
 /* Legend */
