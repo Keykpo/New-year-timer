@@ -749,10 +749,7 @@ body.dark-mode .star-wish-text {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 2rem;
-    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #000000;
     font-weight: 600;
 }
 
@@ -760,7 +757,7 @@ body.dark-mode .star-wish-text {
 .timezone-progress {
     text-align: center;
     font-size: 1.1rem;
-    color: #94a3b8;
+    color: #000000;
     margin-bottom: 1.5rem;
     font-weight: 500;
     animation: fadeIn 0.5s ease-in;
@@ -1204,22 +1201,22 @@ footer {
 
 /* Celebrating countries (already in 2026) */
 .celebrating {
-    fill: #10b981 !important;
+    fill: #ff6b35 !important;
     animation: glow 2s ease-in-out infinite;
 }
 
 /* Waiting countries (still in 2025) */
 .waiting {
-    fill: #3b82f6 !important;
+    fill: #1a1a1a !important;
 }
 
 /* Glow animation for celebrating countries */
 @keyframes glow {
     0%, 100% {
-        filter: drop-shadow(0 0 3px rgba(16, 185, 129, 0.6));
+        filter: drop-shadow(0 0 3px rgba(255, 107, 53, 0.6));
     }
     50% {
-        filter: drop-shadow(0 0 8px rgba(16, 185, 129, 1));
+        filter: drop-shadow(0 0 8px rgba(255, 107, 53, 1));
     }
 }
 
@@ -2381,11 +2378,11 @@ footer {
 /* Celebration Animation for Countries */
 @keyframes celebrateCountry {
     0%, 100% {
-        filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.8));
+        filter: drop-shadow(0 0 5px rgba(255, 107, 53, 0.8));
     }
     50% {
-        filter: drop-shadow(0 0 20px rgba(16, 185, 129, 1))
-                drop-shadow(0 0 30px rgba(16, 185, 129, 0.8));
+        filter: drop-shadow(0 0 20px rgba(255, 107, 53, 1))
+                drop-shadow(0 0 30px rgba(255, 107, 53, 0.8));
     }
 }
 
@@ -2395,8 +2392,8 @@ footer {
 }
 
 .country-path.celebrating {
-    fill: #10b981;
-    stroke: #34d399;
+    fill: #ff6b35;
+    stroke: #ff8c61;
     stroke-width: 0.5;
 }
 
@@ -2405,8 +2402,8 @@ footer {
 }
 
 .country-path.waiting {
-    fill: #3b82f6;
-    stroke: #60a5fa;
+    fill: #1a1a1a;
+    stroke: #333333;
     stroke-width: 0.3;
 }
 
