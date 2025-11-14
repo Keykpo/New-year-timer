@@ -1662,8 +1662,9 @@ function setupTierSlider(prevBtnId, nextBtnId, wrapperIndex) {
  * Handle tile click
  */
 function handleTileClick(slot, tierName) {
-    // If tile is occupied, it will be handled by updateWishesDisplay's onclick
-    if (wishes[tierName][slot]) {
+    // Slot 1 is always available for purchase (never visually occupied)
+    // Other slots only allow purchase if empty
+    if (slot !== 1 && wishes[tierName][slot]) {
         return;
     }
 
