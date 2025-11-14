@@ -93,7 +93,9 @@ const translations = {
         authorLabel: "Your Name",
         priceLabel: "Secure your wish for:",
         paymentNote: "💳 Secure payment via PayPal. Your wish will appear instantly!",
-        payButton: "Pay & Make Wish"
+        payButton: "Pay & Make Wish",
+        promoText: "✨ Your wish joins the stars. As a thank you, you will receive a <strong>secret title</strong> that predicts success and guides your path in the new year. ✨",
+        viewStarWishes: "🌟 View Star Wishes"
     },
     es: {
         mainTitle: "Tiempo Restante para tu Año Nuevo",
@@ -118,7 +120,9 @@ const translations = {
         authorLabel: "Tu Nombre",
         priceLabel: "Asegura tu deseo por:",
         paymentNote: "💳 Pago seguro vía PayPal. ¡Tu deseo aparecerá al instante!",
-        payButton: "Pagar y Hacer Deseo"
+        payButton: "Pagar y Hacer Deseo",
+        promoText: "✨ Tu deseo se une a las estrellas. Como agradecimiento, recibirás un <strong>título secreto</strong> que te augura éxito y guía tu camino en el nuevo año. ✨",
+        viewStarWishes: "🌟 Ver Deseos Star"
     },
     pt: {
         mainTitle: "Tempo Restante para o seu Ano Novo",
@@ -143,7 +147,9 @@ const translations = {
         authorLabel: "Seu Nome",
         priceLabel: "Garanta seu desejo por:",
         paymentNote: "💳 Pagamento seguro via PayPal. Seu desejo aparecerá instantaneamente!",
-        payButton: "Pagar e Fazer Desejo"
+        payButton: "Pagar e Fazer Desejo",
+        promoText: "✨ Seu desejo se junta às estrelas. Como agradecimento, você receberá um <strong>título secreto</strong> que prevê sucesso e guia seu caminho no ano novo. ✨",
+        viewStarWishes: "🌟 Ver Desejos Estrela"
     },
     fr: {
         mainTitle: "Temps Restant jusqu'à votre Nouvel An",
@@ -168,7 +174,9 @@ const translations = {
         authorLabel: "Votre Nom",
         priceLabel: "Sécurisez votre souhait pour:",
         paymentNote: "💳 Paiement sécurisé via PayPal. Votre souhait apparaîtra instantanément!",
-        payButton: "Payer et Faire un Souhait"
+        payButton: "Payer et Faire un Souhait",
+        promoText: "✨ Votre souhait rejoint les étoiles. En remerciement, vous recevrez un <strong>titre secret</strong> qui prédit le succès et guide votre chemin dans la nouvelle année. ✨",
+        viewStarWishes: "🌟 Voir les Souhaits Étoile"
     }
 };
 
@@ -260,12 +268,21 @@ function detectLanguage() {
 
 // Apply translations to the page
 function applyTranslations(lang) {
+    // Handle regular text translations (data-i18n)
     const elements = document.querySelectorAll('[data-i18n]');
-
     elements.forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
             element.textContent = translations[lang][key];
+        }
+    });
+
+    // Handle HTML translations (data-i18n-html) - allows HTML tags like <strong>
+    const htmlElements = document.querySelectorAll('[data-i18n-html]');
+    htmlElements.forEach(element => {
+        const key = element.getAttribute('data-i18n-html');
+        if (translations[lang] && translations[lang][key]) {
+            element.innerHTML = translations[lang][key];
         }
     });
 }

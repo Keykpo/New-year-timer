@@ -303,7 +303,7 @@ header {
 }
 
 .promo-button {
-    background: linear-gradient(135deg, #c0c0c0 0%, #a9a9a9 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c61 100%);
     color: #ffffff;
     border: none;
     padding: 0.9rem 2rem;
@@ -312,20 +312,20 @@ header {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(192, 192, 192, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .promo-button:hover {
-    background: linear-gradient(135deg, #a9a9a9 0%, #808080 100%);
-    box-shadow: 0 6px 20px rgba(192, 192, 192, 0.6);
+    background: linear-gradient(135deg, #ff8c61 0%, #ffad8a 100%);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
     transform: translateY(-2px);
 }
 
 .promo-button:active {
     transform: translateY(0);
-    box-shadow: 0 3px 10px rgba(192, 192, 192, 0.4);
+    box-shadow: 0 3px 10px rgba(255, 107, 53, 0.4);
 }
 
 /* Founder Wishes Navigation */
