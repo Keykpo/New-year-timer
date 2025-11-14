@@ -355,26 +355,13 @@ header {
     overflow-x: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: #e5e5e5 transparent;
+    scrollbar-width: none; /* Firefox - ocultar scrollbar */
     position: relative;
 }
 
+/* Ocultar scrollbar en Chrome/Safari/Edge */
 .founder-wishes-container::-webkit-scrollbar {
-    height: 6px;
-}
-
-.founder-wishes-container::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.founder-wishes-container::-webkit-scrollbar-thumb {
-    background: #e5e5e5;
-    border-radius: 3px;
-}
-
-.founder-wishes-container::-webkit-scrollbar-thumb:hover {
-    background: #cccccc;
+    display: none;
 }
 
 /* Líneas conectando las coronas (constelación) */
@@ -619,26 +606,13 @@ header {
     scroll-behavior: smooth;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: #e5e5e5 transparent;
+    scrollbar-width: none; /* Firefox - ocultar scrollbar */
     max-height: 900px;
 }
 
+/* Ocultar scrollbar en Chrome/Safari/Edge */
 .star-wishes-grid::-webkit-scrollbar {
-    height: 6px;
-}
-
-.star-wishes-grid::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.star-wishes-grid::-webkit-scrollbar-thumb {
-    background: #e5e5e5;
-    border-radius: 3px;
-}
-
-.star-wishes-grid::-webkit-scrollbar-thumb:hover {
-    background: #cccccc;
+    display: none;
 }
 
 .star-wish-circle {
