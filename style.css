@@ -781,6 +781,14 @@ body.dark-mode .star-wish-text {
     stroke-width: 0.2;
 }
 
+/* Forzar que el océano sea blanco sin borde negro */
+.map-container svg .oceanxx,
+.map-container svg #ocean {
+    fill: #ffffff !important;
+    stroke: none !important;
+    stroke-width: 0 !important;
+}
+
 /* Legend */
 .legend {
     display: flex;
