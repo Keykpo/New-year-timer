@@ -1402,7 +1402,7 @@ function initializeConstellation() {
 }
 
 /**
- * Update wishes counter - counts total occupied wishes
+ * Update wishes counter - counts total occupied wishes (minimum 25)
  */
 function updateWishesCounter() {
     let totalWishes = 0;
@@ -1417,10 +1417,13 @@ function updateWishesCounter() {
         totalWishes += Object.keys(wishes.star).length;
     }
 
+    // Ensure counter starts at 25 and only goes up
+    const displayCount = Math.max(25, totalWishes);
+
     // Update counter display
     const counterElement = document.querySelector('.counter-number');
     if (counterElement) {
-        counterElement.textContent = totalWishes;
+        counterElement.textContent = displayCount;
     }
 }
 
