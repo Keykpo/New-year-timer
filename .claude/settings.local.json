@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebSearch",
-      "WebFetch(domain:www.kwrds.ai)"
+      "WebFetch(domain:www.kwrds.ai)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []
