@@ -6,37 +6,32 @@
       "use": "@vercel/node"
     },
     {
-      "src": "index.html",
+      "src": "*.html",
       "use": "@vercel/static"
     },
     {
-      "src": "style.css",
+      "src": "*.css",
       "use": "@vercel/static"
     },
     {
-      "src": "script.js",
+      "src": "*.js",
       "use": "@vercel/static"
     },
     {
-      "src": "config.js",
+      "src": "*.svg",
       "use": "@vercel/static"
     },
     {
-      "src": "BlankMap-World.svg",
+      "src": "*.png",
       "use": "@vercel/static"
-    }
-  ],
-  "redirects": [
+    },
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.newyeartimers.com"
-        }
-      ],
-      "destination": "https://newyeartimers.com/:path*",
-      "permanent": true
+      "src": "*.jpg",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.mp4",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -46,48 +41,26 @@
     },
     {
       "src": "/",
-      "dest": "/index.html"
+      "dest": "/index.html",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
     },
     {
-      "src": "/(.*\\.(css|js|html|svg|png|jpg|jpeg|gif|ico|json))",
-      "dest": "/$1"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
+      "src": "/(.*\\.(css|js|svg|png|jpg|jpeg|gif|ico|woff2|mp4))",
+      "dest": "/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
     },
     {
-      "source": "/(.*\\.(css|js|svg|png|jpg|jpeg|gif|ico|woff2))",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/index.html",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
+      "src": "/(.*)",
+      "dest": "/$1",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "X-XSS-Protection": "1; mode=block"
+      }
     }
   ]
 }
