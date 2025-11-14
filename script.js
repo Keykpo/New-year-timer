@@ -1329,6 +1329,83 @@ function renderPayPalButton(container) {
 }
 
 /**
+ * Check if user is returning from Mercado Pago payment and process the wish
+ * Mercado Pago adds URL parameters like: ?status=approved or ?collection_status=approved
+ */
+async function checkMercadoPagoReturn() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status') || urlParams.get('collection_status');
+
+    // Check if payment was approved
+    if (status === 'approved') {
+        console.log('✅ Mercado Pago payment approved, checking for pending wish...');
+
+        // Get pending wish from localStorage
+        const pendingWishData = localStorage.getItem('pendingMercadoPagoWish');
+
+        if (pendingWishData) {
+            try {
+                const wishData = JSON.parse(pendingWishData);
+                console.log('📦 Found pending wish data:', wishData);
+
+                // Generate random title for the wish
+                const wishTitle = getRandomWishTitle(wishData.tier);
+
+                // Create wish object
+                const wish = {
+                    text: wishData.text,
+                    author: wishData.author,
+                    country: wishData.country,
+                    wishTitle: wishTitle,
+                    tier: wishData.tier,
+                    slot: wishData.slot,
+                    price: wishData.price,
+                    timestamp: wishData.timestamp
+                };
+
+                // Save to Firebase
+                await saveWishToFirebase(wish);
+
+                // Clear pending wish from localStorage
+                localStorage.removeItem('pendingMercadoPagoWish');
+                console.log('✅ Mercado Pago wish saved successfully!');
+
+                // Show success message
+                alert('🎉 ¡Tu deseo ha sido guardado exitosamente! Gracias por tu pago.');
+
+                // Clean URL (remove Mercado Pago parameters)
+                const cleanUrl = window.location.origin + window.location.pathname;
+                window.history.replaceState({}, document.title, cleanUrl);
+
+                // Reload constellation to show new wish
+                setTimeout(() => {
+                    initializeConstellation();
+                }, 500);
+
+            } catch (error) {
+                console.error('❌ Error processing Mercado Pago return:', error);
+                alert('Hubo un error al guardar tu deseo. Por favor contacta al soporte.');
+            }
+        } else {
+            console.log('⚠️ No pending wish data found in localStorage');
+        }
+    } else if (status === 'pending') {
+        console.log('⏳ Payment is pending');
+        alert('Tu pago está pendiente. Cuando se apruebe, tu deseo aparecerá automáticamente.');
+        // Clear URL parameters
+        const cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+    } else if (status === 'rejected' || status === 'failure') {
+        console.log('❌ Payment was rejected or failed');
+        localStorage.removeItem('pendingMercadoPagoWish');
+        alert('El pago fue rechazado. Por favor intenta nuevamente.');
+        // Clear URL parameters
+        const cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
+}
+
+/**
  * Initialize Mercado Pago button (for Argentina users only)
  *
  * IMPORTANT: Mercado Pago requires a backend to create payment preferences securely.
@@ -1441,6 +1518,19 @@ function initMercadoPagoButton() {
             }
 
             const data = await response.json();
+
+            // Save wish data to localStorage before redirect (Mercado Pago flow)
+            const pendingWish = {
+                text: wishText,
+                author: author,
+                country: country,
+                tier: currentTier,
+                slot: currentSlot,
+                price: currentPrice,
+                timestamp: Date.now()
+            };
+            localStorage.setItem('pendingMercadoPagoWish', JSON.stringify(pendingWish));
+            console.log('💾 Wish data saved to localStorage before Mercado Pago redirect');
 
             // Redirect to Mercado Pago checkout
             // Use init_point for production, sandbox_init_point for testing
@@ -2111,26 +2201,29 @@ function init() {
     const userLanguage = detectLanguage();
     applyTranslations(userLanguage);
 
-    // 2. Display timezone information
+    // 2. Check if returning from Mercado Pago payment
+    checkMercadoPagoReturn();
+
+    // 3. Display timezone information
     displayTimezoneInfo();
 
-    // 3. Initialize countdown
+    // 4. Initialize countdown
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // 4. Setup lazy loading for map (will load when user scrolls to it)
+    // 5. Setup lazy loading for map (will load when user scrolls to it)
     setupMapLazyLoading();
 
-    // 5. Initialize wishes wall
+    // 6. Initialize wishes wall
     initWishesWall();
 
-    // 6. Setup view wish modal
+    // 7. Setup view wish modal
     setupViewWishModal();
 
-    // 7. Setup dark mode toggle
+    // 8. Setup dark mode toggle
     setupDarkMode();
 
-    // 8. Setup scroll button to Star wishes
+    // 9. Setup scroll button to Star wishes
     setupScrollToStarWishes();
 }
 
