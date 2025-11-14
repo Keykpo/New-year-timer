@@ -1399,7 +1399,6 @@ function initWishesWall() {
 function initializeConstellation() {
     initializeFounderWishes();
     initializeStarWishesGrid();
-    updateWishesCounter();
 }
 
 /**
@@ -2348,6 +2347,8 @@ function loadWishesFromFirebase() {
             wishes[tierName] = snapshot.val() || {};
             // Regenerate constellation when wishes change
             initializeConstellation();
+            // Update counter immediately after loading wishes
+            updateWishesCounter();
         });
     });
 
