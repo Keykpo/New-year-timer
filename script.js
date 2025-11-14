@@ -193,8 +193,18 @@ async function getGeoLocationData() {
     }
 
     try {
+        console.log('🔍 Fetching geolocation from ipapi.co...');
         const response = await fetch('https://ipapi.co/json/');
+
+        console.log('📡 Response status:', response.status, response.statusText);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
+        console.log('📦 Raw API response:', data);
+
         geoLocationData = {
             country: data.country_code || 'XX',
             timezone: data.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -204,7 +214,8 @@ async function getGeoLocationData() {
         console.log('🌍 Geolocation detected:', geoLocationData);
         return geoLocationData;
     } catch (error) {
-        console.warn('Could not detect geolocation from IP, using browser defaults:', error);
+        console.error('❌ Could not detect geolocation from IP:', error);
+        console.warn('⚠️ Using browser defaults instead');
         // Fallback to browser defaults
         geoLocationData = {
             country: 'XX',
