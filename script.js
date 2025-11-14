@@ -268,8 +268,11 @@ function detectLanguage() {
 
 // Apply translations to the page
 function applyTranslations(lang) {
+    console.log(`🌐 Applying translations for language: ${lang}`);
+
     // Handle regular text translations (data-i18n)
     const elements = document.querySelectorAll('[data-i18n]');
+    console.log(`📝 Found ${elements.length} elements with data-i18n`);
     elements.forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
@@ -279,9 +282,11 @@ function applyTranslations(lang) {
 
     // Handle HTML translations (data-i18n-html) - allows HTML tags like <strong>
     const htmlElements = document.querySelectorAll('[data-i18n-html]');
+    console.log(`📝 Found ${htmlElements.length} elements with data-i18n-html`);
     htmlElements.forEach(element => {
         const key = element.getAttribute('data-i18n-html');
         if (translations[lang] && translations[lang][key]) {
+            console.log(`✅ Translating ${key} to ${lang}`);
             element.innerHTML = translations[lang][key];
         }
     });
