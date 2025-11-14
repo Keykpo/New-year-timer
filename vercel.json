@@ -1,21 +1,9 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.newyeartimers.com"
-        }
-      ],
+      "source": "/www.newyeartimers.com/:path*",
       "destination": "https://newyeartimers.com/:path*",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/((?!api).*)",
-      "destination": "/index.html"
     }
   ],
   "headers": [
@@ -37,7 +25,7 @@
       ]
     },
     {
-      "source": "/(.+)\\.(css|js|svg|png|jpg|jpeg|gif|ico|woff2)",
+      "source": "/:path*\\.(css|js|svg|png|jpg|jpeg|gif|ico|woff2)",
       "headers": [
         {
           "key": "Cache-Control",
