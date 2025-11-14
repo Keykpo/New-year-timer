@@ -1,0 +1,2423 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #ffffff;
+    color: #333333;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    letter-spacing: 0.3px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Fondo con textura de ruido y gradiente radial sutil */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse at center bottom, rgba(245, 245, 245, 0.4) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background: #0a0a0a;
+    color: #f5f5f5;
+}
+
+/* Timer keeps original color in dark mode */
+/* body.dark-mode .time-value {
+    color: #ffffff;
+} */
+
+body.dark-mode .time-label {
+    color: #999999;
+}
+
+body.dark-mode .time-separator {
+    color: #444444;
+}
+
+body.dark-mode .subtitle {
+    color: #d1d5db;
+}
+
+body.dark-mode .constellation-subtitle {
+    color: #fbbf24;
+}
+
+/* Founder wish keeps original colors in dark mode */
+/* body.dark-mode .founder-wish-price {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+} */
+
+/* body.dark-mode .founder-wish-text {
+    color: #f5f5f5;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+} */
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    background: transparent;
+    border: 2px solid #1a1a1a;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1);
+}
+
+body.dark-mode .dark-mode-toggle {
+    border-color: #f5f5f5;
+}
+
+/* Container */
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem; /* Más espaciado vertical */
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #666666;
+    font-weight: 300;
+}
+
+/* Countdown Section - Panel Flotante */
+.countdown-section {
+    margin-bottom: 6rem;
+    animation: fadeInUp 1s ease-out 0.3s both;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.countdown-container {
+    background: #ffffff;
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+/* Hexágonos para el temporizador */
+.time-unit {
+    position: relative;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Crear hexágono con CSS */
+.time-unit::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130px;
+    height: 150px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+/* Glow interno azul y morado distribuido */
+.time-unit:nth-child(1)::before {
+    box-shadow: inset 0 0 30px rgba(58, 134, 255, 0.15);
+}
+
+.time-unit:nth-child(3)::before {
+    box-shadow: inset 0 0 30px rgba(106, 13, 173, 0.15);
+}
+
+.time-unit:nth-child(5)::before {
+    box-shadow: inset 0 0 30px rgba(58, 134, 255, 0.2);
+}
+
+.time-unit:nth-child(7)::before {
+    box-shadow: inset 0 0 30px rgba(106, 13, 173, 0.2);
+}
+
+.time-value {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-family: 'Orbitron', monospace;
+    color: #333333;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.time-label {
+    display: block;
+    font-size: 0.7rem;
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+.time-separator {
+    font-size: 3rem;
+    color: #cccccc;
+    font-weight: 200;
+    margin: 0 -1rem;
+}
+
+.timezone-info {
+    text-align: center;
+    color: #666666;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* ====================================
+   CONSTELLATION SECTION
+   ==================================== */
+
+.constellation-section {
+    margin: 6rem 0;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.constellation-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #3A86FF;
+    font-weight: 300;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+
+.constellation-subtitle {
+    text-align: center;
+    color: #666666;
+    font-size: 1.1rem;
+    margin-bottom: 4rem;
+    font-weight: 400;
+}
+
+.constellation-subtitle::after {
+    content: ' ✨';
+    color: #3A86FF;
+}
+
+/* Secret Title Promo Box */
+.secret-title-promo {
+    max-width: 700px;
+    margin: 2rem auto 3rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.08) 0%, rgba(169, 169, 169, 0.05) 100%);
+    border: 2px solid rgba(192, 192, 192, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(192, 192, 192, 0.2);
+    text-align: center;
+}
+
+.promo-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333333;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.promo-text strong {
+    color: #3A86FF;
+    font-weight: 700;
+}
+
+.promo-button {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c61 100%);
+    color: #ffffff;
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.promo-button:hover {
+    background: linear-gradient(135deg, #ff8c61 0%, #ffad8a 100%);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+    transform: translateY(-2px);
+}
+
+.promo-button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(255, 107, 53, 0.4);
+}
+
+/* Founder Wishes Navigation */
+.founder-nav-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 3rem auto 4rem;
+    padding: 0 1rem;
+}
+
+.founder-wishes-scroll-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    padding-top: 1.5rem; /* Space for floating crown */
+}
+
+/* Founder Wishes Container (scroll horizontal) */
+.founder-wishes-container {
+    display: flex;
+    gap: 2rem;
+    padding: 3rem 1rem 2rem 1rem; /* Extra padding-top for floating crown */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #e5e5e5 transparent;
+    position: relative;
+}
+
+.founder-wishes-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.founder-wishes-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.founder-wishes-container::-webkit-scrollbar-thumb {
+    background: #e5e5e5;
+    border-radius: 3px;
+}
+
+.founder-wishes-container::-webkit-scrollbar-thumb:hover {
+    background: #cccccc;
+}
+
+/* Líneas conectando las coronas (constelación) */
+.founder-wishes-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e5e5e5 15%, #e5e5e5 85%, transparent);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.founder-wish {
+    width: 100%;
+    max-width: 200px;
+    height: 220px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08), 0 0 20px rgba(251, 191, 36, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 0.75rem;
+}
+
+.founder-wish:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(58, 134, 255, 0.15), 0 0 30px rgba(251, 191, 36, 0.6);
+}
+
+/* Founder wish content (price and phrase) */
+.founder-wish-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    text-align: center;
+    width: 100%;
+}
+
+.founder-wish-icon {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.founder-wish-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333333;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.founder-wish-text {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #666666;
+    letter-spacing: 0.3px;
+}
+
+/* When founder wish is available - show full brightness */
+.founder-wish:not(.occupied) {
+    animation: founderPulse 2s ease-in-out infinite;
+}
+
+@keyframes founderPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7)) brightness(1);
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 50px rgba(255, 215, 0, 1)) brightness(1.1);
+        transform: scale(1.02);
+    }
+}
+
+.founder-wish:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 60px rgba(255, 215, 0, 1)) brightness(1.15);
+}
+
+/* When founder wish is occupied - show premium content */
+.founder-wish.occupied {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%);
+    border: 2px solid #fbbf24;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08), 0 0 25px rgba(251, 191, 36, 0.5);
+}
+
+.founder-wish.occupied:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 12px 40px rgba(251, 191, 36, 0.3), 0 0 35px rgba(251, 191, 36, 0.7);
+}
+
+/* Floating crown above the card - doesn't take space from content */
+.founder-crown-floating {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    z-index: 10;
+    filter: drop-shadow(0 4px 8px rgba(251, 191, 36, 0.6));
+    animation: crownFloat 2s ease-in-out infinite;
+    pointer-events: none; /* Don't block clicks */
+}
+
+@keyframes crownFloat {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Premium badge crown at top (deprecated - keeping for fallback) */
+.founder-crown-badge {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+    filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.4));
+}
+
+/* Founder wish message - premium style */
+.founder-wish-message {
+    font-size: 0.85rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.4;
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
+    background: linear-gradient(to right, #fbbf24, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* Prevent text overflow */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-height: 4.2rem;
+    word-break: break-word;
+}
+
+/* Founder author display - premium style */
+.founder-wish-author-display {
+    font-size: 0.75rem;
+    color: #92400e;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(251, 191, 36, 0.15);
+    border-radius: 20px;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.founder-wish-author-display .flag-icon {
+    width: 18px;
+    height: 14px;
+    border: 1px solid rgba(251, 191, 36, 0.5);
+}
+
+@keyframes founderGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7));
+    }
+    50% {
+        filter: drop-shadow(0 0 45px rgba(255, 215, 0, 0.9));
+    }
+}
+
+/* Navegación Horizontal (Botones Izquierda/Derecha) */
+.wishes-nav-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.nav-arrow-btn {
+    background: #ffffff;
+    border: 1.5px solid #e5e5e5;
+    color: #333333;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.nav-arrow-btn:hover {
+    background: #3A86FF;
+    color: #ffffff;
+    border-color: #3A86FF;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(58, 134, 255, 0.2);
+}
+
+.nav-arrow-btn:active {
+    transform: scale(0.95);
+}
+
+.star-wishes-scroll-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Star Wishes Grid (4 columnas con múltiples filas) */
+.star-wishes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+    scroll-behavior: smooth;
+}
+
+.star-wish-circle {
+    width: 100%;
+    height: 160px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08), 0 0 15px rgba(192, 192, 192, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    padding: 1rem;
+}
+
+.star-wish-circle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(58, 134, 255, 0.12), 0 0 25px rgba(192, 192, 192, 0.5);
+}
+
+/* Tarjeta ocupada - sombra más suave */
+.star-wish-circle.occupied {
+    background: #f9f9f9;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+    padding: 0.75rem;
+}
+
+/* Contenido de tarjeta ocupada */
+.occupied-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 0.5rem;
+}
+
+/* Mensaje del deseo en tarjeta ocupada */
+.star-wish-message {
+    font-size: 0.7rem;
+    line-height: 1.3;
+    color: #1a1a1a;
+    font-weight: 500;
+    text-align: center;
+    font-style: italic;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-height: 2.7rem;
+    word-break: break-word;
+}
+
+/* Autor con bandera en tarjeta ocupada */
+.star-wish-author-display {
+    font-size: 0.65rem;
+    color: #333333;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+/* Flag icon styles */
+.flag-icon {
+    width: 16px;
+    height: 12px;
+    object-fit: cover;
+    border-radius: 2px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.star-wish-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.star-wish-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333333;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.3px;
+}
+
+.star-wish-text {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #666666;
+    letter-spacing: 0.2px;
+}
+
+body.dark-mode .star-wish-price {
+    color: #333333;
+}
+
+body.dark-mode .star-wish-text {
+    color: #666666;
+}
+
+/* Map Section */
+.map-section {
+    background: rgba(30, 41, 59, 0.4);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.map-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #000000;
+    font-weight: 600;
+}
+
+/* Timezone Progress Counter */
+.timezone-progress {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.map-container {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    width: 100%;
+    overflow: visible;
+    position: relative;
+    border: 1px solid #e2e8f0;
+}
+
+.map-container svg {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+    background: #ffffff;
+}
+
+/* Todos los paths del SVG por defecto son blancos (océano) */
+.map-container svg path {
+    fill: #ffffff;
+    stroke: #e2e8f0;
+    stroke-width: 0.2;
+}
+
+/* Forzar que el océano sea blanco sin borde negro */
+.map-container svg .oceanxx,
+.map-container svg #ocean {
+    fill: #ffffff !important;
+    stroke: none !important;
+    stroke-width: 0 !important;
+}
+
+/* Legend */
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-color {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.legend-text {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    color: #64748b;
+    font-size: 1.1rem;
+    animation: fadeInUp 1s ease-out 0.9s both;
+}
+
+/* ====================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ==================================== */
+
+/* Tablet/Móvil Horizontal (≤900px) - 3 columnas */
+@media (max-width: 900px) {
+    /* Star Wishes Grid - 3 columnas */
+    .star-wishes-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+
+    .star-wish-circle {
+        height: 140px;
+    }
+
+    /* Ajustes generales */
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .countdown-container {
+        padding: 2.5rem 3rem;
+        gap: 2rem;
+    }
+
+    .constellation-title {
+        font-size: 2.2rem;
+    }
+
+    .founder-wish {
+        max-width: 180px;
+        height: 200px;
+    }
+
+    .nav-arrow-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Tablet/Móvil (≤768px) */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .countdown-container {
+        gap: 1.5rem;
+        padding: 2rem 2.5rem;
+    }
+
+    .time-unit::before {
+        width: 110px;
+        height: 130px;
+    }
+
+    .time-value {
+        font-size: 2.8rem;
+    }
+
+    .time-label {
+        font-size: 0.65rem;
+    }
+
+    .time-separator {
+        font-size: 2.5rem;
+        margin: 0 -0.5rem;
+    }
+
+    /* Constellation section responsive */
+    .constellation-title {
+        font-size: 2rem;
+    }
+
+    .constellation-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Founder wishes responsive */
+    .founder-wish {
+        max-width: 170px;
+        height: 190px;
+    }
+
+    .founder-wish-icon {
+        font-size: 3rem;
+    }
+
+    .founder-wish-price {
+        font-size: 1.3rem;
+    }
+
+    /* Star wishes - mantener 3 columnas */
+    .star-wishes-grid {
+        gap: 1rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .star-wish-circle {
+        height: 130px;
+    }
+
+    .star-wish-price {
+        font-size: 1rem;
+    }
+
+    .star-wish-text {
+        font-size: 0.7rem;
+    }
+
+    /* Navigation buttons */
+    .nav-arrow-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .map-title {
+        font-size: 1.5rem;
+    }
+
+    .map-section {
+        padding: 1.5rem;
+    }
+
+    .map-container {
+        padding: 1rem;
+        min-height: 250px;
+    }
+
+    .legend {
+        gap: 1rem;
+    }
+}
+
+/* Móvil Vertical (≤600px) */
+@media (max-width: 600px) {
+    .star-wish-circle {
+        min-width: 180px;
+        height: 150px;
+    }
+
+    .star-wish-price {
+        font-size: 1.1rem;
+    }
+
+    .star-wish-text {
+        font-size: 0.75rem;
+    }
+
+    /* Ajustes generales */
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .countdown-container {
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+    }
+
+    .time-unit::before {
+        width: 100px;
+        height: 115px;
+    }
+
+    .time-value {
+        font-size: 2.2rem;
+    }
+
+    .time-label {
+        font-size: 0.6rem;
+    }
+
+    .time-separator {
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    .constellation-title {
+        font-size: 1.8rem;
+    }
+
+    .constellation-subtitle {
+        font-size: 0.95rem;
+    }
+
+    /* Founder wishes */
+    .founder-wishes-container {
+        gap: 1.5rem;
+    }
+
+    .founder-wish {
+        max-width: 160px;
+        height: 180px;
+    }
+
+    .founder-wish-icon {
+        font-size: 2.8rem;
+    }
+
+    .founder-wish-price {
+        font-size: 1.2rem;
+    }
+
+    .founder-wish-text {
+        font-size: 0.85rem;
+    }
+
+    /* Navigation */
+    .nav-arrow-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.95rem;
+    }
+
+    .founder-nav-horizontal,
+    .wishes-nav-horizontal {
+        gap: 1rem;
+    }
+}
+
+/* Móvil Pequeño (≤480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .countdown-container {
+        padding: 1.5rem;
+        gap: 0.8rem;
+    }
+
+    .time-unit::before {
+        width: 85px;
+        height: 100px;
+    }
+
+    .time-value {
+        font-size: 1.8rem;
+    }
+
+    .time-label {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+
+    .time-separator {
+        display: none;
+    }
+
+    /* Constellation responsive for very small screens */
+    .constellation-title {
+        font-size: 1.6rem;
+    }
+
+    .constellation-subtitle {
+        font-size: 0.9rem;
+    }
+
+    /* Founder wishes - más compacto */
+    .founder-wishes-container {
+        gap: 1rem;
+    }
+
+    .founder-wish {
+        max-width: 140px;
+        height: 160px;
+    }
+
+    .founder-wish-icon {
+        font-size: 2.5rem;
+    }
+
+    .founder-wish-price {
+        font-size: 1.1rem;
+    }
+
+    .founder-wish-text {
+        font-size: 0.8rem;
+    }
+
+    /* Star wishes - 2 columnas más compactas */
+    .star-wishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+        padding: 1.5rem 0.5rem;
+        max-height: 500px;
+    }
+
+    .star-wish-circle {
+        height: 130px;
+    }
+
+    .star-wish-price {
+        font-size: 1rem;
+    }
+
+    .star-wish-text {
+        font-size: 0.7rem;
+    }
+
+    /* Navigation buttons más pequeños */
+    .nav-arrow-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+
+    .founder-nav-horizontal,
+    .wishes-nav-horizontal {
+        gap: 0.8rem;
+    }
+
+    /* Dark mode toggle */
+    .dark-mode-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+}
+
+/* SVG Map Styles */
+#world-map {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+#world-map svg {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+    max-height: 600px;
+    display: block;
+}
+
+/* Country path styles - applied to all countries */
+.country-path {
+    transition: all 0.4s ease;
+    stroke: #1e293b;
+    stroke-width: 0.5;
+    opacity: 1;
+}
+
+.country-path:hover {
+    filter: brightness(1.15);
+    stroke: #ffffff;
+    stroke-width: 1;
+}
+
+/* Celebrating countries (already in 2026) */
+.celebrating {
+    fill: #ff6b35 !important;
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Waiting countries (still in 2025) */
+.waiting {
+    fill: #1a1a1a !important;
+}
+
+/* Glow animation for celebrating countries */
+@keyframes glow {
+    0%, 100% {
+        filter: drop-shadow(0 0 3px rgba(255, 107, 53, 0.6));
+    }
+    50% {
+        filter: drop-shadow(0 0 8px rgba(255, 107, 53, 1));
+    }
+}
+
+/* Responsive adjustments for map */
+@media (max-width: 768px) {
+    #world-map svg {
+        max-height: 400px;
+    }
+
+    .map-container {
+        padding: 1.5rem;
+    }
+
+    .country-path {
+        stroke-width: 0.3;
+    }
+
+    .country-path:hover {
+        stroke-width: 0.6;
+    }
+}
+
+@media (max-width: 480px) {
+    #world-map svg {
+        max-height: 300px;
+    }
+
+    .map-container {
+        padding: 1rem;
+    }
+}
+
+
+/* ====================================
+   WISHES WALL SECTION
+   ==================================== */
+
+.wishes-section {
+    margin-top: 6rem; /* Más espacio entre secciones */
+    margin-bottom: 6rem;
+    animation: fadeInUp 1s ease-out 0.9s both;
+}
+
+.wishes-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.wishes-subtitle {
+    text-align: center;
+    color: #fbbf24;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* Unified Wishes Grid - All tiers in one grid */
+
+/* Slider Container */
+.wishes-slider-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.wishes-slider-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.wishes-slider-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* Tier Row Container */
+.tier-row {
+    margin-bottom: 3rem;
+}
+
+.tier-row-title {
+    text-align: center;
+    color: #f1f5f9;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
+}
+
+/* Individual Grid Rows */
+.wishes-grid-row {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+/* Founder Grid - 1 row, 2 columns visible, horizontal scroll */
+#wishesGridFounder {
+    display: grid;
+    grid-template-columns: repeat(2, 220px);
+    grid-template-rows: 200px;
+    grid-auto-flow: column;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+/* Star Grid - 5 rows × 10 columns visible, fills left to right */
+.star-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-flow: row;
+    gap: 1rem;
+    padding: 1.5rem;
+    max-height: 700px;
+}
+
+/* Tile sizes by tier */
+/* Founder - Medium size (2 columns visible) */
+.wish-tile[data-tier="premium"] {
+    width: 220px;
+    height: 200px;
+}
+
+/* Star - Smaller (4×5 grid) */
+.wish-tile[data-tier="regular"] {
+    width: 120px;
+    height: 110px;
+}
+
+/* Slider Navigation Buttons */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(251, 146, 60, 0.9);
+    border: 2px solid rgba(251, 191, 36, 0.8);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(251, 146, 60, 0.5);
+}
+
+.slider-nav:hover {
+    background: rgba(239, 68, 68, 0.95);
+    border-color: rgba(251, 191, 36, 1);
+    box-shadow: 0 8px 30px rgba(239, 68, 68, 0.7);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-prev {
+    left: 0;
+}
+
+.slider-next {
+    right: 0;
+}
+
+/* Slider Indicators */
+.slider-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.indicator-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(251, 146, 60, 0.3);
+    border: 2px solid rgba(251, 191, 36, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+    background: rgba(251, 146, 60, 0.9);
+    border-color: rgba(251, 191, 36, 1);
+    transform: scale(1.3);
+    box-shadow: 0 0 15px rgba(251, 146, 60, 0.8);
+}
+
+/* Wish Tile */
+.wish-tile {
+    background: rgba(30, 41, 59, 0.3);
+    border-radius: 1rem;
+    border: 2px solid rgba(251, 146, 60, 0.3);
+    backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Founder - Large padding */
+.wish-tile[data-tier="premium"] {
+    padding: 2rem;
+    border-radius: 1.2rem;
+}
+
+/* Constellation - Medium padding */
+.wish-tile[data-tier="vip"] {
+    padding: 1.5rem;
+}
+
+/* Star - Small padding */
+.wish-tile[data-tier="regular"] {
+    padding: 1rem;
+    border-radius: 0.8rem;
+}
+
+/* Empty tile - Regular ($1 USD) */
+.wish-tile.empty {
+    border-color: rgba(251, 191, 36, 0.5);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        border-color: rgba(251, 191, 36, 0.5);
+        box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+    }
+    50% {
+        border-color: rgba(239, 68, 68, 0.7);
+        box-shadow: 0 0 25px rgba(239, 68, 68, 0.5);
+    }
+}
+
+/* Premium tier ($49.99 USD) - Slots 1-10 (2 rows) - ULTRA DESTACADO */
+.wish-tile.empty.premium {
+    border: 3px solid rgba(255, 215, 0, 1);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 165, 0, 0.1) 100%);
+    animation: premiumGlow 1.5s ease-in-out infinite;
+    position: relative;
+    box-shadow:
+        0 0 30px rgba(255, 215, 0, 0.7),
+        0 0 60px rgba(255, 215, 0, 0.5),
+        inset 0 0 40px rgba(255, 215, 0, 0.15);
+}
+
+.wish-tile.empty.premium::after {
+    content: '👑';
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 2rem;
+    opacity: 1;
+    animation: pulse 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+@keyframes premiumGlow {
+    0%, 100% {
+        border-color: rgba(255, 215, 0, 1);
+        box-shadow:
+            0 0 35px rgba(255, 215, 0, 1),
+            0 0 70px rgba(255, 215, 0, 0.7),
+            0 0 100px rgba(255, 165, 0, 0.5),
+            inset 0 0 50px rgba(255, 215, 0, 0.2);
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        border-color: rgba(255, 165, 0, 1);
+        box-shadow:
+            0 0 50px rgba(255, 215, 0, 1),
+            0 0 100px rgba(255, 165, 0, 0.9),
+            0 0 150px rgba(255, 140, 0, 0.6),
+            inset 0 0 70px rgba(255, 215, 0, 0.3);
+        transform: scale(1.05);
+        filter: brightness(1.15);
+    }
+}
+
+/* VIP tier ($19.99 USD) - Slots 11-20 (2 rows) - MUY DESTACADO */
+.wish-tile.empty.vip {
+    border: 2.5px solid rgba(192, 192, 192, 1);
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.12) 0%, rgba(169, 169, 169, 0.08) 100%);
+    animation: vipGlow 2s ease-in-out infinite;
+    position: relative;
+    box-shadow:
+        0 0 25px rgba(192, 192, 192, 0.6),
+        0 0 50px rgba(192, 192, 192, 0.4),
+        inset 0 0 30px rgba(192, 192, 192, 0.12);
+}
+
+.wish-tile.empty.vip::after {
+    content: '💎';
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.7rem;
+    opacity: 1;
+    animation: pulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(192, 192, 192, 0.9));
+}
+
+@keyframes vipGlow {
+    0%, 100% {
+        border-color: rgba(192, 192, 192, 1);
+        box-shadow:
+            0 0 25px rgba(192, 192, 192, 0.8),
+            0 0 50px rgba(192, 192, 192, 0.5),
+            0 0 75px rgba(169, 169, 169, 0.3),
+            inset 0 0 35px rgba(192, 192, 192, 0.15);
+        transform: scale(1);
+    }
+    50% {
+        border-color: rgba(169, 169, 169, 1);
+        box-shadow:
+            0 0 35px rgba(192, 192, 192, 1),
+            0 0 65px rgba(169, 169, 169, 0.7),
+            0 0 95px rgba(150, 150, 150, 0.4),
+            inset 0 0 45px rgba(192, 192, 192, 0.2);
+        transform: scale(1.02);
+    }
+}
+
+.wish-tile.empty:hover {
+    transform: scale(1.05);
+    border-color: rgba(251, 146, 60, 0.8);
+    box-shadow: 0 8px 30px rgba(251, 146, 60, 0.4);
+}
+
+/* Removed ::before star to prevent text overlap */
+
+/* Occupied tile - Regular */
+.wish-tile.occupied {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+    cursor: default;
+}
+
+.wish-tile.occupied::before {
+    content: '✨';
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.wish-tile.occupied:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
+}
+
+/* Occupied Premium tile - ULTRA DESTACADO */
+.wish-tile.occupied.premium {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 165, 0, 0.15) 100%);
+    border: 3px solid rgba(255, 215, 0, 0.9);
+    box-shadow:
+        0 4px 30px rgba(255, 215, 0, 0.6),
+        0 0 60px rgba(255, 215, 0, 0.5),
+        0 0 90px rgba(255, 165, 0, 0.3),
+        inset 0 0 30px rgba(255, 215, 0, 0.15);
+    animation: occupiedPremiumPulse 2s ease-in-out infinite;
+}
+
+@keyframes occupiedPremiumPulse {
+    0%, 100% {
+        box-shadow:
+            0 4px 30px rgba(255, 215, 0, 0.6),
+            0 0 60px rgba(255, 215, 0, 0.5),
+            0 0 90px rgba(255, 165, 0, 0.3),
+            inset 0 0 30px rgba(255, 215, 0, 0.15);
+        filter: brightness(1);
+    }
+    50% {
+        box-shadow:
+            0 6px 40px rgba(255, 215, 0, 0.8),
+            0 0 80px rgba(255, 215, 0, 0.7),
+            0 0 120px rgba(255, 165, 0, 0.5),
+            inset 0 0 50px rgba(255, 215, 0, 0.25);
+        filter: brightness(1.1);
+    }
+}
+
+.wish-tile.occupied.premium::before {
+    content: '👑';
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9));
+}
+
+.wish-tile.occupied.premium:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow:
+        0 10px 45px rgba(255, 215, 0, 0.8),
+        0 0 80px rgba(255, 165, 0, 0.7),
+        0 0 120px rgba(255, 140, 0, 0.5),
+        inset 0 0 40px rgba(255, 215, 0, 0.2);
+}
+
+/* Occupied VIP tile - MUY DESTACADO */
+.wish-tile.occupied.vip {
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.15) 0%, rgba(169, 169, 169, 0.12) 100%);
+    border: 2.5px solid rgba(192, 192, 192, 0.9);
+    box-shadow:
+        0 4px 25px rgba(192, 192, 192, 0.5),
+        0 0 50px rgba(192, 192, 192, 0.4),
+        0 0 75px rgba(169, 169, 169, 0.25),
+        inset 0 0 25px rgba(192, 192, 192, 0.12);
+}
+
+.wish-tile.occupied.vip::before {
+    content: '💎';
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 6px rgba(192, 192, 192, 0.9));
+}
+
+.wish-tile.occupied.vip:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 8px 35px rgba(192, 192, 192, 0.7),
+        0 0 65px rgba(169, 169, 169, 0.6),
+        0 0 95px rgba(150, 150, 150, 0.4),
+        inset 0 0 35px rgba(192, 192, 192, 0.18);
+}
+
+/* Empty tile content */
+.wish-tile-empty-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 0.5rem;
+}
+
+.wish-tile-phrase {
+    color: #fbbf24;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    font-weight: 500;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+/* Founder - Larger text */
+.wish-tile[data-tier="premium"] .wish-tile-phrase {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.wish-tile[data-tier="premium"] .wish-tile-price {
+    font-size: 1.3rem;
+}
+
+/* Constellation - Medium text */
+.wish-tile[data-tier="vip"] .wish-tile-phrase {
+    font-size: 0.85rem;
+}
+
+.wish-tile[data-tier="vip"] .wish-tile-price {
+    font-size: 1.1rem;
+}
+
+/* Star - Smaller text */
+.wish-tile[data-tier="regular"] .wish-tile-phrase {
+    font-size: 0.7rem;
+    line-height: 1.2;
+}
+
+.wish-tile[data-tier="regular"] .wish-tile-price {
+    font-size: 0.9rem;
+}
+
+.wish-tile-price {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: auto;
+}
+
+/* Occupied tile content */
+.wish-tile-content {
+    text-align: center;
+    width: 100%;
+}
+
+.wish-text {
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+    word-break: break-word;
+}
+
+/* Founder - Larger occupied text */
+.wish-tile[data-tier="premium"] .wish-text {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.wish-tile[data-tier="premium"] .wish-author {
+    font-size: 0.85rem;
+}
+
+/* Constellation - Medium occupied text */
+.wish-tile[data-tier="vip"] .wish-text {
+    font-size: 0.85rem;
+}
+
+.wish-tile[data-tier="vip"] .wish-author {
+    font-size: 0.75rem;
+}
+
+/* Star - Smaller occupied text */
+.wish-tile[data-tier="regular"] .wish-text {
+    font-size: 0.65rem;
+    line-height: 1.3;
+}
+
+.wish-tile[data-tier="regular"] .wish-author {
+    font-size: 0.6rem;
+}
+
+.wish-author {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    color: #333333;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+    color: #666666;
+    font-size: 1rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(100, 116, 139, 0.3);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #cbd5e1;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(100, 116, 139, 0.6);
+    transform: rotate(90deg);
+}
+
+.modal-form {
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    color: #333333;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    background: #ffffff;
+    border: 1.5px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 0.875rem;
+    color: #333333;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #3A86FF;
+    box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.1);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.char-counter {
+    text-align: right;
+    color: #999999;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.modal-price {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.price-label {
+    color: #666666;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.price-amount {
+    font-size: 2.5rem;
+    color: #333333;
+    font-weight: 700;
+}
+
+.payment-section {
+    text-align: center;
+}
+
+.payment-note {
+    background: rgba(58, 134, 255, 0.05);
+    border: 1px solid rgba(58, 134, 255, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    color: #666666;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.payment-button {
+    background: #3A86FF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.payment-button:hover {
+    background: #2970e0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(58, 134, 255, 0.3);
+}
+
+.payment-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive Design for Wishes */
+@media (max-width: 768px) {
+    .wishes-title {
+        font-size: 2rem;
+    }
+
+    .wishes-subtitle {
+        font-size: 1rem;
+    }
+
+    .wishes-slider-container {
+        padding: 0 50px;
+    }
+
+    .slider-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    .wishes-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .wish-tile {
+        padding: 1rem;
+    }
+
+    .wish-tile-phrase {
+        font-size: 0.8rem;
+    }
+
+    .wish-tile-price {
+        font-size: 1rem;
+    }
+
+    .wish-text {
+        font-size: 0.75rem;
+    }
+
+    .modal-content {
+        padding: 2rem;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .indicator-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wishes-slider-container {
+        padding: 0 40px;
+    }
+
+    .slider-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 1.3rem;
+    }
+
+    .wishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .wish-tile {
+        padding: 0.75rem;
+    }
+
+    .wish-tile-phrase {
+        font-size: 0.7rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .price-amount {
+        font-size: 2rem;
+    }
+}
+
+/* ====================================
+   VIEW WISH MODAL
+   ==================================== */
+
+.view-wish-modal {
+    max-width: 600px;
+    padding: 3rem 2.5rem;
+}
+
+.view-wish-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.wish-tier-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    /* Sin animación, solo el brillo */
+}
+
+/* Founder Wish Badge - Brillo dorado intenso */
+.wish-tier-badge.founder {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(255, 165, 0, 0.2) 100%);
+    border: 2px solid rgba(255, 215, 0, 0.9);
+    color: #92400e;
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.6), 0 0 40px rgba(251, 191, 36, 0.3);
+    filter: drop-shadow(0 4px 8px rgba(251, 191, 36, 0.4));
+}
+
+/* Star Wish Badge - Brillo plateado sutil */
+.wish-tier-badge.star {
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.15) 0%, rgba(169, 169, 169, 0.12) 100%);
+    border: 2px solid rgba(192, 192, 192, 0.7);
+    color: #475569;
+    box-shadow: 0 0 15px rgba(192, 192, 192, 0.4), 0 0 25px rgba(192, 192, 192, 0.2);
+    filter: drop-shadow(0 2px 4px rgba(192, 192, 192, 0.3));
+}
+
+.badge-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.view-wish-body {
+    position: relative;
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+}
+
+.wish-quote-mark {
+    font-size: 6rem;
+    line-height: 0.5;
+    color: rgba(251, 146, 60, 0.3);
+    font-family: Georgia, serif;
+    position: absolute;
+    top: 0;
+    left: -0.5rem;
+}
+
+.wish-quote-mark.closing {
+    bottom: -2rem;
+    top: auto;
+    left: auto;
+    right: -0.5rem;
+    transform: rotate(180deg);
+}
+
+.view-wish-text {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: #1a1a1a;
+    text-align: center;
+    font-weight: 400;
+    font-style: italic;
+    padding: 0 2rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-height: 15rem;
+    overflow-y: auto;
+}
+
+.view-wish-footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(58, 134, 255, 0.2);
+}
+
+.view-wish-author {
+    font-size: 1.2rem;
+    color: #333333;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.view-wish-author .flag-icon {
+    width: 24px;
+    height: 18px;
+}
+
+.view-wish-date {
+    font-size: 0.9rem;
+    color: #666666;
+    font-weight: 500;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effect for occupied tiles */
+.wish-tile.occupied {
+    cursor: pointer !important;
+    transition: all 0.3s ease;
+}
+
+.wish-tile.occupied:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .view-wish-modal {
+        padding: 2rem 1.5rem;
+    }
+
+    .view-wish-text {
+        font-size: 1.4rem;
+        padding: 0 1rem;
+    }
+
+    .wish-quote-mark {
+        font-size: 4rem;
+    }
+}
+
+/* ==========================================
+   STARRY BACKGROUND & FIREWORKS
+   ========================================== */
+
+/* Starry Background */
+.stars-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -3;
+    display: none; /* Ocultar estrellas ya que tenemos video de fondo */
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+    animation: starTwinkleBackground 3s ease-in-out infinite;
+}
+
+@keyframes starTwinkleBackground {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Different twinkle delays for natural effect */
+.star:nth-child(2n) {
+    animation-delay: 0.5s;
+}
+
+.star:nth-child(3n) {
+    animation-delay: 1s;
+}
+
+.star:nth-child(4n) {
+    animation-delay: 1.5s;
+}
+
+.star:nth-child(5n) {
+    animation-delay: 2s;
+}
+
+/* Fireworks Container */
+.fireworks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -3;
+    overflow: hidden;
+    display: none; /* Ocultar fuegos CSS ya que el video tiene su propia animación */
+}
+
+/* Individual Firework */
+.firework {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    box-shadow:
+        0 0 10px 2px currentColor,
+        0 0 20px 4px currentColor,
+        0 0 30px 6px currentColor;
+    animation: fireworkExplode 3s ease-out infinite;
+}
+
+.firework::before,
+.firework::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: inherit;
+}
+
+.firework::before {
+    animation: fireworkExpand 3s ease-out infinite;
+}
+
+.firework::after {
+    animation: fireworkExpand 3s ease-out infinite 0.15s;
+}
+
+/* Firework Positions */
+.firework-1 {
+    top: 10%;
+    left: 15%;
+    color: #fbbf24;
+    animation-delay: 0s;
+}
+
+.firework-2 {
+    top: 15%;
+    right: 15%;
+    color: #ef4444;
+    animation-delay: 0.8s;
+}
+
+.firework-3 {
+    top: 20%;
+    left: 70%;
+    color: #10b981;
+    animation-delay: 1.6s;
+}
+
+.firework-4 {
+    top: 18%;
+    left: 85%;
+    color: #3b82f6;
+    animation-delay: 2.4s;
+}
+
+/* Firework Animations */
+@keyframes fireworkExplode {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateY(100px);
+    }
+    10% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    20% {
+        opacity: 0.8;
+        transform: scale(2) translateY(-5px);
+    }
+    30%, 100% {
+        opacity: 0;
+        transform: scale(3) translateY(-10px);
+    }
+}
+
+@keyframes fireworkExpand {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+
+/* Celebration Animation for Countries */
+@keyframes celebrateCountry {
+    0%, 100% {
+        filter: drop-shadow(0 0 5px rgba(255, 107, 53, 0.8));
+    }
+    50% {
+        filter: drop-shadow(0 0 20px rgba(255, 107, 53, 1))
+                drop-shadow(0 0 30px rgba(255, 107, 53, 0.8));
+    }
+}
+
+/* Map Country Styles */
+.country-path {
+    transition: all 0.3s ease;
+}
+
+.country-path.celebrating {
+    fill: #ff6b35;
+    stroke: #ff8c61;
+    stroke-width: 0.5;
+}
+
+.country-path.celebrating-animation {
+    animation: celebrateCountry 2s ease-in-out;
+}
+
+.country-path.waiting {
+    fill: #cbd5e1;
+    stroke: #94a3b8;
+    stroke-width: 0.3;
+}
+
+.country-path:hover {
+    filter: brightness(1.15);
+}
+
+/* Connection Lines for Constellation */
+.constellation-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    transform: translate(-50%, -50%);
+    background-image:
+        linear-gradient(45deg, transparent 48%, rgba(96, 165, 250, 0.2) 48%, rgba(96, 165, 250, 0.2) 52%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(96, 165, 250, 0.2) 48%, rgba(96, 165, 250, 0.2) 52%, transparent 52%),
+        linear-gradient(0deg, transparent 48%, rgba(96, 165, 250, 0.2) 48%, rgba(96, 165, 250, 0.2) 52%, transparent 52%),
+        linear-gradient(90deg, transparent 48%, rgba(96, 165, 250, 0.2) 48%, rgba(96, 165, 250, 0.2) 52%, transparent 52%);
+    background-size: 100% 100%;
+    background-position: center;
+    pointer-events: none;
+    z-index: 0;
+}

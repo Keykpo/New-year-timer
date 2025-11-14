@@ -1,26 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(script_temp.js)",
-      "Bash(chmod:*)",
-      "Bash(python -m http.server:*)",
-      "Bash(curl:*)",
-      "Bash(npm install)",
-      "Bash(npm start)",
-      "Bash(netstat:*)",
-      "Bash(findstr:*)",
-      "Bash(taskkill:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push)",
-      "Bash(dir:*)",
-      "Bash(copy \"ESTETICAS\\FONDO.jpg\" \"FONDO.jpg\")",
-      "Bash(copy \"ESTETICAS\\deseo fundador.PNG\" \"deseo-fundador.png\")",
-      "Bash(nul)",
-      "Bash(start index.html)",
-      "Bash(del nul)",
-      "Bash(start:*)",
-      "Bash(npm i:*)"
+      "WebSearch",
+      "WebFetch(domain:www.kwrds.ai)"
     ],
     "deny": [],
     "ask": []
