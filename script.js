@@ -82,7 +82,7 @@ const translations = {
         stillWaiting: "Still waiting",
         footer: "Happy New Year from around the world! 🎉",
         timezoneInfo: "Your timezone: {timezone}",
-        wishesTitle: "Wishes Constellation",
+        wishesTitle: "Wishes Wall",
         wishesSubtitle: "Leave your wish for 2026 and it will come true! ✨",
         emptyTileTextFounder: "Founder Wish shines here 👑",
         emptyTileTextConstellation: "Constellation Wish ✨",
@@ -95,7 +95,7 @@ const translations = {
         paymentNote: "💳 Secure payment via PayPal. Your wish will appear instantly!",
         payButton: "Pay & Make Wish",
         promoText: "✨ Your wish joins the stars. As a thank you, you will receive a <strong>secret title</strong> that predicts success and guides your path in the new year. ✨",
-        viewStarWishes: "🌟 View Star Wishes"
+        viewStarWishes: "🌟 View Wishes"
     },
     es: {
         mainTitle: "Tiempo Restante para tu Año Nuevo",
@@ -109,7 +109,7 @@ const translations = {
         stillWaiting: "Aún esperando",
         footer: "¡Feliz Año Nuevo desde todo el mundo! 🎉",
         timezoneInfo: "Tu zona horaria: {timezone}",
-        wishesTitle: "Constelación de Deseos",
+        wishesTitle: "Pared de Deseos",
         wishesSubtitle: "¡Deja tu deseo para el 2026 y se va a cumplir! ✨",
         emptyTileTextFounder: "Deseo Fundador brilla aquí 👑",
         emptyTileTextConstellation: "Deseo Constelación ✨",
@@ -122,7 +122,7 @@ const translations = {
         paymentNote: "💳 Pago seguro vía PayPal. ¡Tu deseo aparecerá al instante!",
         payButton: "Pagar y Hacer Deseo",
         promoText: "✨ Tu deseo se une a las estrellas. Como agradecimiento, recibirás un <strong>título secreto</strong> que te augura éxito y guía tu camino en el nuevo año. ✨",
-        viewStarWishes: "🌟 Ver Deseos Star"
+        viewStarWishes: "🌟 Ver Deseos"
     },
     pt: {
         mainTitle: "Tempo Restante para o seu Ano Novo",
@@ -136,7 +136,7 @@ const translations = {
         stillWaiting: "Ainda esperando",
         footer: "Feliz Ano Novo de todo o mundo! 🎉",
         timezoneInfo: "Seu fuso horário: {timezone}",
-        wishesTitle: "Constelação de Desejos",
+        wishesTitle: "Parede de Desejos",
         wishesSubtitle: "Deixe seu desejo para 2026 e ele se tornará realidade! ✨",
         emptyTileTextFounder: "Desejo Fundador brilha aqui 👑",
         emptyTileTextConstellation: "Desejo Constelação ✨",
@@ -149,7 +149,7 @@ const translations = {
         paymentNote: "💳 Pagamento seguro via PayPal. Seu desejo aparecerá instantaneamente!",
         payButton: "Pagar e Fazer Desejo",
         promoText: "✨ Seu desejo se junta às estrelas. Como agradecimento, você receberá um <strong>título secreto</strong> que prevê sucesso e guia seu caminho no ano novo. ✨",
-        viewStarWishes: "🌟 Ver Desejos Estrela"
+        viewStarWishes: "🌟 Ver Desejos"
     },
     fr: {
         mainTitle: "Temps Restant jusqu'à votre Nouvel An",
@@ -163,7 +163,7 @@ const translations = {
         stillWaiting: "Encore en attente",
         footer: "Bonne année du monde entier! 🎉",
         timezoneInfo: "Votre fuseau horaire: {timezone}",
-        wishesTitle: "Constellation de Souhaits",
+        wishesTitle: "Mur de Souhaits",
         wishesSubtitle: "Laissez votre souhait pour 2026 et il se réalisera! ✨",
         emptyTileTextFounder: "Souhait Fondateur brille ici 👑",
         emptyTileTextConstellation: "Souhait Constellation ✨",
@@ -176,7 +176,7 @@ const translations = {
         paymentNote: "💳 Paiement sécurisé via PayPal. Votre souhait apparaîtra instantanément!",
         payButton: "Payer et Faire un Souhait",
         promoText: "✨ Votre souhait rejoint les étoiles. En remerciement, vous recevrez un <strong>titre secret</strong> qui prédit le succès et guide votre chemin dans la nouvelle année. ✨",
-        viewStarWishes: "🌟 Voir les Souhaits Étoile"
+        viewStarWishes: "🌟 Voir les Souhaits"
     },
     de: {
         mainTitle: "Zeit bis zu Ihrem Neujahr",
@@ -190,7 +190,7 @@ const translations = {
         stillWaiting: "Warten noch",
         footer: "Frohes neues Jahr aus der ganzen Welt! 🎉",
         timezoneInfo: "Ihre Zeitzone: {timezone}",
-        wishesTitle: "Wünsche-Konstellation",
+        wishesTitle: "Wünsche-Wand",
         wishesSubtitle: "Hinterlassen Sie Ihren Wunsch für 2026 und er wird wahr werden! ✨",
         emptyTileTextFounder: "Gründer-Wunsch leuchtet hier 👑",
         emptyTileTextConstellation: "Konstellations-Wunsch ✨",
@@ -203,7 +203,7 @@ const translations = {
         paymentNote: "💳 Sichere Zahlung über PayPal. Ihr Wunsch erscheint sofort!",
         payButton: "Bezahlen & Wunsch abgeben",
         promoText: "✨ Ihr Wunsch schließt sich den Sternen an. Als Dankeschön erhalten Sie einen <strong>geheimen Titel</strong>, der Erfolg vorhersagt und Ihren Weg im neuen Jahr leitet. ✨",
-        viewStarWishes: "🌟 Stern-Wünsche ansehen"
+        viewStarWishes: "🌟 Wünsche ansehen"
     },
     it: {
         mainTitle: "Tempo Rimanente per il tuo Capodanno",
@@ -217,7 +217,7 @@ const translations = {
         stillWaiting: "Ancora in attesa",
         footer: "Buon anno da tutto il mondo! 🎉",
         timezoneInfo: "Il tuo fuso orario: {timezone}",
-        wishesTitle: "Costellazione dei Desideri",
+        wishesTitle: "Muro dei Desideri",
         wishesSubtitle: "Lascia il tuo desiderio per il 2026 e si avvererà! ✨",
         emptyTileTextFounder: "Il Desiderio del Fondatore brilla qui 👑",
         emptyTileTextConstellation: "Desiderio Costellazione ✨",
@@ -230,7 +230,7 @@ const translations = {
         paymentNote: "💳 Pagamento sicuro tramite PayPal. Il tuo desiderio apparirà immediatamente!",
         payButton: "Paga e Esprimi Desiderio",
         promoText: "✨ Il tuo desiderio si unisce alle stelle. Come ringraziamento, riceverai un <strong>titolo segreto</strong> che predice il successo e guida il tuo percorso nel nuovo anno. ✨",
-        viewStarWishes: "🌟 Vedi Desideri Stella"
+        viewStarWishes: "🌟 Vedi Desideri"
     },
     ru: {
         mainTitle: "Время до Нового года",
@@ -244,7 +244,7 @@ const translations = {
         stillWaiting: "Всё ещё ждут",
         footer: "С Новым годом со всего мира! 🎉",
         timezoneInfo: "Ваш часовой пояс: {timezone}",
-        wishesTitle: "Созвездие Желаний",
+        wishesTitle: "Стена Желаний",
         wishesSubtitle: "Оставьте свое желание на 2026 год, и оно сбудется! ✨",
         emptyTileTextFounder: "Желание Основателя сияет здесь 👑",
         emptyTileTextConstellation: "Желание Созвездия ✨",
@@ -257,7 +257,7 @@ const translations = {
         paymentNote: "💳 Безопасная оплата через PayPal. Ваше желание появится мгновенно!",
         payButton: "Оплатить и Загадать Желание",
         promoText: "✨ Ваше желание присоединяется к звездам. В знак благодарности вы получите <strong>секретный титул</strong>, который предсказывает успех и направляет ваш путь в новом году. ✨",
-        viewStarWishes: "🌟 Посмотреть Звездные Желания"
+        viewStarWishes: "🌟 Посмотреть Желания"
     },
     zh: {
         mainTitle: "距离新年的时间",
@@ -271,7 +271,7 @@ const translations = {
         stillWaiting: "仍在等待",
         footer: "来自世界各地的新年快乐！🎉",
         timezoneInfo: "您的时区：{timezone}",
-        wishesTitle: "愿望星座",
+        wishesTitle: "愿望墙",
         wishesSubtitle: "留下您2026年的愿望，它将成真！✨",
         emptyTileTextFounder: "创始人愿望在此闪耀 👑",
         emptyTileTextConstellation: "星座愿望 ✨",
@@ -284,7 +284,7 @@ const translations = {
         paymentNote: "💳 通过PayPal安全付款。您的愿望将立即显示！",
         payButton: "支付并许愿",
         promoText: "✨ 您的愿望加入了星辰。作为感谢，您将获得一个<strong>秘密称号</strong>，预示成功并引导您在新年的道路。✨",
-        viewStarWishes: "🌟 查看星星愿望"
+        viewStarWishes: "🌟 查看愿望"
     },
     ja: {
         mainTitle: "新年までの時間",
@@ -298,7 +298,7 @@ const translations = {
         stillWaiting: "まだ待っています",
         footer: "世界中から新年おめでとうございます！🎉",
         timezoneInfo: "あなたのタイムゾーン：{timezone}",
-        wishesTitle: "願いの星座",
+        wishesTitle: "願いの壁",
         wishesSubtitle: "2026年の願いを残してください、それは叶います！✨",
         emptyTileTextFounder: "創設者の願いがここで輝きます 👑",
         emptyTileTextConstellation: "星座の願い ✨",
@@ -311,7 +311,7 @@ const translations = {
         paymentNote: "💳 PayPalによる安全な支払い。あなたの願いはすぐに表示されます！",
         payButton: "支払って願いを込める",
         promoText: "✨ あなたの願いは星々に加わります。感謝の気持ちとして、成功を予測し新年のあなたの道を導く<strong>秘密の称号</strong>を受け取ります。✨",
-        viewStarWishes: "🌟 星の願いを見る"
+        viewStarWishes: "🌟 願いを見る"
     },
     ar: {
         mainTitle: "الوقت المتبقي حتى العام الجديد",
@@ -325,7 +325,7 @@ const translations = {
         stillWaiting: "لا يزالون ينتظرون",
         footer: "سنة جديدة سعيدة من جميع أنحاء العالم! 🎉",
         timezoneInfo: "منطقتك الزمنية: {timezone}",
-        wishesTitle: "كوكبة الأمنيات",
+        wishesTitle: "جدار الأمنيات",
         wishesSubtitle: "اترك أمنيتك لعام 2026 وسوف تتحقق! ✨",
         emptyTileTextFounder: "أمنية المؤسس تتألق هنا 👑",
         emptyTileTextConstellation: "أمنية الكوكبة ✨",
@@ -338,7 +338,7 @@ const translations = {
         paymentNote: "💳 دفع آمن عبر PayPal. ستظهر أمنيتك على الفور!",
         payButton: "ادفع واصنع الأمنية",
         promoText: "✨ تنضم أمنيتك إلى النجوم. كشكر لك، ستحصل على <strong>لقب سري</strong> يتنبأ بالنجاح ويرشد طريقك في العام الجديد. ✨",
-        viewStarWishes: "🌟 عرض أمنيات النجوم"
+        viewStarWishes: "🌟 عرض الأمنيات"
     },
     nl: {
         mainTitle: "Tijd tot je Nieuwjaar",
@@ -352,7 +352,7 @@ const translations = {
         stillWaiting: "Nog aan het wachten",
         footer: "Gelukkig Nieuwjaar van over de hele wereld! 🎉",
         timezoneInfo: "Jouw tijdzone: {timezone}",
-        wishesTitle: "Wensen Constellatie",
+        wishesTitle: "Wensen Muur",
         wishesSubtitle: "Laat je wens achter voor 2026 en het zal uitkomen! ✨",
         emptyTileTextFounder: "Oprichters Wens schijnt hier 👑",
         emptyTileTextConstellation: "Constellatie Wens ✨",
@@ -365,7 +365,7 @@ const translations = {
         paymentNote: "💳 Veilige betaling via PayPal. Je wens verschijnt direct!",
         payButton: "Betalen & Wens Doen",
         promoText: "✨ Je wens voegt zich bij de sterren. Als dank ontvang je een <strong>geheime titel</strong> die succes voorspelt en je pad in het nieuwe jaar begeleidt. ✨",
-        viewStarWishes: "🌟 Bekijk Ster Wensen"
+        viewStarWishes: "🌟 Bekijk Wensen"
     },
     ko: {
         mainTitle: "새해까지 남은 시간",
@@ -379,7 +379,7 @@ const translations = {
         stillWaiting: "아직 기다리고 있습니다",
         footer: "전 세계에서 새해 복 많이 받으세요! 🎉",
         timezoneInfo: "당신의 시간대: {timezone}",
-        wishesTitle: "소원 별자리",
+        wishesTitle: "소원 벽",
         wishesSubtitle: "2026년을 위한 소원을 남기면 이루어집니다! ✨",
         emptyTileTextFounder: "창립자의 소원이 여기서 빛납니다 👑",
         emptyTileTextConstellation: "별자리 소원 ✨",
@@ -392,7 +392,7 @@ const translations = {
         paymentNote: "💳 PayPal을 통한 안전한 결제. 소원이 즉시 나타납니다!",
         payButton: "결제하고 소원 빌기",
         promoText: "✨ 당신의 소원이 별들과 함께합니다. 감사의 표시로, 성공을 예측하고 새해의 길을 안내하는 <strong>비밀 칭호</strong>를 받게 됩니다. ✨",
-        viewStarWishes: "🌟 별 소원 보기"
+        viewStarWishes: "🌟 소원 보기"
     },
     tr: {
         mainTitle: "Yeni Yılınıza Kalan Süre",
@@ -406,7 +406,7 @@ const translations = {
         stillWaiting: "Hala bekliyor",
         footer: "Tüm dünyadan Mutlu Yıllar! 🎉",
         timezoneInfo: "Saat diliminiz: {timezone}",
-        wishesTitle: "Dilek Takımyıldızı",
+        wishesTitle: "Dilek Duvarı",
         wishesSubtitle: "2026 için dileğinizi bırakın ve gerçek olacak! ✨",
         emptyTileTextFounder: "Kurucu Dileği burada parlıyor 👑",
         emptyTileTextConstellation: "Takımyıldız Dileği ✨",
@@ -419,7 +419,7 @@ const translations = {
         paymentNote: "💳 PayPal üzerinden güvenli ödeme. Dileğiniz anında görünecek!",
         payButton: "Öde ve Dilek Tut",
         promoText: "✨ Dileğiniz yıldızlara katılıyor. Teşekkür olarak, başarıyı öngören ve yeni yılda yolunuzu gösteren <strong>gizli bir unvan</strong> alacaksınız. ✨",
-        viewStarWishes: "🌟 Yıldız Dileklerini Görüntüle"
+        viewStarWishes: "🌟 Dilekleri Görüntüle"
     },
     hi: {
         mainTitle: "आपके नए साल तक का समय",
@@ -433,7 +433,7 @@ const translations = {
         stillWaiting: "अभी भी इंतजार कर रहे हैं",
         footer: "पूरी दुनिया से नया साल मुबारक हो! 🎉",
         timezoneInfo: "आपका समय क्षेत्र: {timezone}",
-        wishesTitle: "इच्छाओं का तारामंडल",
+        wishesTitle: "इच्छाओं की दीवार",
         wishesSubtitle: "2026 के लिए अपनी इच्छा छोड़ें और यह सच हो जाएगी! ✨",
         emptyTileTextFounder: "संस्थापक की इच्छा यहाँ चमकती है 👑",
         emptyTileTextConstellation: "तारामंडल इच्छा ✨",
@@ -446,7 +446,7 @@ const translations = {
         paymentNote: "💳 PayPal के माध्यम से सुरक्षित भुगतान। आपकी इच्छा तुरंत दिखाई देगी!",
         payButton: "भुगतान करें और इच्छा करें",
         promoText: "✨ आपकी इच्छा सितारों से जुड़ती है। धन्यवाद के रूप में, आपको एक <strong>गुप्त उपाधि</strong> मिलेगी जो सफलता की भविष्यवाणी करती है और नए साल में आपके मार्ग का मार्गदर्शन करती है। ✨",
-        viewStarWishes: "🌟 तारा इच्छाएँ देखें"
+        viewStarWishes: "🌟 इच्छाएँ देखें"
     },
     pl: {
         mainTitle: "Czas do Twojego Nowego Roku",
@@ -460,7 +460,7 @@ const translations = {
         stillWaiting: "Wciąż czekają",
         footer: "Szczęśliwego Nowego Roku z całego świata! 🎉",
         timezoneInfo: "Twoja strefa czasowa: {timezone}",
-        wishesTitle: "Konstelacja Życzeń",
+        wishesTitle: "Ściana Życzeń",
         wishesSubtitle: "Zostaw swoje życzenie na 2026 i się spełni! ✨",
         emptyTileTextFounder: "Życzenie Założyciela świeci tutaj 👑",
         emptyTileTextConstellation: "Życzenie Konstelacji ✨",
@@ -473,7 +473,7 @@ const translations = {
         paymentNote: "💳 Bezpieczna płatność przez PayPal. Twoje życzenie pojawi się natychmiast!",
         payButton: "Zapłać i Złóż Życzenie",
         promoText: "✨ Twoje życzenie dołącza do gwiazd. W podziękowaniu otrzymasz <strong>sekretny tytuł</strong>, który przepowiada sukces i prowadzi Twoją ścieżkę w nowym roku. ✨",
-        viewStarWishes: "🌟 Zobacz Życzenia Gwiazd"
+        viewStarWishes: "🌟 Zobacz Życzenia"
     },
     sv: {
         mainTitle: "Tid Kvar Till Ditt Nya År",
@@ -487,7 +487,7 @@ const translations = {
         stillWaiting: "Väntar fortfarande",
         footer: "Gott Nytt År från hela världen! 🎉",
         timezoneInfo: "Din tidszon: {timezone}",
-        wishesTitle: "Önskningar Konstellation",
+        wishesTitle: "Önskningar Vägg",
         wishesSubtitle: "Lämna din önskan för 2026 och den kommer att gå i uppfyllelse! ✨",
         emptyTileTextFounder: "Grundarens Önskan lyser här 👑",
         emptyTileTextConstellation: "Konstellation Önskan ✨",
@@ -500,7 +500,7 @@ const translations = {
         paymentNote: "💳 Säker betalning via PayPal. Din önskan kommer att visas omedelbart!",
         payButton: "Betala & Gör Önskan",
         promoText: "✨ Din önskan går med stjärnorna. Som tack kommer du att få en <strong>hemlig titel</strong> som förutspår framgång och vägleder din väg under det nya året. ✨",
-        viewStarWishes: "🌟 Visa Stjärn Önskningar"
+        viewStarWishes: "🌟 Visa Önskningar"
     }
 };
 
