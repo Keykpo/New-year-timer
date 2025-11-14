@@ -271,9 +271,44 @@ async function getGeoLocationData() {
     return geoLocationData;
 }
 
-// Detect language based on timezone and browser settings
+// Detect language based on country code, timezone, and browser settings
 function detectLanguage() {
-    // Get user's timezone (from cached geolocation data or browser)
+    // Priority 1: Check country code from geolocation (most accurate with VPN)
+    if (geoLocationData?.country) {
+        const countryCode = geoLocationData.country.toUpperCase();
+        console.log(`🌍 Detected country code: ${countryCode}`);
+
+        // Country-to-language mapping
+        const countryToLanguage = {
+            // Spanish-speaking countries
+            'ES': 'es', 'MX': 'es', 'AR': 'es', 'CO': 'es', 'PE': 'es',
+            'VE': 'es', 'CL': 'es', 'EC': 'es', 'GT': 'es', 'CU': 'es',
+            'BO': 'es', 'DO': 'es', 'HN': 'es', 'PY': 'es', 'SV': 'es',
+            'NI': 'es', 'CR': 'es', 'PA': 'es', 'UY': 'es', 'GQ': 'es',
+
+            // Portuguese-speaking countries
+            'BR': 'pt', 'PT': 'pt', 'AO': 'pt', 'MZ': 'pt', 'GW': 'pt',
+            'TL': 'pt', 'CV': 'pt', 'ST': 'pt',
+
+            // French-speaking countries
+            'FR': 'fr', 'BE': 'fr', 'CH': 'fr', 'CA': 'fr', 'LU': 'fr',
+            'MC': 'fr', 'CI': 'fr', 'CM': 'fr', 'CD': 'fr', 'MG': 'fr',
+            'ML': 'fr', 'SN': 'fr', 'TN': 'fr', 'DZ': 'fr', 'MA': 'fr',
+            'HT': 'fr', 'BF': 'fr', 'NE': 'fr', 'TD': 'fr', 'RW': 'fr',
+            'BJ': 'fr', 'TG': 'fr', 'CF': 'fr', 'CG': 'fr', 'GA': 'fr',
+            'GN': 'fr', 'RE': 'fr'
+        };
+
+        const languageFromCountry = countryToLanguage[countryCode];
+        if (languageFromCountry) {
+            console.log(`✅ Language from country mapping: ${countryCode} → ${languageFromCountry}`);
+            return languageFromCountry;
+        } else {
+            console.log(`⚠️ Country ${countryCode} not in mapping, falling back to timezone detection`);
+        }
+    }
+
+    // Priority 2: Check timezone (for countries not in mapping)
     const timezone = geoLocationData?.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     // Spanish-speaking timezones
@@ -302,20 +337,24 @@ function detectLanguage() {
         'Africa/Abidjan', 'Africa/Dakar', 'America/Cayenne'
     ];
 
-    // Check timezone first for more accurate detection
+    // Check timezone for language detection
     if (spanishTimezones.includes(timezone)) {
+        console.log(`✅ Language from timezone: ${timezone} → es`);
         return 'es';
     }
     if (portugueseTimezones.includes(timezone)) {
+        console.log(`✅ Language from timezone: ${timezone} → pt`);
         return 'pt';
     }
     if (frenchTimezones.includes(timezone)) {
+        console.log(`✅ Language from timezone: ${timezone} → fr`);
         return 'fr';
     }
 
-    // Fallback to browser language
+    // Priority 3: Fallback to browser language
     const browserLang = navigator.language.toLowerCase();
     const langCode = browserLang.split('-')[0];
+    console.log(`⚠️ No timezone match, using browser language: ${browserLang} → ${langCode}`);
 
     // Return the language if we have translations, otherwise default to English
     return translations[langCode] ? langCode : 'en';
