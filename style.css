@@ -277,6 +277,37 @@ header {
     color: #3A86FF;
 }
 
+/* Wishes Counter */
+.wishes-counter {
+    text-align: center;
+    color: #3A86FF;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem 0;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.counter-number {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #3A86FF 0%, #8338EC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0.3rem;
+    min-width: 2ch;
+    transition: transform 0.3s ease;
+}
+
+.counter-number:hover {
+    transform: scale(1.1);
+}
+
+body.dark-mode .wishes-counter {
+    color: #60a5fa;
+}
+
 /* Secret Title Promo Box */
 .secret-title-promo {
     max-width: 700px;

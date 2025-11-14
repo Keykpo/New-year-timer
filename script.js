@@ -95,7 +95,8 @@ const translations = {
         paymentNote: "💳 Secure payment via PayPal. Your wish will appear instantly!",
         payButton: "Pay & Make Wish",
         promoText: "✨ Your wish joins the stars. As a thank you, you will receive a <strong>secret title</strong> that predicts success and guides your path in the new year. ✨",
-        viewStarWishes: "🌟 View Wishes"
+        viewStarWishes: "🌟 View Wishes",
+        wishesMade: "wishes made"
     },
     es: {
         mainTitle: "Tiempo Restante para tu Año Nuevo",
@@ -122,7 +123,8 @@ const translations = {
         paymentNote: "💳 Pago seguro vía PayPal. ¡Tu deseo aparecerá al instante!",
         payButton: "Pagar y Hacer Deseo",
         promoText: "✨ Tu deseo se une a las estrellas. Como agradecimiento, recibirás un <strong>título secreto</strong> que te augura éxito y guía tu camino en el nuevo año. ✨",
-        viewStarWishes: "🌟 Ver Deseos"
+        viewStarWishes: "🌟 Ver Deseos",
+        wishesMade: "deseos pedidos"
     },
     pt: {
         mainTitle: "Tempo Restante para o seu Ano Novo",
@@ -1397,6 +1399,30 @@ function initWishesWall() {
 function initializeConstellation() {
     initializeFounderWishes();
     initializeStarWishesGrid();
+    updateWishesCounter();
+}
+
+/**
+ * Update wishes counter - counts total occupied wishes
+ */
+function updateWishesCounter() {
+    let totalWishes = 0;
+
+    // Count founder wishes
+    if (wishes.founder) {
+        totalWishes += Object.keys(wishes.founder).length;
+    }
+
+    // Count star wishes
+    if (wishes.star) {
+        totalWishes += Object.keys(wishes.star).length;
+    }
+
+    // Update counter display
+    const counterElement = document.querySelector('.counter-number');
+    if (counterElement) {
+        counterElement.textContent = totalWishes;
+    }
 }
 
 /**
