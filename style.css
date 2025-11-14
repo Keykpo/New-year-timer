@@ -605,17 +605,39 @@ header {
     position: relative;
 }
 
-/* Star Wishes Grid (4 columnas con múltiples filas) */
+/* Star Wishes Grid (horizontal scroll) */
 .star-wishes-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: nowrap;
     gap: 1.5rem;
     padding: 2rem 1rem;
     scroll-behavior: smooth;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #e5e5e5 transparent;
+}
+
+.star-wishes-grid::-webkit-scrollbar {
+    height: 6px;
+}
+
+.star-wishes-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.star-wishes-grid::-webkit-scrollbar-thumb {
+    background: #e5e5e5;
+    border-radius: 3px;
+}
+
+.star-wishes-grid::-webkit-scrollbar-thumb:hover {
+    background: #cccccc;
 }
 
 .star-wish-circle {
     width: 100%;
+    min-width: 180px;
     height: 160px;
     border-radius: 12px;
     background: #ffffff;
@@ -629,6 +651,7 @@ header {
     gap: 0.5rem;
     position: relative;
     padding: 1rem;
+    flex-shrink: 0;
 }
 
 .star-wish-circle:hover {
@@ -832,9 +855,8 @@ footer {
 
 /* Tablet/Móvil Horizontal (≤900px) - 3 columnas */
 @media (max-width: 900px) {
-    /* Star Wishes Grid - 3 columnas */
+    /* Star Wishes Grid - horizontal scroll */
     .star-wishes-grid {
-        grid-template-columns: repeat(3, 1fr);
         gap: 1.2rem;
     }
 
@@ -924,7 +946,7 @@ footer {
         font-size: 1.3rem;
     }
 
-    /* Star wishes - mantener 3 columnas */
+    /* Star wishes - horizontal scroll */
     .star-wishes-grid {
         gap: 1rem;
         padding: 1.5rem 1rem;
@@ -1125,12 +1147,10 @@ footer {
         font-size: 0.8rem;
     }
 
-    /* Star wishes - 2 columnas más compactas */
+    /* Star wishes - horizontal scroll compacto */
     .star-wishes-grid {
-        grid-template-columns: repeat(2, 1fr);
         gap: 0.8rem;
         padding: 1.5rem 0.5rem;
-        max-height: 500px;
     }
 
     .star-wish-circle {

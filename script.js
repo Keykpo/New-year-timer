@@ -1425,9 +1425,22 @@ function initializeFounderWishes() {
         .map(([slot, wish]) => ({ ...wish, originalSlot: slot }))
         .sort((a, b) => b.timestamp - a.timestamp); // Más reciente primero
 
-    for (let i = 1; i <= 4; i++) {
-        const founderContainer = document.getElementById(`founderWish${i}`);
-        if (!founderContainer) continue;
+    // Calcular el número total necesario basado en los deseos ocupados + buffer
+    const occupiedCount = purchasedWishes.length;
+    const minHexagons = Math.max(4, occupiedCount + 1); // Mínimo 4, crece dinámicamente
+    const totalHexagons = minHexagons;
+
+    const gridContainer = document.getElementById('founderWishesContainer');
+    if (!gridContainer) return;
+    gridContainer.innerHTML = ''; // Clear existing
+
+    // Create all hexagons dynamically
+    for (let i = 1; i <= totalHexagons; i++) {
+        const founderHex = document.createElement('div');
+        founderHex.className = 'founder-wish';
+        founderHex.id = `founderWish${i}`;
+        founderHex.dataset.slot = i;
+        const founderContainer = founderHex;
 
         // El slot 1 se ve como disponible para comprar, pero nunca se llena
         if (i === 1) {
@@ -1442,10 +1455,11 @@ function initializeFounderWishes() {
             founderContainer.style.cursor = 'pointer';
             founderContainer.style.opacity = '1';
             founderContainer.onclick = () => handleTileClick(i, 'founder'); // Se puede comprar
+            gridContainer.appendChild(founderHex);
             continue;
         }
 
-        // Slots 2, 3, 4 muestran los deseos comprados
+        // Slots 2, 3, 4, 5... muestran los deseos comprados (dinámico)
         const wishIndex = i - 2; // Slot 2 = índice 0, Slot 3 = índice 1, etc.
         const founderWish = purchasedWishes[wishIndex];
 
@@ -1487,6 +1501,8 @@ function initializeFounderWishes() {
             founderContainer.style.opacity = '1';
             founderContainer.onclick = () => handleTileClick(i, 'founder');
         }
+
+        gridContainer.appendChild(founderHex);
     }
 }
 
