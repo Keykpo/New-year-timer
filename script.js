@@ -1609,8 +1609,8 @@ function setupStarsSlider() {
 
     if (navLeft && navRight && gridContainer) {
         // Navegar por bloques de 4 columnas completas
-        // Cálculo: (180px tarjeta × 4) + (1.5rem gap × 3) = 720px + 72px = 792px
-        const scrollAmount = 792;
+        // Cálculo: (180px tarjeta × 4) + (1.5rem gap × 3) + (1rem padding × 2) = 720px + 72px + 32px = 824px
+        const scrollAmount = 824;
 
         navLeft.addEventListener('click', () => {
             gridContainer.scrollBy({
@@ -1634,8 +1634,8 @@ function setupStarsSlider() {
 
     if (founderNavLeft && founderNavRight && founderContainer) {
         // Navegar por bloques de 2 hexágonos completos
-        // Cálculo: (200px hexágono × 2) + (2rem gap × 1) = 400px + 32px = 432px
-        const scrollAmount = 432;
+        // Cálculo: (200px hexágono × 2) + (2rem gap × 1) + (1rem padding × 2) = 400px + 32px + 32px = 464px
+        const scrollAmount = 464;
 
         founderNavLeft.addEventListener('click', () => {
             founderContainer.scrollBy({
