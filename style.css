@@ -1182,12 +1182,11 @@ footer {
     transition: all 0.4s ease;
     stroke: #1e293b;
     stroke-width: 0.5;
-    opacity: 0.9;
+    opacity: 1;
 }
 
 .country-path:hover {
-    opacity: 1;
-    filter: brightness(1.3);
+    filter: brightness(1.15);
     stroke: #ffffff;
     stroke-width: 1;
 }
@@ -2392,8 +2391,7 @@ footer {
 }
 
 .country-path:hover {
-    opacity: 0.8;
-    filter: brightness(1.2);
+    filter: brightness(1.15);
 }
 
 /* Connection Lines for Constellation */
