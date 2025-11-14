@@ -933,24 +933,33 @@ footer {
         font-size: 1.3rem;
     }
 
-    /* Star wishes - 5 filas en móviles */
+    /* Star wishes - 3 filas × 3 columnas en móviles */
+    .star-wishes-scroll-container {
+        max-width: 409px; /* 3 columnas: (115px × 3) + (16px × 2) + (32px padding) = 409px */
+    }
+
     .star-wishes-grid {
-        grid-template-rows: repeat(5, 1fr);
+        grid-template-rows: repeat(3, 1fr);
         gap: 1rem;
         padding: 1.5rem 1rem;
-        max-height: 800px;
+        max-height: 450px;
     }
 
     .star-wish-circle {
-        height: 130px;
+        min-width: 115px;
+        height: 105px;
     }
 
     .star-wish-price {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .star-wish-text {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
+    }
+
+    .star-wish-message {
+        font-size: 0.6rem;
     }
 
     /* Navigation buttons */
@@ -985,17 +994,26 @@ footer {
         max-width: 384px; /* (160px × 2) + (32px gap) + (32px padding) = 384px */
     }
 
+    /* Star wishes - 3 filas × 3 columnas más compactas en mobile pequeño */
+    .star-wishes-scroll-container {
+        max-width: 379px; /* (105px × 3) + (16px × 2) + (32px padding) = 379px */
+    }
+
     .star-wish-circle {
-        min-width: 180px;
-        height: 150px;
+        min-width: 105px;
+        height: 95px;
     }
 
     .star-wish-price {
-        font-size: 1.1rem;
+        font-size: 0.85rem;
     }
 
     .star-wish-text {
-        font-size: 0.75rem;
+        font-size: 0.6rem;
+    }
+
+    .star-wish-message {
+        font-size: 0.55rem;
     }
 
     /* Ajustes generales */
@@ -1146,24 +1164,34 @@ footer {
         font-size: 0.8rem;
     }
 
-    /* Star wishes - 5 filas en móviles pequeños */
+    /* Star wishes - 3 filas × 3 columnas muy compactas en móviles pequeños */
+    .star-wishes-scroll-container {
+        max-width: 349px; /* (95px × 3) + (13px × 2) + (32px padding) = 349px */
+    }
+
     .star-wishes-grid {
-        grid-template-rows: repeat(5, 1fr);
+        grid-template-rows: repeat(3, 1fr);
         gap: 0.8rem;
         padding: 1.5rem 0.5rem;
-        max-height: 800px;
+        max-height: 400px;
     }
 
     .star-wish-circle {
-        height: 130px;
+        min-width: 95px;
+        height: 85px;
     }
 
     .star-wish-price {
-        font-size: 1rem;
+        font-size: 0.75rem;
     }
 
     .star-wish-text {
-        font-size: 0.7rem;
+        font-size: 0.55rem;
+    }
+
+    .star-wish-message {
+        font-size: 0.5rem;
+        line-height: 1.2;
     }
 
     /* Navigation buttons más pequeños */

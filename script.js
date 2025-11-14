@@ -1608,20 +1608,38 @@ function setupStarsSlider() {
     const gridContainer = document.getElementById('starWishesGrid');
 
     if (navLeft && navRight && gridContainer) {
-        // Navegar por bloques de 4 columnas completas
-        // Cálculo: (180px tarjeta × 4) + (1.5rem gap × 3) + (1rem padding × 2) = 720px + 72px + 32px = 824px
-        const scrollAmount = 824;
+        // Función para calcular scrollAmount según el ancho de pantalla
+        const getStarScrollAmount = () => {
+            const width = window.innerWidth;
+            if (width <= 480) {
+                // Mobile muy pequeño: 3 columnas de 95px
+                // (95px × 3) + (13px × 2) + (32px padding) = 349px
+                return 349;
+            } else if (width <= 600) {
+                // Mobile pequeño: 3 columnas de 105px
+                // (105px × 3) + (16px × 2) + (32px padding) = 379px
+                return 379;
+            } else if (width <= 768) {
+                // Mobile: 3 columnas de 115px
+                // (115px × 3) + (16px × 2) + (32px padding) = 409px
+                return 409;
+            } else {
+                // Desktop: 4 columnas de 180px
+                // (180px × 4) + (24px × 3) + (32px padding) = 824px
+                return 824;
+            }
+        };
 
         navLeft.addEventListener('click', () => {
             gridContainer.scrollBy({
-                left: -scrollAmount,
+                left: -getStarScrollAmount(),
                 behavior: 'smooth'
             });
         });
 
         navRight.addEventListener('click', () => {
             gridContainer.scrollBy({
-                left: scrollAmount,
+                left: getStarScrollAmount(),
                 behavior: 'smooth'
             });
         });
