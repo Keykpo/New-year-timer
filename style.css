@@ -343,7 +343,7 @@ header {
     overflow: hidden;
     position: relative;
     padding-top: 1.5rem; /* Space for floating crown */
-    max-width: 464px; /* Mostrar exactamente 2 hexágonos: (200px × 2) + (2rem × 1) + (1rem × 2 padding) = 464px */
+    max-width: 928px; /* Mostrar exactamente 4 hexágonos: (200px × 4) + (2rem × 3 gaps) + (1rem × 2 padding) = 928px */
     margin: 0 auto;
 }
 

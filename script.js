@@ -1633,9 +1633,9 @@ function setupStarsSlider() {
     const founderContainer = document.querySelector('.founder-wishes-container');
 
     if (founderNavLeft && founderNavRight && founderContainer) {
-        // Navegar por bloques de 2 hexágonos completos
-        // Cálculo: (200px hexágono × 2) + (2rem gap × 1) + (1rem padding × 2) = 400px + 32px + 32px = 464px
-        const scrollAmount = 464;
+        // Navegar por bloques de 4 hexágonos completos
+        // Cálculo: (200px hexágono × 4) + (2rem gap × 3) + (1rem padding × 2) = 800px + 96px + 32px = 928px
+        const scrollAmount = 928;
 
         founderNavLeft.addEventListener('click', () => {
             founderContainer.scrollBy({
