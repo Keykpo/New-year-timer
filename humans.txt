@@ -1,0 +1,14 @@
+/* TEAM */
+Creator: New Year's Timer Team
+Site: https://newyeartimers.com
+Location: Global
+
+/* THANKS */
+To all users celebrating New Year around the world!
+
+/* SITE */
+Last update: 2025/01/14
+Language: Multi-language (10+ languages)
+Doctype: HTML5
+IDE: Visual Studio Code
+Technologies: HTML5, CSS3, JavaScript, Firebase, PayPal API, Mercado Pago

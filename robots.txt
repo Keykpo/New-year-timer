@@ -1,0 +1,13 @@
+# Permitir a todos los bots indexar todo el sitio
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://newyeartimers.com/sitemap.xml
+
+# Optimización para bots específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

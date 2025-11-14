@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://newyeartimers.com/</loc>
+    <lastmod>2025-01-14T12:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://newyeartimers.com/og-image.jpg</image:loc>
+      <image:title>New Year 2026 Countdown Timer with Live World Map</image:title>
+      <image:caption>Live countdown to New Year 2026 with interactive world map and global wishes wall</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://newyeartimers.com/twitter-image.jpg</image:loc>
+      <image:title>New Year 2026 Global Countdown</image:title>
+      <image:caption>Track the countdown to 2026 around the world</image:caption>
+    </image:image>
+  </url>
+</urlset>
