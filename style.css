@@ -605,52 +605,26 @@ header {
     position: relative;
 }
 
-/* Star Wishes Grid (4 columnas x múltiples filas con scroll vertical) */
+/* Star Wishes Grid (Scroll horizontal solo) */
 .star-wishes-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
     gap: 1.5rem;
     padding: 2rem 1rem;
-    max-height: 600px;
-    overflow-y: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: #e5e5e5 transparent;
+    scrollbar-width: none; /* Ocultar scrollbar en Firefox */
 }
 
+/* Ocultar scrollbar en Chrome/Safari */
 .star-wishes-grid::-webkit-scrollbar {
-    width: 6px;
-}
-
-.star-wishes-grid::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.star-wishes-grid::-webkit-scrollbar-thumb {
-    background: #e5e5e5;
-    border-radius: 3px;
-}
-
-.star-wishes-grid::-webkit-scrollbar-thumb:hover {
-    background: #cccccc;
-}
-
-.star-wishes-grid::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.star-wishes-grid::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 4px;
-}
-
-body.dark-mode .star-wishes-grid::-webkit-scrollbar-thumb {
-    background: #444;
+    display: none;
 }
 
 .star-wish-circle {
-    width: 100%;
+    min-width: 220px; /* Ancho fijo para scroll horizontal */
+    flex-shrink: 0; /* No se comprime */
     height: 160px;
     border-radius: 12px;
     background: #ffffff;
@@ -865,12 +839,8 @@ footer {
 /* Tablet/Móvil Horizontal (≤900px) - 3 columnas */
 @media (max-width: 900px) {
     /* Star Wishes Grid - 3 columnas */
-    .star-wishes-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.2rem;
-    }
-
     .star-wish-circle {
+        min-width: 200px;
         height: 140px;
     }
 
@@ -999,16 +969,10 @@ footer {
     }
 }
 
-/* Móvil Vertical (≤600px) - 2 columnas */
+/* Móvil Vertical (≤600px) */
 @media (max-width: 600px) {
-    /* Star Wishes Grid - 2 columnas (PRIORIDAD ALTA) */
-    .star-wishes-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        padding: 1.5rem 0.5rem;
-    }
-
     .star-wish-circle {
+        min-width: 180px;
         height: 150px;
     }
 
