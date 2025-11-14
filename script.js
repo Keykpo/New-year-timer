@@ -1677,8 +1677,9 @@ function loadWishesFromFirebase() {
     });
 
     // TEMPORAL: Cargar deseos de prueba (comentar después de probar)
-    loadTestWishes();
-    loadTestFounderWishes();
+    // ⚠️ COMENTADO: Estas funciones eliminan todos los deseos reales de Firebase
+    // loadTestWishes();
+    // loadTestFounderWishes();
 }
 
 /**
