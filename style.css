@@ -874,6 +874,11 @@ footer {
 
 /* Tablet/Móvil (≤768px) */
 @media (max-width: 768px) {
+    /* Founder wishes - 2 columnas completas en mobile */
+    .founder-wishes-scroll-container {
+        max-width: 404px; /* (170px × 2) + (32px gap) + (32px padding) = 404px */
+    }
+
     .main-title {
         font-size: 2rem;
     }
@@ -975,6 +980,11 @@ footer {
 
 /* Móvil Vertical (≤600px) */
 @media (max-width: 600px) {
+    /* Founder wishes - 2 columnas completas en mobile pequeño */
+    .founder-wishes-scroll-container {
+        max-width: 384px; /* (160px × 2) + (32px gap) + (32px padding) = 384px */
+    }
+
     .star-wish-circle {
         min-width: 180px;
         height: 150px;
@@ -1065,6 +1075,11 @@ footer {
 
 /* Móvil Pequeño (≤480px) */
 @media (max-width: 480px) {
+    /* Founder wishes - 2 columnas completas en mobile muy pequeño */
+    .founder-wishes-scroll-container {
+        max-width: 344px; /* (140px × 2) + (32px gap) + (32px padding) = 344px */
+    }
+
     .container {
         padding: 2rem 1rem;
     }
