@@ -96,7 +96,7 @@ const translations = {
         payButton: "Pay & Make Wish",
         promoText: "✨ Your wish joins the stars. As a thank you, you will receive a <strong>secret title</strong> that predicts success and guides your path in the new year. ✨",
         viewStarWishes: "🌟 View Wishes",
-        wishesMade: "wishes made"
+        wishesMade: "wishes granted"
     },
     es: {
         mainTitle: "Tiempo Restante para tu Año Nuevo",
@@ -124,7 +124,7 @@ const translations = {
         payButton: "Pagar y Hacer Deseo",
         promoText: "✨ Tu deseo se une a las estrellas. Como agradecimiento, recibirás un <strong>título secreto</strong> que te augura éxito y guía tu camino en el nuevo año. ✨",
         viewStarWishes: "🌟 Ver Deseos",
-        wishesMade: "deseos pedidos"
+        wishesMade: "deseos cumplidos"
     },
     pt: {
         mainTitle: "Tempo Restante para o seu Ano Novo",
