@@ -1402,7 +1402,9 @@ function initializeConstellation() {
 }
 
 /**
- * Update wishes counter - counts total occupied wishes (minimum 25)
+ * Update wishes counter - shows real wishes starting from 25
+ * Current Firebase: 27 wishes (1 real + 26 fake)
+ * Display: 25 + (new wishes beyond the initial 27)
  */
 function updateWishesCounter() {
     let totalWishes = 0;
@@ -1417,8 +1419,10 @@ function updateWishesCounter() {
         totalWishes += Object.keys(wishes.star).length;
     }
 
-    // Ensure counter starts at 25 and only goes up
-    const displayCount = Math.max(25, totalWishes);
+    // Offset: 27 initial wishes (1 real + 26 fake)
+    // Display starts at 25 and increases with each new wish
+    const INITIAL_FAKE_WISHES = 27;
+    const displayCount = 25 + Math.max(0, totalWishes - INITIAL_FAKE_WISHES);
 
     // Update counter display
     const counterElement = document.querySelector('.counter-number');
