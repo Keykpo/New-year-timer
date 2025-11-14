@@ -1,9 +1,11 @@
 {
-  "name": "new-year-timer",
+  "name": "new-year-timer-backend",
   "version": "1.0.0",
-  "description": "New Year's Timer with Mercado Pago integration",
+  "description": "Backend server for New Year's Timer with Mercado Pago integration",
+  "main": "server.js",
   "scripts": {
-    "dev-server": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [
     "mercadopago",
