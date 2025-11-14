@@ -19,7 +19,8 @@
       "Bash(nul)",
       "Bash(start index.html)",
       "Bash(del nul)",
-      "Bash(start:*)"
+      "Bash(start:*)",
+      "Bash(npm i:*)"
     ],
     "deny": [],
     "ask": []
