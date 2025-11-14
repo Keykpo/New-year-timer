@@ -172,10 +172,46 @@ const translations = {
     }
 };
 
+// Global variable to store geolocation data from IP
+let geoLocationData = null;
+
+/**
+ * Get user's geolocation data from IP (works with VPN)
+ * This function fetches timezone, country, and language based on IP address
+ */
+async function getGeoLocationData() {
+    if (geoLocationData) {
+        return geoLocationData; // Return cached data
+    }
+
+    try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        geoLocationData = {
+            country: data.country_code || 'XX',
+            timezone: data.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+            languages: data.languages ? data.languages.split(',')[0] : navigator.language,
+            utcOffset: data.utc_offset || null
+        };
+        console.log('🌍 Geolocation detected:', geoLocationData);
+        return geoLocationData;
+    } catch (error) {
+        console.warn('Could not detect geolocation from IP, using browser defaults:', error);
+        // Fallback to browser defaults
+        geoLocationData = {
+            country: 'XX',
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            languages: navigator.language,
+            utcOffset: null
+        };
+        return geoLocationData;
+    }
+}
+
 // Detect language based on timezone and browser settings
 function detectLanguage() {
-    // Get user's timezone
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    // Get user's timezone (from cached geolocation data or browser)
+    const timezone = geoLocationData?.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     // Spanish-speaking timezones
     const spanishTimezones = [
@@ -274,7 +310,8 @@ function updateCountdown() {
 // Display user's timezone information
 function displayTimezoneInfo() {
     const lang = detectLanguage();
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    // Use geolocation data if available, otherwise browser timezone
+    const timezone = geoLocationData?.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone;
     const timezoneOffset = -(new Date().getTimezoneOffset() / 60);
     const offsetString = timezoneOffset >= 0 ? `+${timezoneOffset}` : `${timezoneOffset}`;
 
@@ -1548,14 +1585,14 @@ function initMercadoPagoButton() {
  * Get user's country code from IP
  */
 async function getUserCountry() {
-    try {
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-        return data.country_code || 'XX'; // XX if unknown
-    } catch (error) {
-        console.warn('Could not detect country:', error);
-        return 'XX';
+    // Use cached geolocation data if available
+    if (geoLocationData) {
+        return geoLocationData.country;
     }
+
+    // Otherwise fetch it
+    const geoData = await getGeoLocationData();
+    return geoData.country;
 }
 
 /**
@@ -2196,34 +2233,37 @@ function setupScrollToStarWishes() {
 // INITIALIZATION
 // ====================================
 
-function init() {
-    // 1. Detect and apply language
+async function init() {
+    // 1. Get geolocation data from IP (works with VPN)
+    await getGeoLocationData();
+
+    // 2. Detect and apply language
     const userLanguage = detectLanguage();
     applyTranslations(userLanguage);
 
-    // 2. Check if returning from Mercado Pago payment
+    // 3. Check if returning from Mercado Pago payment
     checkMercadoPagoReturn();
 
-    // 3. Display timezone information
+    // 4. Display timezone information
     displayTimezoneInfo();
 
-    // 4. Initialize countdown
+    // 5. Initialize countdown
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // 5. Setup lazy loading for map (will load when user scrolls to it)
+    // 6. Setup lazy loading for map (will load when user scrolls to it)
     setupMapLazyLoading();
 
-    // 6. Initialize wishes wall
+    // 7. Initialize wishes wall
     initWishesWall();
 
-    // 7. Setup view wish modal
+    // 8. Setup view wish modal
     setupViewWishModal();
 
-    // 8. Setup dark mode toggle
+    // 9. Setup dark mode toggle
     setupDarkMode();
 
-    // 9. Setup scroll button to Star wishes
+    // 10. Setup scroll button to Star wishes
     setupScrollToStarWishes();
 }
 
