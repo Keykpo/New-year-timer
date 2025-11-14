@@ -1608,16 +1608,20 @@ function setupStarsSlider() {
     const gridContainer = document.getElementById('starWishesGrid');
 
     if (navLeft && navRight && gridContainer) {
+        // Navegar por bloques de 4 columnas completas
+        // Cálculo: (180px tarjeta × 4) + (1.5rem gap × 3) = 720px + 72px = 792px
+        const scrollAmount = 792;
+
         navLeft.addEventListener('click', () => {
             gridContainer.scrollBy({
-                left: -400,
+                left: -scrollAmount,
                 behavior: 'smooth'
             });
         });
 
         navRight.addEventListener('click', () => {
             gridContainer.scrollBy({
-                left: 400,
+                left: scrollAmount,
                 behavior: 'smooth'
             });
         });
@@ -1629,16 +1633,20 @@ function setupStarsSlider() {
     const founderContainer = document.querySelector('.founder-wishes-container');
 
     if (founderNavLeft && founderNavRight && founderContainer) {
+        // Navegar por bloques de 2 hexágonos completos
+        // Cálculo: (200px hexágono × 2) + (2rem gap × 1) = 400px + 32px = 432px
+        const scrollAmount = 432;
+
         founderNavLeft.addEventListener('click', () => {
             founderContainer.scrollBy({
-                left: -250,
+                left: -scrollAmount,
                 behavior: 'smooth'
             });
         });
 
         founderNavRight.addEventListener('click', () => {
             founderContainer.scrollBy({
-                left: 250,
+                left: scrollAmount,
                 behavior: 'smooth'
             });
         });
