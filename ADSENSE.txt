@@ -1,0 +1,5 @@
+A fin de preparar su sitio para mostrar anuncios, copie este código y péguelo entre las etiquetas <head></head> de cada página del sitio. Obtén más información sobre el código de AdSense.
+Su código de AdSense
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7982216026691433"
+     crossorigin="anonymous"></script>

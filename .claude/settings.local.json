@@ -3,7 +3,8 @@
     "allow": [
       "WebSearch",
       "WebFetch(domain:www.kwrds.ai)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
