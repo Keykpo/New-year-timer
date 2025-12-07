@@ -175,7 +175,7 @@
                 author: wish.author,
                 country: wish.country,
                 wishTitle: getRandomTitle(),
-                price: 1.49,
+                price: 0.99,
                 timestamp: now - (hoursAgo * oneHour)
             });
 

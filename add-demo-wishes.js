@@ -1,5 +1,5 @@
 /**
- * Script para agregar 4 deseos de prueba de $49.99 (Founder tier)
+ * Script para agregar 4 deseos de prueba de $3.99 (Founder tier)
  *
  * INSTRUCCIONES:
  * 1. Abre la página en el navegador
@@ -43,7 +43,7 @@
         }
     ];
 
-    console.log('🚀 Agregando 4 deseos de prueba de $49.99...');
+    console.log('🚀 Agregando 4 deseos de prueba de $3.99...');
 
     try {
         const wishesRef = database.ref('wishes/founder');

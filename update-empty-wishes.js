@@ -107,7 +107,7 @@
 
                     const phrase = phrases[phraseIndex];
                     const hoursAgo = Math.floor(Math.random() * 72); // últimas 72 horas
-                    const price = tier === 'founder' ? 49.99 : 1.49;
+                    const price = tier === 'founder' ? 3.99 : 0.99;
 
                     // Actualizar el deseo vacío
                     await database.ref(`wishes/${tier}/${key}`).update({

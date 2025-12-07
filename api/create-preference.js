@@ -50,12 +50,12 @@ module.exports = async (req, res) => {
 
         if (country === 'AR') {
             currency = 'ARS';
-            // $1.99 USD → AR$2,000 (Star)
-            // $49.99 USD → AR$50,000 (Founder)
-            if (parseFloat(amount) === 1.99) {
-                finalAmount = 2000;
-            } else if (parseFloat(amount) === 49.99) {
-                finalAmount = 50000;
+            // $0.99 USD → AR$1,000 (Star)
+            // $3.99 USD → AR$4,000 (Founder)
+            if (parseFloat(amount) === 0.99) {
+                finalAmount = 1000;
+            } else if (parseFloat(amount) === 3.99) {
+                finalAmount = 4000;
             } else {
                 finalAmount = parseFloat(amount) * 1000;
             }

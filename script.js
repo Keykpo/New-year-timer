@@ -1290,14 +1290,14 @@ try {
 const TIERS = {
     founder: {
         name: 'founder',
-        price: 49.99,
+        price: 3.99,
         slotStart: 1,
         maxSlots: 4, // 4 large founder circles
         icon: '👑'
     },
     star: {
         name: 'star',
-        price: 1.49,
+        price: 0.99,
         slotStart: 1,
         maxSlots: Infinity, // Grid of small star circles (~50)
         icon: '⭐'
@@ -1357,7 +1357,7 @@ function getRandomWishTitle(tierName) {
 }
 
 let currentSlot = null;
-let currentPrice = 1.49;
+let currentPrice = 0.99;
 let currentTier = null;
 let wishes = {
     founder: {},
@@ -1480,7 +1480,7 @@ function initializeFounderWishes() {
             founderContainer.innerHTML = `
                 <div class="founder-wish-content">
                     <div class="founder-wish-icon">👑</div>
-                    <div class="founder-wish-price">$49.99</div>
+                    <div class="founder-wish-price">$3.99</div>
                     <div class="founder-wish-text">${phrases[lang] || phrases.en}</div>
                 </div>
             `;
@@ -1525,7 +1525,7 @@ function initializeFounderWishes() {
             founderContainer.innerHTML = `
                 <div class="founder-wish-content">
                     <div class="founder-wish-icon">👑</div>
-                    <div class="founder-wish-price">$49.99</div>
+                    <div class="founder-wish-price">$3.99</div>
                     <div class="founder-wish-text">${phrases[lang] || phrases.en}</div>
                 </div>
             `;
@@ -1575,7 +1575,7 @@ function initializeStarWishesGrid() {
         if (i === 1) {
             starCircle.innerHTML = `
                 <div class="star-wish-content">
-                    <div class="star-wish-price">$1.49</div>
+                    <div class="star-wish-price">$0.99</div>
                     <div class="star-wish-text">${phrases[lang] || phrases.en}</div>
                 </div>
             `;
@@ -1617,7 +1617,7 @@ function initializeStarWishesGrid() {
             // Empty - available for purchase
             starCircle.innerHTML = `
                 <div class="star-wish-content">
-                    <div class="star-wish-price">$1.49</div>
+                    <div class="star-wish-price">$0.99</div>
                     <div class="star-wish-text">${phrases[lang] || phrases.en}</div>
                 </div>
             `;
@@ -2534,7 +2534,7 @@ function loadTestWishes() {
                         author: wish.author,
                         country: wish.country,
                         wishTitle: randomTitle, // ← Random title for each wish
-                        price: 1.49,
+                        price: 0.99,
                         timestamp: wish.timestamp
                     });
                 });
@@ -2546,7 +2546,7 @@ function loadTestWishes() {
 }
 
 /**
- * FUNCIÓN TEMPORAL: Cargar 2 deseos de prueba Founder ($49.99)
+ * FUNCIÓN TEMPORAL: Cargar 2 deseos de prueba Founder ($3.99)
  * ¡COMENTAR O ELIMINAR DESPUÉS DE PROBAR!
  */
 function loadTestFounderWishes() {
@@ -2594,7 +2594,7 @@ function loadTestFounderWishes() {
                         author: wish.author,
                         country: wish.country,
                         wishTitle: randomTitle, // ← Random title for each wish
-                        price: 49.99,
+                        price: 3.99,
                         timestamp: wish.timestamp
                     });
                 });
