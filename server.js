@@ -72,12 +72,12 @@ app.post('/api/create-preference', async (req, res) => {
         if (country === 'AR') {
             currency = 'ARS';
             // Convert USD to ARS
-            // $1.99 USD → AR$2000
-            // $49.99 USD → AR$50000
-            if (parseFloat(amount) === 1.99) {
-                finalAmount = 2000;
-            } else if (parseFloat(amount) === 49.99) {
-                finalAmount = 50000;
+            // $0.99 USD → AR$1000 (Star)
+            // $3.99 USD → AR$4000 (Founder)
+            if (parseFloat(amount) === 0.99) {
+                finalAmount = 1000;
+            } else if (parseFloat(amount) === 3.99) {
+                finalAmount = 4000;
             } else {
                 // Fallback: use approximate exchange rate (1 USD ≈ 1000 ARS)
                 finalAmount = parseFloat(amount) * 1000;

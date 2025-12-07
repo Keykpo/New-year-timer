@@ -1,5 +1,5 @@
 /**
- * Script para agregar 100 deseos Star ($1.49) REALISTAS a Firebase
+ * Script para agregar 100 deseos Star ($0.99) REALISTAS a Firebase
  * Con frases únicas, trolls, emojis y muy variados
  *
  * INSTRUCCIONES:
@@ -196,7 +196,7 @@
                 author: wish.author,
                 country: wish.country,
                 wishTitle: getRandomTitle(),  // ← Título aleatorio
-                price: 1.49,  // ← Precio
+                price: 0.99,  // ← Precio
                 timestamp: now - (hoursAgo * oneHour)
             });
 

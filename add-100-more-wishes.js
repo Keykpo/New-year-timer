@@ -1,5 +1,5 @@
 /**
- * Script para agregar 100 deseos MÁS (adicionales) Star ($1.49) a Firebase
+ * Script para agregar 100 deseos MÁS (adicionales) Star ($0.99) a Firebase
  * Todos únicos, diferentes a los anteriores
  *
  * INSTRUCCIONES:
@@ -204,7 +204,7 @@
                 author: wish.author,
                 country: wish.country,
                 wishTitle: getRandomTitle(),
-                price: 1.49,
+                price: 0.99,
                 timestamp: now - (hoursAgo * oneHour)
             });
 
