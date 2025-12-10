@@ -2550,6 +2550,15 @@ footer {
     align-items: center;
 }
 
+/* Ad #0 - Top banner before countdown (maximum visibility) */
+.ad-before-countdown {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.03) 0%, rgba(255, 193, 7, 0.03) 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
 /* Ad #1 - Premium placement after countdown (most important) */
 .ad-after-countdown {
     margin-top: 2rem;
