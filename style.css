@@ -2617,3 +2617,74 @@ body.dark-mode .ad-after-wishes {
         border-radius: 6px;
     }
 }
+
+/* ========================================
+   SIDEBAR ADS - DESKTOP ONLY
+   ======================================== */
+
+/* Base sidebar styles - hidden by default */
+.sidebar-ad {
+    display: none;
+}
+
+/* Only show on large screens (>1200px) */
+@media (min-width: 1200px) {
+    .sidebar-ad {
+        display: block;
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 160px;
+        min-height: 600px;
+        z-index: 100;
+        padding: 10px;
+        background: rgba(248, 250, 252, 0.8);
+        border-radius: 8px;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidebar-ad-left {
+        left: 10px;
+    }
+
+    .sidebar-ad-right {
+        right: 10px;
+    }
+
+    /* Dark mode for sidebars */
+    body.dark-mode .sidebar-ad {
+        background: rgba(20, 20, 20, 0.9);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Extra large screens - more space from edges */
+@media (min-width: 1400px) {
+    .sidebar-ad {
+        width: 160px;
+    }
+
+    .sidebar-ad-left {
+        left: 20px;
+    }
+
+    .sidebar-ad-right {
+        right: 20px;
+    }
+}
+
+/* Ultra wide screens - wider ads */
+@media (min-width: 1600px) {
+    .sidebar-ad {
+        width: 200px;
+    }
+
+    .sidebar-ad-left {
+        left: 30px;
+    }
+
+    .sidebar-ad-right {
+        right: 30px;
+    }
+}
