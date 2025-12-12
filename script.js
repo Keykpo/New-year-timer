@@ -1364,6 +1364,142 @@ let wishes = {
     star: {}
 };
 
+// Deseos semilla que siempre se muestran para dar confianza a nuevos visitantes
+// Estos se combinan con los deseos reales de Firebase
+const SEED_WISHES = {
+    founder: {
+        'seed_1': {
+            text: "May 2026 bring health, love and success to everyone",
+            author: "Sarah",
+            country: "US",
+            wishTitle: "Golden Pioneer",
+            price: 3.99,
+            timestamp: Date.now() - (7 * 24 * 60 * 60 * 1000), // 7 días atrás
+            isSeed: true
+        },
+        'seed_2': {
+            text: "Que este año traiga paz y prosperidad para mi familia",
+            author: "Carlos",
+            country: "ES",
+            wishTitle: "First Light",
+            price: 3.99,
+            timestamp: Date.now() - (5 * 24 * 60 * 60 * 1000), // 5 días atrás
+            isSeed: true
+        }
+    },
+    star: {
+        'seed_3': {
+            text: "More adventures and less worries this year",
+            author: "Emma",
+            country: "GB",
+            wishTitle: "Shooting Star",
+            price: 0.99,
+            timestamp: Date.now() - (6 * 24 * 60 * 60 * 1000),
+            isSeed: true
+        },
+        'seed_4': {
+            text: "Paz mundial e amor para todos os seres",
+            author: "Ana",
+            country: "BR",
+            wishTitle: "Cosmic Wish",
+            price: 0.99,
+            timestamp: Date.now() - (5 * 24 * 60 * 60 * 1000),
+            isSeed: true
+        },
+        'seed_5': {
+            text: "Que se cumplan todos mis sueños y metas",
+            author: "María",
+            country: "AR",
+            wishTitle: "Starlight Dream",
+            price: 0.99,
+            timestamp: Date.now() - (4 * 24 * 60 * 60 * 1000),
+            isSeed: true
+        },
+        'seed_6': {
+            text: "Que le bonheur accompagne ma famille",
+            author: "Pierre",
+            country: "FR",
+            wishTitle: "Nebula Hope",
+            price: 0.99,
+            timestamp: Date.now() - (3 * 24 * 60 * 60 * 1000),
+            isSeed: true
+        },
+        'seed_7': {
+            text: "Success in all my projects and dreams",
+            author: "John",
+            country: "CA",
+            wishTitle: "Moonbeam Wish",
+            price: 0.99,
+            timestamp: Date.now() - (2 * 24 * 60 * 60 * 1000),
+            isSeed: true
+        },
+        'seed_8': {
+            text: "Viaggiare per il mondo senza limiti",
+            author: "Marco",
+            country: "IT",
+            wishTitle: "Galaxy Dream",
+            price: 0.99,
+            timestamp: Date.now() - (1 * 24 * 60 * 60 * 1000),
+            isSeed: true
+        },
+        'seed_9': {
+            text: "Éxito profesional y personal este año",
+            author: "Pedro",
+            country: "MX",
+            wishTitle: "Stellar Hope",
+            price: 0.99,
+            timestamp: Date.now() - (20 * 60 * 60 * 1000),
+            isSeed: true
+        },
+        'seed_10': {
+            text: "Health and happiness for my loved ones",
+            author: "Lisa",
+            country: "AU",
+            wishTitle: "Twilight Wish",
+            price: 0.99,
+            timestamp: Date.now() - (15 * 60 * 60 * 1000),
+            isSeed: true
+        },
+        'seed_11': {
+            text: "Die wahre Liebe finden in diesem Jahr",
+            author: "Hans",
+            country: "DE",
+            wishTitle: "Aurora Dream",
+            price: 0.99,
+            timestamp: Date.now() - (10 * 60 * 60 * 1000),
+            isSeed: true
+        },
+        'seed_12': {
+            text: "May my family always stay united",
+            author: "Yuki",
+            country: "JP",
+            wishTitle: "Celestial Hope",
+            price: 0.99,
+            timestamp: Date.now() - (5 * 60 * 60 * 1000),
+            isSeed: true
+        }
+    }
+};
+
+/**
+ * Combina los deseos de Firebase con los deseos semilla
+ * Los deseos reales tienen prioridad sobre los semilla
+ */
+function mergeWishesWithSeeds(firebaseWishes, tierName) {
+    const seedWishes = SEED_WISHES[tierName] || {};
+    const merged = { ...seedWishes };
+
+    // Los deseos reales de Firebase sobrescriben/se añaden a los semilla
+    if (firebaseWishes && typeof firebaseWishes === 'object') {
+        Object.keys(firebaseWishes).forEach(key => {
+            // Los deseos reales van con slots numéricos, no 'seed_X'
+            merged[key] = firebaseWishes[key];
+        });
+    }
+
+    return merged;
+}
+
 /**
  * Convert tier name to HTML ID format
  * premium -> Premium, vip -> VIP, regular -> Regular
@@ -1407,22 +1543,24 @@ function initializeConstellation() {
  * Display: 25 + (new wishes beyond the initial 27)
  */
 function updateWishesCounter() {
-    let totalWishes = 0;
+    let realWishesCount = 0;
 
-    // Count founder wishes
-    if (wishes.founder) {
-        totalWishes += Object.keys(wishes.founder).length;
-    }
+    // Contar solo deseos REALES (no semilla)
+    ['founder', 'star'].forEach(tierName => {
+        if (wishes[tierName]) {
+            Object.values(wishes[tierName]).forEach(wish => {
+                // Solo contar si NO es un deseo semilla
+                if (!wish.isSeed) {
+                    realWishesCount++;
+                }
+            });
+        }
+    });
 
-    // Count star wishes
-    if (wishes.star) {
-        totalWishes += Object.keys(wishes.star).length;
-    }
-
-    // Offset: 27 initial wishes (1 real + 26 fake)
-    // Display starts at 25 and increases with each new wish
-    const INITIAL_FAKE_WISHES = 27;
-    const displayCount = 25 + Math.max(0, totalWishes - INITIAL_FAKE_WISHES);
+    // Número base (los deseos semilla dan la impresión de actividad)
+    // + los deseos reales pagados
+    const BASE_COUNT = 25;
+    const displayCount = BASE_COUNT + realWishesCount;
 
     // Update counter display
     const counterElement = document.querySelector('.counter-number');
@@ -2341,28 +2479,30 @@ async function saveWishToFirebase(wish) {
 
 /**
  * Load wishes from Firebase
+ * Combina los deseos de Firebase con los deseos semilla para siempre mostrar contenido
  */
 function loadWishesFromFirebase() {
     if (!database) {
-        console.error('Firebase not initialized');
+        console.error('Firebase not initialized - using seed wishes only');
+        // Si no hay Firebase, usar solo los deseos semilla
+        wishes.founder = mergeWishesWithSeeds({}, 'founder');
+        wishes.star = mergeWishesWithSeeds({}, 'star');
+        initializeConstellation();
+        updateWishesCounter();
         return;
     }
 
     // Listen for wishes changes in real-time for each tier (only 2 tiers now)
     ['founder', 'star'].forEach(tierName => {
         database.ref(`wishes/${tierName}`).on('value', (snapshot) => {
-            wishes[tierName] = snapshot.val() || {};
+            // Combinar deseos de Firebase con deseos semilla
+            wishes[tierName] = mergeWishesWithSeeds(snapshot.val(), tierName);
             // Regenerate constellation when wishes change
             initializeConstellation();
             // Update counter immediately after loading wishes
             updateWishesCounter();
         });
     });
-
-    // TEMPORAL: Cargar deseos de prueba (comentar después de probar)
-    // ⚠️ COMENTADO: Estas funciones eliminan todos los deseos reales de Firebase
-    // loadTestWishes();
-    // loadTestFounderWishes();
 }
 
 /**

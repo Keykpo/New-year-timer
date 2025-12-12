@@ -36,6 +36,11 @@
   ],
   "routes": [
     {
+      "src": "/ads.txt",
+      "status": 301,
+      "headers": { "Location": "https://srv.adstxtmanager.com/19390/newyeartimers.com" }
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/$1"
     },

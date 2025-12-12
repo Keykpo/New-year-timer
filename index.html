@@ -72,9 +72,16 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7982216026691433"
-         crossorigin="anonymous"></script>
+    <!-- Ezoic Privacy Scripts (must load first for compliance) -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+
+    <!-- Ezoic Header Script -->
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
 
     <!-- Structured Data (JSON-LD) for Rich Snippets - WebApplication -->
     <script type="application/ld+json">
@@ -208,29 +215,13 @@
         <span class="toggle-icon">🌙</span>
     </button>
 
-    <!-- Sidebar Ads - Desktop Only (>1200px) -->
+    <!-- Sidebar Ads - Desktop Only (>1200px) - Ezoic -->
     <div class="sidebar-ad sidebar-ad-left">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7982216026691433"
-             data-ad-slot="1486507879"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <div id="ezoic-pub-ad-placeholder-101"></div>
     </div>
 
     <div class="sidebar-ad sidebar-ad-right">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7982216026691433"
-             data-ad-slot="1486507879"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <div id="ezoic-pub-ad-placeholder-102"></div>
     </div>
 
     <div class="container">
@@ -240,17 +231,9 @@
             <p class="subtitle" data-i18n="subtitle">Your personal countdown to 2026</p>
         </header>
 
-        <!-- Ad Unit #0 - Top banner before countdown (maximum visibility) -->
+        <!-- Ad Unit #0 - Top banner before countdown (maximum visibility) - Ezoic -->
         <div class="ad-container ad-before-countdown">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-7982216026691433"
-                 data-ad-slot="2968493398"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+            <div id="ezoic-pub-ad-placeholder-103"></div>
         </div>
 
         <!-- Local Countdown Timer -->
@@ -279,17 +262,9 @@
             <p class="timezone-info" id="timezoneInfo"></p>
         </section>
 
-        <!-- Ad Unit #1 - Premium placement after countdown (highest visibility) -->
+        <!-- Ad Unit #1 - Premium placement after countdown (highest visibility) - Ezoic -->
         <div class="ad-container ad-after-countdown">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-7982216026691433"
-                 data-ad-slot="6547262869"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+            <div id="ezoic-pub-ad-placeholder-104"></div>
         </div>
 
         <!-- Wishes Constellation Section -->
@@ -335,17 +310,9 @@
             </div>
         </section>
 
-        <!-- Ad Unit #2 - After wishes section -->
+        <!-- Ad Unit #2 - After wishes section - Ezoic -->
         <div class="ad-container ad-after-wishes">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-7982216026691433"
-                 data-ad-slot="4120410073"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+            <div id="ezoic-pub-ad-placeholder-105"></div>
         </div>
 
         <!-- Global Map Section -->
@@ -523,17 +490,9 @@
                 <strong>New Year's Day 2026</strong> is Thursday, January 1st, 2026. The celebration begins on <strong>New Year's Eve</strong>, December 31st, 2025, as the clock strikes midnight. Our <strong>countdown to 2026</strong> tracks every day, hour, minute, and second until this momentous occasion. Whether you're planning a party, setting resolutions, or simply counting down the days, our <strong>live countdown</strong> keeps you informed.
             </p>
 
-            <!-- Ad Unit #3 - In-article ad within SEO content -->
+            <!-- Ad Unit #3 - In-article ad within SEO content - Ezoic -->
             <div class="ad-container ad-in-article">
-                <ins class="adsbygoogle"
-                     style="display:block; text-align:center;"
-                     data-ad-client="ca-pub-7982216026691433"
-                     data-ad-slot="7408810597"
-                     data-ad-format="fluid"
-                     data-ad-layout="in-article"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                <div id="ezoic-pub-ad-placeholder-106"></div>
             </div>
 
             <!-- FAQ Section -->
@@ -638,5 +597,14 @@
     </script>
 
     <script src="script.js"></script>
+
+    <!-- Ezoic Ad Display Script -->
+    <script>
+        ezstandalone.cmd.push(function() {
+            ezstandalone.define(101, 102, 103, 104, 105, 106);
+            ezstandalone.enable();
+            ezstandalone.display();
+        });
+    </script>
 </body>
 </html>
