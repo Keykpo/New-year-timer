@@ -96,7 +96,10 @@ const translations = {
         payButton: "Pay & Make Wish",
         promoText: "✨ Your wish joins the stars. As a thank you, you will receive a <strong>secret title</strong> that predicts success and guides your path in the new year. ✨",
         viewStarWishes: "🌟 View Wishes",
-        wishesMade: "wishes granted"
+        wishesMade: "wishes granted",
+        freeWishButton: "✨ Leave Your Free Wish ✨",
+        watchAdButton: "🎬 Watch Ad & Make Free Wish",
+        watchAdNote: "Watch a short ad and leave your wish for free!"
     },
     es: {
         mainTitle: "Tiempo Restante para tu Año Nuevo",
@@ -124,7 +127,10 @@ const translations = {
         payButton: "Pagar y Hacer Deseo",
         promoText: "✨ Tu deseo se une a las estrellas. Como agradecimiento, recibirás un <strong>título secreto</strong> que te augura éxito y guía tu camino en el nuevo año. ✨",
         viewStarWishes: "🌟 Ver Deseos",
-        wishesMade: "deseos cumplidos"
+        wishesMade: "deseos cumplidos",
+        freeWishButton: "✨ Deja Tu Deseo Gratis ✨",
+        watchAdButton: "🎬 Ver Anuncio y Hacer Deseo Gratis",
+        watchAdNote: "¡Mira un breve anuncio y deja tu deseo gratis!"
     },
     pt: {
         mainTitle: "Tempo Restante para o seu Ano Novo",
@@ -151,7 +157,10 @@ const translations = {
         paymentNote: "💳 Pagamento seguro via PayPal. Seu desejo aparecerá instantaneamente!",
         payButton: "Pagar e Fazer Desejo",
         promoText: "✨ Seu desejo se junta às estrelas. Como agradecimento, você receberá um <strong>título secreto</strong> que prevê sucesso e guia seu caminho no ano novo. ✨",
-        viewStarWishes: "🌟 Ver Desejos"
+        viewStarWishes: "🌟 Ver Desejos",
+        freeWishButton: "✨ Deixe Seu Desejo Grátis ✨",
+        watchAdButton: "🎬 Assistir Anúncio e Fazer Desejo Grátis",
+        watchAdNote: "Assista um anúncio curto e deixe seu desejo de graça!"
     },
     fr: {
         mainTitle: "Temps Restant jusqu'à votre Nouvel An",
@@ -178,7 +187,10 @@ const translations = {
         paymentNote: "💳 Paiement sécurisé via PayPal. Votre souhait apparaîtra instantanément!",
         payButton: "Payer et Faire un Souhait",
         promoText: "✨ Votre souhait rejoint les étoiles. En remerciement, vous recevrez un <strong>titre secret</strong> qui prédit le succès et guide votre chemin dans la nouvelle année. ✨",
-        viewStarWishes: "🌟 Voir les Souhaits"
+        viewStarWishes: "🌟 Voir les Souhaits",
+        freeWishButton: "✨ Laissez Votre Souhait Gratuit ✨",
+        watchAdButton: "🎬 Regarder Pub & Faire un Souhait Gratuit",
+        watchAdNote: "Regardez une courte pub et laissez votre souhait gratuitement!"
     },
     de: {
         mainTitle: "Zeit bis zu Ihrem Neujahr",
@@ -205,7 +217,10 @@ const translations = {
         paymentNote: "💳 Sichere Zahlung über PayPal. Ihr Wunsch erscheint sofort!",
         payButton: "Bezahlen & Wunsch abgeben",
         promoText: "✨ Ihr Wunsch schließt sich den Sternen an. Als Dankeschön erhalten Sie einen <strong>geheimen Titel</strong>, der Erfolg vorhersagt und Ihren Weg im neuen Jahr leitet. ✨",
-        viewStarWishes: "🌟 Wünsche ansehen"
+        viewStarWishes: "🌟 Wünsche ansehen",
+        freeWishButton: "✨ Kostenlosen Wunsch Hinterlassen ✨",
+        watchAdButton: "🎬 Werbung Ansehen & Gratis Wunsch",
+        watchAdNote: "Sehen Sie sich eine kurze Werbung an und hinterlassen Sie Ihren Wunsch kostenlos!"
     },
     it: {
         mainTitle: "Tempo Rimanente per il tuo Capodanno",
@@ -232,7 +247,10 @@ const translations = {
         paymentNote: "💳 Pagamento sicuro tramite PayPal. Il tuo desiderio apparirà immediatamente!",
         payButton: "Paga e Esprimi Desiderio",
         promoText: "✨ Il tuo desiderio si unisce alle stelle. Come ringraziamento, riceverai un <strong>titolo segreto</strong> che predice il successo e guida il tuo percorso nel nuovo anno. ✨",
-        viewStarWishes: "🌟 Vedi Desideri"
+        viewStarWishes: "🌟 Vedi Desideri",
+        freeWishButton: "✨ Lascia il Tuo Desiderio Gratis ✨",
+        watchAdButton: "🎬 Guarda Pubblicità & Desiderio Gratis",
+        watchAdNote: "Guarda una breve pubblicità e lascia il tuo desiderio gratis!"
     },
     ru: {
         mainTitle: "Время до Нового года",
@@ -259,7 +277,10 @@ const translations = {
         paymentNote: "💳 Безопасная оплата через PayPal. Ваше желание появится мгновенно!",
         payButton: "Оплатить и Загадать Желание",
         promoText: "✨ Ваше желание присоединяется к звездам. В знак благодарности вы получите <strong>секретный титул</strong>, который предсказывает успех и направляет ваш путь в новом году. ✨",
-        viewStarWishes: "🌟 Посмотреть Желания"
+        viewStarWishes: "🌟 Посмотреть Желания",
+        freeWishButton: "✨ Оставьте Бесплатное Желание ✨",
+        watchAdButton: "🎬 Смотреть Рекламу и Загадать Бесплатно",
+        watchAdNote: "Посмотрите короткую рекламу и оставьте желание бесплатно!"
     },
     zh: {
         mainTitle: "距离新年的时间",
@@ -286,7 +307,10 @@ const translations = {
         paymentNote: "💳 通过PayPal安全付款。您的愿望将立即显示！",
         payButton: "支付并许愿",
         promoText: "✨ 您的愿望加入了星辰。作为感谢，您将获得一个<strong>秘密称号</strong>，预示成功并引导您在新年的道路。✨",
-        viewStarWishes: "🌟 查看愿望"
+        viewStarWishes: "🌟 查看愿望",
+        freeWishButton: "✨ 免费许愿 ✨",
+        watchAdButton: "🎬 观看广告并免费许愿",
+        watchAdNote: "观看一个简短的广告，免费留下您的愿望！"
     },
     ja: {
         mainTitle: "新年までの時間",
@@ -313,7 +337,10 @@ const translations = {
         paymentNote: "💳 PayPalによる安全な支払い。あなたの願いはすぐに表示されます！",
         payButton: "支払って願いを込める",
         promoText: "✨ あなたの願いは星々に加わります。感謝の気持ちとして、成功を予測し新年のあなたの道を導く<strong>秘密の称号</strong>を受け取ります。✨",
-        viewStarWishes: "🌟 願いを見る"
+        viewStarWishes: "🌟 願いを見る",
+        freeWishButton: "✨ 無料で願いを残す ✨",
+        watchAdButton: "🎬 広告を見て無料で願う",
+        watchAdNote: "短い広告を見て、無料で願いを残しましょう！"
     },
     ar: {
         mainTitle: "الوقت المتبقي حتى العام الجديد",
@@ -340,7 +367,10 @@ const translations = {
         paymentNote: "💳 دفع آمن عبر PayPal. ستظهر أمنيتك على الفور!",
         payButton: "ادفع واصنع الأمنية",
         promoText: "✨ تنضم أمنيتك إلى النجوم. كشكر لك، ستحصل على <strong>لقب سري</strong> يتنبأ بالنجاح ويرشد طريقك في العام الجديد. ✨",
-        viewStarWishes: "🌟 عرض الأمنيات"
+        viewStarWishes: "🌟 عرض الأمنيات",
+        freeWishButton: "✨ اترك أمنيتك مجاناً ✨",
+        watchAdButton: "🎬 شاهد إعلان واصنع أمنية مجانية",
+        watchAdNote: "شاهد إعلاناً قصيراً واترك أمنيتك مجاناً!"
     },
     nl: {
         mainTitle: "Tijd tot je Nieuwjaar",
@@ -367,7 +397,10 @@ const translations = {
         paymentNote: "💳 Veilige betaling via PayPal. Je wens verschijnt direct!",
         payButton: "Betalen & Wens Doen",
         promoText: "✨ Je wens voegt zich bij de sterren. Als dank ontvang je een <strong>geheime titel</strong> die succes voorspelt en je pad in het nieuwe jaar begeleidt. ✨",
-        viewStarWishes: "🌟 Bekijk Wensen"
+        viewStarWishes: "🌟 Bekijk Wensen",
+        freeWishButton: "✨ Laat Je Gratis Wens Achter ✨",
+        watchAdButton: "🎬 Bekijk Advertentie & Gratis Wens",
+        watchAdNote: "Bekijk een korte advertentie en laat je wens gratis achter!"
     },
     ko: {
         mainTitle: "새해까지 남은 시간",
@@ -394,7 +427,10 @@ const translations = {
         paymentNote: "💳 PayPal을 통한 안전한 결제. 소원이 즉시 나타납니다!",
         payButton: "결제하고 소원 빌기",
         promoText: "✨ 당신의 소원이 별들과 함께합니다. 감사의 표시로, 성공을 예측하고 새해의 길을 안내하는 <strong>비밀 칭호</strong>를 받게 됩니다. ✨",
-        viewStarWishes: "🌟 소원 보기"
+        viewStarWishes: "🌟 소원 보기",
+        freeWishButton: "✨ 무료 소원 남기기 ✨",
+        watchAdButton: "🎬 광고 보고 무료 소원 빌기",
+        watchAdNote: "짧은 광고를 보고 무료로 소원을 남기세요!"
     },
     tr: {
         mainTitle: "Yeni Yılınıza Kalan Süre",
@@ -421,7 +457,10 @@ const translations = {
         paymentNote: "💳 PayPal üzerinden güvenli ödeme. Dileğiniz anında görünecek!",
         payButton: "Öde ve Dilek Tut",
         promoText: "✨ Dileğiniz yıldızlara katılıyor. Teşekkür olarak, başarıyı öngören ve yeni yılda yolunuzu gösteren <strong>gizli bir unvan</strong> alacaksınız. ✨",
-        viewStarWishes: "🌟 Dilekleri Görüntüle"
+        viewStarWishes: "🌟 Dilekleri Görüntüle",
+        freeWishButton: "✨ Ücretsiz Dileğinizi Bırakın ✨",
+        watchAdButton: "🎬 Reklam İzle & Ücretsiz Dilek Tut",
+        watchAdNote: "Kısa bir reklam izleyin ve dileğinizi ücretsiz bırakın!"
     },
     hi: {
         mainTitle: "आपके नए साल तक का समय",
@@ -448,7 +487,10 @@ const translations = {
         paymentNote: "💳 PayPal के माध्यम से सुरक्षित भुगतान। आपकी इच्छा तुरंत दिखाई देगी!",
         payButton: "भुगतान करें और इच्छा करें",
         promoText: "✨ आपकी इच्छा सितारों से जुड़ती है। धन्यवाद के रूप में, आपको एक <strong>गुप्त उपाधि</strong> मिलेगी जो सफलता की भविष्यवाणी करती है और नए साल में आपके मार्ग का मार्गदर्शन करती है। ✨",
-        viewStarWishes: "🌟 इच्छाएँ देखें"
+        viewStarWishes: "🌟 इच्छाएँ देखें",
+        freeWishButton: "✨ अपनी मुफ्त इच्छा छोड़ें ✨",
+        watchAdButton: "🎬 विज्ञापन देखें और मुफ्त इच्छा करें",
+        watchAdNote: "एक छोटा विज्ञापन देखें और अपनी इच्छा मुफ्त में छोड़ें!"
     },
     pl: {
         mainTitle: "Czas do Twojego Nowego Roku",
@@ -475,7 +517,10 @@ const translations = {
         paymentNote: "💳 Bezpieczna płatność przez PayPal. Twoje życzenie pojawi się natychmiast!",
         payButton: "Zapłać i Złóż Życzenie",
         promoText: "✨ Twoje życzenie dołącza do gwiazd. W podziękowaniu otrzymasz <strong>sekretny tytuł</strong>, który przepowiada sukces i prowadzi Twoją ścieżkę w nowym roku. ✨",
-        viewStarWishes: "🌟 Zobacz Życzenia"
+        viewStarWishes: "🌟 Zobacz Życzenia",
+        freeWishButton: "✨ Zostaw Darmowe Życzenie ✨",
+        watchAdButton: "🎬 Obejrzyj Reklamę i Złóż Darmowe Życzenie",
+        watchAdNote: "Obejrzyj krótką reklamę i zostaw swoje życzenie za darmo!"
     },
     sv: {
         mainTitle: "Tid Kvar Till Ditt Nya År",
@@ -502,7 +547,10 @@ const translations = {
         paymentNote: "💳 Säker betalning via PayPal. Din önskan kommer att visas omedelbart!",
         payButton: "Betala & Gör Önskan",
         promoText: "✨ Din önskan går med stjärnorna. Som tack kommer du att få en <strong>hemlig titel</strong> som förutspår framgång och vägleder din väg under det nya året. ✨",
-        viewStarWishes: "🌟 Visa Önskningar"
+        viewStarWishes: "🌟 Visa Önskningar",
+        freeWishButton: "✨ Lämna Din Gratis Önskan ✨",
+        watchAdButton: "🎬 Titta på Annons & Gratis Önskan",
+        watchAdNote: "Titta på en kort annons och lämna din önskan gratis!"
     }
 };
 
@@ -1893,21 +1941,142 @@ function handleTileClick(slot, tierName) {
 function setupModal() {
     const modal = document.getElementById('wishModal');
     const closeBtn = document.getElementById('modalClose');
-    
+
     closeBtn.addEventListener('click', closeModal);
-    
+
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeModal();
         }
     });
-    
+
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             closeModal();
         }
     });
+
+    // Setup Free Wish Button (below countdown)
+    const freeWishButton = document.getElementById('freeWishButton');
+    if (freeWishButton) {
+        freeWishButton.addEventListener('click', () => {
+            currentPrice = 0; // Free wish
+            openModal();
+        });
+    }
+
+    // Setup Watch Ad Button (in modal)
+    const watchAdButton = document.getElementById('watchAdButton');
+    if (watchAdButton) {
+        watchAdButton.addEventListener('click', handleRewardedAd);
+    }
+}
+
+/**
+ * Handle Rewarded Ad for free wish
+ * Uses Ezoic Rewarded Ads system
+ */
+async function handleRewardedAd() {
+    const watchAdButton = document.getElementById('watchAdButton');
+    const wishText = document.getElementById('wishText').value.trim();
+    const wishAuthor = document.getElementById('wishAuthor').value.trim();
+
+    // Validate form
+    if (!wishText || !wishAuthor) {
+        alert(currentLang === 'es' ? 'Por favor, completa tu deseo y nombre primero.' : 'Please fill in your wish and name first.');
+        return;
+    }
+
+    // Disable button while loading
+    watchAdButton.disabled = true;
+    watchAdButton.textContent = '⏳ Loading...';
+
+    try {
+        // Request rewarded ad with overlay
+        window.ezRewardedAds.cmd.push(function() {
+            window.ezRewardedAds.requestWithOverlay(function(result) {
+                if (result.status) {
+                    console.log('Ad loaded successfully');
+
+                    if (result.reward) {
+                        // User completed the ad and earned reward
+                        console.log('User earned reward!');
+                        submitFreeWish();
+                    }
+                } else {
+                    // Ad failed to load - still allow free wish as fallback
+                    console.log('Ad failed to load:', result.msg);
+                    // Give user the reward anyway as a fallback
+                    submitFreeWish();
+                }
+
+                // Re-enable button
+                watchAdButton.disabled = false;
+                updateWatchAdButtonText();
+            });
+        });
+    } catch (error) {
+        console.error('Rewarded ad error:', error);
+        // Fallback: submit free wish anyway
+        submitFreeWish();
+        watchAdButton.disabled = false;
+        updateWatchAdButtonText();
+    }
+}
+
+/**
+ * Update Watch Ad button text based on current language
+ */
+function updateWatchAdButtonText() {
+    const watchAdButton = document.getElementById('watchAdButton');
+    if (watchAdButton) {
+        const t = translations[currentLang] || translations.en;
+        watchAdButton.textContent = t.watchAdButton || '🎬 Watch Ad & Make Free Wish';
+    }
+}
+
+/**
+ * Submit a free wish (after watching ad)
+ */
+async function submitFreeWish() {
+    const wishText = sanitizeWishText(document.getElementById('wishText').value);
+    const wishAuthor = sanitizeAuthorName(document.getElementById('wishAuthor').value);
+
+    if (!wishText || !wishAuthor) {
+        return;
+    }
+
+    // Create wish object for free tier (Star tier)
+    const wish = {
+        text: wishText,
+        author: wishAuthor,
+        timestamp: Date.now(),
+        tier: 'star', // Free wishes are Star tier
+        country: geoLocationData?.country || 'Unknown',
+        city: geoLocationData?.city || 'Unknown',
+        slot: currentSlot || null
+    };
+
+    try {
+        // Save to Firebase
+        await saveWishToFirebase(wish);
+
+        // Close modal
+        closeModal();
+
+        // Show success message
+        const successMsg = currentLang === 'es'
+            ? '¡Tu deseo ha sido guardado! ✨'
+            : 'Your wish has been saved! ✨';
+        alert(successMsg);
+
+        // Refresh wishes display
+        loadWishesFromFirebase();
+    } catch (error) {
+        console.error('Error saving free wish:', error);
+        alert('Error saving wish. Please try again.');
+    }
 }
 
 /**

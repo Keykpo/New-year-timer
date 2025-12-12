@@ -83,6 +83,12 @@
         ezstandalone.cmd = ezstandalone.cmd || [];
     </script>
 
+    <!-- Ezoic Rewarded Ads -->
+    <script>
+        window.ezRewardedAds = window.ezRewardedAds || {};
+        window.ezRewardedAds.cmd = window.ezRewardedAds.cmd || [];
+    </script>
+
     <!-- Structured Data (JSON-LD) for Rich Snippets - WebApplication -->
     <script type="application/ld+json">
     {
@@ -217,11 +223,11 @@
 
     <!-- Sidebar Ads - Desktop Only (>1200px) - Ezoic -->
     <div class="sidebar-ad sidebar-ad-left">
-        <div id="ezoic-pub-ad-placeholder-101"></div>
+        <div id="ezoic-pub-ad-placeholder-118"></div>
     </div>
 
     <div class="sidebar-ad sidebar-ad-right">
-        <div id="ezoic-pub-ad-placeholder-102"></div>
+        <div id="ezoic-pub-ad-placeholder-119"></div>
     </div>
 
     <div class="container">
@@ -233,7 +239,7 @@
 
         <!-- Ad Unit #0 - Top banner before countdown (maximum visibility) - Ezoic -->
         <div class="ad-container ad-before-countdown">
-            <div id="ezoic-pub-ad-placeholder-103"></div>
+            <div id="ezoic-pub-ad-placeholder-120"></div>
         </div>
 
         <!-- Local Countdown Timer -->
@@ -260,11 +266,16 @@
                 </div>
             </div>
             <p class="timezone-info" id="timezoneInfo"></p>
+
+            <!-- Free Wish Button -->
+            <button class="free-wish-button" id="freeWishButton" data-i18n="freeWishButton">
+                ✨ Leave Your Free Wish ✨
+            </button>
         </section>
 
         <!-- Ad Unit #1 - Premium placement after countdown (highest visibility) - Ezoic -->
         <div class="ad-container ad-after-countdown">
-            <div id="ezoic-pub-ad-placeholder-104"></div>
+            <div id="ezoic-pub-ad-placeholder-121"></div>
         </div>
 
         <!-- Wishes Constellation Section -->
@@ -312,7 +323,7 @@
 
         <!-- Ad Unit #2 - After wishes section - Ezoic -->
         <div class="ad-container ad-after-wishes">
-            <div id="ezoic-pub-ad-placeholder-105"></div>
+            <div id="ezoic-pub-ad-placeholder-122"></div>
         </div>
 
         <!-- Global Map Section -->
@@ -398,6 +409,20 @@
                 <div class="modal-price">
                     <p class="price-label" data-i18n="priceLabel">Secure your wish for:</p>
                     <div class="price-amount">$1 USD</div>
+                </div>
+
+                <!-- Free Wish with Rewarded Ad Section -->
+                <div class="rewarded-ad-section">
+                    <div class="rewarded-ad-note" data-i18n="watchAdNote">
+                        Watch a short ad and leave your wish for free!
+                    </div>
+                    <button class="rewarded-ad-button" id="watchAdButton" data-i18n="watchAdButton">
+                        🎬 Watch Ad & Make Free Wish
+                    </button>
+                </div>
+
+                <div class="payment-divider">
+                    <span>OR</span>
                 </div>
 
                 <div class="payment-section">
@@ -492,7 +517,7 @@
 
             <!-- Ad Unit #3 - In-article ad within SEO content - Ezoic -->
             <div class="ad-container ad-in-article">
-                <div id="ezoic-pub-ad-placeholder-106"></div>
+                <div id="ezoic-pub-ad-placeholder-123"></div>
             </div>
 
             <!-- FAQ Section -->
@@ -601,7 +626,7 @@
     <!-- Ezoic Ad Display Script -->
     <script>
         ezstandalone.cmd.push(function() {
-            ezstandalone.showAds(101, 102, 103, 104, 105, 106);
+            ezstandalone.showAds(118, 119, 120, 121, 122, 123);
         });
     </script>
 </body>
