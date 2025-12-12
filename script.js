@@ -2494,14 +2494,26 @@ function loadWishesFromFirebase() {
 
     // Listen for wishes changes in real-time for each tier (only 2 tiers now)
     ['founder', 'star'].forEach(tierName => {
-        database.ref(`wishes/${tierName}`).on('value', (snapshot) => {
-            // Combinar deseos de Firebase con deseos semilla
-            wishes[tierName] = mergeWishesWithSeeds(snapshot.val(), tierName);
-            // Regenerate constellation when wishes change
-            initializeConstellation();
-            // Update counter immediately after loading wishes
-            updateWishesCounter();
-        });
+        database.ref(`wishes/${tierName}`).on('value',
+            (snapshot) => {
+                console.log(`✅ Firebase ${tierName} wishes loaded:`, snapshot.val());
+                // Combinar deseos de Firebase con deseos semilla
+                wishes[tierName] = mergeWishesWithSeeds(snapshot.val(), tierName);
+                // Regenerate constellation when wishes change
+                initializeConstellation();
+                // Update counter immediately after loading wishes
+                updateWishesCounter();
+            },
+            (error) => {
+                // ERROR: Probablemente reglas de Firebase o conexión
+                console.error(`❌ Firebase error loading ${tierName} wishes:`, error.message);
+                console.warn(`⚠️ Using seed wishes only for ${tierName} due to Firebase error`);
+                // Usar solo deseos semilla como fallback
+                wishes[tierName] = mergeWishesWithSeeds({}, tierName);
+                initializeConstellation();
+                updateWishesCounter();
+            }
+        );
     });
 }
 
