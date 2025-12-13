@@ -5,7 +5,10 @@
       "WebFetch(domain:www.kwrds.ai)",
       "Bash(node:*)",
       "Bash(cat:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix: Add blog directory to Vercel builds and routes\n\n- Added blog/**/* to builds for static files\n- Added /blog/ route to serve blog/index.html\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push)"
     ],
     "deny": [],
     "ask": []
