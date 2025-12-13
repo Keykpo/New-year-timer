@@ -1,0 +1,51 @@
+Introducción
+¡Bienvenido a las Directrices de Contenido de Ezoic! Como editor, es crucial asegurarse de que su contenido cumpla con nuestros estándares para maximizar su potencial de monetización y proporcionar una experiencia valiosa a sus visitantes. En este artículo, delinearemos los requisitos fundamentales para la calidad del contenido, destacaremos la importancia de evitar contenido superficial y detallaremos los tipos de artículos y sitios que están prohibidos. Al adherirse a estas directrices, puede asegurarse de que su sitio esté optimizado para el éxito y cumpla con las políticas de Google. Vamos a sumergirnos y explorar lo que se necesita para crear contenido de alta calidad y atractivo para su audiencia.
+
+Overview
+Requisitos Principales
+Esperamos que todos los sitios tengan contenido original, atractivo y que aporte valor a los visitantes.
+
+Calidad del Contenido
+Agrega Contenido Único Suficiente: Los sitios con contenido de alta calidad contienen artículos que responden directamente a la pregunta planteada, a diferencia de los sitios de baja calidad que tienden a ofrecer contenido vago con menos valor, violando las políticas de contenido escalado de Google. Si utilizas herramientas de IA y generativas, asegúrate de estar agregando valor en lugar de reutilizar contenido ya publicado.
+Evita Contenido Duplicado: Los sitios de bajo valor pueden presentar contenido similar o idéntico al de sitios más reputados. El uso de herramientas de escritura de IA y generativas sin agregar valor al usuario puede violar las políticas de contenido escalado de Google. Copiar directamente contenido de fuentes más reputadas viola las políticas de contenido extraído de Google.
+Mantén el Contenido Coherente y Atractivo: Los sitios de mayor calidad se centran en un tema definido, mientras que los sitios de menor calidad abarcan una amplia gama de temas. Los sitios que carecen de contenido coherente violan las políticas de contenido extraído de Google. Asegúrate de que el contenido fluya de manera natural para los lectores. Los sitios de menor calidad a menudo incluyen texto que se lee de manera antinatural con un uso excesivo de palabras clave para manipular los rankings, violando las políticas de relleno de palabras clave de Google.
+Contenido Escaso
+Si tu sitio no está listo para la monetización debido a contenido escaso, revisa las sugerencias a continuación para asegurarte de que cumpla con nuestros requisitos mínimos de contenido. Esto no se aplica a sitios de herramientas, que no están obligados a tener un componente de blog.
+
+Asegúrate de que tu sitio tenga más de 15 artículos: Para prepararte para la monetización, asegúrate de haber escrito y publicado más de 15 artículos de calidad suficiente, siguiendo nuestras pautas de calidad.
+Asegúrate de que tus artículos tengan más de 500 palabras: Los sitios con artículos de 500 palabras o menos no están listos para la monetización. En general, es mejor práctica para la optimización SEO apuntar a artículos de alrededor de 800 - 1,000 palabras.
+Tus artículos no pueden consistir únicamente en imágenes: Los sitios con artículos compuestos únicamente de imágenes no están listos para la monetización. Agrega contenido escrito sustancial y de alta calidad para acompañar las imágenes. Al intentar desestimar una denegación por contenido escaso, recuerda que agregar más contenido por sí solo no garantiza la aprobación: el contenido debe ser coherente y de alta calidad. Si usas herramientas de IA, revisa el contenido cuidadosamente para asegurar que cumpla con estos requisitos.
+Artículos Prohibidos
+Si tu sitio no está listo para la monetización de Ezoic debido a artículos prohibidos, revisa tu contenido para asegurarte de que cumpla con los siguientes requisitos:
+
+Adhiérete a un único nicho: Los sitios no listos para la monetización pueden contener artículos que caen fuera del nicho del sitio web, a menudo para manipular posiciones, violando las políticas de reputación del sitio de Google.
+No redirecciones spam: Los sitios que contienen redirecciones spam violan las redirecciones engañosas, contenido hackeado y las políticas de comportamientos maliciosos de Google. Dichas redirecciones pueden aparecer y evitar el acceso al contenido, dirigir a los usuarios fuera del sitio hacia otro sitio, abrir sitios web no relacionados en nuevas pestañas o iniciar descargas automáticamente. Los sitios listos para la monetización deben eliminar cualquier código de terceros que cause redirecciones spam.
+No enlaces de descarga: Los sitios con un número limitado de artículos que contienen contenido descargable no están listos para la monetización. Elimina los materiales descargables de los artículos o elimina completamente los artículos que los contienen.
+Sitios Prohibidos
+Los sitios que presentan principalmente contenido que no puede ser monetizado no serán aprobados para la monetización. Esto incluye, pero no se limita a:
+
+Material con derechos de autor o descargas
+Sites de comercio electrónico sin blog o contenido informativo
+Sitios corporativos
+Sitios de video o imágenes con contenido textual limitado
+Sitios de herramientas no originales
+Bienes falsificados
+Relleno de palabras clave
+Contenido para adultos o sexualmente explícito
+Contenido peligroso o despectivo
+Contenido ilegal
+Consejos y mejores prácticas
+Para asegurarte de que tu sitio esté listo para la monetización y cumpla con altos estándares de calidad, considera las siguientes mejores prácticas y consejos:
+
+Contenido Original y Atractivo: Enfócate en crear contenido único y atractivo que aporte valor a los visitantes. Evita reutilizar contenido existente sin añadir nuevas ideas o perspectivas.
+Artículos Coherentes y Enfocados: Asegúrate de que tus artículos sean coherentes y estén centrados en un tema bien definido. Evita dispersar tu contenido en una amplia gama de temas. Esto ayuda a mantener un nicho claro y mejora el compromiso de los usuarios.
+Evitar Contenido Duplicado: Mantente alejado de duplicar contenido de otros sitios de renombre. Siempre busca ofrecer contenido original que se destaque por su singularidad.
+Longitud Óptima para SEO: Escribe artículos que generalmente tengan entre 800 y 1.000 palabras. Este rango de palabras es generalmente óptimo para SEO y ayuda a proporcionar una cobertura completa del tema.
+Evitar la Saturación de Palabras Clave: Asegúrate de que tu contenido fluya naturalmente y esté escrito para los lectores, no para los motores de búsqueda. El uso excesivo de palabras clave para manipular clasificaciones puede llevar a sanciones.
+Calidad Sobre Cantidad: Aunque es importante tener más de 15 artículos para cumplir con los requisitos de monetización, el enfoque debe permanecer en la calidad del contenido. Cada artículo debe estar bien escrito, ser informativo y sin errores.
+Revisar el Contenido Generado por IA: Si estás utilizando herramientas de IA para generar contenido, revisa y refina meticulosamente el resultado para asegurarte de que cumpla con los estándares de calidad y aporte valor genuino.
+Evitar Contenido Prohibido: Asegúrate de que tu sitio no incluya artículos prohibidos, como aquellos que contengan redireccionamientos de spam, enlaces de descarga o contenido fuera de tu nicho. Estos pueden afectar negativamente la reputación de tu sitio y la conformidad con las políticas de contenido.
+Establecer Confianza: Incluye una página de Sobre Nosotros detallada y lista autores nombrados o firmas en cada publicación. Asegúrate de que los enlaces de tus redes sociales funcionen correctamente y lleven a los perfiles correctos.
+Mantén la Consistencia: Usa los mismos elementos de marca y diseño en todo tu sitio. Elige un nombre de dominio que coincida con el nombre de tu sitio. 
+Siguiendo estas mejores prácticas, puedes mejorar la calidad y credibilidad de tu sitio, haciéndolo más adecuado para la monetización y mejorando la experiencia del usuario.
+

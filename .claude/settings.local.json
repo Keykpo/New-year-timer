@@ -4,7 +4,8 @@
       "WebSearch",
       "WebFetch(domain:www.kwrds.ai)",
       "Bash(node:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []
