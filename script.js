@@ -645,8 +645,16 @@ async function getGeoLocationData() {
     return geoLocationData;
 }
 
-// Detect language based on country code, timezone, and browser settings
+// Detect language based on URL param, country code, timezone, and browser settings
 function detectLanguage() {
+    // Priority 0: Check URL parameter (for SEO/hreflang - highest priority)
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    if (urlLang && translations[urlLang]) {
+        console.log(`✅ Language from URL parameter: ?lang=${urlLang}`);
+        return urlLang;
+    }
+
     // Priority 1: Check country code from geolocation (most accurate with VPN)
     if (geoLocationData?.country) {
         const countryCode = geoLocationData.country.toUpperCase();
