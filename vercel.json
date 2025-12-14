@@ -6,6 +6,10 @@
       "use": "@vercel/node"
     },
     {
+      "src": "ads.txt",
+      "use": "@vercel/static"
+    },
+    {
       "src": "*.html",
       "use": "@vercel/static"
     },
@@ -41,8 +45,11 @@
   "routes": [
     {
       "src": "/ads.txt",
-      "status": 301,
-      "headers": { "Location": "https://srv.adstxtmanager.com/19390/newyeartimers.com" }
+      "dest": "/ads.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=86400"
+      }
     },
     {
       "src": "/api/(.*)",
