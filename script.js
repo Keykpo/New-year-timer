@@ -1983,7 +1983,7 @@ function setupModal() {
 
 /**
  * Handle Rewarded Ad for free wish
- * Uses Ezoic Rewarded Ads system
+ * Uses Adsterra Popunder + Timer system
  */
 async function handleRewardedAd() {
     const watchAdButton = document.getElementById('watchAdButton');
@@ -1996,41 +1996,55 @@ async function handleRewardedAd() {
         return;
     }
 
-    // Disable button while loading
+    // Disable button
     watchAdButton.disabled = true;
-    watchAdButton.textContent = '⏳ Loading...';
 
+    // Create timer overlay
+    const timerOverlay = document.createElement('div');
+    timerOverlay.id = 'adTimerOverlay';
+    timerOverlay.innerHTML = `
+        <div class="ad-timer-content">
+            <div class="ad-timer-icon">🎬</div>
+            <h3 class="ad-timer-title">${currentLang === 'es' ? '¡Gracias por apoyarnos!' : 'Thanks for supporting us!'}</h3>
+            <p class="ad-timer-text">${currentLang === 'es' ? 'Tu deseo estará listo en:' : 'Your wish will be ready in:'}</p>
+            <div class="ad-timer-countdown">15</div>
+            <p class="ad-timer-note">${currentLang === 'es' ? 'Por favor espera mientras se carga el anuncio' : 'Please wait while the ad loads'}</p>
+        </div>
+    `;
+    document.body.appendChild(timerOverlay);
+
+    // Load Adsterra popunder script (opens in new tab)
     try {
-        // Request rewarded ad with overlay
-        window.ezRewardedAds.cmd.push(function() {
-            window.ezRewardedAds.requestWithOverlay(function(result) {
-                if (result.status) {
-                    console.log('Ad loaded successfully');
-
-                    if (result.reward) {
-                        // User completed the ad and earned reward
-                        console.log('User earned reward!');
-                        submitFreeWish();
-                    }
-                } else {
-                    // Ad failed to load - still allow free wish as fallback
-                    console.log('Ad failed to load:', result.msg);
-                    // Give user the reward anyway as a fallback
-                    submitFreeWish();
-                }
-
-                // Re-enable button
-                watchAdButton.disabled = false;
-                updateWatchAdButtonText();
-            });
-        });
-    } catch (error) {
-        console.error('Rewarded ad error:', error);
-        // Fallback: submit free wish anyway
-        submitFreeWish();
-        watchAdButton.disabled = false;
-        updateWatchAdButtonText();
+        const script = document.createElement('script');
+        script.src = 'https://boardingstocking.com/c8/ea/82/c8ea82a6d1f38742c4beaecb52db455c.js';
+        script.type = 'text/javascript';
+        document.body.appendChild(script);
+    } catch (e) {
+        console.log('Popunder blocked or failed:', e);
     }
+
+    // Start countdown
+    let seconds = 15;
+    const countdownEl = timerOverlay.querySelector('.ad-timer-countdown');
+
+    const countdown = setInterval(() => {
+        seconds--;
+        countdownEl.textContent = seconds;
+
+        if (seconds <= 0) {
+            clearInterval(countdown);
+
+            // Remove overlay
+            timerOverlay.remove();
+
+            // Submit free wish
+            submitFreeWish();
+
+            // Re-enable button
+            watchAdButton.disabled = false;
+            updateWatchAdButtonText();
+        }
+    }, 1000);
 }
 
 /**
