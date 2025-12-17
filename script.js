@@ -1641,6 +1641,12 @@ async function submitFreeWish() {
     const lang = detectLanguage();
     const isSpanish = lang === 'es';
 
+    // Find next available slot for star tier (free wishes)
+    const assignedSlot = findNextAvailableSlot('star');
+
+    // Generate random wish title
+    const wishTitle = getRandomWishTitle('star');
+
     // Create wish object for free tier (Star tier)
     const wish = {
         text: wishText,
@@ -1648,8 +1654,9 @@ async function submitFreeWish() {
         timestamp: Date.now(),
         tier: 'star', // Free wishes are Star tier
         country: geoLocationData?.country || 'Unknown',
-        city: geoLocationData?.city || 'Unknown',
-        slot: currentSlot || null
+        wishTitle: wishTitle, // Required by saveWishToFirebase
+        price: 0, // Free wish
+        slot: assignedSlot // Use next available slot
     };
 
     try {
