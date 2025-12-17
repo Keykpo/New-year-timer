@@ -1546,7 +1546,7 @@ function setupModal() {
 
 /**
  * Handle Rewarded Ad for free wish
- * Uses Adsterra Popunder + Timer system
+ * Shows a banner ad that user must click to submit their wish
  */
 async function handleRewardedAd() {
     const watchAdButton = document.getElementById('watchAdButton');
@@ -1567,52 +1567,80 @@ async function handleRewardedAd() {
     watchAdButton.disabled = true;
     watchAdButton.textContent = '⏳ Loading...';
 
-    // Create timer overlay
-    const timerOverlay = document.createElement('div');
-    timerOverlay.id = 'adTimerOverlay';
-    timerOverlay.innerHTML = `
-        <div class="ad-timer-content">
-            <div class="ad-timer-icon">🎬</div>
-            <h3 class="ad-timer-title">${isSpanish ? '¡Gracias por apoyarnos!' : 'Thanks for supporting us!'}</h3>
-            <p class="ad-timer-text">${isSpanish ? 'Tu deseo estará listo en:' : 'Your wish will be ready in:'}</p>
-            <div class="ad-timer-countdown">15</div>
-            <p class="ad-timer-note">${isSpanish ? 'Por favor espera mientras se carga el anuncio' : 'Please wait while the ad loads'}</p>
+    // Create ad overlay with clickable banner
+    const adOverlay = document.createElement('div');
+    adOverlay.id = 'adClickOverlay';
+    adOverlay.innerHTML = `
+        <div class="ad-click-content">
+            <div class="ad-click-icon">🎁</div>
+            <h3 class="ad-click-title">${isSpanish ? '¡Un paso más!' : 'One more step!'}</h3>
+            <p class="ad-click-text">${isSpanish ? 'Haz click en el anuncio para enviar tu deseo gratis' : 'Click the ad below to send your free wish'}</p>
+
+            <div class="ad-click-banner" id="rewardedAdBanner">
+                <div class="ad-loading">${isSpanish ? 'Cargando anuncio...' : 'Loading ad...'}</div>
+            </div>
+
+            <p class="ad-click-note">${isSpanish ? 'El anuncio se abrirá en una nueva pestaña' : 'The ad will open in a new tab'}</p>
+
+            <button class="ad-click-cancel" id="cancelAdButton">${isSpanish ? 'Cancelar' : 'Cancel'}</button>
         </div>
     `;
-    document.body.appendChild(timerOverlay);
+    document.body.appendChild(adOverlay);
 
-    // Load Adsterra popunder script (opens in new tab)
-    try {
-        const script = document.createElement('script');
-        script.src = 'https://boardingstocking.com/c8/ea/82/c8ea82a6d1f38742c4beaecb52db455c.js';
-        script.type = 'text/javascript';
-        document.body.appendChild(script);
-    } catch (e) {
-        console.log('Popunder blocked or failed:', e);
-    }
+    // Load Adsterra banner ad (300x250)
+    const bannerContainer = document.getElementById('rewardedAdBanner');
+    const adScript = document.createElement('script');
+    adScript.type = 'text/javascript';
+    adScript.innerHTML = `
+        atOptions = {
+            'key' : 'b4e7bd609de3becbbeb486a4337be4b6',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+        };
+    `;
+    bannerContainer.innerHTML = '';
+    bannerContainer.appendChild(adScript);
 
-    // Start countdown
-    let seconds = 15;
-    const countdownEl = timerOverlay.querySelector('.ad-timer-countdown');
+    const invokeScript = document.createElement('script');
+    invokeScript.type = 'text/javascript';
+    invokeScript.src = 'https://boardingstocking.com/b4e7bd609de3becbbeb486a4337be4b6/invoke.js';
+    bannerContainer.appendChild(invokeScript);
 
-    const countdown = setInterval(() => {
-        seconds--;
-        countdownEl.textContent = seconds;
+    // Track if ad was clicked (window loses focus when ad opens in new tab)
+    let adClicked = false;
 
-        if (seconds <= 0) {
-            clearInterval(countdown);
+    const handleBlur = () => {
+        // User clicked something that opened a new tab (the ad)
+        adClicked = true;
 
-            // Remove overlay
-            timerOverlay.remove();
+        // Small delay to let the ad tab open
+        setTimeout(() => {
+            if (adClicked) {
+                // Remove overlay
+                adOverlay.remove();
+                window.removeEventListener('blur', handleBlur);
 
-            // Submit free wish
-            submitFreeWish();
+                // Submit the free wish
+                submitFreeWish();
 
-            // Re-enable button
-            watchAdButton.disabled = false;
-            updateWatchAdButtonText();
-        }
-    }, 1000);
+                // Re-enable button
+                watchAdButton.disabled = false;
+                updateWatchAdButtonText();
+            }
+        }, 500);
+    };
+
+    window.addEventListener('blur', handleBlur);
+
+    // Cancel button handler
+    document.getElementById('cancelAdButton').addEventListener('click', () => {
+        adOverlay.remove();
+        window.removeEventListener('blur', handleBlur);
+        watchAdButton.disabled = false;
+        updateWatchAdButtonText();
+    });
 }
 
 /**
