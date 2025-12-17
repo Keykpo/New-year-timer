@@ -39,8 +39,33 @@
         @media (max-width: 768px) { .ad-desktop-only { display: none; } .ad-mobile-only { display: block; } }
     </style>
 
+    <!-- BlogPosting Schema -->
     <script type="application/ld+json">
-    {"@context": "https://schema.org", "@type": "Article", "headline": "How Different Cultures Celebrate New Year", "author": {"@type": "Organization", "name": "New Year Timers"}, "datePublished": "2025-12-01", "dateModified": "2025-12-13"}
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": "https://newyeartimers.com/blog/how-different-cultures-celebrate-new-year.html"},
+        "headline": "How Different Cultures Celebrate New Year",
+        "description": "Explore how different cultures around the world celebrate New Year.",
+        "image": "https://newyeartimers.com/og-image.jpg",
+        "author": {"@type": "Organization", "name": "New Year Timers", "url": "https://newyeartimers.com"},
+        "publisher": {"@type": "Organization", "name": "New Year Timers", "logo": {"@type": "ImageObject", "url": "https://newyeartimers.com/favicon.svg"}},
+        "datePublished": "2025-12-01",
+        "dateModified": "2025-12-17",
+        "articleSection": "Culture",
+        "inLanguage": "en"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://newyeartimers.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://newyeartimers.com/blog/"},
+            {"@type": "ListItem", "position": 3, "name": "Cultural Celebrations", "item": "https://newyeartimers.com/blog/how-different-cultures-celebrate-new-year.html"}
+        ]
+    }
     </script>
 </head>
 <body>
@@ -57,6 +82,14 @@
     </nav>
 
     <main class="blog-container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="../">Home</a></li>
+                <li><a href="./">Blog</a></li>
+                <li aria-current="page">Cultural Celebrations</li>
+            </ol>
+        </nav>
+
         <header class="article-header">
             <span class="article-category">Culture</span>
             <h1 class="article-title">How Different Cultures Celebrate New Year</h1>

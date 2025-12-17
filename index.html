@@ -54,11 +54,14 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@newyeartimers">
+    <meta name="twitter:creator" content="@newyeartimers">
     <meta name="twitter:url" content="https://newyeartimers.com/">
     <meta name="twitter:title" content="Countdown to New Year 2026 | Free Countdown Timer">
     <meta name="twitter:description" content="Free countdown timer to 2026! Live countdown shows days, hours, minutes until midnight. Real-time countdown with world map. Track the countdown!">
     <meta name="twitter:image" content="https://newyeartimers.com/twitter-image.jpg">
     <meta name="twitter:image:alt" content="New Year 2026 Free Online Countdown Timer with Live World Map">
+    <meta name="twitter:domain" content="newyeartimers.com">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -667,13 +670,50 @@
         }
     </script>
 
-    <!-- Mercado Pago SDK -->
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <!-- Mercado Pago SDK - Lazy loaded for better Core Web Vitals -->
+    <script>
+        // Load Mercado Pago SDK only when needed (user interaction)
+        window.loadMercadoPago = function() {
+            if (window.MercadoPago) return Promise.resolve();
+            return new Promise((resolve) => {
+                const script = document.createElement('script');
+                script.src = 'https://sdk.mercadopago.com/js/v2';
+                script.onload = resolve;
+                document.head.appendChild(script);
+            });
+        };
+    </script>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <!-- Firebase SDK - Deferred loading for better performance -->
+    <script>
+        // Load Firebase after page is interactive
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const firebaseScripts = [
+                    'https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js',
+                    'https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js',
+                    'https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js'
+                ];
+
+                function loadScript(src) {
+                    return new Promise((resolve) => {
+                        const script = document.createElement('script');
+                        script.src = src;
+                        script.onload = resolve;
+                        document.head.appendChild(script);
+                    });
+                }
+
+                // Load scripts sequentially
+                firebaseScripts.reduce((promise, src) => {
+                    return promise.then(() => loadScript(src));
+                }, Promise.resolve()).then(() => {
+                    // Dispatch event when Firebase is ready
+                    window.dispatchEvent(new Event('firebaseReady'));
+                });
+            }, 100); // Small delay to prioritize main content
+        });
+    </script>
 
     <!-- Vercel Speed Insights -->
     <script type="module">

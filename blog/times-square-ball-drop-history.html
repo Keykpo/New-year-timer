@@ -39,8 +39,33 @@
         @media (max-width: 768px) { .ad-desktop-only { display: none; } .ad-mobile-only { display: block; } }
     </style>
 
+    <!-- BlogPosting Schema -->
     <script type="application/ld+json">
-    {"@context": "https://schema.org", "@type": "Article", "headline": "Times Square Ball Drop History", "author": {"@type": "Organization", "name": "New Year Timers"}, "datePublished": "2025-12-01", "dateModified": "2025-12-13"}
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": "https://newyeartimers.com/blog/times-square-ball-drop-history.html"},
+        "headline": "Times Square Ball Drop History",
+        "description": "Discover the complete history of the Times Square Ball Drop since 1907.",
+        "image": "https://newyeartimers.com/og-image.jpg",
+        "author": {"@type": "Organization", "name": "New Year Timers", "url": "https://newyeartimers.com"},
+        "publisher": {"@type": "Organization", "name": "New Year Timers", "logo": {"@type": "ImageObject", "url": "https://newyeartimers.com/favicon.svg"}},
+        "datePublished": "2025-12-01",
+        "dateModified": "2025-12-17",
+        "articleSection": "History",
+        "inLanguage": "en"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://newyeartimers.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://newyeartimers.com/blog/"},
+            {"@type": "ListItem", "position": 3, "name": "Times Square Ball Drop", "item": "https://newyeartimers.com/blog/times-square-ball-drop-history.html"}
+        ]
+    }
     </script>
 </head>
 <body>
@@ -57,6 +82,14 @@
     </nav>
 
     <main class="blog-container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="../">Home</a></li>
+                <li><a href="./">Blog</a></li>
+                <li aria-current="page">Times Square Ball Drop</li>
+            </ol>
+        </nav>
+
         <header class="article-header">
             <span class="article-category">History</span>
             <h1 class="article-title">Times Square Ball Drop: A Complete History</h1>

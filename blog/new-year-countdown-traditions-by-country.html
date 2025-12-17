@@ -39,8 +39,33 @@
         @media (max-width: 768px) { .ad-desktop-only { display: none; } .ad-mobile-only { display: block; } }
     </style>
 
+    <!-- BlogPosting Schema -->
     <script type="application/ld+json">
-    {"@context": "https://schema.org", "@type": "Article", "headline": "New Year Countdown Traditions by Country", "author": {"@type": "Organization", "name": "New Year Timers"}, "datePublished": "2025-12-01", "dateModified": "2025-12-13"}
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": "https://newyeartimers.com/blog/new-year-countdown-traditions-by-country.html"},
+        "headline": "New Year Countdown Traditions by Country",
+        "description": "Discover unique countdown traditions from around the world at midnight.",
+        "image": "https://newyeartimers.com/og-image.jpg",
+        "author": {"@type": "Organization", "name": "New Year Timers", "url": "https://newyeartimers.com"},
+        "publisher": {"@type": "Organization", "name": "New Year Timers", "logo": {"@type": "ImageObject", "url": "https://newyeartimers.com/favicon.svg"}},
+        "datePublished": "2025-12-01",
+        "dateModified": "2025-12-17",
+        "articleSection": "Countdown",
+        "inLanguage": "en"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://newyeartimers.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://newyeartimers.com/blog/"},
+            {"@type": "ListItem", "position": 3, "name": "Countdown Traditions", "item": "https://newyeartimers.com/blog/new-year-countdown-traditions-by-country.html"}
+        ]
+    }
     </script>
 </head>
 <body>
@@ -57,6 +82,14 @@
     </nav>
 
     <main class="blog-container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="../">Home</a></li>
+                <li><a href="./">Blog</a></li>
+                <li aria-current="page">Countdown Traditions</li>
+            </ol>
+        </nav>
+
         <header class="article-header">
             <span class="article-category">Countdown</span>
             <h1 class="article-title">New Year Countdown Traditions by Country</h1>

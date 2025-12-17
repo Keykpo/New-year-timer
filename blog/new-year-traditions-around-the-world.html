@@ -48,17 +48,65 @@
         }
     </style>
 
-    <!-- Article Schema -->
+    <!-- BlogPosting Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Article",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://newyeartimers.com/blog/new-year-traditions-around-the-world.html"
+        },
         "headline": "New Year Traditions Around the World",
         "description": "Discover fascinating New Year traditions from around the world and how different cultures celebrate the arrival of a new year.",
-        "author": {"@type": "Organization", "name": "New Year Timers"},
-        "publisher": {"@type": "Organization", "name": "New Year Timers"},
+        "image": "https://newyeartimers.com/og-image.jpg",
+        "author": {
+            "@type": "Organization",
+            "name": "New Year Timers",
+            "url": "https://newyeartimers.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "New Year Timers",
+            "url": "https://newyeartimers.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://newyeartimers.com/favicon.svg"
+            }
+        },
         "datePublished": "2025-12-01",
-        "dateModified": "2025-12-13"
+        "dateModified": "2025-12-17",
+        "articleSection": "Traditions",
+        "wordCount": 1450,
+        "inLanguage": "en"
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://newyeartimers.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://newyeartimers.com/blog/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "New Year Traditions Around the World",
+                "item": "https://newyeartimers.com/blog/new-year-traditions-around-the-world.html"
+            }
+        ]
     }
     </script>
 </head>
@@ -77,6 +125,15 @@
     </nav>
 
     <main class="blog-container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="../">Home</a></li>
+                <li><a href="./">Blog</a></li>
+                <li aria-current="page">New Year Traditions</li>
+            </ol>
+        </nav>
+
         <!-- Article Header -->
         <header class="article-header">
             <span class="article-category">Traditions</span>
