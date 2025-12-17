@@ -861,446 +861,9 @@ function displayTimezoneInfo() {
 }
 
 // ====================================
-// GLOBAL MAP WITH TIMEZONES
+// MAP SECTION REMOVED FOR PERFORMANCE
 // ====================================
-
-/**
- * Country to Timezone Mapping
- *
- * This object maps ISO country codes to their primary timezone offset (from UTC).
- * Your SVG map should use these country codes as IDs for each <path> element.
- *
- * Format: "COUNTRY_CODE": { name: "Country Name", offset: UTC_OFFSET }
- *
- * Examples:
- * - <path id="US" d="..."/> for United States
- * - <path id="FR" d="..."/> for France
- * - <path id="AU" d="..."/> for Australia
- *
- * Note: Some countries span multiple timezones. This uses the primary/capital timezone.
- * You can add more specific regions like "US-PST", "US-EST", "RU-MSK", "RU-VLAT" if your
- * SVG map has separate paths for different regions of the same country.
- */
-const countryTimezones = {
-    // Pacific Islands (UTC+12 to +14)
-    "KI": { name: "Kiribati", offset: 14 },          // Line Islands
-    "NZ": { name: "New Zealand", offset: 13 },       // New Zealand
-    "FJ": { name: "Fiji", offset: 12 },              // Fiji
-    "NR": { name: "Nauru", offset: 12 },             // Nauru
-    "TV": { name: "Tuvalu", offset: 12 },            // Tuvalu
-    "MH": { name: "Marshall Islands", offset: 12 },  // Marshall Islands
-    "WF": { name: "Wallis and Futuna", offset: 12 }, // Wallis and Futuna
-
-    // Asia-Pacific (UTC+9 to +11)
-    "AU": { name: "Australia", offset: 11 },         // Eastern Australia (Sydney)
-    "SB": { name: "Solomon Islands", offset: 11 },   // Solomon Islands
-    "NC": { name: "New Caledonia", offset: 11 },     // New Caledonia
-    "PG": { name: "Papua New Guinea", offset: 10 },  // Papua New Guinea
-    "GU": { name: "Guam", offset: 10 },              // Guam
-    "JP": { name: "Japan", offset: 9 },              // Japan
-    "KR": { name: "South Korea", offset: 9 },        // South Korea
-    "KP": { name: "North Korea", offset: 9 },        // North Korea
-    "PW": { name: "Palau", offset: 9 },              // Palau
-
-    // Asia (UTC+5 to +8)
-    "CN": { name: "China", offset: 8 },              // China
-    "TW": { name: "Taiwan", offset: 8 },             // Taiwan
-    "PH": { name: "Philippines", offset: 8 },        // Philippines
-    "MY": { name: "Malaysia", offset: 8 },           // Malaysia
-    "SG": { name: "Singapore", offset: 8 },          // Singapore
-    "HK": { name: "Hong Kong", offset: 8 },          // Hong Kong
-    "MO": { name: "Macau", offset: 8 },              // Macau
-    "BN": { name: "Brunei", offset: 8 },             // Brunei
-    "MN": { name: "Mongolia", offset: 8 },           // Mongolia
-    "TH": { name: "Thailand", offset: 7 },           // Thailand
-    "VN": { name: "Vietnam", offset: 7 },            // Vietnam
-    "LA": { name: "Laos", offset: 7 },               // Laos
-    "KH": { name: "Cambodia", offset: 7 },           // Cambodia
-    "ID": { name: "Indonesia", offset: 7 },          // Indonesia (Western)
-    "MM": { name: "Myanmar", offset: 6.5 },          // Myanmar
-    "BD": { name: "Bangladesh", offset: 6 },         // Bangladesh
-    "BT": { name: "Bhutan", offset: 6 },             // Bhutan
-    "IN": { name: "India", offset: 5.5 },            // India
-    "LK": { name: "Sri Lanka", offset: 5.5 },        // Sri Lanka
-    "NP": { name: "Nepal", offset: 5.75 },           // Nepal
-    "PK": { name: "Pakistan", offset: 5 },           // Pakistan
-    "UZ": { name: "Uzbekistan", offset: 5 },         // Uzbekistan
-    "TJ": { name: "Tajikistan", offset: 5 },         // Tajikistan
-    "TM": { name: "Turkmenistan", offset: 5 },       // Turkmenistan
-    "AF": { name: "Afghanistan", offset: 4.5 },      // Afghanistan
-
-    // Middle East (UTC+2 to +4)
-    "AE": { name: "UAE", offset: 4 },                // UAE
-    "OM": { name: "Oman", offset: 4 },               // Oman
-    "GE": { name: "Georgia", offset: 4 },            // Georgia
-    "AM": { name: "Armenia", offset: 4 },            // Armenia
-    "AZ": { name: "Azerbaijan", offset: 4 },         // Azerbaijan
-    "IR": { name: "Iran", offset: 3.5 },             // Iran
-    "RU": { name: "Russia", offset: 3 },             // Russia (Moscow)
-    "SA": { name: "Saudi Arabia", offset: 3 },       // Saudi Arabia
-    "IQ": { name: "Iraq", offset: 3 },               // Iraq
-    "KW": { name: "Kuwait", offset: 3 },             // Kuwait
-    "BH": { name: "Bahrain", offset: 3 },            // Bahrain
-    "QA": { name: "Qatar", offset: 3 },              // Qatar
-    "YE": { name: "Yemen", offset: 3 },              // Yemen
-    "KE": { name: "Kenya", offset: 3 },              // Kenya
-    "ET": { name: "Ethiopia", offset: 3 },           // Ethiopia
-    "SO": { name: "Somalia", offset: 3 },            // Somalia
-    "IL": { name: "Israel", offset: 2 },             // Israel
-    "PS": { name: "Palestine", offset: 2 },          // Palestine
-    "JO": { name: "Jordan", offset: 2 },             // Jordan
-    "LB": { name: "Lebanon", offset: 2 },            // Lebanon
-    "SY": { name: "Syria", offset: 2 },              // Syria
-    "EG": { name: "Egypt", offset: 2 },              // Egypt
-    "ZA": { name: "South Africa", offset: 2 },       // South Africa
-    "BW": { name: "Botswana", offset: 2 },           // Botswana
-    "ZW": { name: "Zimbabwe", offset: 2 },           // Zimbabwe
-    "MZ": { name: "Mozambique", offset: 2 },         // Mozambique
-    "GR": { name: "Greece", offset: 2 },             // Greece
-    "RO": { name: "Romania", offset: 2 },            // Romania
-    "BG": { name: "Bulgaria", offset: 2 },           // Bulgaria
-    "TR": { name: "Turkey", offset: 3 },             // Turkey
-    "UA": { name: "Ukraine", offset: 2 },            // Ukraine
-    "FI": { name: "Finland", offset: 2 },            // Finland
-
-    // Europe (UTC+0 to +2)
-    "FR": { name: "France", offset: 1 },             // France
-    "DE": { name: "Germany", offset: 1 },            // Germany
-    "IT": { name: "Italy", offset: 1 },              // Italy
-    "ES": { name: "Spain", offset: 1 },              // Spain
-    "PT": { name: "Portugal", offset: 0 },           // Portugal
-    "PL": { name: "Poland", offset: 1 },             // Poland
-    "NL": { name: "Netherlands", offset: 1 },        // Netherlands
-    "BE": { name: "Belgium", offset: 1 },            // Belgium
-    "CH": { name: "Switzerland", offset: 1 },        // Switzerland
-    "AT": { name: "Austria", offset: 1 },            // Austria
-    "CZ": { name: "Czech Republic", offset: 1 },     // Czech Republic
-    "SK": { name: "Slovakia", offset: 1 },           // Slovakia
-    "HU": { name: "Hungary", offset: 1 },            // Hungary
-    "SI": { name: "Slovenia", offset: 1 },           // Slovenia
-    "HR": { name: "Croatia", offset: 1 },            // Croatia
-    "BA": { name: "Bosnia", offset: 1 },             // Bosnia
-    "RS": { name: "Serbia", offset: 1 },             // Serbia
-    "ME": { name: "Montenegro", offset: 1 },         // Montenegro
-    "MK": { name: "North Macedonia", offset: 1 },    // North Macedonia
-    "AL": { name: "Albania", offset: 1 },            // Albania
-    "SE": { name: "Sweden", offset: 1 },             // Sweden
-    "NO": { name: "Norway", offset: 1 },             // Norway
-    "DK": { name: "Denmark", offset: 1 },            // Denmark
-    "GB": { name: "United Kingdom", offset: 0 },     // UK
-    "IE": { name: "Ireland", offset: 0 },            // Ireland
-    "IS": { name: "Iceland", offset: 0 },            // Iceland
-
-    // Africa (UTC-1 to +3)
-    "MA": { name: "Morocco", offset: 0 },            // Morocco
-    "DZ": { name: "Algeria", offset: 1 },            // Algeria
-    "TN": { name: "Tunisia", offset: 1 },            // Tunisia
-    "LY": { name: "Libya", offset: 2 },              // Libya
-    "SD": { name: "Sudan", offset: 2 },              // Sudan
-    "NG": { name: "Nigeria", offset: 1 },            // Nigeria
-    "GH": { name: "Ghana", offset: 0 },              // Ghana
-    "CI": { name: "Ivory Coast", offset: 0 },        // Ivory Coast
-    "SN": { name: "Senegal", offset: 0 },            // Senegal
-    "ML": { name: "Mali", offset: 0 },               // Mali
-    "NE": { name: "Niger", offset: 1 },              // Niger
-    "TD": { name: "Chad", offset: 1 },               // Chad
-    "CM": { name: "Cameroon", offset: 1 },           // Cameroon
-    "AO": { name: "Angola", offset: 1 },             // Angola
-    "ZM": { name: "Zambia", offset: 2 },             // Zambia
-    "TZ": { name: "Tanzania", offset: 3 },           // Tanzania
-    "UG": { name: "Uganda", offset: 3 },             // Uganda
-    "RW": { name: "Rwanda", offset: 2 },             // Rwanda
-    "MG": { name: "Madagascar", offset: 3 },         // Madagascar
-
-    // Americas (UTC-10 to -3)
-    "US": { name: "United States", offset: -5 },     // USA (Eastern)
-    "CA": { name: "Canada", offset: -5 },            // Canada (Eastern)
-    "MX": { name: "Mexico", offset: -6 },            // Mexico (Central)
-    "BR": { name: "Brazil", offset: -3 },            // Brazil (Brasilia)
-    "AR": { name: "Argentina", offset: -3 },         // Argentina
-    "CL": { name: "Chile", offset: -3 },             // Chile
-    "PE": { name: "Peru", offset: -5 },              // Peru
-    "CO": { name: "Colombia", offset: -5 },          // Colombia
-    "VE": { name: "Venezuela", offset: -4 },         // Venezuela
-    "EC": { name: "Ecuador", offset: -5 },           // Ecuador
-    "BO": { name: "Bolivia", offset: -4 },           // Bolivia
-    "PY": { name: "Paraguay", offset: -4 },          // Paraguay
-    "UY": { name: "Uruguay", offset: -3 },           // Uruguay
-    "GY": { name: "Guyana", offset: -4 },            // Guyana
-    "SR": { name: "Suriname", offset: -3 },          // Suriname
-    "GF": { name: "French Guiana", offset: -3 },     // French Guiana
-    "PA": { name: "Panama", offset: -5 },            // Panama
-    "CR": { name: "Costa Rica", offset: -6 },        // Costa Rica
-    "NI": { name: "Nicaragua", offset: -6 },         // Nicaragua
-    "HN": { name: "Honduras", offset: -6 },          // Honduras
-    "GT": { name: "Guatemala", offset: -6 },         // Guatemala
-    "BZ": { name: "Belize", offset: -6 },            // Belize
-    "SV": { name: "El Salvador", offset: -6 },       // El Salvador
-    "CU": { name: "Cuba", offset: -5 },              // Cuba
-    "JM": { name: "Jamaica", offset: -5 },           // Jamaica
-    "HT": { name: "Haiti", offset: -5 },             // Haiti
-    "DO": { name: "Dominican Republic", offset: -4 },// Dominican Republic
-    "PR": { name: "Puerto Rico", offset: -4 },       // Puerto Rico
-
-    // Special regions (if you want to handle US/Canada/Russia timezones separately)
-    "US-EST": { name: "US Eastern", offset: -5 },
-    "US-CST": { name: "US Central", offset: -6 },
-    "US-MST": { name: "US Mountain", offset: -7 },
-    "US-PST": { name: "US Pacific", offset: -8 },
-    "US-AKST": { name: "Alaska", offset: -9 },
-    "US-HST": { name: "Hawaii", offset: -10 },
-    "RU-MSK": { name: "Moscow", offset: 3 },
-    "RU-VLAT": { name: "Vladivostok", offset: 10 },
-    "RU-KRAT": { name: "Krasnoyarsk", offset: 7 },
-    "CA-EST": { name: "Canada Eastern", offset: -5 },
-    "CA-CST": { name: "Canada Central", offset: -6 },
-    "CA-MST": { name: "Canada Mountain", offset: -7 },
-    "CA-PST": { name: "Canada Pacific", offset: -8 }
-};
-
-/**
- * Colors countries in the SVG map based on whether they've entered the new year
- */
-function updateMap() {
-    // Get the SVG element inside #world-map
-    const worldMapContainer = document.getElementById('world-map');
-
-    if (!worldMapContainer) {
-        console.warn('World map container not found. Make sure you have a div with id="world-map"');
-        return;
-    }
-
-    const svg = worldMapContainer.querySelector('svg');
-
-    if (!svg) {
-        console.warn('No SVG found inside #world-map. Please paste your SVG map inside the #world-map div.');
-        return;
-    }
-
-    // Get current UTC time
-    const now = new Date();
-    const currentYear = now.getFullYear();
-    const nextYear = currentYear + 1;
-    const newYearUTC = new Date(Date.UTC(nextYear, 0, 1, 0, 0, 0));
-
-    // Find all path elements with IDs (countries)
-    const paths = svg.querySelectorAll('path[id], g[id]');
-
-    if (paths.length === 0) {
-        console.warn('No paths with IDs found in the SVG. Make sure your country paths have id attributes like id="US", id="FR", etc.');
-        return;
-    }
-
-    // Track celebration progress
-    let totalTimezones = 0;
-    let celebratingTimezones = 0;
-
-    // Process each country path
-    paths.forEach(path => {
-        const countryCode = path.id.toUpperCase();
-
-        // Check if we have timezone data for this country
-        if (countryTimezones[countryCode]) {
-            const country = countryTimezones[countryCode];
-            totalTimezones++;
-
-            // Calculate if this timezone has already entered the new year
-            // New Year happens at different times in UTC depending on timezone offset
-            const timezoneNewYear = new Date(newYearUTC.getTime() - (country.offset * 60 * 60 * 1000));
-            const hasCelebrated = now >= timezoneNewYear;
-
-            if (hasCelebrated) {
-                celebratingTimezones++;
-            }
-
-            // Apply color classes
-            path.classList.remove('celebrating', 'waiting');
-            path.classList.add('country-path');
-
-            if (hasCelebrated) {
-                path.classList.add('celebrating');
-                // Add celebration animation class for countries that just entered
-                path.classList.add('celebrating-animation');
-            } else {
-                path.classList.add('waiting');
-            }
-
-            // Add or update tooltip
-            let title = path.querySelector('title');
-            if (!title) {
-                title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-                path.appendChild(title);
-            }
-
-            const offsetString = country.offset >= 0 ? `+${country.offset}` : `${country.offset}`;
-            const status = hasCelebrated ? '🎉 Already in 2026!' : '⏳ Still waiting...';
-            title.textContent = `${country.name} (UTC${offsetString})\n${status}`;
-
-            // Add cursor pointer style
-            path.style.cursor = 'pointer';
-        } else {
-            // Country not in our timezone database - apply default styling
-            path.classList.add('country-path', 'waiting');
-            path.style.cursor = 'default';
-        }
-    });
-
-    // Update progress counter
-    updateProgressCounter(celebratingTimezones, totalTimezones);
-}
-
-/**
- * Update the progress counter showing how many timezones have entered 2026
- */
-function updateProgressCounter(celebrating, total) {
-    let progressElement = document.getElementById('timezone-progress');
-
-    if (!progressElement) {
-        // Create progress element if it doesn't exist
-        const mapTitle = document.querySelector('.map-title');
-        if (mapTitle) {
-            progressElement = document.createElement('p');
-            progressElement.id = 'timezone-progress';
-            progressElement.className = 'timezone-progress';
-            mapTitle.insertAdjacentElement('afterend', progressElement);
-        }
-    }
-
-    if (progressElement && total > 0) {
-        const percentage = Math.round((celebrating / total) * 100);
-        const lang = detectLanguage();
-
-        const messages = {
-            en: `🌍 ${celebrating} of ${total} timezones have entered 2026 (${percentage}%)`,
-            es: `🌍 ${celebrating} de ${total} zonas horarias ya están en 2026 (${percentage}%)`,
-            pt: `🌍 ${celebrating} de ${total} fusos horários já estão em 2026 (${percentage}%)`,
-            fr: `🌍 ${celebrating} de ${total} fuseaux horaires sont déjà en 2026 (${percentage}%)`
-        };
-
-        progressElement.textContent = messages[lang] || messages.en;
-    }
-}
-
-// ====================================
-// LAZY LOADING - MAP INTERSECTION OBSERVER
-// ====================================
-
-let mapLoaded = false;
-let mapUpdateInterval = null;
-
-/**
- * Load and inject the world map SVG dynamically
- */
-async function loadWorldMap() {
-    if (mapLoaded) return; // Prevent loading twice
-
-    const worldMapContainer = document.getElementById('world-map');
-    if (!worldMapContainer) {
-        console.warn('World map container (#world-map) not found');
-        return;
-    }
-
-    try {
-        // Fetch the SVG from external file
-        const response = await fetch('BlankMap-World.svg');
-        if (!response.ok) {
-            throw new Error(`Failed to load map: ${response.status}`);
-        }
-
-        const svgText = await response.text();
-
-        // Remove loading placeholder
-        const placeholder = worldMapContainer.querySelector('.map-loading-placeholder');
-        if (placeholder) {
-            placeholder.remove();
-        }
-
-        // Inject the SVG into the container
-        worldMapContainer.innerHTML = svgText;
-
-        mapLoaded = true;
-
-        // Initialize map coloring immediately after loading
-        setTimeout(() => {
-            updateMap();
-
-            // Set up interval to update map colors every minute
-            if (mapUpdateInterval) clearInterval(mapUpdateInterval);
-            mapUpdateInterval = setInterval(updateMap, 60000);
-        }, 100);
-    } catch (error) {
-        console.error('❌ Error loading world map:', error);
-
-        // Check if it's a CORS error (common when opening file:// locally)
-        const isCORSError = error.message.includes('Failed to fetch') ||
-                           error.message.includes('CORS') ||
-                           window.location.protocol === 'file:';
-
-        if (isCORSError) {
-            worldMapContainer.innerHTML = `
-                <div style="text-align: center; padding: 2rem; color: #fbbf24; background: rgba(251, 146, 60, 0.1); border-radius: 1rem; border: 2px solid rgba(251, 146, 60, 0.3);">
-                    <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">🗺️ Map Loading Blocked</h3>
-                    <p style="margin-bottom: 1rem; color: #cbd5e1;">To see the interactive world map, you need to run a local server.</p>
-
-                    <div style="text-align: left; max-width: 500px; margin: 1.5rem auto; padding: 1rem; background: rgba(15, 23, 42, 0.6); border-radius: 0.5rem;">
-                        <p style="font-weight: 600; margin-bottom: 0.5rem; color: #fbbf24;">Windows:</p>
-                        <code style="display: block; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 0.25rem; color: #10b981;">
-                            Double-click start-server.bat
-                        </code>
-
-                        <p style="font-weight: 600; margin: 1rem 0 0.5rem; color: #fbbf24;">Mac/Linux:</p>
-                        <code style="display: block; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 0.25rem; color: #10b981;">
-                            ./start-server.sh
-                        </code>
-                    </div>
-
-                    <p style="font-size: 0.9rem; color: #94a3b8;">Then open: <strong style="color: #60a5fa;">http://localhost:8000</strong></p>
-                </div>
-            `;
-        } else {
-            worldMapContainer.innerHTML = `
-                <div style="text-align: center; padding: 2rem; color: #ef4444;">
-                    <p>⚠️ Error loading world map: ${error.message}</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #94a3b8;">Please check the console for details.</p>
-                </div>
-            `;
-        }
-    }
-}
-
-/**
- * Setup Intersection Observer for lazy loading the map
- */
-function setupMapLazyLoading() {
-    const mapSection = document.querySelector('.map-section');
-
-    if (!mapSection) {
-        console.warn('Map section not found');
-        return;
-    }
-
-    // Create Intersection Observer with options
-    const observerOptions = {
-        root: null, // viewport
-        rootMargin: '200px', // Load 200px before entering viewport
-        threshold: 0 // Trigger as soon as any part is visible
-    };
-
-    const observerCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !mapLoaded) {
-                // Map section is about to be visible - load it!
-                loadWorldMap();
-
-                // Stop observing once loaded
-                observer.unobserve(entry.target);
-            }
-        });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    observer.observe(mapSection);
-}
+// The world map was removed to improve page load speed
 
 // ====================================
 // FIREBASE CONFIGURATION
@@ -1990,14 +1553,19 @@ async function handleRewardedAd() {
     const wishText = document.getElementById('wishText').value.trim();
     const wishAuthor = document.getElementById('wishAuthor').value.trim();
 
+    // Detect current language
+    const lang = detectLanguage();
+    const isSpanish = lang === 'es';
+
     // Validate form
     if (!wishText || !wishAuthor) {
-        alert(currentLang === 'es' ? 'Por favor, completa tu deseo y nombre primero.' : 'Please fill in your wish and name first.');
+        alert(isSpanish ? 'Por favor, completa tu deseo y nombre primero.' : 'Please fill in your wish and name first.');
         return;
     }
 
     // Disable button
     watchAdButton.disabled = true;
+    watchAdButton.textContent = '⏳ Loading...';
 
     // Create timer overlay
     const timerOverlay = document.createElement('div');
@@ -2005,10 +1573,10 @@ async function handleRewardedAd() {
     timerOverlay.innerHTML = `
         <div class="ad-timer-content">
             <div class="ad-timer-icon">🎬</div>
-            <h3 class="ad-timer-title">${currentLang === 'es' ? '¡Gracias por apoyarnos!' : 'Thanks for supporting us!'}</h3>
-            <p class="ad-timer-text">${currentLang === 'es' ? 'Tu deseo estará listo en:' : 'Your wish will be ready in:'}</p>
+            <h3 class="ad-timer-title">${isSpanish ? '¡Gracias por apoyarnos!' : 'Thanks for supporting us!'}</h3>
+            <p class="ad-timer-text">${isSpanish ? 'Tu deseo estará listo en:' : 'Your wish will be ready in:'}</p>
             <div class="ad-timer-countdown">15</div>
-            <p class="ad-timer-note">${currentLang === 'es' ? 'Por favor espera mientras se carga el anuncio' : 'Please wait while the ad loads'}</p>
+            <p class="ad-timer-note">${isSpanish ? 'Por favor espera mientras se carga el anuncio' : 'Please wait while the ad loads'}</p>
         </div>
     `;
     document.body.appendChild(timerOverlay);
@@ -2053,7 +1621,8 @@ async function handleRewardedAd() {
 function updateWatchAdButtonText() {
     const watchAdButton = document.getElementById('watchAdButton');
     if (watchAdButton) {
-        const t = translations[currentLang] || translations.en;
+        const lang = detectLanguage();
+        const t = translations[lang] || translations.en;
         watchAdButton.textContent = t.watchAdButton || '🎬 Watch Ad & Make Free Wish';
     }
 }
@@ -2068,6 +1637,9 @@ async function submitFreeWish() {
     if (!wishText || !wishAuthor) {
         return;
     }
+
+    const lang = detectLanguage();
+    const isSpanish = lang === 'es';
 
     // Create wish object for free tier (Star tier)
     const wish = {
@@ -2088,7 +1660,7 @@ async function submitFreeWish() {
         closeModal();
 
         // Show success message
-        const successMsg = currentLang === 'es'
+        const successMsg = isSpanish
             ? '¡Tu deseo ha sido guardado! ✨'
             : 'Your wish has been saved! ✨';
         alert(successMsg);
@@ -2097,7 +1669,10 @@ async function submitFreeWish() {
         loadWishesFromFirebase();
     } catch (error) {
         console.error('Error saving free wish:', error);
-        alert('Error saving wish. Please try again.');
+        const errorMsg = isSpanish
+            ? 'Error al guardar el deseo. Por favor intenta de nuevo.'
+            : 'Error saving wish. Please try again.';
+        alert(errorMsg);
     }
 }
 
@@ -3150,19 +2725,16 @@ async function init() {
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // 6. Setup lazy loading for map (will load when user scrolls to it)
-    setupMapLazyLoading();
-
-    // 7. Initialize wishes wall
+    // 6. Initialize wishes wall
     initWishesWall();
 
-    // 8. Setup view wish modal
+    // 7. Setup view wish modal
     setupViewWishModal();
 
-    // 9. Setup dark mode toggle
+    // 8. Setup dark mode toggle
     setupDarkMode();
 
-    // 10. Setup scroll button to Star wishes
+    // 9. Setup scroll button to Star wishes
     setupScrollToStarWishes();
 }
 

@@ -400,61 +400,6 @@
             </div>
         </div>
 
-        <!-- Global Map Section -->
-        <section class="map-section">
-            <h2 class="map-title" data-i18n="mapTitle">These places are already in 2026!</h2>
-            <div class="map-container">
-                <!--
-                    ========================================
-                    PASTE YOUR WORLD MAP SVG HERE
-                    ========================================
-
-                    Instructions:
-                    1. Get an SVG world map (see README instructions)
-                    2. Make sure each country <path> has an id attribute with ISO country codes
-                       Examples: id="US", id="FR", id="AU", id="BR", id="JP", etc.
-                    3. Paste the entire <svg>...</svg> code below this comment
-                    4. The script will automatically color countries based on their timezone
-
-                    Example structure:
-                    <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
-                        <path id="US" d="M123,456 L789,123..."/>
-                        <path id="FR" d="M456,789 L123,456..."/>
-                        ...
-                    </svg>
-                -->
-
-                <div id="world-map">
-                    <!-- SVG will be lazy-loaded here by Intersection Observer -->
-                    <div class="map-loading-placeholder" style="display: flex; justify-content: center; align-items: center; min-height: 400px; color: #94a3b8; font-size: 1.1rem;">
-                        <p>🗺️ Loading world map...</p>
-                    </div>
-                </div>
-            <div class="legend">
-                <div class="legend-item">
-                    <span class="legend-color" style="background-color: #ff6b35;"></span>
-                    <span class="legend-text" data-i18n="alreadyCelebrating">Already celebrating 2026</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-color" style="background-color: #cbd5e1; border: 1px solid #94a3b8;"></span>
-                    <span class="legend-text" data-i18n="stillWaiting">Still waiting</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Ad Unit #4 - After map section (300x250 Rectangle) - Adsterra -->
-        <div class="ad-container ad-after-map">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : 'b4e7bd609de3becbbeb486a4337be4b6',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="https://boardingstocking.com/b4e7bd609de3becbbeb486a4337be4b6/invoke.js"></script>
-        </div>
 
         <!-- Wish Modal -->
         <div class="modal-overlay" id="wishModal">
