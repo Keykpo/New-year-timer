@@ -42,10 +42,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7982216026691433" crossorigin="anonymous"></script>
+    <!-- Adsterra Ads (temporary until AdSense approval) -->
 
     <link rel="stylesheet" href="blog.css">
+
+    <style>
+        /* Responsive ad visibility */
+        .ad-desktop-only { display: block; }
+        .ad-mobile-only { display: none; }
+        @media (max-width: 768px) {
+            .ad-desktop-only { display: none; }
+            .ad-mobile-only { display: block; }
+        }
+    </style>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -87,15 +96,34 @@
             <p class="blog-subtitle">Discover traditions, party ideas, and celebration guides to make your New Year 2026 unforgettable</p>
         </header>
 
-        <!-- Top Ad - Google AdSense -->
+        <!-- Top Ad - Adsterra 728x90 Leaderboard -->
         <div class="ad-container ad-top">
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-7982216026691433"
-                data-ad-slot="2968493398"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Desktop: 728x90 -->
+            <div class="ad-desktop-only">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '08a36f7fdc0f3e1de7733e2a0c6eb7d5',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://boardingstocking.com/08a36f7fdc0f3e1de7733e2a0c6eb7d5/invoke.js"></script>
+            </div>
+            <!-- Mobile: 320x50 -->
+            <div class="ad-mobile-only">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'e1c72add601a0c03e95b0e5317d05bd9',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://boardingstocking.com/e1c72add601a0c03e95b0e5317d05bd9/invoke.js"></script>
+            </div>
         </div>
 
         <!-- Articles Grid -->
@@ -341,15 +369,18 @@
             </article>
         </section>
 
-        <!-- Bottom Ad - Google AdSense -->
+        <!-- Bottom Ad - Adsterra 300x250 Rectangle -->
         <div class="ad-container ad-middle">
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-7982216026691433"
-                data-ad-slot="2968493398"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'b4e7bd609de3becbbeb486a4337be4b6',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="https://boardingstocking.com/b4e7bd609de3becbbeb486a4337be4b6/invoke.js"></script>
         </div>
 
         <!-- CTA Section -->
@@ -393,5 +424,7 @@
         });
     </script>
 
+    <!-- Adsterra Popunder - High Revenue Ad -->
+    <script type="text/javascript" src="https://boardingstocking.com/c8/ea/82/c8ea82a6d1f38742c4beaecb52db455c.js"></script>
 </body>
 </html>
