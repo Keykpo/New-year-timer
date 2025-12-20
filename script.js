@@ -1765,6 +1765,22 @@ async function openModal() {
         priceElement.textContent = `$${currentPrice} USD`;
     }
 
+    // Show/hide free wish option based on tier
+    // Founder tier ($3.99) = payment required, no free option
+    // Star tier ($0.99) = can watch ad for free
+    const rewardedAdSection = document.querySelector('.rewarded-ad-section');
+    const paymentDivider = document.querySelector('.payment-divider');
+
+    if (currentTier === 'founder') {
+        // Hide free wish option for founder tier
+        if (rewardedAdSection) rewardedAdSection.style.display = 'none';
+        if (paymentDivider) paymentDivider.style.display = 'none';
+    } else {
+        // Show free wish option for star tier
+        if (rewardedAdSection) rewardedAdSection.style.display = 'block';
+        if (paymentDivider) paymentDivider.style.display = 'flex';
+    }
+
     // Detect user's country
     const userCountry = await getUserCountry();
 
