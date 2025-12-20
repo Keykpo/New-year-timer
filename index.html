@@ -257,6 +257,35 @@
             </button>
         </section>
 
+        <!-- Adsterra Banner Ad - After Countdown -->
+        <div class="ad-container" style="text-align: center; margin: 1.5rem auto; max-width: 728px;">
+            <!-- Desktop Banner 728x90 -->
+            <div class="ad-desktop" style="display: none;">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '08a36f7fdc0f3e1de7733e2a0c6eb7d5',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://boardingstocking.com/08a36f7fdc0f3e1de7733e2a0c6eb7d5/invoke.js"></script>
+            </div>
+            <!-- Mobile Banner 320x50 -->
+            <div class="ad-mobile" style="display: none;">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'e1c72add601a0c03e95b0e5317d05bd9',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://boardingstocking.com/e1c72add601a0c03e95b0e5317d05bd9/invoke.js"></script>
+            </div>
+        </div>
 
         <!-- Wishes Constellation Section -->
         <section class="constellation-section">
@@ -406,6 +435,20 @@
             </div>
         </div>
 
+        <!-- Adsterra Banner Ad - Before SEO Content -->
+        <div class="ad-container" style="text-align: center; margin: 2rem auto; max-width: 300px;">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'b4e7bd609de3becbbeb486a4337be4b6',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="https://boardingstocking.com/b4e7bd609de3becbbeb486a4337be4b6/invoke.js"></script>
+        </div>
+
         <!-- SEO Content Section -->
         <section class="seo-content" style="max-width: 900px; margin: 3rem auto; padding: 2rem; text-align: left; color: #64748b; font-size: 0.95rem; line-height: 1.7;">
             <h2 style="color: #334155; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 600;">Free Countdown Timer to New Year 2026</h2>
@@ -511,6 +554,20 @@
             </p>
         </section>
 
+        <!-- Adsterra Banner Ad - Before Footer -->
+        <div class="ad-container" style="text-align: center; margin: 2rem auto; max-width: 468px;">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '2e99cf845ac2a35f1832b646a497f149',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="https://boardingstocking.com/2e99cf845ac2a35f1832b646a497f149/invoke.js"></script>
+        </div>
+
         <!-- Footer -->
         <footer>
             <p data-i18n="footer">Happy New Year from around the world! 🎉</p>
@@ -592,5 +649,22 @@
     </script>
 
     <script src="script.js"></script>
+
+    <!-- Adsterra Responsive Ads Script -->
+    <script>
+        // Show/hide ads based on screen width
+        function updateResponsiveAds() {
+            const isMobile = window.innerWidth < 768;
+            document.querySelectorAll('.ad-desktop').forEach(el => {
+                el.style.display = isMobile ? 'none' : 'block';
+            });
+            document.querySelectorAll('.ad-mobile').forEach(el => {
+                el.style.display = isMobile ? 'block' : 'none';
+            });
+        }
+        // Run on load and resize
+        updateResponsiveAds();
+        window.addEventListener('resize', updateResponsiveAds);
+    </script>
 </body>
 </html>

@@ -876,29 +876,55 @@ function displayTimezoneInfo() {
 
 // Initialize Firebase
 let database;
-try {
-    if (typeof FIREBASE_CONFIG !== 'undefined') {
-        // Check if Firebase is already configured
-        if (FIREBASE_CONFIG.apiKey === 'YOUR_API_KEY') {
-            console.warn('⚠️ Firebase not configured. Please update config.js with your Firebase credentials');
-        } else {
-            firebase.initializeApp(FIREBASE_CONFIG);
-            database = firebase.database();
+let firebaseInitialized = false;
 
-            // Sign in anonymously to allow test wishes to be written to database
-            firebase.auth().signInAnonymously()
-                .then(() => {
-                    console.log('✅ Firebase authenticated anonymously for test wishes');
-                })
-                .catch((error) => {
-                    console.error('❌ Firebase auth error:', error);
-                });
+function initializeFirebase() {
+    if (firebaseInitialized) return;
+
+    try {
+        if (typeof firebase === 'undefined') {
+            console.warn('⚠️ Firebase SDK not loaded yet');
+            return;
         }
-    } else {
-        console.error('❌ Firebase configuration not found. Make sure config.js is loaded');
+
+        if (typeof FIREBASE_CONFIG !== 'undefined') {
+            // Check if Firebase is already configured
+            if (FIREBASE_CONFIG.apiKey === 'YOUR_API_KEY') {
+                console.warn('⚠️ Firebase not configured. Please update config.js with your Firebase credentials');
+            } else {
+                firebase.initializeApp(FIREBASE_CONFIG);
+                database = firebase.database();
+                firebaseInitialized = true;
+                console.log('✅ Firebase initialized successfully');
+
+                // Sign in anonymously to allow test wishes to be written to database
+                firebase.auth().signInAnonymously()
+                    .then(() => {
+                        console.log('✅ Firebase authenticated anonymously for test wishes');
+                        // Reload wishes from Firebase after authentication
+                        if (typeof loadWishesFromFirebase === 'function') {
+                            console.log('🔄 Loading wishes from Firebase after authentication...');
+                            loadWishesFromFirebase();
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('❌ Firebase auth error:', error);
+                    });
+            }
+        } else {
+            console.error('❌ Firebase configuration not found. Make sure config.js is loaded');
+        }
+    } catch (error) {
+        console.error('❌ Firebase initialization error:', error);
     }
-} catch (error) {
-    console.error('❌ Firebase initialization error:', error);
+}
+
+// Wait for Firebase SDK to load before initializing
+window.addEventListener('firebaseReady', initializeFirebase);
+
+// Also try to initialize if Firebase is already loaded (fallback)
+if (typeof firebase !== 'undefined') {
+    initializeFirebase();
 }
 
 // ====================================
@@ -1669,6 +1695,15 @@ async function submitFreeWish() {
     const lang = detectLanguage();
     const isSpanish = lang === 'es';
 
+    // Check if Firebase is ready
+    if (!database || !firebaseInitialized) {
+        const loadingMsg = isSpanish
+            ? 'Cargando... Por favor espera unos segundos e intenta de nuevo.'
+            : 'Loading... Please wait a few seconds and try again.';
+        alert(loadingMsg);
+        return;
+    }
+
     // Find next available slot for star tier (free wishes)
     const assignedSlot = findNextAvailableSlot('star');
 
@@ -1874,7 +1909,37 @@ async function checkMercadoPagoReturn() {
         const pendingWishData = localStorage.getItem('pendingMercadoPagoWish');
 
         if (pendingWishData) {
+            // Wait for Firebase to be ready before saving
+            const waitForFirebase = () => {
+                return new Promise((resolve) => {
+                    if (database && firebaseInitialized) {
+                        resolve();
+                    } else {
+                        console.log('⏳ Waiting for Firebase to initialize...');
+                        const checkInterval = setInterval(() => {
+                            if (database && firebaseInitialized) {
+                                clearInterval(checkInterval);
+                                resolve();
+                            }
+                        }, 500);
+                        // Timeout after 10 seconds
+                        setTimeout(() => {
+                            clearInterval(checkInterval);
+                            resolve();
+                        }, 10000);
+                    }
+                });
+            };
+
             try {
+                await waitForFirebase();
+
+                if (!database || !firebaseInitialized) {
+                    console.error('❌ Firebase not available after waiting');
+                    alert('Error de conexión. Por favor recarga la página e intenta de nuevo.');
+                    return;
+                }
+
                 const wishData = JSON.parse(pendingWishData);
                 console.log('📦 Found pending wish data:', wishData);
 
@@ -2199,6 +2264,12 @@ async function handleSuccessfulPayment() {
 
     if (!wishText || !author || !currentSlot || !currentTier) {
         alert('Error: Missing or invalid wish data');
+        return;
+    }
+
+    // Check if Firebase is ready
+    if (!database || !firebaseInitialized) {
+        alert('Loading... Please wait a few seconds and try again.');
         return;
     }
 
