@@ -3063,3 +3063,37 @@ body.dark-mode .ad-after-wishes {
         padding: 5px;
     }
 }
+
+/* ====================================
+   ADSTERRA SIDEBAR ADS
+   ==================================== */
+
+.ad-sidebar {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: none; /* Hidden by default, shown on large screens */
+}
+
+.ad-sidebar-left {
+    left: 10px;
+}
+
+.ad-sidebar-right {
+    right: 10px;
+}
+
+/* Show sidebars only on screens wide enough (1400px+) */
+@media (min-width: 1400px) {
+    .ad-sidebar {
+        display: block;
+    }
+}
+
+/* Hide on smaller screens */
+@media (max-width: 1399px) {
+    .ad-sidebar {
+        display: none !important;
+    }
+}
