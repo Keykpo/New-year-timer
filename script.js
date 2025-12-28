@@ -908,7 +908,12 @@ function initializeFirebase() {
                         }
                     })
                     .catch((error) => {
-                        console.error('❌ Firebase auth error:', error);
+                        console.warn('⚠️ Firebase auth failed (anonymous auth may not be enabled):', error.code);
+                        // Still load wishes from Firebase even without auth (read-only mode)
+                        if (typeof loadWishesFromFirebase === 'function') {
+                            console.log('🔄 Loading wishes from Firebase in read-only mode...');
+                            loadWishesFromFirebase();
+                        }
                     });
             }
         } else {
