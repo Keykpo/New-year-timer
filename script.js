@@ -1613,26 +1613,22 @@ async function handleRewardedAd() {
     `;
     document.body.appendChild(adOverlay);
 
-    // Load Adsterra banner ad (300x250)
+    // Load Google AdSense banner ad (300x250) - CUADRADO
     const bannerContainer = document.getElementById('rewardedAdBanner');
-    const adScript = document.createElement('script');
-    adScript.type = 'text/javascript';
-    adScript.innerHTML = `
-        atOptions = {
-            'key' : 'b4e7bd609de3becbbeb486a4337be4b6',
-            'format' : 'iframe',
-            'height' : 250,
-            'width' : 300,
-            'params' : {}
-        };
-    `;
     bannerContainer.innerHTML = '';
-    bannerContainer.appendChild(adScript);
 
-    const invokeScript = document.createElement('script');
-    invokeScript.type = 'text/javascript';
-    invokeScript.src = 'https://boardingstocking.com/b4e7bd609de3becbbeb486a4337be4b6/invoke.js';
-    bannerContainer.appendChild(invokeScript);
+    // Create AdSense ad element
+    const adIns = document.createElement('ins');
+    adIns.className = 'adsbygoogle';
+    adIns.style.cssText = 'display:inline-block;width:300px;height:250px';
+    adIns.setAttribute('data-ad-client', 'ca-pub-7982216026691433');
+    adIns.setAttribute('data-ad-slot', '7090526020'); // CUADRADO slot
+    bannerContainer.appendChild(adIns);
+
+    // Push the ad
+    const adScript = document.createElement('script');
+    adScript.innerHTML = '(adsbygoogle = window.adsbygoogle || []).push({});';
+    bannerContainer.appendChild(adScript);
 
     // Track if ad was clicked (window loses focus when ad opens in new tab)
     let adClicked = false;
