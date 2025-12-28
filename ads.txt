@@ -621,6 +621,7 @@ smartadserver.com, 4865, RESELLER
 
 #Google AdSense
 google.com, pub-6022628118304495, DIRECT, f08c47fec0942fa0
+google.com, pub-7982216026691433, DIRECT, f08c47fec0942fa0
 
 #E-Planning
 e-planning.net, 161ebfe76aea73c3, DIRECT, c1ba615865ed87b2
