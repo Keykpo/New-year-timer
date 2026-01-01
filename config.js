@@ -112,7 +112,7 @@ const SITE_CONFIG = {
     domain: 'newyeartimers.com',
 
     // Site name
-    siteName: "New Year's Timer 2026",
+    siteName: "New Year's Timer 2027",
 
     // Contact email
     contactEmail: 'francisarroyo20@gmail.com'

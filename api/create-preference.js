@@ -72,7 +72,7 @@ module.exports = async (req, res) => {
         const preference = {
             items: [
                 {
-                    title: `New Year 2026 Wish - ${tier === 'founder' ? 'Founder' : 'Star'} Tier`,
+                    title: `New Year 2027 Wish - ${tier === 'founder' ? 'Founder' : 'Star'} Tier`,
                     description: wishText,
                     quantity: 1,
                     unit_price: finalAmount,
