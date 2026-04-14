@@ -1630,10 +1630,27 @@ async function handleRewardedAd() {
     adIns.setAttribute('data-ad-slot', '7090526020'); // CUADRADO slot
     bannerContainer.appendChild(adIns);
 
-    // Push the ad
-    const adScript = document.createElement('script');
-    adScript.innerHTML = '(adsbygoogle = window.adsbygoogle || []).push({});';
-    bannerContainer.appendChild(adScript);
+    // Push the ad directly (dynamic script injection doesn't work reliably)
+    try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+        console.warn('AdSense push error:', e);
+    }
+
+    // Fallback: if ad doesn't render in 3s, show a support message instead
+    setTimeout(() => {
+        const ins = bannerContainer.querySelector('ins.adsbygoogle');
+        const adRendered = ins && ins.getAttribute('data-ad-status') === 'filled';
+        if (!adRendered) {
+            bannerContainer.innerHTML = `
+                <div style="width:300px;height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border:2px dashed #ffd700;border-radius:12px;padding:16px;text-align:center;box-sizing:border-box;">
+                    <span style="font-size:2rem;">🙏</span>
+                    <p style="color:#ffd700;font-weight:bold;margin:0;font-size:1rem;">${isSpanish ? '¡Apoya el proyecto!' : 'Support the project!'}</p>
+                    <p style="color:#ccc;margin:0;font-size:0.85rem;">${isSpanish ? 'El anuncio no pudo cargar. Puedes enviar tu deseo igual haciendo click aquí.' : "The ad couldn't load. You can still send your wish by clicking below."}</p>
+                    <button onclick="submitFreeWish(); document.getElementById('adClickOverlay').remove();" style="background:#ffd700;color:#000;border:none;border-radius:8px;padding:10px 20px;font-weight:bold;cursor:pointer;font-size:0.9rem;">${isSpanish ? 'Enviar deseo de todas formas' : 'Send wish anyway'}</button>
+                </div>`;
+        }
+    }, 3000);
 
     // Track if ad was clicked (window loses focus when ad opens in new tab)
     let adClicked = false;
