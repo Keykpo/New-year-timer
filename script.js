@@ -1769,50 +1769,45 @@ async function submitFreeWish() {
  */
 async function openModal() {
     const modal = document.getElementById('wishModal');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
 
-    // Clear form
+    // Prepare content before triggering animation to avoid layout thrashing
     document.getElementById('wishText').value = '';
     document.getElementById('wishAuthor').value = '';
     document.getElementById('charCount').textContent = '0';
 
-    // Update price display
     const priceElement = document.querySelector('.price-amount');
     if (priceElement) {
         priceElement.textContent = `$${currentPrice} USD`;
     }
 
-    // Show/hide free wish option based on tier
-    // Founder tier ($3.99) = payment required, no free option
-    // Star tier ($0.99) = can watch ad for free
     const rewardedAdSection = document.querySelector('.rewarded-ad-section');
     const paymentDivider = document.querySelector('.payment-divider');
-
     if (currentTier === 'founder') {
-        // Hide free wish option for founder tier
         if (rewardedAdSection) rewardedAdSection.style.display = 'none';
         if (paymentDivider) paymentDivider.style.display = 'none';
     } else {
-        // Show free wish option for star tier
         if (rewardedAdSection) rewardedAdSection.style.display = 'block';
         if (paymentDivider) paymentDivider.style.display = 'flex';
     }
 
-    // Detect user's country
-    const userCountry = await getUserCountry();
+    // Trigger animation after DOM is ready
+    requestAnimationFrame(() => {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
 
-    // Initialize PayPal button (always shown)
-    initPayPalButton();
-
-    // Initialize Mercado Pago button only for Argentina
-    const mpContainer = document.getElementById('mercadopago-button-container');
-    if (userCountry === 'AR') {
-        mpContainer.style.display = 'block';
-        initMercadoPagoButton();
-    } else {
-        mpContainer.style.display = 'none';
-    }
+    // Defer heavy async work until after the animation frame
+    requestAnimationFrame(async () => {
+        const userCountry = await getUserCountry();
+        initPayPalButton();
+        const mpContainer = document.getElementById('mercadopago-button-container');
+        if (userCountry === 'AR') {
+            mpContainer.style.display = 'block';
+            initMercadoPagoButton();
+        } else {
+            mpContainer.style.display = 'none';
+        }
+    });
 }
 
 /**

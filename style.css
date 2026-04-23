@@ -1926,15 +1926,16 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.72);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.25s ease;
+    will-change: opacity;
+    transform: translateZ(0);
 }
 
 .modal-overlay.active {
@@ -1951,12 +1952,13 @@ footer {
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    transform: scale(0.95);
-    transition: transform 0.3s ease;
+    transform: scale(0.95) translateZ(0);
+    transition: transform 0.25s ease;
+    will-change: transform;
 }
 
 .modal-overlay.active .modal-content {
-    transform: scale(1);
+    transform: scale(1) translateZ(0);
 }
 
 .modal-header {
@@ -1991,7 +1993,7 @@ footer {
     cursor: pointer;
     color: #cbd5e1;
     font-size: 1.5rem;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .modal-close:hover {
@@ -2025,7 +2027,7 @@ footer {
     color: #333333;
     font-size: 1rem;
     font-family: inherit;
-    transition: all 0.3s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-input:focus,
@@ -2091,7 +2093,7 @@ footer {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
@@ -2172,7 +2174,7 @@ body.dark-mode .payment-divider::after {
     font-size: 1.05rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     width: 100%;
 }
 
@@ -2414,7 +2416,7 @@ body.dark-mode .payment-divider::after {
 /* Hover effect for occupied tiles */
 .wish-tile.occupied {
     cursor: pointer !important;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .wish-tile.occupied:hover {
