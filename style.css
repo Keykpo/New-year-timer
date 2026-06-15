@@ -3075,27 +3075,46 @@ body.dark-mode .ad-after-wishes {
     top: 50%;
     transform: translateY(-50%);
     z-index: 100;
-    display: none; /* Hidden by default, shown on large screens */
+    display: none;
 }
 
+/* Posición calculada para no tapar el contenido central (300px de ancho) */
 .ad-sidebar-left {
-    left: 10px;
+    left: calc(50% - 660px);
 }
 
 .ad-sidebar-right {
-    right: 10px;
+    right: calc(50% - 660px);
 }
 
-/* Show sidebars only on screens wide enough (1400px+) */
+/* Mostrar sidebars solo en pantallas con espacio suficiente para 300x600 */
 @media (min-width: 1400px) {
     .ad-sidebar {
         display: block;
     }
 }
 
-/* Hide on smaller screens */
 @media (max-width: 1399px) {
     .ad-sidebar {
         display: none !important;
+    }
+}
+
+/* Sticky Mobile Ad — solo visible en móvil via CSS */
+.ad-sticky-mobile {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 5px 0;
+}
+
+@media (max-width: 768px) {
+    .ad-sticky-mobile {
+        display: block;
     }
 }
