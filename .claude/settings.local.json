@@ -10,7 +10,16 @@
       "Bash(git commit -m \"$(cat <<''EOF''\nFix: Add blog directory to Vercel builds and routes\n\n- Added blog/**/* to builds for static files\n- Added /blog/ route to serve blog/index.html\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")",
       "Bash(git push)",
       "WebFetch(domain:newyeartimers.com)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "PowerShell(ls *)",
+      "PowerShell(Start-Sleep -Seconds 3; npx --yes playwright install chromium --with-deps 2>&1 | Select-Object -Last 3)",
+      "PowerShell(cd \"C:\\\\Users\\\\FRAN\\\\Desktop\\\\new year page\\\\New-year-timer\"; Start-Process -NoNewWindow -FilePath \"npx\" -ArgumentList \"--yes\",\"serve\",\".\",\"-p\",\"3456\" -PassThru; Start-Sleep -Seconds 4; try { $r = Invoke-WebRequest -Uri \"http://localhost:3456\" -TimeoutSec 3; \"Server OK: $\\($r.StatusCode\\)\" } catch { \"Server not ready: $_\" })",
+      "PowerShell(cd \"C:\\\\Users\\\\FRAN\\\\Desktop\\\\new year page\\\\New-year-timer\"; Start-Process -FilePath \"cmd.exe\" -ArgumentList \"/c\",\"npx serve . -p 3456\" -WindowStyle Hidden; Start-Sleep -Seconds 5; try { $r = Invoke-WebRequest -Uri \"http://localhost:3456\" -TimeoutSec 3; \"Server OK: $\\($r.StatusCode\\)\" } catch { \"Server error: $_\" })",
+      "PowerShell(cd \"C:\\\\Users\\\\FRAN\\\\Desktop\\\\new year page\\\\New-year-timer\"; $job = Start-Job -ScriptBlock { Set-Location \"C:\\\\Users\\\\FRAN\\\\Desktop\\\\new year page\\\\New-year-timer\"; & \"C:\\\\Program Files\\\\nodejs\\\\npx.cmd\" serve . -p 3456 }; Start-Sleep -Seconds 6; try { $r = Invoke-WebRequest -Uri \"http://localhost:3456\" -TimeoutSec 3; \"Server OK: $\\($r.StatusCode\\)\" } catch { \"Server fail: $_\" })",
+      "PowerShell(ls \"C:\\\\Users\\\\FRAN\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\" 2>$null | Select-Object Name | Where-Object { $_.Name -match \"playwright|puppeteer\" })",
+      "PowerShell(ls \"C:\\\\Users\\\\FRAN\\\\Desktop\\\\new year page\\\\New-year-timer\\\\node_modules\" 2>$null | Select-Object -First 5 Name; if \\(-not $?\\) { \"no node_modules\" })",
+      "PowerShell(ls \"C:\\\\Users\\\\FRAN\\\\Desktop\\\\new year page\\\\New-year-timer\\\\node_modules\" | Where-Object { $_.Name -match \"playwright|puppeteer\" } | Select-Object Name)",
+      "PowerShell($job = Start-Job -ScriptBlock { & \"C:\\\\Program Files\\\\nodejs\\\\npx.cmd\" serve \"C:\\\\Users\\\\FRAN\\\\Desktop\\\\new year page\\\\New-year-timer\" -p 3456 --no-clipboard }; Start-Sleep -Seconds 6; try { $r = Invoke-WebRequest -Uri \"http://localhost:3456\" -TimeoutSec 3; \"OK $\\($r.StatusCode\\)\" } catch { \"fail: $_\" })"
     ],
     "deny": [],
     "ask": []

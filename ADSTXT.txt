@@ -1,0 +1,78 @@
+ads
+
+300x250 <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+ <ins class="eas6a97888e2" data-zoneid="5950248"></ins> 
+ <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+Leaderboard 728x90 <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+ <ins class="eas6a97888e2" data-zoneid="5950250"></ins> 
+ <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+Vertical Skyscraper 160x600<script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+ <ins class="eas6a97888e2" data-zoneid="5950254"></ins> 
+ <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+900 250 <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+ <ins class="eas6a97888e2" data-zoneid="5950256"></ins> 
+ <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+300 500 <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+ <ins class="eas6a97888e2" data-zoneid="5950258"></ins> 
+ <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+full page interstitial <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script> 
+ <ins class="eas6a97888e35" data-zoneid="5950260"></ins> 
+ <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+video slider <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+ <ins class="eas6a97888e31" data-zoneid="5950262"></ins> 
+ <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+Format Rectangle 300x250<script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+ <ins class="eas6a97888e10" data-zoneid="5950270"></ins> 
+ <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+instant message mobile <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+ <ins class="eas6a97888e14" data-zoneid="5950272"></ins> 
+ <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+
+PUSH NOTIFICATION ESPAÑOL <script type="application/javascript">
+    pn_idzone = 5950280;
+    pn_sleep_seconds = 0;
+    pn_is_self_hosted = 1;
+    pn_soft_ask = 1;
+    pn_filename = "/worker.js";
+    pn_soft_ask_horizontal_position = "left";
+    pn_soft_ask_vertical_position = "top";
+    pn_soft_ask_title_enabled = 1;
+    pn_soft_ask_title = " Hacé click en PERMITIR para desbloquear tu deseo gratis ✨";
+    pn_soft_ask_description = "¡Recibí el aviso cuando llegue el Año Nuevo 2027! Activá las notificaciones para tu deseo gratis.";
+    pn_soft_ask_yes = "¡Sí, avisame!";
+    pn_soft_ask_no = " No, gracias"; 
+</script>
+
+<script type="application/javascript" src="https://js.wpnsrv.com/pn.php"></script>
+
+push notification INGLES
+
+
+<script type="application/javascript">
+    pn_idzone = 5950282;
+    pn_sleep_seconds = 0;
+    pn_is_self_hosted = 1;
+    pn_soft_ask = 1;
+    pn_filename = "/worker.js";
+    pn_soft_ask_horizontal_position = "left";
+    pn_soft_ask_vertical_position = "top";
+    pn_soft_ask_title_enabled = 1;
+    pn_soft_ask_title = "Click ALLOW to unlock your free wish ✨";
+    pn_soft_ask_description = " ? Get notified when New Year 2027 arrives! Enable notifications for your free wish.";
+    pn_soft_ask_yes = " Yes, notify me!";
+    pn_soft_ask_no = "No, thanks"; 
+</script>
+
+<script type="application/javascript" src="https://js.wpnsrv.com/pn.php"></script>
+
+
+

@@ -98,8 +98,8 @@ const translations = {
         viewStarWishes: "🌟 View Wishes",
         wishesMade: "wishes granted",
         freeWishButton: "✨ Leave Your Free Wish ✨",
-        watchAdButton: "🎬 Watch Ad & Make Free Wish",
-        watchAdNote: "Watch a short ad and leave your wish for free!"
+        watchAdButton: "🔔 Enable Notifications & Get Free Wish",
+        watchAdNote: "Enable notifications and leave your wish for free!"
     },
     es: {
         mainTitle: "Tiempo Restante para tu Año Nuevo",
@@ -129,8 +129,8 @@ const translations = {
         viewStarWishes: "🌟 Ver Deseos",
         wishesMade: "deseos cumplidos",
         freeWishButton: "✨ Deja Tu Deseo Gratis ✨",
-        watchAdButton: "🎬 Ver Anuncio y Hacer Deseo Gratis",
-        watchAdNote: "¡Mira un breve anuncio y deja tu deseo gratis!"
+        watchAdButton: "🔔 Activar Notificaciones y Deseo Gratis",
+        watchAdNote: "¡Activá las notificaciones y dejá tu deseo gratis!"
     },
     pt: {
         mainTitle: "Tempo Restante para o seu Ano Novo",
@@ -159,8 +159,8 @@ const translations = {
         promoText: "✨ Seu desejo se junta às estrelas. Como agradecimento, você receberá um <strong>título secreto</strong> que prevê sucesso e guia seu caminho no ano novo. ✨",
         viewStarWishes: "🌟 Ver Desejos",
         freeWishButton: "✨ Deixe Seu Desejo Grátis ✨",
-        watchAdButton: "🎬 Assistir Anúncio e Fazer Desejo Grátis",
-        watchAdNote: "Assista um anúncio curto e deixe seu desejo de graça!"
+        watchAdButton: "🔔 Ativar Notificações & Desejo Grátis",
+        watchAdNote: "Ative as notificações e deixe seu desejo de graça!"
     },
     fr: {
         mainTitle: "Temps Restant jusqu'à votre Nouvel An",
@@ -189,8 +189,8 @@ const translations = {
         promoText: "✨ Votre souhait rejoint les étoiles. En remerciement, vous recevrez un <strong>titre secret</strong> qui prédit le succès et guide votre chemin dans la nouvelle année. ✨",
         viewStarWishes: "🌟 Voir les Souhaits",
         freeWishButton: "✨ Laissez Votre Souhait Gratuit ✨",
-        watchAdButton: "🎬 Regarder Pub & Faire un Souhait Gratuit",
-        watchAdNote: "Regardez une courte pub et laissez votre souhait gratuitement!"
+        watchAdButton: "🔔 Activer Notifications & Souhait Gratuit",
+        watchAdNote: "Activez les notifications et laissez votre souhait gratuitement!"
     },
     de: {
         mainTitle: "Zeit bis zu Ihrem Neujahr",
@@ -219,8 +219,8 @@ const translations = {
         promoText: "✨ Ihr Wunsch schließt sich den Sternen an. Als Dankeschön erhalten Sie einen <strong>geheimen Titel</strong>, der Erfolg vorhersagt und Ihren Weg im neuen Jahr leitet. ✨",
         viewStarWishes: "🌟 Wünsche ansehen",
         freeWishButton: "✨ Kostenlosen Wunsch Hinterlassen ✨",
-        watchAdButton: "🎬 Werbung Ansehen & Gratis Wunsch",
-        watchAdNote: "Sehen Sie sich eine kurze Werbung an und hinterlassen Sie Ihren Wunsch kostenlos!"
+        watchAdButton: "🔔 Benachrichtigungen aktivieren & Gratis Wunsch",
+        watchAdNote: "Aktivieren Sie Benachrichtigungen und hinterlassen Sie Ihren Wunsch kostenlos!"
     },
     it: {
         mainTitle: "Tempo Rimanente per il tuo Capodanno",
@@ -249,8 +249,8 @@ const translations = {
         promoText: "✨ Il tuo desiderio si unisce alle stelle. Come ringraziamento, riceverai un <strong>titolo segreto</strong> che predice il successo e guida il tuo percorso nel nuovo anno. ✨",
         viewStarWishes: "🌟 Vedi Desideri",
         freeWishButton: "✨ Lascia il Tuo Desiderio Gratis ✨",
-        watchAdButton: "🎬 Guarda Pubblicità & Desiderio Gratis",
-        watchAdNote: "Guarda una breve pubblicità e lascia il tuo desiderio gratis!"
+        watchAdButton: "🔔 Attiva Notifiche & Desiderio Gratis",
+        watchAdNote: "Attiva le notifiche e lascia il tuo desiderio gratis!"
     },
     ru: {
         mainTitle: "Время до Нового года",
@@ -279,8 +279,8 @@ const translations = {
         promoText: "✨ Ваше желание присоединяется к звездам. В знак благодарности вы получите <strong>секретный титул</strong>, который предсказывает успех и направляет ваш путь в новом году. ✨",
         viewStarWishes: "🌟 Посмотреть Желания",
         freeWishButton: "✨ Оставьте Бесплатное Желание ✨",
-        watchAdButton: "🎬 Смотреть Рекламу и Загадать Бесплатно",
-        watchAdNote: "Посмотрите короткую рекламу и оставьте желание бесплатно!"
+        watchAdButton: "🔔 Включить уведомления и загадать бесплатно",
+        watchAdNote: "Включите уведомления и оставьте желание бесплатно!"
     },
     zh: {
         mainTitle: "距离新年的时间",
@@ -309,8 +309,8 @@ const translations = {
         promoText: "✨ 您的愿望加入了星辰。作为感谢，您将获得一个<strong>秘密称号</strong>，预示成功并引导您在新年的道路。✨",
         viewStarWishes: "🌟 查看愿望",
         freeWishButton: "✨ 免费许愿 ✨",
-        watchAdButton: "🎬 观看广告并免费许愿",
-        watchAdNote: "观看一个简短的广告，免费留下您的愿望！"
+        watchAdButton: "🔔 开启通知并免费许愿",
+        watchAdNote: "开启通知，免费留下您的愿望！"
     },
     ja: {
         mainTitle: "新年までの時間",
@@ -339,8 +339,8 @@ const translations = {
         promoText: "✨ あなたの願いは星々に加わります。感謝の気持ちとして、成功を予測し新年のあなたの道を導く<strong>秘密の称号</strong>を受け取ります。✨",
         viewStarWishes: "🌟 願いを見る",
         freeWishButton: "✨ 無料で願いを残す ✨",
-        watchAdButton: "🎬 広告を見て無料で願う",
-        watchAdNote: "短い広告を見て、無料で願いを残しましょう！"
+        watchAdButton: "🔔 通知を有効にして無料で願う",
+        watchAdNote: "通知を有効にして、無料で願いを残しましょう！"
     },
     ar: {
         mainTitle: "الوقت المتبقي حتى العام الجديد",
@@ -369,8 +369,8 @@ const translations = {
         promoText: "✨ تنضم أمنيتك إلى النجوم. كشكر لك، ستحصل على <strong>لقب سري</strong> يتنبأ بالنجاح ويرشد طريقك في العام الجديد. ✨",
         viewStarWishes: "🌟 عرض الأمنيات",
         freeWishButton: "✨ اترك أمنيتك مجاناً ✨",
-        watchAdButton: "🎬 شاهد إعلان واصنع أمنية مجانية",
-        watchAdNote: "شاهد إعلاناً قصيراً واترك أمنيتك مجاناً!"
+        watchAdButton: "🔔 فعّل الإشعارات واحصل على أمنية مجانية",
+        watchAdNote: "فعّل الإشعارات واترك أمنيتك مجاناً!"
     },
     nl: {
         mainTitle: "Tijd tot je Nieuwjaar",
@@ -399,8 +399,8 @@ const translations = {
         promoText: "✨ Je wens voegt zich bij de sterren. Als dank ontvang je een <strong>geheime titel</strong> die succes voorspelt en je pad in het nieuwe jaar begeleidt. ✨",
         viewStarWishes: "🌟 Bekijk Wensen",
         freeWishButton: "✨ Laat Je Gratis Wens Achter ✨",
-        watchAdButton: "🎬 Bekijk Advertentie & Gratis Wens",
-        watchAdNote: "Bekijk een korte advertentie en laat je wens gratis achter!"
+        watchAdButton: "🔔 Meldingen inschakelen & Gratis Wens",
+        watchAdNote: "Schakel meldingen in en laat je wens gratis achter!"
     },
     ko: {
         mainTitle: "새해까지 남은 시간",
@@ -429,8 +429,8 @@ const translations = {
         promoText: "✨ 당신의 소원이 별들과 함께합니다. 감사의 표시로, 성공을 예측하고 새해의 길을 안내하는 <strong>비밀 칭호</strong>를 받게 됩니다. ✨",
         viewStarWishes: "🌟 소원 보기",
         freeWishButton: "✨ 무료 소원 남기기 ✨",
-        watchAdButton: "🎬 광고 보고 무료 소원 빌기",
-        watchAdNote: "짧은 광고를 보고 무료로 소원을 남기세요!"
+        watchAdButton: "🔔 알림 활성화 & 무료 소원 빌기",
+        watchAdNote: "알림을 활성화하고 무료로 소원을 남기세요!"
     },
     tr: {
         mainTitle: "Yeni Yılınıza Kalan Süre",
@@ -459,8 +459,8 @@ const translations = {
         promoText: "✨ Dileğiniz yıldızlara katılıyor. Teşekkür olarak, başarıyı öngören ve yeni yılda yolunuzu gösteren <strong>gizli bir unvan</strong> alacaksınız. ✨",
         viewStarWishes: "🌟 Dilekleri Görüntüle",
         freeWishButton: "✨ Ücretsiz Dileğinizi Bırakın ✨",
-        watchAdButton: "🎬 Reklam İzle & Ücretsiz Dilek Tut",
-        watchAdNote: "Kısa bir reklam izleyin ve dileğinizi ücretsiz bırakın!"
+        watchAdButton: "🔔 Bildirimleri Etkinleştir & Ücretsiz Dilek",
+        watchAdNote: "Bildirimleri etkinleştir ve dileğini ücretsiz bırak!"
     },
     hi: {
         mainTitle: "आपके नए साल तक का समय",
@@ -489,8 +489,8 @@ const translations = {
         promoText: "✨ आपकी इच्छा सितारों से जुड़ती है। धन्यवाद के रूप में, आपको एक <strong>गुप्त उपाधि</strong> मिलेगी जो सफलता की भविष्यवाणी करती है और नए साल में आपके मार्ग का मार्गदर्शन करती है। ✨",
         viewStarWishes: "🌟 इच्छाएँ देखें",
         freeWishButton: "✨ अपनी मुफ्त इच्छा छोड़ें ✨",
-        watchAdButton: "🎬 विज्ञापन देखें और मुफ्त इच्छा करें",
-        watchAdNote: "एक छोटा विज्ञापन देखें और अपनी इच्छा मुफ्त में छोड़ें!"
+        watchAdButton: "🔔 सूचनाएं चालू करें और मुफ्त इच्छा करें",
+        watchAdNote: "सूचनाएं चालू करें और अपनी इच्छा मुफ्त में छोड़ें!"
     },
     pl: {
         mainTitle: "Czas do Twojego Nowego Roku",
@@ -519,8 +519,8 @@ const translations = {
         promoText: "✨ Twoje życzenie dołącza do gwiazd. W podziękowaniu otrzymasz <strong>sekretny tytuł</strong>, który przepowiada sukces i prowadzi Twoją ścieżkę w nowym roku. ✨",
         viewStarWishes: "🌟 Zobacz Życzenia",
         freeWishButton: "✨ Zostaw Darmowe Życzenie ✨",
-        watchAdButton: "🎬 Obejrzyj Reklamę i Złóż Darmowe Życzenie",
-        watchAdNote: "Obejrzyj krótką reklamę i zostaw swoje życzenie za darmo!"
+        watchAdButton: "🔔 Włącz powiadomienia i złóż darmowe życzenie",
+        watchAdNote: "Włącz powiadomienia i zostaw swoje życzenie za darmo!"
     },
     sv: {
         mainTitle: "Tid Kvar Till Ditt Nya År",
@@ -549,8 +549,8 @@ const translations = {
         promoText: "✨ Din önskan går med stjärnorna. Som tack kommer du att få en <strong>hemlig titel</strong> som förutspår framgång och vägleder din väg under det nya året. ✨",
         viewStarWishes: "🌟 Visa Önskningar",
         freeWishButton: "✨ Lämna Din Gratis Önskan ✨",
-        watchAdButton: "🎬 Titta på Annons & Gratis Önskan",
-        watchAdNote: "Titta på en kort annons och lämna din önskan gratis!"
+        watchAdButton: "🔔 Aktivera notiser & Gratis önskan",
+        watchAdNote: "Aktivera notiser och lämna din önskan gratis!"
     }
 };
 
@@ -1576,115 +1576,65 @@ function setupModal() {
 }
 
 /**
- * Handle Rewarded Ad for free wish
- * Shows a banner ad that user must click to submit their wish
+ * Handle free wish via Push Notification acceptance
+ * Grants free wish when user has enabled browser push notifications
  */
 async function handleRewardedAd() {
     const watchAdButton = document.getElementById('watchAdButton');
     const wishText = document.getElementById('wishText').value.trim();
     const wishAuthor = document.getElementById('wishAuthor').value.trim();
 
-    // Detect current language
     const lang = detectLanguage();
     const isSpanish = lang === 'es';
 
-    // Validate form
     if (!wishText || !wishAuthor) {
-        alert(isSpanish ? 'Por favor, completa tu deseo y nombre primero.' : 'Please fill in your wish and name first.');
+        alert(isSpanish
+            ? 'Por favor, completa tu deseo y nombre primero.'
+            : 'Please fill in your wish and name first.');
         return;
     }
 
-    // Disable button
-    watchAdButton.disabled = true;
-    watchAdButton.textContent = '⏳ Loading...';
+    const permission = Notification.permission;
 
-    // Create ad overlay with clickable banner
-    const adOverlay = document.createElement('div');
-    adOverlay.id = 'adClickOverlay';
-    adOverlay.innerHTML = `
-        <div class="ad-click-content">
-            <div class="ad-click-icon">🎁</div>
-            <h3 class="ad-click-title">${isSpanish ? '¡Un paso más!' : 'One more step!'}</h3>
-            <p class="ad-click-text">${isSpanish ? 'Haz click en el anuncio para enviar tu deseo gratis' : 'Click the ad below to send your free wish'}</p>
-
-            <div class="ad-click-banner" id="rewardedAdBanner">
-                <div class="ad-loading">${isSpanish ? 'Cargando anuncio...' : 'Loading ad...'}</div>
-            </div>
-
-            <p class="ad-click-note">${isSpanish ? 'El anuncio se abrirá en una nueva pestaña' : 'The ad will open in a new tab'}</p>
-
-            <button class="ad-click-cancel" id="cancelAdButton">${isSpanish ? 'Cancelar' : 'Cancel'}</button>
-        </div>
-    `;
-    document.body.appendChild(adOverlay);
-
-    // Load Google AdSense banner ad (300x250) - CUADRADO
-    const bannerContainer = document.getElementById('rewardedAdBanner');
-    bannerContainer.innerHTML = '';
-
-    // Create AdSense ad element
-    const adIns = document.createElement('ins');
-    adIns.className = 'adsbygoogle';
-    adIns.style.cssText = 'display:inline-block;width:300px;height:250px';
-    adIns.setAttribute('data-ad-client', 'ca-pub-7982216026691433');
-    adIns.setAttribute('data-ad-slot', '7090526020'); // CUADRADO slot
-    bannerContainer.appendChild(adIns);
-
-    // Push the ad directly (dynamic script injection doesn't work reliably)
-    try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-        console.warn('AdSense push error:', e);
-    }
-
-    // Fallback: if ad doesn't render in 3s, show a support message instead
-    setTimeout(() => {
-        const ins = bannerContainer.querySelector('ins.adsbygoogle');
-        const adRendered = ins && ins.getAttribute('data-ad-status') === 'filled';
-        if (!adRendered) {
-            bannerContainer.innerHTML = `
-                <div style="width:300px;height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border:2px dashed #ffd700;border-radius:12px;padding:16px;text-align:center;box-sizing:border-box;">
-                    <span style="font-size:2rem;">🙏</span>
-                    <p style="color:#ffd700;font-weight:bold;margin:0;font-size:1rem;">${isSpanish ? '¡Apoya el proyecto!' : 'Support the project!'}</p>
-                    <p style="color:#ccc;margin:0;font-size:0.85rem;">${isSpanish ? 'El anuncio no pudo cargar. Puedes enviar tu deseo igual haciendo click aquí.' : "The ad couldn't load. You can still send your wish by clicking below."}</p>
-                    <button onclick="submitFreeWish(); document.getElementById('adClickOverlay').remove();" style="background:#ffd700;color:#000;border:none;border-radius:8px;padding:10px 20px;font-weight:bold;cursor:pointer;font-size:0.9rem;">${isSpanish ? 'Enviar deseo de todas formas' : 'Send wish anyway'}</button>
-                </div>`;
-        }
-    }, 3000);
-
-    // Track if ad was clicked (window loses focus when ad opens in new tab)
-    let adClicked = false;
-
-    const handleBlur = () => {
-        // User clicked something that opened a new tab (the ad)
-        adClicked = true;
-
-        // Small delay to let the ad tab open
-        setTimeout(() => {
-            if (adClicked) {
-                // Remove overlay
-                adOverlay.remove();
-                window.removeEventListener('blur', handleBlur);
-
-                // Submit the free wish
-                submitFreeWish();
-
-                // Re-enable button
-                watchAdButton.disabled = false;
-                updateWatchAdButtonText();
-            }
-        }, 500);
-    };
-
-    window.addEventListener('blur', handleBlur);
-
-    // Cancel button handler
-    document.getElementById('cancelAdButton').addEventListener('click', () => {
-        adOverlay.remove();
-        window.removeEventListener('blur', handleBlur);
+    if (permission === 'granted') {
+        // Already subscribed — grant free wish immediately
+        watchAdButton.disabled = true;
+        watchAdButton.textContent = '⏳ Sending...';
+        await submitFreeWish();
         watchAdButton.disabled = false;
         updateWatchAdButtonText();
-    });
+        return;
+    }
+
+    if (permission === 'denied') {
+        alert(isSpanish
+            ? '🔔 Las notificaciones están bloqueadas. Para obtener tu deseo gratis, habilitá las notificaciones en la configuración de tu navegador y volvé a intentarlo.'
+            : '🔔 Notifications are blocked. To get your free wish, please enable notifications in your browser settings and try again.');
+        return;
+    }
+
+    // permission === 'default' — request permission
+    watchAdButton.disabled = true;
+    watchAdButton.textContent = isSpanish ? '⏳ Esperando permiso...' : '⏳ Waiting for permission...';
+
+    try {
+        const result = await Notification.requestPermission();
+        if (result === 'granted') {
+            watchAdButton.textContent = isSpanish ? '⏳ Enviando deseo...' : '⏳ Sending wish...';
+            await submitFreeWish();
+        } else {
+            alert(isSpanish
+                ? '🔔 Necesitás aceptar las notificaciones para obtener el deseo gratis. También podés hacer tu deseo con $1 USD.'
+                : '🔔 You need to accept notifications to get the free wish. You can also make your wish for $1 USD.');
+        }
+    } catch (e) {
+        alert(isSpanish
+            ? 'Hubo un error. Por favor intentá de nuevo.'
+            : 'Something went wrong. Please try again.');
+    } finally {
+        watchAdButton.disabled = false;
+        updateWatchAdButtonText();
+    }
 }
 
 /**

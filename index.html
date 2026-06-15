@@ -99,8 +99,8 @@
     <!-- Monetag Push Notifications -->
     <script src="https://3nbf4.com/act/files/tag.min.js?z=11149854" data-zone="11149854" async></script>
 
-    <!-- Monetag In-Page Push (Social Bar) — reemplazar IN_PAGE_ZONE_ID con el ID de zona del dashboard -->
-    <!-- <script async src="https://3nbf4.com/act/files/tag.min.js?z=IN_PAGE_ZONE_ID" data-zone="IN_PAGE_ZONE_ID"></script> -->
+    <!-- ExoClick Banner Ad Provider (shared script for all banner fallbacks) -->
+    <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
 
     <!-- Structured Data (JSON-LD) for Rich Snippets - WebApplication -->
     <script type="application/ld+json">
@@ -229,20 +229,30 @@
 <body>
     <!-- Google AdSense Sidebar Ads - Left and Right (Desktop Only) -->
     <div class="ad-sidebar ad-sidebar-left" id="adSidebarLeft">
-        <!-- sidebar-half-page 300x600 -->
+        <!-- sidebar-half-page 300x600 (AdSense primary) -->
         <ins class="adsbygoogle"
              style="display:inline-block;width:300px;height:600px"
              data-ad-client="ca-pub-7982216026691433"
              data-ad-slot="1486507879"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <!-- ExoClick 300x500 fallback -->
+        <div class="exo-fallback" style="display:none">
+            <ins class="eas6a97888e2" data-zoneid="5950258"></ins>
+            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+        </div>
     </div>
     <div class="ad-sidebar ad-sidebar-right" id="adSidebarRight">
-        <!-- sidebar-half-page 300x600 -->
+        <!-- sidebar-half-page 300x600 (AdSense primary) -->
         <ins class="adsbygoogle"
              style="display:inline-block;width:300px;height:600px"
              data-ad-client="ca-pub-7982216026691433"
              data-ad-slot="1451380053"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <!-- ExoClick 300x500 fallback -->
+        <div class="exo-fallback" style="display:none">
+            <ins class="eas6a97888e2" data-zoneid="5950258"></ins>
+            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+        </div>
     </div>
 
     <!-- Minimalist design - no background effects -->
@@ -254,9 +264,8 @@
 
 
     <div class="container">
-        <!-- Google AdSense Top Banner -->
+        <!-- Google AdSense Top Banner + ExoClick 728x90 fallback -->
         <div class="ad-container" style="text-align: center; margin: 0.5rem auto 1rem; max-width: 728px;">
-            <!-- top-banner -->
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-7982216026691433"
@@ -264,6 +273,10 @@
                  data-ad-format="horizontal"
                  data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <div class="exo-fallback" style="display:none">
+                <ins class="eas6a97888e2" data-zoneid="5950250"></ins>
+                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+            </div>
         </div>
 
         <!-- Header Section -->
@@ -303,9 +316,8 @@
             </button>
         </section>
 
-        <!-- Google AdSense After Countdown (doble: banner + cuadrado responsive) -->
+        <!-- Google AdSense After Countdown + ExoClick fallbacks -->
         <div class="ad-container" style="text-align: center; margin: 1.5rem auto; max-width: 728px;">
-            <!-- after countdown - Responsive -->
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-7982216026691433"
@@ -313,9 +325,19 @@
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <div class="exo-fallback" style="display:none">
+                <ins class="eas6a97888e2" data-zoneid="5950250"></ins>
+                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+            </div>
         </div>
+
+        <!-- ExoClick Video Slider -->
+        <div style="text-align:center; margin: 0.5rem auto;">
+            <ins class="eas6a97888e31" data-zoneid="5950262"></ins>
+            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+        </div>
+
         <div class="ad-container" style="text-align: center; margin: 0.5rem auto 1.5rem; max-width: 336px;">
-            <!-- below countdown - cuadrado responsive -->
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-7982216026691433"
@@ -323,6 +345,10 @@
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <div class="exo-fallback" style="display:none">
+                <ins class="eas6a97888e2" data-zoneid="5950248"></ins>
+                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+            </div>
         </div>
 
         <!-- Wishes Constellation Section -->
@@ -425,13 +451,13 @@
                     <div class="price-amount">$1 USD</div>
                 </div>
 
-                <!-- Free Wish with Rewarded Ad Section -->
+                <!-- Free Wish via Push Notification -->
                 <div class="rewarded-ad-section">
                     <div class="rewarded-ad-note" data-i18n="watchAdNote">
-                        Watch a short ad and leave your wish for free!
+                        Enable notifications and leave your wish for free!
                     </div>
                     <button class="rewarded-ad-button" id="watchAdButton" data-i18n="watchAdButton">
-                        🎬 Watch Ad & Make Free Wish
+                        🔔 Enable Notifications & Get Free Wish
                     </button>
                 </div>
 
@@ -759,6 +785,118 @@
              data-ad-slot="9290328970"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
+
+    <!-- ExoClick Push Notification — Language Aware -->
+    <script>
+    (function() {
+        var lang = navigator.language || navigator.userLanguage || 'en';
+        var isSpanish = /^es/i.test(lang);
+
+        if (isSpanish) {
+            // Español — Zone 5950280
+            window.pn_idzone = 5950280;
+            window.pn_sleep_seconds = 8;
+            window.pn_is_self_hosted = 1;
+            window.pn_soft_ask = 1;
+            window.pn_filename = '/worker.js';
+            window.pn_soft_ask_horizontal_position = 'left';
+            window.pn_soft_ask_vertical_position = 'top';
+            window.pn_soft_ask_title_enabled = 1;
+            window.pn_soft_ask_title = 'Hacé click en PERMITIR para desbloquear tu deseo gratis ✨';
+            window.pn_soft_ask_description = '¡Recibí el aviso cuando llegue el Año Nuevo 2027! Activá las notificaciones para tu deseo gratis.';
+            window.pn_soft_ask_yes = '¡Sí, avisame!';
+            window.pn_soft_ask_no = 'No, gracias';
+        } else {
+            // English — Zone 5950282
+            window.pn_idzone = 5950282;
+            window.pn_sleep_seconds = 8;
+            window.pn_is_self_hosted = 1;
+            window.pn_soft_ask = 1;
+            window.pn_filename = '/worker.js';
+            window.pn_soft_ask_horizontal_position = 'left';
+            window.pn_soft_ask_vertical_position = 'top';
+            window.pn_soft_ask_title_enabled = 1;
+            window.pn_soft_ask_title = 'Click ALLOW to unlock your free wish ✨';
+            window.pn_soft_ask_description = '🎆 Get notified when New Year 2027 arrives! Enable notifications for your free wish.';
+            window.pn_soft_ask_yes = 'Yes, notify me!';
+            window.pn_soft_ask_no = 'No, thanks';
+        }
+    })();
+    </script>
+    <script type="application/javascript" src="https://js.wpnsrv.com/pn.php"></script>
+
+    <!-- ExoClick Mobile Instant Message (mobile only) -->
+    <div id="exo-instant-message">
+        <ins class="eas6a97888e14" data-zoneid="5950272"></ins>
+        <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+    </div>
+
+    <!-- ExoClick Full Page Interstitial — Exit Intent (Desktop Only) -->
+    <script>
+    (function() {
+        var DESKTOP_MIN_WIDTH = 1024;
+        var MIN_TIME_MS = 4000;
+        var SESSION_KEY = 'exo_fullpage_shown';
+        var pageLoadTime = Date.now();
+        var triggered = false;
+
+        function shouldTrigger() {
+            if (triggered) return false;
+            if (window.innerWidth < DESKTOP_MIN_WIDTH) return false;
+            if (sessionStorage.getItem(SESSION_KEY)) return false;
+            if (Date.now() - pageLoadTime < MIN_TIME_MS) return false;
+            return true;
+        }
+
+        function fireFullPageAd() {
+            if (!shouldTrigger()) return;
+            triggered = true;
+            sessionStorage.setItem(SESSION_KEY, '1');
+
+            var container = document.createElement('div');
+            container.innerHTML = '<ins class="eas6a97888e35" data-zoneid="5950260"></ins>';
+            document.body.appendChild(container);
+
+            var s = document.createElement('script');
+            s.src = 'https://a.pemsrv.com/ad-provider.js';
+            s.async = true;
+            s.onload = function() {
+                (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+            };
+            document.body.appendChild(s);
+        }
+
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 5) fireFullPageAd();
+        });
+    })();
+    </script>
+
+    <!-- ExoClick AdSense Fallback Detector -->
+    <script>
+    (function() {
+        function initFallbacks() {
+            document.querySelectorAll('ins.adsbygoogle').forEach(function(ins) {
+                var fallback = ins.parentElement.querySelector('.exo-fallback');
+                if (!fallback) return;
+                new MutationObserver(function(mutations) {
+                    mutations.forEach(function(m) {
+                        if (m.attributeName === 'data-ad-status' &&
+                            ins.getAttribute('data-ad-status') === 'unfilled') {
+                            ins.style.display = 'none';
+                            fallback.style.display = 'block';
+                        }
+                    });
+                }).observe(ins, { attributes: true });
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initFallbacks);
+        } else {
+            initFallbacks();
+        }
+    })();
+    </script>
 
 </body>
 </html>
