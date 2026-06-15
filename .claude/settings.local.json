@@ -19,7 +19,8 @@
       "PowerShell(ls \"C:\\\\Users\\\\FRAN\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\" 2>$null | Select-Object Name | Where-Object { $_.Name -match \"playwright|puppeteer\" })",
       "PowerShell(ls \"C:\\\\Users\\\\FRAN\\\\Desktop\\\\new year page\\\\New-year-timer\\\\node_modules\" 2>$null | Select-Object -First 5 Name; if \\(-not $?\\) { \"no node_modules\" })",
       "PowerShell(ls \"C:\\\\Users\\\\FRAN\\\\Desktop\\\\new year page\\\\New-year-timer\\\\node_modules\" | Where-Object { $_.Name -match \"playwright|puppeteer\" } | Select-Object Name)",
-      "PowerShell($job = Start-Job -ScriptBlock { & \"C:\\\\Program Files\\\\nodejs\\\\npx.cmd\" serve \"C:\\\\Users\\\\FRAN\\\\Desktop\\\\new year page\\\\New-year-timer\" -p 3456 --no-clipboard }; Start-Sleep -Seconds 6; try { $r = Invoke-WebRequest -Uri \"http://localhost:3456\" -TimeoutSec 3; \"OK $\\($r.StatusCode\\)\" } catch { \"fail: $_\" })"
+      "PowerShell($job = Start-Job -ScriptBlock { & \"C:\\\\Program Files\\\\nodejs\\\\npx.cmd\" serve \"C:\\\\Users\\\\FRAN\\\\Desktop\\\\new year page\\\\New-year-timer\" -p 3456 --no-clipboard }; Start-Sleep -Seconds 6; try { $r = Invoke-WebRequest -Uri \"http://localhost:3456\" -TimeoutSec 3; \"OK $\\($r.StatusCode\\)\" } catch { \"fail: $_\" })",
+      "Bash(grep -v \"^\\\\s*//\")"
     ],
     "deny": [],
     "ask": []
