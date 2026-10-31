@@ -29,16 +29,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Adsterra Ads -->
 
     <link rel="stylesheet" href="blog.css">
-    <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7982216026691433" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../ads.css">
 
-    <style>
-        .ad-desktop-only { display: block; }
-        .ad-mobile-only { display: none; }
-        @media (max-width: 768px) { .ad-desktop-only { display: none; } .ad-mobile-only { display: block; } }
-    </style>
 
     <!-- BlogPosting Schema -->
     <script type="application/ld+json">
@@ -75,7 +70,7 @@
             <a href="../" class="nav-logo">NYT 2027</a>
             <ul class="nav-links">
                 <li><a href="../">Countdown</a></li>
-                <li><a href="./">Blog</a></li>
+                <li><a href="../countdown/">By country</a></li><li><a href="./">Blog</a></li>
                 <li><a href="../about.html">About</a></li>
             </ul>
             <button class="dark-mode-toggle" id="darkModeToggle">&#127769;</button>
@@ -101,25 +96,12 @@
             </div>
         </header>
 
-        <div class="ad-container ad-top">
-            <div class="ad-desktop-only">
-                <script type="text/javascript">
-                    atOptions = { 'key' : '08a36f7fdc0f3e1de7733e2a0c6eb7d5', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-                </script>
-                
-            </div>
-            <div class="ad-mobile-only">
-                <script type="text/javascript">
-                    atOptions = { 'key' : 'e1c72add601a0c03e95b0e5317d05bd9', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-                </script>
-                
-            </div>
-        </div>
-
         <article class="article-content">
             <p>
                 Every January, millions of people around the world make New Year's resolutions with the best intentions. Yet studies show that approximately 80% of resolutions fail by February. The good news is that failure isn't inevitable. By understanding why resolutions fail and applying proven strategies, you can be among the 20% who succeed. Here's how to make resolutions that actually stick.
 </p>
+
+            <div class="ad-slot ad-slot--display" data-ad="ARTICLE_INTRO"></div>
 
             <h2>Why Most Resolutions Fail</h2>
             <p>
@@ -128,12 +110,6 @@
             <p>
                 Research from the University of Scranton found that people who explicitly make resolutions are ten times more likely to achieve their goals than those who don't. The act of committing to a resolution isn't the problem; it's how we approach that commitment.
 </p>
-
-        <!-- ExoClick Mid-Article 300x250 -->
-        <div style="text-align:center; margin: 2rem auto;">
-            <ins class="eas6a97888e10" data-zoneid="5950270"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
 
 
             <h2>The SMART Goal Framework</h2>
@@ -161,6 +137,8 @@
             <p>
                 This works because your brain is already wired to perform the existing habit. By attaching a new behavior to it, you're leveraging that existing neural pathway rather than trying to create one from scratch.
 </p>
+
+            <div class="ad-slot ad-slot--inarticle" data-ad="ARTICLE_MIDDLE"></div>
 
             <h2>Focus on Systems, Not Just Goals</h2>
             <p>
@@ -210,6 +188,8 @@
             </p>
         </article>
 
+        <div class="ad-slot ad-slot--display" data-ad="ARTICLE_END"></div>
+
         <div class="author-box">
             <div class="author-avatar">&#127919;</div>
             <div class="author-info">
@@ -228,11 +208,8 @@
         </section>
 
         
-        <!-- ExoClick Before Footer -->
-        <div style="text-align:center; margin: 1.5rem auto;">
-            <ins class="eas6a97888e2" data-zoneid="5950250"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
+        <div class="ad-slot ad-slot--multiplex" data-ad="ARTICLE_MULTIPLEX"></div>
+
 <section class="cta-section">
             <h3>Start Your New Year Right</h3>
             <p>Count down to 2027 and make your wish for the new year!</p>
@@ -244,6 +221,7 @@
         <div class="footer-content">
             <div class="footer-links">
                 <a href="../">Countdown Timer</a>
+                <a href="../countdown/">Countdown by Country</a>
                 <a href="./">Blog</a>
                 <a href="../about.html">About Us</a>
                 <a href="../privacy-policy.html">Privacy Policy</a>
@@ -261,21 +239,6 @@
         });
     </script>
 
-    <!-- ExoClick Fallback Detector -->
-    <script>
-    (function() {
-        document.querySelectorAll('ins.adsbygoogle').forEach(function(ins) {
-            var fb = ins.parentElement.querySelector('.exo-fallback');
-            if (!fb) return;
-            new MutationObserver(function(m) {
-                m.forEach(function(mu) {
-                    if (mu.attributeName === 'data-ad-status' && ins.getAttribute('data-ad-status') === 'unfilled') {
-                        ins.style.display = 'none';
-                        fb.style.display = 'block';
-                    }
-                });
-            }).observe(ins, { attributes: true });
-        });
-    })();
-    </script></body>
+    <script src="../ads.js" defer></script>
+</body>
 </html>

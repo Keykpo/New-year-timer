@@ -29,16 +29,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Adsterra Ads -->
 
     <link rel="stylesheet" href="blog.css">
-    <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7982216026691433" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../ads.css">
 
-    <style>
-        .ad-desktop-only { display: block; }
-        .ad-mobile-only { display: none; }
-        @media (max-width: 768px) { .ad-desktop-only { display: none; } .ad-mobile-only { display: block; } }
-    </style>
 
     <!-- BlogPosting Schema -->
     <script type="application/ld+json">
@@ -75,7 +70,7 @@
             <a href="../" class="nav-logo">NYT 2027</a>
             <ul class="nav-links">
                 <li><a href="../">Countdown</a></li>
-                <li><a href="./">Blog</a></li>
+                <li><a href="../countdown/">By country</a></li><li><a href="./">Blog</a></li>
                 <li><a href="../about.html">About</a></li>
             </ul>
             <button class="dark-mode-toggle" id="darkModeToggle">&#127769;</button>
@@ -101,25 +96,12 @@
             </div>
         </header>
 
-        <div class="ad-container ad-top">
-            <div class="ad-desktop-only">
-                <script type="text/javascript">
-                    atOptions = { 'key' : '08a36f7fdc0f3e1de7733e2a0c6eb7d5', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-                </script>
-                
-            </div>
-            <div class="ad-mobile-only">
-                <script type="text/javascript">
-                    atOptions = { 'key' : 'e1c72add601a0c03e95b0e5317d05bd9', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-                </script>
-                
-            </div>
-        </div>
-
         <article class="article-content">
             <p>
                 Every New Year's Eve, over one billion people worldwide watch a glittering ball descend in Times Square, marking the arrival of the new year in New York City. This iconic tradition has become synonymous with New Year celebrations in America and beyond. But how did dropping a ball from a building become the world's most watched New Year's event? The story begins over a century ago with a newspaper publisher's quest for the perfect celebration.
 </p>
+
+            <div class="ad-slot ad-slot--display" data-ad="ARTICLE_INTRO"></div>
 
             <h2>The Birth of a Tradition: 1904-1907</h2>
             <p>
@@ -128,12 +110,6 @@
             <p>
                 That first celebration on December 31, 1904, featured an all-day street festival and a midnight fireworks display launched from the Times Tower's roof. An estimated 200,000 people gathered to watch, making it an instant success. The fireworks show continued for the next three years, but in 1907, the city banned rooftop fireworks due to fire safety concerns.
             </p>
-
-        <!-- ExoClick Mid-Article 300x250 -->
-        <div style="text-align:center; margin: 2rem auto;">
-            <ins class="eas6a97888e10" data-zoneid="5950270"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
 
             <p>
                 Needing a replacement spectacle, Ochs commissioned the building's chief electrician, Walter Palmer, to create something memorable. Palmer designed a time ball, a device that had been used since 1833 to help ships synchronize their chronometers. At exactly midnight on December 31, 1907, the first New Year's Eve ball made its descent, and a tradition was born.
@@ -159,6 +135,8 @@
             <p>
                 The only years the ball didn't drop were 1942 and 1943, during World War II. Wartime dimout regulations prohibited the bright lights, but crowds still gathered in Times Square for a moment of silence at midnight, followed by chimes from loudspeakers. The tradition resumed in 1944 and has continued uninterrupted ever since.
 </p>
+
+            <div class="ad-slot ad-slot--inarticle" data-ad="ARTICLE_MIDDLE"></div>
 
             <h2>The Modern Crystal Ball</h2>
             <p>
@@ -194,6 +172,8 @@
             </p>
         </article>
 
+        <div class="ad-slot ad-slot--display" data-ad="ARTICLE_END"></div>
+
         <div class="author-box">
             <div class="author-avatar">&#127878;</div>
             <div class="author-info">
@@ -212,11 +192,8 @@
         </section>
 
         
-        <!-- ExoClick Before Footer -->
-        <div style="text-align:center; margin: 1.5rem auto;">
-            <ins class="eas6a97888e2" data-zoneid="5950250"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
+        <div class="ad-slot ad-slot--multiplex" data-ad="ARTICLE_MULTIPLEX"></div>
+
 <section class="cta-section">
             <h3>Watch Our Countdown</h3>
             <p>Experience the excitement of counting down to midnight from anywhere!</p>
@@ -228,6 +205,7 @@
         <div class="footer-content">
             <div class="footer-links">
                 <a href="../">Countdown Timer</a>
+                <a href="../countdown/">Countdown by Country</a>
                 <a href="./">Blog</a>
                 <a href="../about.html">About Us</a>
                 <a href="../privacy-policy.html">Privacy Policy</a>
@@ -245,21 +223,6 @@
         });
     </script>
 
-    <!-- ExoClick Fallback Detector -->
-    <script>
-    (function() {
-        document.querySelectorAll('ins.adsbygoogle').forEach(function(ins) {
-            var fb = ins.parentElement.querySelector('.exo-fallback');
-            if (!fb) return;
-            new MutationObserver(function(m) {
-                m.forEach(function(mu) {
-                    if (mu.attributeName === 'data-ad-status' && ins.getAttribute('data-ad-status') === 'unfilled') {
-                        ins.style.display = 'none';
-                        fb.style.display = 'block';
-                    }
-                });
-            }).observe(ins, { attributes: true });
-        });
-    })();
-    </script></body>
+    <script src="../ads.js" defer></script>
+</body>
 </html>

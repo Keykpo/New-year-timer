@@ -1,13 +1,6 @@
-# Permitir a todos los bots indexar todo el sitio
+# https://newyeartimers.com/robots.txt
+# Everything public is crawlable. CSS/JS are intentionally NOT blocked so pages render.
 User-agent: *
-Allow: /
+Disallow: /api/
 
-# Sitemap
 Sitemap: https://newyeartimers.com/sitemap.xml
-
-# Optimización para bots específicos
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /

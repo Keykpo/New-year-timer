@@ -1,0 +1,60 @@
+/* =====================================================
+   AD SLOTS (managed by /ads.js)
+   Space is reserved up front so ads don't push content around (CLS).
+   ===================================================== */
+
+.ad-slot {
+    display: block;
+    width: 100%;
+    max-width: 728px;
+    margin: 2rem auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Small, clearly separated label so ads are never mistaken for site content */
+.ad-slot[data-ad-label]::before {
+    content: attr(data-ad-label);
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 0.35rem;
+}
+
+.ad-slot--display {
+    min-height: 120px;
+}
+
+.ad-slot--inarticle {
+    min-height: 250px;
+}
+
+.ad-slot--multiplex {
+    max-width: 900px;
+    min-height: 300px;
+}
+
+@media (max-width: 768px) {
+    .ad-slot {
+        margin: 1.5rem auto;
+    }
+
+    .ad-slot--display {
+        min-height: 280px;
+    }
+}
+
+/* Disabled placements and slots Google could not fill take no space */
+.ad-slot[data-ad-state="disabled"],
+.ad-slot:has(ins.adsbygoogle[data-ad-status="unfilled"]) {
+    display: none;
+}
+
+/* Side rails: positioning lives in style.css (.ad-sidebar); no reserved height needed */
+.ad-sidebar .ad-slot {
+    margin: 0;
+    max-width: none;
+    min-height: 0;
+}

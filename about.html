@@ -21,24 +21,6 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://newyeartimers.com/about.html">
 
-    <!-- Hreflang Tags for International SEO -->
-    <link rel="alternate" hreflang="en" href="https://newyeartimers.com/about.html">
-    <link rel="alternate" hreflang="es" href="https://newyeartimers.com/about.html?lang=es">
-    <link rel="alternate" hreflang="pt" href="https://newyeartimers.com/about.html?lang=pt">
-    <link rel="alternate" hreflang="fr" href="https://newyeartimers.com/about.html?lang=fr">
-    <link rel="alternate" hreflang="de" href="https://newyeartimers.com/about.html?lang=de">
-    <link rel="alternate" hreflang="it" href="https://newyeartimers.com/about.html?lang=it">
-    <link rel="alternate" hreflang="ru" href="https://newyeartimers.com/about.html?lang=ru">
-    <link rel="alternate" hreflang="zh" href="https://newyeartimers.com/about.html?lang=zh">
-    <link rel="alternate" hreflang="ja" href="https://newyeartimers.com/about.html?lang=ja">
-    <link rel="alternate" hreflang="ar" href="https://newyeartimers.com/about.html?lang=ar">
-    <link rel="alternate" hreflang="hi" href="https://newyeartimers.com/about.html?lang=hi">
-    <link rel="alternate" hreflang="ko" href="https://newyeartimers.com/about.html?lang=ko">
-    <link rel="alternate" hreflang="nl" href="https://newyeartimers.com/about.html?lang=nl">
-    <link rel="alternate" hreflang="pl" href="https://newyeartimers.com/about.html?lang=pl">
-    <link rel="alternate" hreflang="sv" href="https://newyeartimers.com/about.html?lang=sv">
-    <link rel="alternate" hreflang="tr" href="https://newyeartimers.com/about.html?lang=tr">
-    <link rel="alternate" hreflang="x-default" href="https://newyeartimers.com/about.html">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -49,7 +31,6 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,7 +39,6 @@
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7982216026691433" crossorigin="anonymous"></script>
-    <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
 
     <link rel="stylesheet" href="blog/blog.css">
 
@@ -85,6 +65,7 @@
             <a href="./" class="nav-logo">NYT 2027</a>
             <ul class="nav-links">
                 <li><a href="./">Countdown</a></li>
+                <li><a href="./countdown/">By country</a></li>
                 <li><a href="./blog/">Blog</a></li>
                 <li><a href="./about.html">About</a></li>
             </ul>
@@ -101,21 +82,6 @@
             <h1 class="about-title">About New Year Timers</h1>
             <p class="blog-subtitle">Bringing the world together to celebrate new beginnings</p>
         </header>
-
-        <!-- Top Ad - Google AdSense + ExoClick fallback -->
-        <div class="ad-container ad-top">
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-7982216026691433"
-                data-ad-slot="2968493398"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <div class="exo-fallback" style="display:none">
-                <ins class="eas6a97888e2" data-zoneid="5950250"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-            </div>
-        </div>
 
         <!-- About Content -->
         <section class="about-content">
@@ -156,21 +122,6 @@
                 <li><strong>Community:</strong> We believe in the power of shared experiences. Our wishes wall and interactive features are designed to foster a sense of global connection.</li>
                 <li><strong>Privacy:</strong> We respect our users' privacy and are committed to protecting their data while providing a seamless experience.</li>
             </ul>
-
-            <!-- Middle Ad - Google AdSense + ExoClick fallback -->
-            <div class="ad-container ad-middle">
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-7982216026691433"
-                    data-ad-slot="2968493398"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                <div class="exo-fallback" style="display:none">
-                    <ins class="eas6a97888e10" data-zoneid="5950270"></ins>
-                    <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-                </div>
-            </div>
 
             <h2>Meet Our Team</h2>
             <p>
@@ -252,23 +203,6 @@
         });
     </script>
 
-    <!-- ExoClick Fallback Detector -->
-    <script>
-    (function() {
-        document.querySelectorAll('ins.adsbygoogle').forEach(function(ins) {
-            var fb = ins.parentElement.querySelector('.exo-fallback');
-            if (!fb) return;
-            new MutationObserver(function(m) {
-                m.forEach(function(mu) {
-                    if (mu.attributeName === 'data-ad-status' && ins.getAttribute('data-ad-status') === 'unfilled') {
-                        ins.style.display = 'none';
-                        fb.style.display = 'block';
-                    }
-                });
-            }).observe(ins, { attributes: true });
-        });
-    })();
-    </script>
 
 </body>
 </html>

@@ -3078,23 +3078,25 @@ body.dark-mode .ad-after-wishes {
     display: none;
 }
 
-/* Posición calculada para no tapar el contenido central (300px de ancho) */
+/* Posición calculada para quedar FUERA del contenedor (1200px) y no tapar el texto.
+   Contenedor: 50% ± 600px. Anuncio de 300px con 20px de margen → borde interno en 50% - 620px. */
 .ad-sidebar-left {
-    left: calc(50% - 660px);
+    left: calc(50% - 920px);
 }
 
 .ad-sidebar-right {
-    right: calc(50% - 660px);
+    right: calc(50% - 920px);
 }
 
-/* Mostrar sidebars solo en pantallas con espacio suficiente para 300x600 */
-@media (min-width: 1400px) {
+/* Mostrar sidebars solo cuando hay espacio real para 300px a cada lado sin invadir el texto
+   (600px de medio contenedor + 300px del anuncio + 20px de margen = 920px → viewport ≥ 1840px) */
+@media (min-width: 1840px) {
     .ad-sidebar {
         display: block;
     }
 }
 
-@media (max-width: 1399px) {
+@media (max-width: 1839px) {
     .ad-sidebar {
         display: none !important;
     }
