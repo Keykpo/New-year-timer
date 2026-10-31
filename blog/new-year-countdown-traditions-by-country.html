@@ -29,16 +29,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Adsterra Ads -->
 
     <link rel="stylesheet" href="blog.css">
-    <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7982216026691433" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../ads.css">
 
-    <style>
-        .ad-desktop-only { display: block; }
-        .ad-mobile-only { display: none; }
-        @media (max-width: 768px) { .ad-desktop-only { display: none; } .ad-mobile-only { display: block; } }
-    </style>
 
     <!-- BlogPosting Schema -->
     <script type="application/ld+json">
@@ -101,25 +96,12 @@
             </div>
         </header>
 
-        <div class="ad-container ad-top">
-            <div class="ad-desktop-only">
-                <script type="text/javascript">
-                    atOptions = { 'key' : '08a36f7fdc0f3e1de7733e2a0c6eb7d5', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-                </script>
-                
-            </div>
-            <div class="ad-mobile-only">
-                <script type="text/javascript">
-                    atOptions = { 'key' : 'e1c72add601a0c03e95b0e5317d05bd9', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-                </script>
-                
-            </div>
-        </div>
-
         <article class="article-content">
             <p>
                 The final seconds of December 31st are magical moments shared by billions of people worldwide. Yet while we all count down to the same midnight, the rituals and traditions that accompany those crucial moments vary wonderfully across cultures. From frantic grape-eating in Spain to solemn bell-ringing in Japan, let's explore how different countries make their countdown to the new year unique and meaningful.
 </p>
+
+            <div class="ad-slot ad-slot--display" data-ad="ARTICLE_INTRO"></div>
 
             <h2>Spain: Las Doce Uvas de la Suerte</h2>
             <p>
@@ -128,12 +110,6 @@
             <p>
                 The challenge is real: the bells chime roughly one second apart, and swallowing grapes that quickly without choking requires practice. Many Spaniards prepare seedless grapes and have them peeled and ready. Failing to finish all twelve is considered bad luck, adding a playful pressure to the festivities.
 </p>
-
-        <!-- ExoClick Mid-Article 300x250 -->
-        <div style="text-align:center; margin: 2rem auto;">
-            <ins class="eas6a97888e10" data-zoneid="5950270"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
 
 
             <h2>Japan: Joya no Kane</h2>
@@ -167,6 +143,8 @@
                 As the countdown hits zero, Scots everywhere link arms and sing "Auld Lang Syne," the Robert Burns poem that has become synonymous with New Year celebrations worldwide. The tradition of singing this song at midnight has spread from Scotland to countries around the globe.
 </p>
 
+            <div class="ad-slot ad-slot--inarticle" data-ad="ARTICLE_MIDDLE"></div>
+
             <h2>Philippines: Round Shapes and Loud Noises</h2>
             <p>
                 Filipinos believe that round shapes attract wealth because they resemble coins. During the countdown, many Filipinos wear polka-dotted clothing, display twelve round fruits on the table, and keep coins jingling in their pockets. At midnight, people make as much noise as possible, banging pots, honking horns, and lighting firecrackers to drive away evil spirits.
@@ -196,6 +174,8 @@
             </p>
         </article>
 
+        <div class="ad-slot ad-slot--display" data-ad="ARTICLE_END"></div>
+
         <div class="author-box">
             <div class="author-avatar">&#9201;</div>
             <div class="author-info">
@@ -214,11 +194,8 @@
         </section>
 
         
-        <!-- ExoClick Before Footer -->
-        <div style="text-align:center; margin: 1.5rem auto;">
-            <ins class="eas6a97888e2" data-zoneid="5950250"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
+        <div class="ad-slot ad-slot--multiplex" data-ad="ARTICLE_MULTIPLEX"></div>
+
 <section class="cta-section">
             <h3>Join the Global Countdown</h3>
             <p>Watch our live countdown and celebrate with people around the world!</p>
@@ -248,21 +225,6 @@
         });
     </script>
 
-    <!-- ExoClick Fallback Detector -->
-    <script>
-    (function() {
-        document.querySelectorAll('ins.adsbygoogle').forEach(function(ins) {
-            var fb = ins.parentElement.querySelector('.exo-fallback');
-            if (!fb) return;
-            new MutationObserver(function(m) {
-                m.forEach(function(mu) {
-                    if (mu.attributeName === 'data-ad-status' && ins.getAttribute('data-ad-status') === 'unfilled') {
-                        ins.style.display = 'none';
-                        fb.style.display = 'block';
-                    }
-                });
-            }).observe(ins, { attributes: true });
-        });
-    })();
-    </script></body>
+    <script src="../ads.js" defer></script>
+</body>
 </html>

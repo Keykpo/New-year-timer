@@ -64,23 +64,13 @@
     <link rel="dns-prefetch" href="https://www.paypalobjects.com">
 
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/ads.css">
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7982216026691433"
          crossorigin="anonymous"></script>
-    <!-- Google AdSense Auto Ads -->
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-7982216026691433",
-            enable_page_level_ads: true
-        });
-    </script>
 
-    <!-- Monetag Push Notifications -->
-    <script src="https://3nbf4.com/act/files/tag.min.js?z=11149854" data-zone="11149854" async></script>
 
-    <!-- ExoClick Banner Ad Provider (shared script for all banner fallbacks) -->
-    <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
 
     <!-- SEO:HEAD-SCHEMA:START -->
     <script type="application/ld+json">
@@ -201,32 +191,13 @@
     <!-- SEO:HEAD-SCHEMA:END -->
 </head>
 <body>
-    <!-- Google AdSense Sidebar Ads - Left and Right (Desktop Only) -->
+    <!-- Ad placements are configured in ads.js -->
+    <!-- Side rails (desktop >= 1840px only) -->
     <div class="ad-sidebar ad-sidebar-left" id="adSidebarLeft">
-        <!-- sidebar-half-page 300x600 (AdSense primary) -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:300px;height:600px"
-             data-ad-client="ca-pub-7982216026691433"
-             data-ad-slot="1486507879"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        <!-- ExoClick 300x500 fallback -->
-        <div class="exo-fallback" style="display:none">
-            <ins class="eas6a97888e2" data-zoneid="5950258"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
+        <div class="ad-slot" data-ad="HOME_SIDE_LEFT"></div>
     </div>
     <div class="ad-sidebar ad-sidebar-right" id="adSidebarRight">
-        <!-- sidebar-half-page 300x600 (AdSense primary) -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:300px;height:600px"
-             data-ad-client="ca-pub-7982216026691433"
-             data-ad-slot="1451380053"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        <!-- ExoClick 300x500 fallback -->
-        <div class="exo-fallback" style="display:none">
-            <ins class="eas6a97888e2" data-zoneid="5950258"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
+        <div class="ad-slot" data-ad="HOME_SIDE_RIGHT"></div>
     </div>
 
     <!-- Minimalist design - no background effects -->
@@ -238,21 +209,6 @@
 
 
     <div class="container">
-        <!-- Google AdSense Top Banner + ExoClick 728x90 fallback -->
-        <div class="ad-container" style="text-align: center; margin: 0.5rem auto 1rem; max-width: 728px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-7982216026691433"
-                 data-ad-slot="2968493398"
-                 data-ad-format="horizontal"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <div class="exo-fallback" style="display:none">
-                <ins class="eas6a97888e2" data-zoneid="5950250"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-            </div>
-        </div>
-
         <!-- Header Section -->
         <header>
             <h1 class="main-title" data-i18n="mainTitle">Tiempo Restante para tu Año Nuevo</h1>
@@ -288,40 +244,7 @@
             <button class="free-wish-button" id="freeWishButton" data-i18n="freeWishButton">✨ Deja Tu Deseo Gratis ✨</button>
         </section>
 
-        <!-- Google AdSense After Countdown + ExoClick fallbacks -->
-        <div class="ad-container" style="text-align: center; margin: 1.5rem auto; max-width: 728px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-7982216026691433"
-                 data-ad-slot="6547262869"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <div class="exo-fallback" style="display:none">
-                <ins class="eas6a97888e2" data-zoneid="5950250"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-            </div>
-        </div>
-
-        <!-- ExoClick Video Slider -->
-        <div style="text-align:center; margin: 0.5rem auto;">
-            <ins class="eas6a97888e31" data-zoneid="5950262"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
-
-        <div class="ad-container" style="text-align: center; margin: 0.5rem auto 1.5rem; max-width: 336px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-7982216026691433"
-                 data-ad-slot="7090526020"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <div class="exo-fallback" style="display:none">
-                <ins class="eas6a97888e2" data-zoneid="5950248"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-            </div>
-        </div>
+        <div class="ad-slot ad-slot--display" data-ad="HOME_AFTER_COUNTDOWN"></div>
 
         <!-- Wishes Constellation Section -->
         <section class="constellation-section">
@@ -349,21 +272,6 @@
                     </div>
                 </div>
                 <button class="nav-arrow-btn" id="founderNavRight">→</button>
-            </div>
-
-            <!-- Google AdSense Ad - Between Wishes + ExoClick fallback -->
-            <div class="ad-container" style="text-align: center; margin: 1.5rem auto; max-width: 728px;">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-7982216026691433"
-                     data-ad-slot="6885376420"
-                     data-ad-format="horizontal"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                <div class="exo-fallback" style="display:none">
-                    <ins class="eas6a97888e2" data-zoneid="5950250"></ins>
-                    <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-                </div>
             </div>
 
             <!-- Navigation Buttons (Left/Right) -->
@@ -426,8 +334,8 @@
 
                 <!-- Free Wish via Push Notification -->
                 <div class="rewarded-ad-section">
-                    <div class="rewarded-ad-note" data-i18n="watchAdNote">¡Activá las notificaciones y dejá tu deseo gratis!</div>
-                    <button class="rewarded-ad-button" id="watchAdButton" data-i18n="watchAdButton">🔔 Activar Notificaciones y Deseo Gratis</button>
+                    <div class="rewarded-ad-note" data-i18n="watchAdNote">O deja tu deseo gratis:</div>
+                    <button class="rewarded-ad-button" id="watchAdButton" data-i18n="watchAdButton">🎁 Pedir mi deseo gratis</button>
                 </div>
 
                 <div class="payment-divider">
@@ -478,20 +386,7 @@
             </div>
         </div>
 
-        <!-- Google AdSense Banner Ad - After Wishes + ExoClick fallback -->
-        <div class="ad-container" style="text-align: center; margin: 2rem auto; max-width: 728px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-7982216026691433"
-                 data-ad-slot="4120410073"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <div class="exo-fallback" style="display:none">
-                <ins class="eas6a97888e2" data-zoneid="5950248"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-            </div>
-        </div>
+        <div class="ad-slot ad-slot--display" data-ad="HOME_AFTER_WISHES"></div>
 
         <!-- SEO:CONTENT:START -->
         <!-- Sección de contenido SEO (generada desde seo/content/home.es.html - edítala ahí y ejecuta npm run seo:build) -->
@@ -511,26 +406,8 @@
                 La medianoche no llega a todos los países a la vez. En nuestra <a href="/es/cuenta-regresiva/">cuenta regresiva por país</a> puedes ver el momento exacto en que cada huso horario entra en 2027, desde Kiribati, el primer país en celebrarlo, hasta Samoa Americana, uno de los últimos. Cada país tiene su propia cuenta regresiva en vivo, todos sus husos horarios y la hora en otras ciudades en ese momento.
             </p>
 
-            <!-- Google AdSense In-Article Ad + ExoClick fallback -->
-            <div style="text-align: center; margin: 2rem 0;">
-                <ins class="adsbygoogle"
-                     style="display:block; text-align:center;"
-                     data-ad-layout="in-article"
-                     data-ad-format="fluid"
-                     data-ad-client="ca-pub-7982216026691433"
-                     data-ad-slot="2663060381"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                <div class="exo-fallback" style="display:none">
-                    <ins class="eas6a97888e10" data-zoneid="5950270"></ins>
-                    <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-                </div>
-            </div>
+            <div class="ad-slot ad-slot--inarticle" data-ad="HOME_CONTENT_1"></div>
 
-            <!-- ExoClick 900x250 - Wide SEO Section Banner -->
-            <div style="text-align: center; margin: 1.5rem 0; overflow: hidden;">
-                <ins class="eas6a97888e2" data-zoneid="5950256"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-            </div>
 
             <h3 style="color: #334155; font-size: 1.3rem; margin: 2rem 0 1rem; font-weight: 600;">Qué puedes hacer aquí</h3>
             <ul style="margin: 1rem 0 1.5rem 1.5rem; line-height: 1.8;">
@@ -556,20 +433,7 @@
                 El <strong>día de Año Nuevo de 2027</strong> es el viernes 1 de enero de 2027. La celebración empieza en <strong>Nochevieja</strong>, el 31 de diciembre de 2026, cuando el reloj marca la medianoche. Tanto si preparas una fiesta como tus propósitos de año nuevo, la cuenta regresiva de arriba te dice exactamente cuánto falta.
             </p>
 
-            <!-- Google AdSense In-Article Ad + ExoClick fallback -->
-            <div style="text-align: center; margin: 2rem 0;">
-                <ins class="adsbygoogle"
-                     style="display:block; text-align:center;"
-                     data-ad-layout="in-article"
-                     data-ad-format="fluid"
-                     data-ad-client="ca-pub-7982216026691433"
-                     data-ad-slot="7408810597"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                <div class="exo-fallback" style="display:none">
-                    <ins class="eas6a97888e10" data-zoneid="5950270"></ins>
-                    <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-                </div>
-            </div>
+            <div class="ad-slot ad-slot--inarticle" data-ad="HOME_CONTENT_2"></div>
 
             <!-- Preguntas frecuentes (el JSON-LD FAQPage se genera a partir de estas preguntas) -->
             <div style="background: #f8fafc; border-left: 4px solid #3b82f6; padding: 1.5rem; margin: 2.5rem 0; border-radius: 0.5rem;">
@@ -595,20 +459,6 @@
                     Sí. El reloj usa la zona horaria de tu dispositivo y cuenta hasta la medianoche en tu ubicación, estés en Ciudad de México, Madrid, Buenos Aires o Bogotá.
                 </p>
 
-            <!-- Google AdSense In-Article Ad + ExoClick fallback -->
-            <div style="text-align: center; margin: 1.5rem 0;">
-                <ins class="adsbygoogle"
-                     style="display:block; text-align:center;"
-                     data-ad-layout="in-article"
-                     data-ad-format="fluid"
-                     data-ad-client="ca-pub-7982216026691433"
-                     data-ad-slot="2575094426"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                <div class="exo-fallback" style="display:none">
-                    <ins class="eas6a97888e10" data-zoneid="5950270"></ins>
-                    <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-                </div>
-            </div>
 
                 <h4 style="color: #475569; font-size: 1.1rem; margin: 1.5rem 0 0.5rem; font-weight: 600;">¿Puedo ver la cuenta regresiva de otro país?</h4>
                 <p style="margin-bottom: 1rem;">
@@ -630,20 +480,6 @@
                     Sí. La página se adapta a móviles, tablets y ordenadores.
                 </p>
 
-            <!-- Google AdSense Ad + ExoClick fallback -->
-            <div style="text-align: center; margin: 1.5rem 0 0.5rem;">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-7982216026691433"
-                     data-ad-slot="5110361063"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                <div class="exo-fallback" style="display:none">
-                    <ins class="eas6a97888e2" data-zoneid="5950250"></ins>
-                    <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-                </div>
-            </div>
             </div>
 
             <p style="margin-top: 2rem; font-size: 0.9rem; color: #94a3b8; text-align: center;">
@@ -652,34 +488,7 @@
         </section>
         <!-- SEO:CONTENT:END -->
 
-        <!-- Google AdSense Banner Ad - Before Footer + ExoClick fallback -->
-        <div class="ad-container" style="text-align: center; margin: 2rem auto; max-width: 728px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-7982216026691433"
-                 data-ad-slot="4028430170"
-                 data-ad-format="horizontal"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <div class="exo-fallback" style="display:none">
-                <ins class="eas6a97888e2" data-zoneid="5950250"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-            </div>
-        </div>
-
-        <!-- Google AdSense Multiplex + ExoClick 900x250 fallback -->
-        <div class="ad-container" style="text-align: center; margin: 2rem auto; max-width: 900px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-format="autorelaxed"
-                 data-ad-client="ca-pub-7982216026691433"
-                 data-ad-slot="7172814982"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <div class="exo-fallback" style="display:none">
-                <ins class="eas6a97888e2" data-zoneid="5950256"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-            </div>
-        </div>
+        <div class="ad-slot ad-slot--multiplex" data-ad="HOME_MULTIPLEX"></div>
 
         <!-- Footer -->
         <footer>
@@ -762,134 +571,12 @@
     </script>
 
     <!-- Vercel Speed Insights -->
-    <script type="module">
-        import { injectSpeedInsights } from 'https://cdn.vercel-insights.com/v1/speed-insights/script.js';
-        injectSpeedInsights();
-    </script>
+    <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 
     <script src="/script.js"></script>
 
-    <!-- Google AdSense Sticky Mobile Ad -->
-    <div class="ad-sticky-mobile">
-        <!-- Sticky Mobile -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:320px;height:50px"
-             data-ad-client="ca-pub-7982216026691433"
-             data-ad-slot="9290328970"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <!-- ExoClick Push Notification — Language Aware -->
-    <script>
-    (function() {
-        var lang = navigator.language || navigator.userLanguage || 'en';
-        var isSpanish = /^es/i.test(lang);
-
-        if (isSpanish) {
-            // Español — Zone 5950280
-            window.pn_idzone = 5950280;
-            window.pn_sleep_seconds = 8;
-            window.pn_is_self_hosted = 1;
-            window.pn_soft_ask = 1;
-            window.pn_filename = '/worker.js';
-            window.pn_soft_ask_horizontal_position = 'left';
-            window.pn_soft_ask_vertical_position = 'top';
-            window.pn_soft_ask_title_enabled = 1;
-            window.pn_soft_ask_title = 'Hacé click en PERMITIR para desbloquear tu deseo gratis ✨';
-            window.pn_soft_ask_description = '¡Recibí el aviso cuando llegue el Año Nuevo 2027! Activá las notificaciones para tu deseo gratis.';
-            window.pn_soft_ask_yes = '¡Sí, avisame!';
-            window.pn_soft_ask_no = 'No, gracias';
-        } else {
-            // English — Zone 5950282
-            window.pn_idzone = 5950282;
-            window.pn_sleep_seconds = 8;
-            window.pn_is_self_hosted = 1;
-            window.pn_soft_ask = 1;
-            window.pn_filename = '/worker.js';
-            window.pn_soft_ask_horizontal_position = 'left';
-            window.pn_soft_ask_vertical_position = 'top';
-            window.pn_soft_ask_title_enabled = 1;
-            window.pn_soft_ask_title = 'Click ALLOW to unlock your free wish ✨';
-            window.pn_soft_ask_description = '🎆 Get notified when New Year 2027 arrives! Enable notifications for your free wish.';
-            window.pn_soft_ask_yes = 'Yes, notify me!';
-            window.pn_soft_ask_no = 'No, thanks';
-        }
-    })();
-    </script>
-    <script type="application/javascript" src="https://js.wpnsrv.com/pn.php"></script>
-
-    <!-- ExoClick Mobile Instant Message (mobile only) -->
-    <div id="exo-instant-message">
-        <ins class="eas6a97888e14" data-zoneid="5950272"></ins>
-        <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-    </div>
-
-    <!-- ExoClick Full Page Interstitial — Exit Intent (Desktop Only) -->
-    <script>
-    (function() {
-        var DESKTOP_MIN_WIDTH = 1024;
-        var MIN_TIME_MS = 4000;
-        var SESSION_KEY = 'exo_fullpage_shown';
-        var pageLoadTime = Date.now();
-        var triggered = false;
-
-        function shouldTrigger() {
-            if (triggered) return false;
-            if (window.innerWidth < DESKTOP_MIN_WIDTH) return false;
-            if (sessionStorage.getItem(SESSION_KEY)) return false;
-            if (Date.now() - pageLoadTime < MIN_TIME_MS) return false;
-            return true;
-        }
-
-        function fireFullPageAd() {
-            if (!shouldTrigger()) return;
-            triggered = true;
-            sessionStorage.setItem(SESSION_KEY, '1');
-
-            var container = document.createElement('div');
-            container.innerHTML = '<ins class="eas6a97888e35" data-zoneid="5950260"></ins>';
-            document.body.appendChild(container);
-
-            var s = document.createElement('script');
-            s.src = 'https://a.pemsrv.com/ad-provider.js';
-            s.async = true;
-            s.onload = function() {
-                (window.AdProvider = window.AdProvider || []).push({"serve": {}});
-            };
-            document.body.appendChild(s);
-        }
-
-        document.addEventListener('mouseleave', function(e) {
-            if (e.clientY <= 5) fireFullPageAd();
-        });
-    })();
-    </script>
-
-    <!-- ExoClick AdSense Fallback Detector -->
-    <script>
-    (function() {
-        function initFallbacks() {
-            document.querySelectorAll('ins.adsbygoogle').forEach(function(ins) {
-                var fallback = ins.parentElement.querySelector('.exo-fallback');
-                if (!fallback) return;
-                new MutationObserver(function(mutations) {
-                    mutations.forEach(function(m) {
-                        if (m.attributeName === 'data-ad-status' &&
-                            ins.getAttribute('data-ad-status') === 'unfilled') {
-                            ins.style.display = 'none';
-                            fallback.style.display = 'block';
-                        }
-                    });
-                }).observe(ins, { attributes: true });
-            });
-        }
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initFallbacks);
-        } else {
-            initFallbacks();
-        }
-    })();
-    </script>
+    <script src="/ads.js" defer></script>
 
 </body>
 </html>

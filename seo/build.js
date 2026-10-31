@@ -248,6 +248,7 @@ ${socialMeta(lang, p, p.alternates)}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/blog/blog.css">
     <link rel="stylesheet" href="/countdown.css">
+    <link rel="stylesheet" href="/ads.css">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${config.adsenseClient}" crossorigin="anonymous"></script>
 
@@ -278,10 +279,14 @@ ${socialMeta(lang, p, p.alternates)}
             <p class="page-lead">${esc(p.lead)}</p>
         </header>
 ${p.top || ''}
+        <div class="ad-slot ad-slot--display" data-ad="COUNTRY_AFTER_COUNTDOWN"></div>
+
         <article class="article-content">
 ${p.body}
         </article>
 ${p.after || ''}
+        <div class="ad-slot ad-slot--multiplex" data-ad="COUNTRY_MULTIPLEX"></div>
+
         <section class="cta-section">
             <h3>${ui.cta.title}</h3>
             <p>${ui.cta.text}</p>
@@ -312,13 +317,16 @@ ${p.after || ''}
         });
     </script>
     <script src="/countdown.js" defer></script>
+    <script src="/ads.js" defer></script>
 </body>
 </html>
 `;
 }
 
+// The in-content ad goes after the second section (never before the first one).
 function sectionsHtml(sections) {
-    return sections.map(s => `            <h2>${esc(s.h2)}</h2>\n            ${s.html}`).join('\n\n');
+    return sections.map((s, i) => `            <h2>${esc(s.h2)}</h2>\n            ${s.html}` +
+        (i === 1 ? '\n\n            <div class="ad-slot ad-slot--inarticle" data-ad="COUNTRY_MIDDLE"></div>' : '')).join('\n\n');
 }
 
 function faqHtml(lang, faq) {
@@ -511,55 +519,15 @@ function loadUiTranslations() {
     return vm.runInNewContext(`(${m[1]})`);
 }
 
-function adSnippet(kind, args) {
-    if (kind === 'inarticle') {
-        const [slot, zone, ...margin] = args;
-        return `            <!-- Google AdSense In-Article Ad + ExoClick fallback -->
-            <div style="text-align: center; margin: ${margin.join(' ')};">
-                <ins class="adsbygoogle"
-                     style="display:block; text-align:center;"
-                     data-ad-layout="in-article"
-                     data-ad-format="fluid"
-                     data-ad-client="${config.adsenseClient}"
-                     data-ad-slot="${slot}"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                <div class="exo-fallback" style="display:none">
-                    <ins class="eas6a97888e10" data-zoneid="${zone}"></ins>
-                    <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-                </div>
-            </div>`;
-    }
-    if (kind === 'auto') {
-        const [slot, zone, ...margin] = args;
-        return `            <!-- Google AdSense Ad + ExoClick fallback -->
-            <div style="text-align: center; margin: ${margin.join(' ')};">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="${config.adsenseClient}"
-                     data-ad-slot="${slot}"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                <div class="exo-fallback" style="display:none">
-                    <ins class="eas6a97888e2" data-zoneid="${zone}"></ins>
-                    <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-                </div>
-            </div>`;
-    }
-    if (kind === 'exo-wide') {
-        return `            <!-- ExoClick 900x250 - Wide SEO Section Banner -->
-            <div style="text-align: center; margin: 1.5rem 0; overflow: hidden;">
-                <ins class="eas6a97888e2" data-zoneid="${args[0]}"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-            </div>`;
-    }
-    throw new Error(`Unknown ad snippet ${kind}`);
+/** Ad placeholder; what renders there (if anything) is configured in /ads.js. */
+function adSlot(name, kind) {
+    return `            <div class="ad-slot ad-slot--${kind}" data-ad="${name}"></div>`;
 }
 
 function renderHomeContent(lang) {
     const ny = newYearsDay(lang);
     return read(`seo/content/home.${lang}.html`)
-        .replace(/^\{\{ad-([a-z-]+) ([^}]+)\}\}$/gm, (_, kind, args) => adSnippet(kind, args.trim().split(/\s+/)))
+        .replace(/^\{\{ad ([A-Z0-9_]+) ([a-z]+)\}\}$/gm, (_, name, kind) => adSlot(name, kind))
         .replace(/\{\{year\}\}/g, YEAR)
         .replace(/\{\{prevYear\}\}/g, YEAR - 1)
         .replace(/\{\{newYearsWeekday\}\}/g, ny.weekday)

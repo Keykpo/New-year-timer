@@ -83,7 +83,8 @@ for (const file of htmlFiles) {
         const ref = m[1];
         if (/^(mailto:|javascript:|data:|#)/.test(ref)) continue;
         const u = new URL(ref, pageUrl);
-        if (u.origin !== SITE || u.pathname.startsWith('/api/')) continue;
+        // /api and /_vercel (Speed Insights) are served by Vercel itself, not by files
+        if (u.origin !== SITE || /^\/(api|_vercel)\//.test(u.pathname)) continue;
         checkedLinks++;
         const r = resolve(u.pathname);
         expect(r.status === 200, `${file}: ${ref} -> ${r.status}`);
@@ -99,13 +100,13 @@ for (const [from, to] of [['/blog', '/blog/'], ['/es', '/es/'], ['/countdown', '
 
 // 4. Must be served
 for (const p of ['/', '/index.html', '/es/', '/countdown/', '/robots.txt', '/sitemap.xml', '/ads.txt', '/style.css', '/script.js',
-    '/config.js', '/countdown.js', '/countdown.css', '/sw.js', '/worker.js', '/og-image.jpg', '/favicon.svg', '/about.html',
+    '/config.js', '/countdown.js', '/countdown.css', '/ads.js', '/ads.css', '/og-image.jpg', '/favicon.svg', '/about.html',
     '/privacy-policy.html', '/.well-known/security.txt', '/b454da5080b2d036562b141ca976ea5f.html']) {
     expect(route(p).status === 200, `${p} should be served (got ${route(p).status})`);
 }
 
 // 5. Must NOT be served
-for (const p of ['/server.js', '/add-100-more-wishes.js', '/delete-last-100-wishes.js', '/update-empty-wishes.js', '/package.json',
+for (const p of ['/server.js', '/sw.js', '/worker.js', '/add-100-more-wishes.js', '/delete-last-100-wishes.js', '/update-empty-wishes.js', '/package.json',
     '/seo/build.js', '/seo/manifest.json', '/firebase-rules-test.json', '/index.html.backup', '/SEO_IMPLEMENTATION_REPORT.md', '/countdown/does-not-exist/']) {
     expect(route(p).status === 404, `${p} must not be served (got ${route(p).status})`);
 }

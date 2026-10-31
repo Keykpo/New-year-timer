@@ -58,11 +58,7 @@
       "use": "@vercel/static"
     },
     {
-      "src": "sw.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "worker.js",
+      "src": "ads.js",
       "use": "@vercel/static"
     },
     {
