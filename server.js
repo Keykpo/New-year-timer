@@ -41,7 +41,10 @@ app.use(express.static(path.join(__dirname), {
 
 // Mercado Pago Configuration
 // Get your Access Token from: https://www.mercadopago.com.ar/developers/panel/app
-const MERCADOPAGO_ACCESS_TOKEN = process.env.MERCADOPAGO_ACCESS_TOKEN || 'APP_USR-82134636170200-111220-e7441692c9ac573863ea994d69cb77d2-679745158';
+const MERCADOPAGO_ACCESS_TOKEN = process.env.MERCADOPAGO_ACCESS_TOKEN;
+if (!MERCADOPAGO_ACCESS_TOKEN) {
+    console.warn('⚠️ MERCADOPAGO_ACCESS_TOKEN is not set. Payments will fail until it is configured.');
+}
 
 const client = new MercadoPagoConfig({
     accessToken: MERCADOPAGO_ACCESS_TOKEN,

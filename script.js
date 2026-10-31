@@ -647,7 +647,13 @@ async function getGeoLocationData() {
 
 // Detect language based on URL param, country code, timezone, and browser settings
 function detectLanguage() {
-    // Priority 0: Check URL parameter (for SEO/hreflang - highest priority)
+    // Priority -1: Localized static pages (e.g. /es/) declare their language and must not be overridden
+    const pageLang = document.documentElement.getAttribute('data-page-lang');
+    if (pageLang && translations[pageLang]) {
+        return pageLang;
+    }
+
+    // Priority 0: Check URL parameter (?lang=xx) - client-side UI translation only
     const urlParams = new URLSearchParams(window.location.search);
     const urlLang = urlParams.get('lang');
     if (urlLang && translations[urlLang]) {

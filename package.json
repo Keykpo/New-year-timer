@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "seo:build": "node seo/build.js",
+    "seo:check": "node seo/build.js --dry",
+    "seo:test": "node seo/test-routes.js"
   },
   "keywords": [
     "mercadopago",
