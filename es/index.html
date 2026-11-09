@@ -57,11 +57,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Performance Optimization: Preconnect to PayPal -->
-    <link rel="preconnect" href="https://www.paypal.com">
-    <link rel="preconnect" href="https://www.paypalobjects.com">
-    <link rel="dns-prefetch" href="https://www.paypal.com">
-    <link rel="dns-prefetch" href="https://www.paypalobjects.com">
 
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/ads.css">
@@ -164,7 +159,7 @@
               "name": "¿Cómo funciona el muro de deseos?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Escribe tu deseo para 2027 y tu nombre, y aparecerá en el muro de deseos mundial a la vista de todos. Puedes dejarlo gratis activando las notificaciones o asegurarlo con un pago de 1 USD."
+                "text": "Escribe tu deseo para 2027 y tu nombre, y aparecerá en el muro de deseos mundial a la vista de todos. Dejar tu deseo es totalmente gratis."
               }
             },
             {
@@ -172,7 +167,7 @@
               "name": "¿La cuenta regresiva es gratis?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Sí. La cuenta regresiva, las páginas por país y la lectura del muro de deseos son totalmente gratis. Lo único opcional de pago es asegurar un deseo en el muro por 1 USD."
+                "text": "Sí. Todo es totalmente gratis: la cuenta regresiva, las páginas por país y tanto dejar como leer deseos en el muro."
               }
             },
             {
@@ -327,37 +322,12 @@
                     </div>
                 </form>
 
-                <div class="modal-price">
-                    <p class="price-label" data-i18n="priceLabel">Asegura tu deseo por:</p>
-                    <div class="price-amount">$1 USD</div>
-                </div>
-
-                <!-- Free Wish via Push Notification -->
+                <!-- Free Wish -->
                 <div class="rewarded-ad-section">
-                    <div class="rewarded-ad-note" data-i18n="watchAdNote">O deja tu deseo gratis:</div>
+                    <div class="rewarded-ad-note" data-i18n="watchAdNote">¡Deja tu deseo gratis!</div>
                     <button class="rewarded-ad-button" id="watchAdButton" data-i18n="watchAdButton">🎁 Pedir mi deseo gratis</button>
                 </div>
 
-                <div class="payment-divider">
-                    <span>OR</span>
-                </div>
-
-                <div class="payment-section">
-                    <div class="payment-note" data-i18n="paymentNote">💳 Pago seguro vía PayPal. ¡Tu deseo aparecerá al instante!</div>
-
-                    <!-- PayPal Button Container -->
-                    <div id="paypal-button-container"></div>
-
-                    <!-- Mercado Pago Button Container (only for Argentina) -->
-                    <div id="mercadopago-button-container" style="display: none; margin-top: 1rem;">
-                        <div id="wallet_container"></div>
-                    </div>
-
-                    <!-- Fallback button (replace with actual PayPal integration) -->
-                    <button class="payment-button" id="paymentButton" style="display: none;">
-                        <span data-i18n="payButton">Pagar y Hacer Deseo</span>
-                    </button>
-                </div>
             </div>
         </div>
 
@@ -467,12 +437,12 @@
 
                 <h4 style="color: #475569; font-size: 1.1rem; margin: 1.5rem 0 0.5rem; font-weight: 600;">¿Cómo funciona el muro de deseos?</h4>
                 <p style="margin-bottom: 1rem;">
-                    Escribe tu deseo para 2027 y tu nombre, y aparecerá en el muro de deseos mundial a la vista de todos. Puedes dejarlo gratis activando las notificaciones o asegurarlo con un pago de 1 USD.
+                    Escribe tu deseo para 2027 y tu nombre, y aparecerá en el muro de deseos mundial a la vista de todos. Dejar tu deseo es totalmente gratis.
                 </p>
 
                 <h4 style="color: #475569; font-size: 1.1rem; margin: 1.5rem 0 0.5rem; font-weight: 600;">¿La cuenta regresiva es gratis?</h4>
                 <p style="margin-bottom: 1rem;">
-                    Sí. La cuenta regresiva, las páginas por país y la lectura del muro de deseos son totalmente gratis. Lo único opcional de pago es asegurar un deseo en el muro por 1 USD.
+                    Sí. Todo es totalmente gratis: la cuenta regresiva, las páginas por país y tanto dejar como leer deseos en el muro.
                 </p>
 
                 <h4 style="color: #475569; font-size: 1.1rem; margin: 1.5rem 0 0.5rem; font-weight: 600;">¿Funciona en el móvil?</h4>
@@ -509,35 +479,6 @@
 
     <!-- Configuration -->
     <script src="/config.js"></script>
-
-    <!-- PayPal SDK - Optimized for fast loading -->
-    <script>
-        // Load PayPal SDK immediately with async for better performance
-        if (typeof PAYPAL_CONFIG !== 'undefined' && PAYPAL_CONFIG.clientId !== 'YOUR_PAYPAL_CLIENT_ID') {
-            const script = document.createElement('script');
-            script.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CONFIG.clientId}&currency=${PAYPAL_CONFIG.currency}`;
-            script.async = true; // ← Load asynchronously for better performance
-            script.onload = () => console.log('✅ PayPal SDK loaded successfully');
-            script.onerror = () => console.error('❌ Failed to load PayPal SDK');
-            document.head.appendChild(script);
-        } else {
-            console.warn('⚠️ PayPal not configured. Please update config.js with your Client ID');
-        }
-    </script>
-
-    <!-- Mercado Pago SDK - Lazy loaded for better Core Web Vitals -->
-    <script>
-        // Load Mercado Pago SDK only when needed (user interaction)
-        window.loadMercadoPago = function() {
-            if (window.MercadoPago) return Promise.resolve();
-            return new Promise((resolve) => {
-                const script = document.createElement('script');
-                script.src = 'https://sdk.mercadopago.com/js/v2';
-                script.onload = resolve;
-                document.head.appendChild(script);
-            });
-        };
-    </script>
 
     <!-- Firebase SDK - Deferred loading for better performance -->
     <script>

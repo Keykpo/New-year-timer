@@ -91,9 +91,6 @@ const translations = {
         modalSubtitle: "Your wish will shine on the wall forever!",
         wishLabel: "Your Wish for 2027",
         authorLabel: "Your Name",
-        priceLabel: "Secure your wish for:",
-        paymentNote: "💳 Secure payment via PayPal. Your wish will appear instantly!",
-        payButton: "Pay & Make Wish",
         promoText: "✨ Your wish joins the stars. As a thank you, you will receive a <strong>secret title</strong> that predicts success and guides your path in the new year. ✨",
         viewStarWishes: "🌟 View Wishes",
         wishesMade: "wishes granted",
@@ -122,15 +119,12 @@ const translations = {
         modalSubtitle: "¡Tu deseo brillará en el muro para siempre!",
         wishLabel: "Tu Deseo para 2027",
         authorLabel: "Tu Nombre",
-        priceLabel: "Asegura tu deseo por:",
-        paymentNote: "💳 Pago seguro vía PayPal. ¡Tu deseo aparecerá al instante!",
-        payButton: "Pagar y Hacer Deseo",
         promoText: "✨ Tu deseo se une a las estrellas. Como agradecimiento, recibirás un <strong>título secreto</strong> que te augura éxito y guía tu camino en el nuevo año. ✨",
         viewStarWishes: "🌟 Ver Deseos",
         wishesMade: "deseos cumplidos",
         freeWishButton: "✨ Deja Tu Deseo Gratis ✨",
         watchAdButton: "✨ Hacer Mi Deseo Gratis",
-        watchAdNote: "¡Dejá tu deseo gratis!"
+        watchAdNote: "¡Deja tu deseo gratis!"
     },
     pt: {
         mainTitle: "Tempo Restante para o seu Ano Novo",
@@ -153,9 +147,6 @@ const translations = {
         modalSubtitle: "Seu desejo brilhará no muro para sempre!",
         wishLabel: "Seu Desejo para 2027",
         authorLabel: "Seu Nome",
-        priceLabel: "Garanta seu desejo por:",
-        paymentNote: "💳 Pagamento seguro via PayPal. Seu desejo aparecerá instantaneamente!",
-        payButton: "Pagar e Fazer Desejo",
         promoText: "✨ Seu desejo se junta às estrelas. Como agradecimento, você receberá um <strong>título secreto</strong> que prevê sucesso e guia seu caminho no ano novo. ✨",
         viewStarWishes: "🌟 Ver Desejos",
         freeWishButton: "✨ Deixe Seu Desejo Grátis ✨",
@@ -183,9 +174,6 @@ const translations = {
         modalSubtitle: "Votre souhait brillera sur le mur pour toujours!",
         wishLabel: "Votre Souhait pour 2027",
         authorLabel: "Votre Nom",
-        priceLabel: "Sécurisez votre souhait pour:",
-        paymentNote: "💳 Paiement sécurisé via PayPal. Votre souhait apparaîtra instantanément!",
-        payButton: "Payer et Faire un Souhait",
         promoText: "✨ Votre souhait rejoint les étoiles. En remerciement, vous recevrez un <strong>titre secret</strong> qui prédit le succès et guide votre chemin dans la nouvelle année. ✨",
         viewStarWishes: "🌟 Voir les Souhaits",
         freeWishButton: "✨ Laissez Votre Souhait Gratuit ✨",
@@ -213,9 +201,6 @@ const translations = {
         modalSubtitle: "Ihr Wunsch wird für immer auf der Wand leuchten!",
         wishLabel: "Ihr Wunsch für 2027",
         authorLabel: "Ihr Name",
-        priceLabel: "Sichern Sie Ihren Wunsch für:",
-        paymentNote: "💳 Sichere Zahlung über PayPal. Ihr Wunsch erscheint sofort!",
-        payButton: "Bezahlen & Wunsch abgeben",
         promoText: "✨ Ihr Wunsch schließt sich den Sternen an. Als Dankeschön erhalten Sie einen <strong>geheimen Titel</strong>, der Erfolg vorhersagt und Ihren Weg im neuen Jahr leitet. ✨",
         viewStarWishes: "🌟 Wünsche ansehen",
         freeWishButton: "✨ Kostenlosen Wunsch Hinterlassen ✨",
@@ -243,9 +228,6 @@ const translations = {
         modalSubtitle: "Il tuo desiderio brillerà sul muro per sempre!",
         wishLabel: "Il Tuo Desiderio per il 2027",
         authorLabel: "Il Tuo Nome",
-        priceLabel: "Assicura il tuo desiderio per:",
-        paymentNote: "💳 Pagamento sicuro tramite PayPal. Il tuo desiderio apparirà immediatamente!",
-        payButton: "Paga e Esprimi Desiderio",
         promoText: "✨ Il tuo desiderio si unisce alle stelle. Come ringraziamento, riceverai un <strong>titolo segreto</strong> che predice il successo e guida il tuo percorso nel nuovo anno. ✨",
         viewStarWishes: "🌟 Vedi Desideri",
         freeWishButton: "✨ Lascia il Tuo Desiderio Gratis ✨",
@@ -273,9 +255,6 @@ const translations = {
         modalSubtitle: "Ваше желание будет сиять на стене навсегда!",
         wishLabel: "Ваше Желание на 2027",
         authorLabel: "Ваше Имя",
-        priceLabel: "Закрепите свое желание за:",
-        paymentNote: "💳 Безопасная оплата через PayPal. Ваше желание появится мгновенно!",
-        payButton: "Оплатить и Загадать Желание",
         promoText: "✨ Ваше желание присоединяется к звездам. В знак благодарности вы получите <strong>секретный титул</strong>, который предсказывает успех и направляет ваш путь в новом году. ✨",
         viewStarWishes: "🌟 Посмотреть Желания",
         freeWishButton: "✨ Оставьте Бесплатное Желание ✨",
@@ -303,9 +282,6 @@ const translations = {
         modalSubtitle: "您的愿望将永远在墙上闪耀！",
         wishLabel: "您的2027年愿望",
         authorLabel: "您的名字",
-        priceLabel: "确保您的愿望：",
-        paymentNote: "💳 通过PayPal安全付款。您的愿望将立即显示！",
-        payButton: "支付并许愿",
         promoText: "✨ 您的愿望加入了星辰。作为感谢，您将获得一个<strong>秘密称号</strong>，预示成功并引导您在新年的道路。✨",
         viewStarWishes: "🌟 查看愿望",
         freeWishButton: "✨ 免费许愿 ✨",
@@ -333,9 +309,6 @@ const translations = {
         modalSubtitle: "あなたの願いは永遠に壁で輝きます！",
         wishLabel: "2027年のあなたの願い",
         authorLabel: "あなたの名前",
-        priceLabel: "あなたの願いを確保：",
-        paymentNote: "💳 PayPalによる安全な支払い。あなたの願いはすぐに表示されます！",
-        payButton: "支払って願いを込める",
         promoText: "✨ あなたの願いは星々に加わります。感謝の気持ちとして、成功を予測し新年のあなたの道を導く<strong>秘密の称号</strong>を受け取ります。✨",
         viewStarWishes: "🌟 願いを見る",
         freeWishButton: "✨ 無料で願いを残す ✨",
@@ -363,9 +336,6 @@ const translations = {
         modalSubtitle: "ستتألق أمنيتك على الحائط للأبد!",
         wishLabel: "أمنيتك لعام 2027",
         authorLabel: "اسمك",
-        priceLabel: "احصل على أمنيتك مقابل:",
-        paymentNote: "💳 دفع آمن عبر PayPal. ستظهر أمنيتك على الفور!",
-        payButton: "ادفع واصنع الأمنية",
         promoText: "✨ تنضم أمنيتك إلى النجوم. كشكر لك، ستحصل على <strong>لقب سري</strong> يتنبأ بالنجاح ويرشد طريقك في العام الجديد. ✨",
         viewStarWishes: "🌟 عرض الأمنيات",
         freeWishButton: "✨ اترك أمنيتك مجاناً ✨",
@@ -393,9 +363,6 @@ const translations = {
         modalSubtitle: "Je wens zal voor altijd op de muur schijnen!",
         wishLabel: "Je Wens voor 2027",
         authorLabel: "Je Naam",
-        priceLabel: "Verzeker je wens voor:",
-        paymentNote: "💳 Veilige betaling via PayPal. Je wens verschijnt direct!",
-        payButton: "Betalen & Wens Doen",
         promoText: "✨ Je wens voegt zich bij de sterren. Als dank ontvang je een <strong>geheime titel</strong> die succes voorspelt en je pad in het nieuwe jaar begeleidt. ✨",
         viewStarWishes: "🌟 Bekijk Wensen",
         freeWishButton: "✨ Laat Je Gratis Wens Achter ✨",
@@ -423,9 +390,6 @@ const translations = {
         modalSubtitle: "당신의 소원은 영원히 벽에서 빛날 것입니다!",
         wishLabel: "2027년을 위한 당신의 소원",
         authorLabel: "당신의 이름",
-        priceLabel: "소원을 확보하세요:",
-        paymentNote: "💳 PayPal을 통한 안전한 결제. 소원이 즉시 나타납니다!",
-        payButton: "결제하고 소원 빌기",
         promoText: "✨ 당신의 소원이 별들과 함께합니다. 감사의 표시로, 성공을 예측하고 새해의 길을 안내하는 <strong>비밀 칭호</strong>를 받게 됩니다. ✨",
         viewStarWishes: "🌟 소원 보기",
         freeWishButton: "✨ 무료 소원 남기기 ✨",
@@ -453,9 +417,6 @@ const translations = {
         modalSubtitle: "Dileğiniz sonsuza dek duvarda parlayacak!",
         wishLabel: "2027 için Dileğiniz",
         authorLabel: "Adınız",
-        priceLabel: "Dileğinizi güvence altına alın:",
-        paymentNote: "💳 PayPal üzerinden güvenli ödeme. Dileğiniz anında görünecek!",
-        payButton: "Öde ve Dilek Tut",
         promoText: "✨ Dileğiniz yıldızlara katılıyor. Teşekkür olarak, başarıyı öngören ve yeni yılda yolunuzu gösteren <strong>gizli bir unvan</strong> alacaksınız. ✨",
         viewStarWishes: "🌟 Dilekleri Görüntüle",
         freeWishButton: "✨ Ücretsiz Dileğinizi Bırakın ✨",
@@ -483,9 +444,6 @@ const translations = {
         modalSubtitle: "आपकी इच्छा हमेशा के लिए दीवार पर चमकेगी!",
         wishLabel: "2027 के लिए आपकी इच्छा",
         authorLabel: "आपका नाम",
-        priceLabel: "अपनी इच्छा सुरक्षित करें:",
-        paymentNote: "💳 PayPal के माध्यम से सुरक्षित भुगतान। आपकी इच्छा तुरंत दिखाई देगी!",
-        payButton: "भुगतान करें और इच्छा करें",
         promoText: "✨ आपकी इच्छा सितारों से जुड़ती है। धन्यवाद के रूप में, आपको एक <strong>गुप्त उपाधि</strong> मिलेगी जो सफलता की भविष्यवाणी करती है और नए साल में आपके मार्ग का मार्गदर्शन करती है। ✨",
         viewStarWishes: "🌟 इच्छाएँ देखें",
         freeWishButton: "✨ अपनी मुफ्त इच्छा छोड़ें ✨",
@@ -513,9 +471,6 @@ const translations = {
         modalSubtitle: "Twoje życzenie będzie świecić na ścianie na zawsze!",
         wishLabel: "Twoje Życzenie na 2027",
         authorLabel: "Twoje Imię",
-        priceLabel: "Zabezpiecz swoje życzenie za:",
-        paymentNote: "💳 Bezpieczna płatność przez PayPal. Twoje życzenie pojawi się natychmiast!",
-        payButton: "Zapłać i Złóż Życzenie",
         promoText: "✨ Twoje życzenie dołącza do gwiazd. W podziękowaniu otrzymasz <strong>sekretny tytuł</strong>, który przepowiada sukces i prowadzi Twoją ścieżkę w nowym roku. ✨",
         viewStarWishes: "🌟 Zobacz Życzenia",
         freeWishButton: "✨ Zostaw Darmowe Życzenie ✨",
@@ -543,9 +498,6 @@ const translations = {
         modalSubtitle: "Din önskan kommer att lysa på väggen för alltid!",
         wishLabel: "Din Önskan för 2027",
         authorLabel: "Ditt Namn",
-        priceLabel: "Säkra din önskan för:",
-        paymentNote: "💳 Säker betalning via PayPal. Din önskan kommer att visas omedelbart!",
-        payButton: "Betala & Gör Önskan",
         promoText: "✨ Din önskan går med stjärnorna. Som tack kommer du att få en <strong>hemlig titel</strong> som förutspår framgång och vägleder din väg under det nya året. ✨",
         viewStarWishes: "🌟 Visa Önskningar",
         freeWishButton: "✨ Lämna Din Gratis Önskan ✨",
@@ -932,24 +884,6 @@ if (typeof firebase !== 'undefined') {
 // WISHES WALL SYSTEM
 // ====================================
 
-// Pricing tiers - 3 tiers for constellation design
-const TIERS = {
-    founder: {
-        name: 'founder',
-        price: 3.99,
-        slotStart: 1,
-        maxSlots: 4, // 4 large founder circles
-        icon: '👑'
-    },
-    star: {
-        name: 'star',
-        price: 0.99,
-        slotStart: 1,
-        maxSlots: Infinity, // Grid of small star circles (~50)
-        icon: '⭐'
-    }
-};
-
 // Random wish titles for each tier
 const WISH_TITLES = {
     founder: [
@@ -1002,9 +936,6 @@ function getRandomWishTitle(tierName) {
     return titles[randomIndex];
 }
 
-let currentSlot = null;
-let currentPrice = 0.99;
-let currentTier = null;
 let wishes = {
     founder: {},
     star: {}
@@ -1258,19 +1189,18 @@ function initializeFounderWishes() {
         founderHex.dataset.slot = i;
         const founderContainer = founderHex;
 
-        // El slot 1 se ve como disponible para comprar, pero nunca se llena
+        // El slot 1 siempre invita a escribir un deseo gratis, nunca se llena
         if (i === 1) {
             founderContainer.className = 'founder-wish';
             founderContainer.innerHTML = `
                 <div class="founder-wish-content">
                     <div class="founder-wish-icon">👑</div>
-                    <div class="founder-wish-price">$3.99</div>
                     <div class="founder-wish-text">${phrases[lang] || phrases.en}</div>
                 </div>
             `;
             founderContainer.style.cursor = 'pointer';
             founderContainer.style.opacity = '1';
-            founderContainer.onclick = () => handleTileClick(i, 'founder'); // Se puede comprar
+            founderContainer.onclick = () => openModal();
             gridContainer.appendChild(founderHex);
             continue;
         }
@@ -1304,18 +1234,17 @@ function initializeFounderWishes() {
             founderContainer.style.opacity = '1';
             founderContainer.onclick = () => openViewWishModal(founderWish, i, 'founder');
         } else {
-            // Empty - available for purchase
+            // Empty - click to write a free wish
             founderContainer.className = 'founder-wish';
             founderContainer.innerHTML = `
                 <div class="founder-wish-content">
                     <div class="founder-wish-icon">👑</div>
-                    <div class="founder-wish-price">$3.99</div>
                     <div class="founder-wish-text">${phrases[lang] || phrases.en}</div>
                 </div>
             `;
             founderContainer.style.cursor = 'pointer';
             founderContainer.style.opacity = '1';
-            founderContainer.onclick = () => handleTileClick(i, 'founder');
+            founderContainer.onclick = () => openModal();
         }
 
         gridContainer.appendChild(founderHex);
@@ -1355,17 +1284,16 @@ function initializeStarWishesGrid() {
         const starCircle = document.createElement('div');
         starCircle.className = 'star-wish-circle';
 
-        // El slot 1 se ve como disponible para comprar, pero nunca se llena
+        // El slot 1 siempre invita a escribir un deseo gratis, nunca se llena
         if (i === 1) {
             starCircle.innerHTML = `
                 <div class="star-wish-content">
-                    <div class="star-wish-price">$0.99</div>
                     <div class="star-wish-text">${phrases[lang] || phrases.en}</div>
                 </div>
             `;
             starCircle.style.cursor = 'pointer';
             starCircle.style.opacity = '1';
-            starCircle.onclick = () => handleTileClick(i, 'star'); // Se puede comprar
+            starCircle.onclick = () => openModal();
             gridContainer.appendChild(starCircle);
             continue;
         }
@@ -1398,16 +1326,15 @@ function initializeStarWishesGrid() {
             starCircle.style.opacity = '1';
             starCircle.onclick = () => openViewWishModal(starWish, i, 'star');
         } else {
-            // Empty - available for purchase
+            // Empty - click to write a free wish
             starCircle.innerHTML = `
                 <div class="star-wish-content">
-                    <div class="star-wish-price">$0.99</div>
                     <div class="star-wish-text">${phrases[lang] || phrases.en}</div>
                 </div>
             `;
             starCircle.style.cursor = 'pointer';
             starCircle.style.opacity = '1';
-            starCircle.onclick = () => handleTileClick(i, 'star');
+            starCircle.onclick = () => openModal();
         }
 
         gridContainer.appendChild(starCircle);
@@ -1517,23 +1444,6 @@ function setupTierSlider(prevBtnId, nextBtnId, wrapperIndex) {
 }
 
 /**
- * Handle tile click
- */
-function handleTileClick(slot, tierName) {
-    // Slot 1 is always available for purchase (never visually occupied)
-    // Other slots only allow purchase if empty
-    if (slot !== 1 && wishes[tierName][slot]) {
-        return;
-    }
-
-    // Open purchase modal
-    currentSlot = slot;
-    currentTier = tierName;
-    currentPrice = TIERS[tierName].price;
-    openModal();
-}
-
-/**
  * Setup modal
  */
 function setupModal() {
@@ -1559,7 +1469,6 @@ function setupModal() {
     const freeWishButton = document.getElementById('freeWishButton');
     if (freeWishButton) {
         freeWishButton.addEventListener('click', () => {
-            currentPrice = 0; // Free wish
             openModal();
         });
     }
@@ -1680,7 +1589,7 @@ async function submitFreeWish() {
 /**
  * Open modal
  */
-async function openModal() {
+function openModal() {
     const modal = document.getElementById('wishModal');
 
     // Prepare content before triggering animation to avoid layout thrashing
@@ -1688,38 +1597,10 @@ async function openModal() {
     document.getElementById('wishAuthor').value = '';
     document.getElementById('charCount').textContent = '0';
 
-    const priceElement = document.querySelector('.price-amount');
-    if (priceElement) {
-        priceElement.textContent = `$${currentPrice} USD`;
-    }
-
-    const rewardedAdSection = document.querySelector('.rewarded-ad-section');
-    const paymentDivider = document.querySelector('.payment-divider');
-    if (currentTier === 'founder') {
-        if (rewardedAdSection) rewardedAdSection.style.display = 'none';
-        if (paymentDivider) paymentDivider.style.display = 'none';
-    } else {
-        if (rewardedAdSection) rewardedAdSection.style.display = 'block';
-        if (paymentDivider) paymentDivider.style.display = 'flex';
-    }
-
     // Trigger animation after DOM is ready
     requestAnimationFrame(() => {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
-    });
-
-    // Defer heavy async work until after the animation frame
-    requestAnimationFrame(async () => {
-        const userCountry = await getUserCountry();
-        initPayPalButton();
-        const mpContainer = document.getElementById('mercadopago-button-container');
-        if (userCountry === 'AR') {
-            mpContainer.style.display = 'block';
-            initMercadoPagoButton();
-        } else {
-            mpContainer.style.display = 'none';
-        }
     });
 }
 
@@ -1730,8 +1611,6 @@ function closeModal() {
     const modal = document.getElementById('wishModal');
     modal.classList.remove('active');
     document.body.style.overflow = '';
-    currentSlot = null;
-    currentPrice = 1;
 }
 
 /**
@@ -1744,355 +1623,6 @@ function setupCharCounter() {
     textarea.addEventListener('input', () => {
         counter.textContent = textarea.value.length;
     });
-}
-
-/**
- * Initialize PayPal Button
- * 
- * INSTRUCTIONS FOR PAYPAL INTEGRATION:
- * 
- * 1. Go to https://developer.paypal.com/
- * 2. Create a PayPal Business account (or use existing)
- * 3. Go to Dashboard > My Apps & Credentials
- * 4. Create a new app to get your Client ID
- * 5. Replace "YOUR_PAYPAL_CLIENT_ID" in index.html with your actual Client ID
- * 6. For PRODUCTION: Replace sandbox URL with live URL and use production client ID
- * 
- * The PayPal button will handle the payment and call onApprove when successful
- */
-function initPayPalButton() {
-    const container = document.getElementById('paypal-button-container');
-    container.innerHTML = ''; // Clear existing button
-
-    // Check if PayPal SDK is loaded
-    if (typeof paypal === 'undefined') {
-        // Wait for PayPal SDK to load (up to 5 seconds)
-        let attempts = 0;
-        const maxAttempts = 50;
-        const checkPayPalLoaded = setInterval(() => {
-            attempts++;
-            if (typeof paypal !== 'undefined') {
-                clearInterval(checkPayPalLoaded);
-                renderPayPalButton(container);
-            } else if (attempts >= maxAttempts) {
-                clearInterval(checkPayPalLoaded);
-                console.error('PayPal SDK not loaded after 5 seconds');
-                container.innerHTML = '';
-                document.getElementById('paymentButton').style.display = 'block';
-            }
-        }, 100);
-        return;
-    }
-
-    renderPayPalButton(container);
-}
-
-function renderPayPalButton(container) {
-    paypal.Buttons({
-        style: {
-            layout: 'vertical',
-            color: 'gold',
-            shape: 'rect',
-            label: 'paypal'
-        },
-        createOrder: function(data, actions) {
-            // Validate and sanitize form before creating order
-            const rawWishText = document.getElementById('wishText').value;
-            const rawAuthor = document.getElementById('wishAuthor').value;
-
-            const wishText = sanitizeWishText(rawWishText);
-            const author = sanitizeAuthorName(rawAuthor);
-
-            if (!wishText || !author) {
-                alert('Please fill in both your wish and your name with valid characters');
-                return;
-            }
-
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: currentPrice.toFixed(2),
-                        currency_code: 'USD'
-                    },
-                    description: `New Year 2027 Wish - $${currentPrice} Slot`
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                // Payment successful!
-                handleSuccessfulPayment();
-            });
-        },
-        onError: function(err) {
-            console.error('PayPal Error:', err);
-            alert('Payment failed. Please try again.');
-        }
-    }).render(container).catch((err) => {
-        console.error('❌ Error rendering PayPal button:', err);
-        container.innerHTML = '';
-        document.getElementById('paymentButton').style.display = 'block';
-    });
-}
-
-/**
- * Check if user is returning from Mercado Pago payment and process the wish
- * Mercado Pago adds URL parameters like: ?status=approved or ?collection_status=approved
- */
-async function checkMercadoPagoReturn() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const status = urlParams.get('status') || urlParams.get('collection_status');
-
-    // Check if payment was approved
-    if (status === 'approved') {
-        console.log('✅ Mercado Pago payment approved, checking for pending wish...');
-
-        // Get pending wish from localStorage
-        const pendingWishData = localStorage.getItem('pendingMercadoPagoWish');
-
-        if (pendingWishData) {
-            // Wait for Firebase to be ready before saving
-            const waitForFirebase = () => {
-                return new Promise((resolve) => {
-                    if (database && firebaseInitialized) {
-                        resolve();
-                    } else {
-                        console.log('⏳ Waiting for Firebase to initialize...');
-                        const checkInterval = setInterval(() => {
-                            if (database && firebaseInitialized) {
-                                clearInterval(checkInterval);
-                                resolve();
-                            }
-                        }, 500);
-                        // Timeout after 10 seconds
-                        setTimeout(() => {
-                            clearInterval(checkInterval);
-                            resolve();
-                        }, 10000);
-                    }
-                });
-            };
-
-            try {
-                await waitForFirebase();
-
-                if (!database || !firebaseInitialized) {
-                    console.error('❌ Firebase not available after waiting');
-                    alert('Error de conexión. Por favor recarga la página e intenta de nuevo.');
-                    return;
-                }
-
-                const wishData = JSON.parse(pendingWishData);
-                console.log('📦 Found pending wish data:', wishData);
-
-                // Generate random title for the wish
-                const wishTitle = getRandomWishTitle(wishData.tier);
-
-                // Create wish object
-                const wish = {
-                    text: wishData.text,
-                    author: wishData.author,
-                    country: wishData.country,
-                    wishTitle: wishTitle,
-                    tier: wishData.tier,
-                    slot: wishData.slot,
-                    price: wishData.price,
-                    timestamp: wishData.timestamp
-                };
-
-                // Save to Firebase
-                await saveWishToFirebase(wish);
-
-                // Clear pending wish from localStorage
-                localStorage.removeItem('pendingMercadoPagoWish');
-                console.log('✅ Mercado Pago wish saved successfully!');
-
-                // Show success message
-                alert('🎉 ¡Tu deseo ha sido guardado exitosamente! Gracias por tu pago.');
-
-                // Clean URL (remove Mercado Pago parameters)
-                const cleanUrl = window.location.origin + window.location.pathname;
-                window.history.replaceState({}, document.title, cleanUrl);
-
-                // Reload constellation to show new wish
-                setTimeout(() => {
-                    initializeConstellation();
-                }, 500);
-
-            } catch (error) {
-                console.error('❌ Error processing Mercado Pago return:', error);
-                alert('Hubo un error al guardar tu deseo. Por favor contacta al soporte.');
-            }
-        } else {
-            console.log('⚠️ No pending wish data found in localStorage');
-        }
-    } else if (status === 'pending') {
-        console.log('⏳ Payment is pending');
-        alert('Tu pago está pendiente. Cuando se apruebe, tu deseo aparecerá automáticamente.');
-        // Clear URL parameters
-        const cleanUrl = window.location.origin + window.location.pathname;
-        window.history.replaceState({}, document.title, cleanUrl);
-    } else if (status === 'rejected' || status === 'failure') {
-        console.log('❌ Payment was rejected or failed');
-        localStorage.removeItem('pendingMercadoPagoWish');
-        alert('El pago fue rechazado. Por favor intenta nuevamente.');
-        // Clear URL parameters
-        const cleanUrl = window.location.origin + window.location.pathname;
-        window.history.replaceState({}, document.title, cleanUrl);
-    }
-}
-
-/**
- * Initialize Mercado Pago button (for Argentina users only)
- *
- * IMPORTANT: Mercado Pago requires a backend to create payment preferences securely.
- *
- * Two options:
- * 1. Simple: Use Mercado Pago Payment Links (recommended for testing)
- *    - Go to https://www.mercadopago.com.ar/tools/create
- *    - Create a payment link with your price
- *    - Use that link in the button below
- *
- * 2. Complete: Create a backend endpoint
- *    - Use Node.js/PHP/Python to create payment preferences
- *    - Call your backend from here
- *    - Handle payment notifications (webhooks)
- */
-function initMercadoPagoButton() {
-    const container = document.getElementById('wallet_container');
-
-    // Check if Mercado Pago SDK is loaded
-    if (typeof MercadoPago === 'undefined') {
-        console.error('Mercado Pago SDK not loaded');
-        return;
-    }
-
-    // Check if public key is configured
-    if (!MERCADOPAGO_CONFIG || MERCADOPAGO_CONFIG.publicKey === 'YOUR_MERCADOPAGO_PUBLIC_KEY') {
-        console.warn('⚠️ Mercado Pago not configured. Please update config.js with your Public Key');
-
-        // Show placeholder button with instructions
-        container.innerHTML = `
-            <div style="background: linear-gradient(135deg, #009ee3 0%, #0066ff 100%);
-                        color: white;
-                        padding: 1rem;
-                        border-radius: 8px;
-                        text-align: center;
-                        cursor: pointer;
-                        font-weight: 600;
-                        margin-top: 0.5rem;">
-                💳 Pagar con Mercado Pago
-            </div>
-            <p style="font-size: 0.8rem; color: #64748b; text-align: center; margin-top: 0.5rem;">
-                Configure Mercado Pago en config.js
-            </p>
-        `;
-        return;
-    }
-
-    // Initialize Mercado Pago
-    const mp = new MercadoPago(MERCADOPAGO_CONFIG.publicKey, {
-        locale: 'es-AR'
-    });
-
-    // For now, show a styled button (you'll need to implement backend)
-    container.innerHTML = `
-        <button id="mp-payment-button" style="
-            background: linear-gradient(135deg, #009ee3 0%, #0066ff 100%);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            width: 100%;
-            text-align: center;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-top: 0.5rem;
-            transition: transform 0.2s;
-        " onmouseover="this.style.transform='scale(1.02)'"
-           onmouseout="this.style.transform='scale(1)'">
-            💳 Pagar con Mercado Pago
-        </button>
-    `;
-
-    // Add click handler
-    document.getElementById('mp-payment-button').addEventListener('click', async () => {
-        // Validate form
-        const rawWishText = document.getElementById('wishText').value;
-        const rawAuthor = document.getElementById('wishAuthor').value;
-
-        const wishText = sanitizeWishText(rawWishText);
-        const author = sanitizeAuthorName(rawAuthor);
-
-        if (!wishText || !author) {
-            alert('Por favor completa tu deseo y tu nombre con caracteres válidos');
-            return;
-        }
-
-        // Get user's country
-        const country = await getUserCountry();
-
-        try {
-            // Call backend to create payment preference
-            // Use Render backend URL for production
-            const BACKEND_URL = 'https://new-year-timer.onrender.com';
-            const response = await fetch(`${BACKEND_URL}/api/create-preference`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    amount: currentPrice,
-                    wishText: wishText,
-                    author: author,
-                    slot: currentSlot,
-                    tier: currentTier,
-                    country: country
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to create payment preference');
-            }
-
-            const data = await response.json();
-
-            // Save wish data to localStorage before redirect (Mercado Pago flow)
-            const pendingWish = {
-                text: wishText,
-                author: author,
-                country: country,
-                tier: currentTier,
-                slot: currentSlot,
-                price: currentPrice,
-                timestamp: Date.now()
-            };
-            localStorage.setItem('pendingMercadoPagoWish', JSON.stringify(pendingWish));
-            console.log('💾 Wish data saved to localStorage before Mercado Pago redirect');
-
-            // Redirect to Mercado Pago checkout
-            // Use init_point for production, sandbox_init_point for testing
-            window.location.href = data.init_point || data.sandbox_init_point;
-
-        } catch (error) {
-            console.error('Error creating payment:', error);
-            alert('Error al procesar el pago. Asegúrate de que el servidor esté corriendo.\n\n' +
-                  'Ejecuta: npm start');
-        }
-    });
-}
-
-/**
- * Get user's country code from IP
- */
-async function getUserCountry() {
-    // Use cached geolocation data if available
-    if (geoLocationData) {
-        return geoLocationData.country;
-    }
-
-    // Otherwise fetch it
-    const geoData = await getGeoLocationData();
-    return geoData.country;
 }
 
 /**
@@ -2191,73 +1721,6 @@ function findNextAvailableSlot(tierName) {
         slot++;
     }
     return slot;
-}
-
-/**
- * Handle successful payment
- */
-async function handleSuccessfulPayment() {
-    // Get and sanitize inputs
-    const rawWishText = document.getElementById('wishText').value;
-    const rawAuthor = document.getElementById('wishAuthor').value;
-
-    const wishText = sanitizeWishText(rawWishText);
-    const author = sanitizeAuthorName(rawAuthor);
-
-    if (!wishText || !author || !currentSlot || !currentTier) {
-        alert('Error: Missing or invalid wish data');
-        return;
-    }
-
-    // Check if Firebase is ready
-    if (!database || !firebaseInitialized) {
-        alert('Loading... Please wait a few seconds and try again.');
-        return;
-    }
-
-    // Get user's country
-    const country = await getUserCountry();
-
-    // Generate random wish title based on tier
-    const wishTitle = getRandomWishTitle(currentTier);
-
-    // If user clicked slot 1, assign them the next available slot starting from 2
-    let assignedSlot = currentSlot;
-    if (currentSlot === 1) {
-        assignedSlot = findNextAvailableSlot(currentTier);
-        console.log(`User clicked slot 1, assigning slot ${assignedSlot} instead`);
-    }
-
-    const wish = {
-        text: wishText,
-        author: author,
-        country: country,
-        wishTitle: wishTitle, // ← Random title for this wish
-        slot: assignedSlot, // ← Use assigned slot (may be different from currentSlot)
-        tier: currentTier,
-        price: currentPrice,
-        timestamp: Date.now()
-    };
-
-    // Save to Firebase and wait for completion
-    try {
-        await saveWishToFirebase(wish);
-
-        // Close modal
-        closeModal();
-
-        // Show success message
-        alert('🎉 Your wish has been saved! It will shine on the wall forever!');
-
-        // Regenerate the constellation to show the next available slot
-        // Si es un star wish, se crearán automáticamente más espacios en initializeStarWishesGrid
-        setTimeout(() => {
-            initializeConstellation();
-        }, 500);
-    } catch (error) {
-        console.error('Error saving wish:', error);
-        alert('❌ Error saving your wish. Please try again or contact support.');
-    }
 }
 
 /**
@@ -2766,9 +2229,6 @@ async function init() {
     // 2. Detect and apply language
     const userLanguage = detectLanguage();
     applyTranslations(userLanguage);
-
-    // 3. Check if returning from Mercado Pago payment
-    checkMercadoPagoReturn();
 
     // 4. Display timezone information
     displayTimezoneInfo();

@@ -58,11 +58,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Performance Optimization: Preconnect to PayPal -->
-    <link rel="preconnect" href="https://www.paypal.com">
-    <link rel="preconnect" href="https://www.paypalobjects.com">
-    <link rel="dns-prefetch" href="https://www.paypal.com">
-    <link rel="dns-prefetch" href="https://www.paypalobjects.com">
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="ads.css">
@@ -165,7 +160,7 @@
               "name": "How does the wishes wall work?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Write your wish for 2027 and your name, and it appears on the global wishes wall for everyone to see. You can leave a wish for free by enabling notifications, or secure it with a $1 payment."
+                "text": "Write your wish for 2027 and your name, and it appears on the global wishes wall for everyone to see. Leaving a wish is completely free."
               }
             },
             {
@@ -173,7 +168,7 @@
               "name": "Is this countdown timer free to use?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. The countdown, the country pages and reading the wishes wall are completely free. The only optional paid feature is securing a wish on the wall for $1."
+                "text": "Yes. Everything is completely free: the countdown, the country pages, and both leaving and reading wishes on the wall."
               }
             },
             {
@@ -332,43 +327,16 @@
                     </div>
                 </form>
 
-                <div class="modal-price">
-                    <p class="price-label" data-i18n="priceLabel">Secure your wish for:</p>
-                    <div class="price-amount">$1 USD</div>
-                </div>
-
-                <!-- Free Wish via Push Notification -->
+                <!-- Free Wish -->
                 <div class="rewarded-ad-section">
                     <div class="rewarded-ad-note" data-i18n="watchAdNote">
-                        Or leave your wish for free:
+                        Leave your wish for free!
                     </div>
                     <button class="rewarded-ad-button" id="watchAdButton" data-i18n="watchAdButton">
                         🎁 Make My Wish for Free
                     </button>
                 </div>
 
-                <div class="payment-divider">
-                    <span>OR</span>
-                </div>
-
-                <div class="payment-section">
-                    <div class="payment-note" data-i18n="paymentNote">
-                        💳 Secure payment via PayPal. Your wish will appear instantly!
-                    </div>
-
-                    <!-- PayPal Button Container -->
-                    <div id="paypal-button-container"></div>
-
-                    <!-- Mercado Pago Button Container (only for Argentina) -->
-                    <div id="mercadopago-button-container" style="display: none; margin-top: 1rem;">
-                        <div id="wallet_container"></div>
-                    </div>
-
-                    <!-- Fallback button (replace with actual PayPal integration) -->
-                    <button class="payment-button" id="paymentButton" style="display: none;">
-                        <span data-i18n="payButton">Pay $1 & Make Wish</span>
-                    </button>
-                </div>
             </div>
         </div>
 
@@ -478,12 +446,12 @@
 
                 <h4 style="color: #475569; font-size: 1.1rem; margin: 1.5rem 0 0.5rem; font-weight: 600;">How does the wishes wall work?</h4>
                 <p style="margin-bottom: 1rem;">
-                    Write your wish for 2027 and your name, and it appears on the global wishes wall for everyone to see. You can leave a wish for free by enabling notifications, or secure it with a $1 payment.
+                    Write your wish for 2027 and your name, and it appears on the global wishes wall for everyone to see. Leaving a wish is completely free.
                 </p>
 
                 <h4 style="color: #475569; font-size: 1.1rem; margin: 1.5rem 0 0.5rem; font-weight: 600;">Is this countdown timer free to use?</h4>
                 <p style="margin-bottom: 1rem;">
-                    Yes. The countdown, the country pages and reading the wishes wall are completely free. The only optional paid feature is securing a wish on the wall for $1.
+                    Yes. Everything is completely free: the countdown, the country pages, and both leaving and reading wishes on the wall.
                 </p>
 
                 <h4 style="color: #475569; font-size: 1.1rem; margin: 1.5rem 0 0.5rem; font-weight: 600;">Does this countdown timer work on mobile?</h4>
@@ -520,35 +488,6 @@
 
     <!-- Configuration -->
     <script src="config.js"></script>
-
-    <!-- PayPal SDK - Optimized for fast loading -->
-    <script>
-        // Load PayPal SDK immediately with async for better performance
-        if (typeof PAYPAL_CONFIG !== 'undefined' && PAYPAL_CONFIG.clientId !== 'YOUR_PAYPAL_CLIENT_ID') {
-            const script = document.createElement('script');
-            script.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CONFIG.clientId}&currency=${PAYPAL_CONFIG.currency}`;
-            script.async = true; // ← Load asynchronously for better performance
-            script.onload = () => console.log('✅ PayPal SDK loaded successfully');
-            script.onerror = () => console.error('❌ Failed to load PayPal SDK');
-            document.head.appendChild(script);
-        } else {
-            console.warn('⚠️ PayPal not configured. Please update config.js with your Client ID');
-        }
-    </script>
-
-    <!-- Mercado Pago SDK - Lazy loaded for better Core Web Vitals -->
-    <script>
-        // Load Mercado Pago SDK only when needed (user interaction)
-        window.loadMercadoPago = function() {
-            if (window.MercadoPago) return Promise.resolve();
-            return new Promise((resolve) => {
-                const script = document.createElement('script');
-                script.src = 'https://sdk.mercadopago.com/js/v2';
-                script.onload = resolve;
-                document.head.appendChild(script);
-            });
-        };
-    </script>
 
     <!-- Firebase SDK - Deferred loading for better performance -->
     <script>
